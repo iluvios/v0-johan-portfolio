@@ -7,8 +7,7 @@ import { ArrowRight, Brain, Target, Zap, Code, Lightbulb } from "lucide-react"
 
 export default function HomePage() {
   const [alvaText, setAlvaText] = useState("")
-  const fullText =
-    "Welcome. I am ALVA.\nAnalyzing pathways to growth. Synthesizing strategy and execution.\nYour exploration begins now."
+  const fullText = "Welcome. I am ALVA.\nI identify growth opportunities and turn plans into results.\nYour exploration begins now."
 
   useEffect(() => {
     let index = 0
@@ -33,9 +32,9 @@ export default function HomePage() {
             <div className="text-sm uppercase tracking-wider text-blue-400 mb-4 font-medium">
               SENIOR MARKETING & INNOVATION STRATEGIST
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 gradient-text leading-tight">Transformando marcas</h1>
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 gradient-text leading-tight">Drive Your Brand's Growth</h1>
             <h2 className="text-4xl md:text-6xl font-bold mb-8 text-white/90">
-              con soluciones <span className="gradient-text">digitales</span>
+              With <span className="gradient-text">Digital</span> Innovation
             </h2>
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               Driving revenue and engagement through data-driven strategies in marketing, automation, and innovative
@@ -90,27 +89,27 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="bg-slate-800/50 p-8 rounded-md ai-glow border border-blue-500/20">
               <Brain className="text-blue-400 mx-auto mb-4" size={48} />
-              <h3 className="text-xl font-semibold text-white mb-3">AI-Driven Innovation</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Smarter Marketing with AI</h3>
               <p className="text-gray-300">
                 Leveraging artificial intelligence to create personalized marketing experiences at scale.
               </p>
             </div>
             <div className="bg-slate-800/50 p-8 rounded-md ai-glow border border-blue-500/20">
               <Target className="text-cyan-400 mx-auto mb-4" size={48} />
-              <h3 className="text-xl font-semibold text-white mb-3">Strategic Execution</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Effective Strategies, Real Results</h3>
               <p className="text-gray-300">
                 Data-driven strategies that deliver measurable results and sustainable growth.
               </p>
             </div>
             <div className="bg-slate-800/50 p-8 rounded-md ai-glow border border-blue-500/20">
               <Zap className="text-blue-500 mx-auto mb-4" size={48} />
-              <h3 className="text-xl font-semibold text-white mb-3">Agile Implementation</h3>
+              <h3 className="text-xl font-semibold text-white mb-3">Fast & Flexible Execution</h3>
               <p className="text-gray-300">Rapid iteration and optimization to maximize performance and ROI.</p>
             </div>
           </div>
 
           <div className="text-sm text-blue-400 font-mono italic">
-            "Core directives established. Proceed to specialization." - ALVA
+            "Objectives clear. Moving to specialized solutions." - A.S. Johan
           </div>
         </div>
       </section>
