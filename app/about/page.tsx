@@ -123,7 +123,7 @@ const education = [
     description: "Technical education in graphic design, multimedia production, and visual communication.",
   },
   {
-    degree: "English Level C2",
+    degree: "English Level Advanced",
     institution: "TOEFL",
     location: "Certified 2022",
     dates: "2022",
@@ -133,13 +133,13 @@ const education = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen py-20">
+    <div className="min-h-screen py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">ABOUT ME</h1>
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-md p-6 max-w-3xl mx-auto ai-glow border border-blue-500/20">
-            <div className="text-blue-400 text-sm font-mono">
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold gradient-text mb-6">ABOUT ME</h1>
+          <div className="bg-slate-800/50 backdrop-blur-sm rounded-md p-4 sm:p-6 max-w-3xl mx-auto ai-glow border border-blue-500/20">
+            <div className="text-blue-400 text-xs sm:text-sm font-mono">
               Personal Profile.
               <br />
               Senior Digital Marketing Specialist with 8+ years of experience leading diverse marketing projects and
@@ -153,12 +153,12 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sm:gap-12">
           {/* Personal Info & Photo */}
           <div className="lg:col-span-1">
-            <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 mb-8 rounded-md">
-              <CardContent className="p-8 text-center">
-                <div className="w-48 h-48 mx-auto rounded-md overflow-hidden mb-6 ai-glow">
+            <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 mb-6 sm:mb-8 rounded-md">
+              <CardContent className="p-6 sm:p-8 text-center">
+                <div className="w-32 h-32 sm:w-48 sm:h-48 mx-auto rounded-md overflow-hidden mb-4 sm:mb-6 ai-glow">
                   <img
                     src="/placeholder.svg?height=192&width=192"
                     alt="Johan Alvarez"
@@ -166,30 +166,30 @@ export default function AboutPage() {
                   />
                 </div>
 
-                <h2 className="text-2xl font-bold gradient-text mb-2">Johan Alvarez</h2>
-                <p className="text-lg text-gray-300 mb-2">Senior Marketing Automation Specialist</p>
-                <p className="text-sm text-blue-400 mb-6 font-medium">Business Management and Innovation</p>
+                <h2 className="text-xl sm:text-2xl font-bold gradient-text mb-2">Johan Alvarez</h2>
+                <p className="text-base sm:text-lg text-gray-300 mb-2">Senior Marketing Automation Specialist</p>
+                <p className="text-sm text-blue-400 mb-4 sm:mb-6 font-medium">Business Management and Innovation</p>
 
-                <div className="space-y-3 text-left">
+                <div className="space-y-3 text-left text-sm sm:text-base">
                   <div className="flex items-center text-gray-300">
-                    <MapPin className="text-blue-400 mr-3" size={18} />
+                    <MapPin className="text-blue-400 mr-3 flex-shrink-0" size={18} />
                     <span>Medellín, Colombia</span>
                   </div>
                   <div className="flex items-center text-gray-300">
-                    <Phone className="text-blue-400 mr-3" size={18} />
+                    <Phone className="text-blue-400 mr-3 flex-shrink-0" size={18} />
                     <span>+57 3184064960</span>
                   </div>
                   <div className="flex items-center text-gray-300">
-                    <Mail className="text-blue-400 mr-3" size={18} />
-                    <span>jdsub16@gmail.com</span>
+                    <Mail className="text-blue-400 mr-3 flex-shrink-0" size={18} />
+                    <span className="break-all">jdsub16@gmail.com</span>
                   </div>
                   <div className="flex items-center text-gray-300">
-                    <Calendar className="text-blue-400 mr-3" size={18} />
+                    <Calendar className="text-blue-400 mr-3 flex-shrink-0" size={18} />
                     <span>8+ Years Experience</span>
                   </div>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-6 sm:mt-8">
                   <GlowButton className="w-full">
                     <Link href="/contact" className="flex items-center justify-center">
                       <Mail className="mr-2" size={16} />
@@ -198,7 +198,7 @@ export default function AboutPage() {
                   </GlowButton>
                 </div>
 
-                <div className="flex justify-center space-x-4 mt-6">
+                <div className="flex justify-center space-x-4 mt-4 sm:mt-6">
                   <Link
                     href="https://linkedin.com/in/johan-alvarez"
                     className="text-gray-400 hover:text-blue-400 transition-colors"
@@ -211,20 +211,13 @@ export default function AboutPage() {
                     <Mail size={24} />
                   </Link>
                 </div>
-
-                <div className="mt-6 p-4 bg-blue-500/10 rounded-md border border-blue-500/20">
-                  <p className="text-sm text-blue-300 font-medium">🌍 Remote Work Ready</p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    Fluent C2 English speaker seeking challenging remote opportunities
-                  </p>
-                </div>
               </CardContent>
             </Card>
 
             {/* Skills */}
             <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
               <CardHeader>
-                <CardTitle className="flex items-center gradient-text">
+                <CardTitle className="flex items-center gradient-text text-lg sm:text-xl">
                   <Code className="mr-2" size={20} />
                   Core Skills
                 </CardTitle>
@@ -246,29 +239,29 @@ export default function AboutPage() {
           </div>
 
           {/* Work Experience & Education */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
             {/* Work Experience */}
             <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
               <CardHeader>
-                <CardTitle className="flex items-center gradient-text">
+                <CardTitle className="flex items-center gradient-text text-lg sm:text-xl">
                   <Briefcase className="mr-2" size={20} />
                   Work Experience
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-8">
+              <CardContent className="space-y-6 sm:space-y-8">
                 {workExperiences.map((exp, index) => (
-                  <div key={index} className="border-l-2 border-blue-500/30 pl-6 relative">
+                  <div key={index} className="border-l-2 border-blue-500/30 pl-4 sm:pl-6 relative">
                     <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-2 top-0"></div>
-                    <div className="mb-4">
-                      <h3 className="text-xl font-semibold text-white">{exp.role}</h3>
-                      <p className="text-blue-400 font-medium">{exp.company}</p>
-                      <p className="text-sm text-gray-400">{exp.dates}</p>
+                    <div className="mb-3 sm:mb-4">
+                      <h3 className="text-lg sm:text-xl font-semibold text-white">{exp.role}</h3>
+                      <p className="text-blue-400 font-medium text-sm sm:text-base">{exp.company}</p>
+                      <p className="text-xs sm:text-sm text-gray-400">{exp.dates}</p>
                     </div>
-                    <p className="text-gray-300 mb-4">{exp.description}</p>
+                    <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">{exp.description}</p>
                     <ul className="space-y-2">
                       {exp.achievements.map((achievement, achIndex) => (
-                        <li key={achIndex} className="text-sm text-gray-300 flex items-start">
-                          <span className="text-blue-400 mr-2 mt-1">•</span>
+                        <li key={achIndex} className="text-xs sm:text-sm text-gray-300 flex items-start">
+                          <span className="text-blue-400 mr-2 mt-1 flex-shrink-0">•</span>
                           {achievement}
                         </li>
                       ))}
@@ -281,35 +274,35 @@ export default function AboutPage() {
             {/* Education & Certifications */}
             <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
               <CardHeader>
-                <CardTitle className="flex items-center gradient-text">
+                <CardTitle className="flex items-center gradient-text text-lg sm:text-xl">
                   <GraduationCap className="mr-2" size={20} />
                   Education & Certifications
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 sm:space-y-6">
                 {education.map((edu, index) => (
-                  <div key={index} className="border-l-2 border-blue-500/30 pl-6 relative">
+                  <div key={index} className="border-l-2 border-blue-500/30 pl-4 sm:pl-6 relative">
                     <div className="absolute w-3 h-3 bg-blue-500 rounded-full -left-2 top-0"></div>
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-white">{edu.degree}</h3>
-                        <p className="text-blue-400">{edu.institution}</p>
-                        <p className="text-sm text-gray-400">
+                        <h3 className="text-base sm:text-lg font-semibold text-white">{edu.degree}</h3>
+                        <p className="text-blue-400 text-sm sm:text-base">{edu.institution}</p>
+                        <p className="text-xs sm:text-sm text-gray-400">
                           {edu.location} • {edu.dates}
                         </p>
                       </div>
                       {edu.isScholarship && (
                         <div className="ml-4">
-                          <Award className="text-yellow-400" size={24} />
+                          <Award className="text-yellow-400" size={20} />
                         </div>
                       )}
                     </div>
-                    <p className="text-gray-300 mt-2">{edu.description}</p>
+                    <p className="text-gray-300 mt-2 text-sm sm:text-base">{edu.description}</p>
                     {edu.highlight && (
                       <div className="mt-3 p-3 bg-yellow-500/10 rounded-md border border-yellow-500/20">
                         <div className="flex items-center">
-                          <Award className="text-yellow-400 mr-2" size={16} />
-                          <p className="text-yellow-300 text-sm font-medium">{edu.highlight}</p>
+                          <Award className="text-yellow-400 mr-2 flex-shrink-0" size={16} />
+                          <p className="text-yellow-300 text-xs sm:text-sm font-medium">{edu.highlight}</p>
                         </div>
                       </div>
                     )}
@@ -320,11 +313,11 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* ALVA Insight */}
-        <div className="text-center mt-16">
-          <div className="text-sm text-blue-400 font-mono italic">
+        {/* A.S. Johan Insight */}
+        <div className="text-center mt-12 sm:mt-16">
+          <div className="text-xs sm:text-sm text-blue-400 font-mono italic px-4">
             "Profile analysis complete. Academic excellence and strategic capabilities confirmed. 8+ years of proven
-            results documented." - ALVA
+            results documented." - A.S. Johan
           </div>
         </div>
       </div>
