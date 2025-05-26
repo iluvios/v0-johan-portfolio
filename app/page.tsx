@@ -7,7 +7,7 @@ import { ArrowRight, Brain, Target, Zap, Code, Lightbulb } from "lucide-react"
 
 export default function HomePage() {
   const [alvaText, setAlvaText] = useState("")
-  const fullText = "Welcome. I am ALVA.\nI identify growth opportunities and turn plans into results.\nYour exploration begins now."
+  const fullText = "Welcome. I am A.S JOHAN.\nI identify growth opportunities and turn plans into results.\nYour exploration begins now."
 
   useEffect(() => {
     let index = 0
