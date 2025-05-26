@@ -1,0 +1,535 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .moving-gradient {
+    background: linear-gradient(-45deg, #1e293b, #0f172a, #1e40af, #1e3a8a);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  .ai-glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .ai-glow:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+  }
+
+  .grid-background {
+    background-image: radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  .grid-background::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .floating-orb {
+    position: fixed;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #3b82f6, #1e40af);
+    filter: blur(1px);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    z-index: 1;
+  }
+
+  .floating-orb-1 {
+    width: 80px;
+    height: 80px;
+    top: 20vh;
+    left: 15vw;
+    animation: float1 8s ease-in-out infinite;
+  }
+
+  .floating-orb-2 {
+    width: 60px;
+    height: 60px;
+    top: 60vh;
+    right: 20vw;
+    animation: float2 12s ease-in-out infinite;
+  }
+
+  .floating-orb-3 {
+    width: 40px;
+    height: 40px;
+    top: 40vh;
+    right: 10vw;
+    animation: float3 10s ease-in-out infinite;
+  }
+
+  .floating-orb-4 {
+    width: 100px;
+    height: 100px;
+    bottom: 20vh;
+    left: 70vw;
+    animation: float4 15s ease-in-out infinite;
+  }
+
+  .floating-orb-5 {
+    width: 50px;
+    height: 50px;
+    top: 80vh;
+    left: 10vw;
+    animation: float5 9s ease-in-out infinite;
+  }
+
+  /* Glow Button Styles - Using pseudo-element technique */
+  .glow-button {
+    border-radius: 5px;
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+    border: none;
+    position: relative;
+    overflow: visible;
+  }
+
+  /* Glow effect - behind the button */
+  .glow-button::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: 0.3s opacity ease-in-out;
+    filter: blur(15px);
+    opacity: 0;
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+    border-radius: 5px;
+  }
+
+  .glow-button:hover::before {
+    opacity: 0.8;
+    transition: 0.3s opacity ease-in-out;
+    filter: blur(25px);
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+  }
+
+  /* Button content area */
+  .glow-button__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  /* Size variants */
+  .glow-button--sm {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+
+  .glow-button--default {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 16px;
+  }
+
+  .glow-button--lg {
+    height: 48px;
+    padding: 0 32px;
+    font-size: 18px;
+  }
+
+  /* Variant styles */
+  .glow-button--outline {
+    background: transparent;
+    border: 2px solid #007fef;
+  }
+
+  .glow-button--outline::before {
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+  }
+
+  .glow-button--outline .glow-button__content {
+    color: #007fef;
+  }
+
+  .glow-button--outline:hover .glow-button__content {
+    color: white;
+  }
+
+  .glow-button--ghost {
+    background: transparent;
+  }
+
+  .glow-button--ghost::before {
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+  }
+
+  .glow-button--ghost .glow-button__content {
+    color: #007fef;
+  }
+
+  .glow-button--ghost:hover .glow-button__content {
+    color: white;
+  }
+
+  /* Ensure all child elements are white */
+  .glow-button .glow-button__content * {
+    color: inherit;
+  }
+
+  .glow-button .glow-button__content svg {
+    color: inherit;
+    fill: currentColor;
+  }
+
+  .glow-button .glow-button__content a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Hover brightness effect */
+  .glow-button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  .glow-button:active {
+    transform: translateY(0);
+  }
+
+  /* Disabled state */
+  .glow-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .glow-button:disabled::before {
+    opacity: 0;
+  }
+
+  .glow-button:disabled:hover {
+    filter: none;
+    transform: none;
+  }
+
+  /* Navigation Glow Effects - 50% intensity */
+  .nav-item {
+    position: relative;
+    border-radius: 5px;
+    padding: 8px 16px;
+    overflow: visible;
+    transition: all 0.3s ease;
+  }
+
+  /* Glow effect for nav items - 50% intensity */
+  .nav-item::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: 0.3s opacity ease-in-out;
+    filter: blur(10px);
+    opacity: 0;
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+    border-radius: 5px;
+  }
+
+  .nav-item:hover::before {
+    opacity: 0.4; /* 50% of the button glow intensity */
+    transition: 0.3s opacity ease-in-out;
+    filter: blur(15px);
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+  }
+
+  .nav-item__content {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+  }
+
+  /* Mobile nav items */
+  .nav-item-mobile {
+    border-radius: 5px;
+    overflow: visible;
+    transition: all 0.3s ease;
+  }
+
+  .nav-item-mobile::before {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: 0.3s opacity ease-in-out;
+    filter: blur(10px);
+    opacity: 0;
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+    border-radius: 5px;
+  }
+
+  .nav-item-mobile:hover::before {
+    opacity: 0.4;
+    transition: 0.3s opacity ease-in-out;
+    filter: blur(15px);
+    background: linear-gradient(135deg, #007fef 0%, #0447fe 100%);
+  }
+
+  /* Typing Effect Animation */
+  .typing-effect {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 0.6s steps(20, end), blink-caret 0.75s step-end infinite;
+    border-right: 2px solid #007fef;
+  }
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #007fef;
+    }
+  }
+
+  /* Remove caret after animation */
+  .typing-effect::after {
+    content: "";
+    border-right: 2px solid #007fef;
+    animation: blink-caret 0.75s step-end infinite;
+    animation-delay: 0.6s;
+  }
+
+  /* Tooltip improvements */
+  .nav-tooltip {
+    white-space: nowrap;
+    pointer-events: none;
+    font-family: "Courier New", monospace;
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+  }
+
+  /* Hover effects for nav items */
+  .nav-item:hover {
+    transform: translateY(-1px);
+  }
+
+  .nav-item-mobile:hover {
+    transform: translateX(2px);
+  }
+
+  /* Active state styling */
+  .nav-item.text-blue-400::before {
+    opacity: 0.2;
+    filter: blur(8px);
+  }
+
+  .nav-item-mobile.text-blue-400::before {
+    opacity: 0.2;
+    filter: blur(8px);
+  }
+
+  /* Logo styling */
+  .logo-white {
+    filter: brightness(0) saturate(100%) invert(1);
+    transition: filter 0.3s ease;
+  }
+
+  .logo-white:hover {
+    filter: brightness(0) saturate(100%) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float1 {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px);
+  }
+  50% {
+    transform: translateY(-15px) translateX(-10px);
+  }
+  75% {
+    transform: translateY(-40px) translateX(-15px);
+  }
+}
+
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-25px) translateX(-20px);
+  }
+  66% {
+    transform: translateY(20px) translateX(15px);
+  }
+}
+
+@keyframes float3 {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  20% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  40% {
+    transform: translateY(10px) translateX(-15px);
+  }
+  60% {
+    transform: translateY(-30px) translateX(5px);
+  }
+  80% {
+    transform: translateY(15px) translateX(-10px);
+  }
+}
+
+@keyframes float4 {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  30% {
+    transform: translateY(-35px) translateX(-25px);
+  }
+  70% {
+    transform: translateY(25px) translateX(20px);
+  }
+}
+
+@keyframes float5 {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(20px) translateX(-15px);
+  }
+  50% {
+    transform: translateY(-25px) translateX(10px);
+  }
+  75% {
+    transform: translateY(10px) translateX(-20px);
+  }
+}
+
+.float-animation {
+  animation: float1 8s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Update all buttons to have 5px border radius */
+.rounded-md {
+  border-radius: 5px !important;
+}
+
+button {
+  border-radius: 5px !important;
+}
+
+.ai-glow {
+  border-radius: 5px !important;
+}
