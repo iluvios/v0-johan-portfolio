@@ -6,19 +6,22 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
-
-const navItems = [
-  { href: "/", label: "HOME" },
-  { href: "/projects", label: "PROJECTS" },
-  { href: "/articles", label: "ARTICLES" },
-  { href: "/about", label: "ABOUT ME" },
-  { href: "/contact", label: "CONTACT" },
-]
+import { useLanguage } from "@/contexts/language-context"
+import LanguageToggle from "./language-toggle"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   const pathname = usePathname()
+  const { t } = useLanguage()
+
+  const navItems = [
+    { href: "/", label: t.nav.home },
+    { href: "/projects", label: t.nav.projects },
+    { href: "/articles", label: t.nav.articles },
+    { href: "/about", label: t.nav.about },
+    { href: "/contact", label: t.nav.contact },
+  ]
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
@@ -36,7 +39,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <div key={item.href} className="relative">
                 <Link
@@ -65,6 +68,8 @@ export default function Navigation() {
                 </span>
               </div>
             ))}
+
+            <LanguageToggle />
           </div>
 
           {/* Mobile menu button */}
@@ -99,6 +104,10 @@ export default function Navigation() {
                   </span>
                 </Link>
               ))}
+
+              <div className="px-3 py-2">
+                <LanguageToggle />
+              </div>
             </div>
           </div>
         )}

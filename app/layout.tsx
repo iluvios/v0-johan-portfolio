@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import { LanguageProvider } from "@/contexts/language-context"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,16 +23,18 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.className} bg-slate-900 text-gray-100 min-h-screen grid-background`}>
-        {/* Floating Orbs */}
-        <div className="floating-orb floating-orb-1"></div>
-        <div className="floating-orb floating-orb-2"></div>
-        <div className="floating-orb floating-orb-3"></div>
-        <div className="floating-orb floating-orb-4"></div>
-        <div className="floating-orb floating-orb-5"></div>
+        <LanguageProvider>
+          {/* Floating Orbs */}
+          <div className="floating-orb floating-orb-1"></div>
+          <div className="floating-orb floating-orb-2"></div>
+          <div className="floating-orb floating-orb-3"></div>
+          <div className="floating-orb floating-orb-4"></div>
+          <div className="floating-orb floating-orb-5"></div>
 
-        <Navigation />
-        <main className="pt-20 relative z-10">{children}</main>
-        <Footer />
+          <Navigation />
+          <main className="pt-20 relative z-10">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   )
