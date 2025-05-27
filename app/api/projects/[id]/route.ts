@@ -36,6 +36,8 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
           image_url = COALESCE(${project.image_url}, image_url),
           category = COALESCE(${project.category}, category),
           tags = COALESCE(${project.tags}, tags),
+          gallery = COALESCE(${project.gallery}, gallery),
+          website_url = COALESCE(${project.website_url}, website_url),
           featured = COALESCE(${project.featured}, featured),
           updated_at = CURRENT_TIMESTAMP
       WHERE id = ${id}

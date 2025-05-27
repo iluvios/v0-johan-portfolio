@@ -7,6 +7,8 @@ export interface Project {
   image_url: string | null
   category: string | null
   tags: string[]
+  gallery: string[]
+  website_url: string | null
   featured: boolean
   created_at: string
   updated_at: string

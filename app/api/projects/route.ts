@@ -12,6 +12,8 @@ export interface Project {
   image_url: string | null
   category: string | null
   tags: string[]
+  gallery: string[]
+  website_url: string | null
   featured: boolean
   created_at: string
   updated_at: string
@@ -57,9 +59,9 @@ export async function POST(request: NextRequest) {
     const project = await request.json()
 
     const result = await sql`
-      INSERT INTO projects (title, client, impact, description, image_url, category, tags, featured)
+      INSERT INTO projects (title, client, impact, description, image_url, category, tags, gallery, website_url, featured)
       VALUES (${project.title}, ${project.client}, ${project.impact}, ${project.description}, 
-              ${project.image_url}, ${project.category}, ${project.tags}, ${project.featured})
+              ${project.image_url}, ${project.category}, ${project.tags}, ${project.gallery}, ${project.website_url}, ${project.featured})
       RETURNING *
     `
 

@@ -17,7 +17,7 @@ export default function ProjectsPage() {
   useEffect(() => {
     const loadProjects = async () => {
       try {
-        const data = await getProjects(selectedCategory)
+        const data = await getProjects(selectedCategory === "All" ? undefined : selectedCategory)
         setProjects(data)
       } catch (error) {
         console.error("Error loading projects:", error)
