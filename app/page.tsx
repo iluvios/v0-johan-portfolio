@@ -7,30 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Brain, Target, Zap, Code, Lightbulb, BookOpen, Users, Calendar, Clock } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
-
-// Sample projects data
-const sampleProjects = [
-  {
-    id: 1,
-    title: "E-commerce Funnel Optimization",
-    client: "TechCorp Solutions",
-    impact: "+$300k Attributable Revenue via Funnel Optimization",
-    description: "Complete funnel redesign and automation implementation resulting in 45% conversion rate improvement.",
-    image: "/placeholder.svg?height=300&width=500",
-    category: "Marketing Automation",
-    tags: ["Conversion Optimization", "Analytics", "A/B Testing"],
-  },
-  {
-    id: 2,
-    title: "Brand Identity & Digital Presence",
-    client: "StartupX",
-    impact: "200% Increase in Brand Engagement",
-    description: "Full brand identity development with integrated digital marketing strategy and web presence.",
-    image: "/placeholder.svg?height=300&width=500",
-    category: "Web Development",
-    tags: ["Branding", "Web Design", "Digital Strategy"],
-  },
-]
+import { getFeaturedProjects, type Project } from "@/lib/projects"
 
 // Sample articles data
 const sampleArticles = [
@@ -58,9 +35,12 @@ const sampleArticles = [
 
 export default function HomePage() {
   const [typedText, setTypedText] = useState("")
+  const [featuredProjects, setFeaturedProjects] = useState<Project[]>([])
   const { t } = useLanguage()
 
-  const fullText = `${t.home.intro.greeting}\n\n${t.home.intro.passion}`
+  const fullText = `${t.home.intro.greeting}
+
+${t.home.intro.passion}`
 
   useEffect(() => {
     let index = 0
@@ -76,6 +56,18 @@ export default function HomePage() {
 
     return () => clearInterval(timer)
   }, [fullText])
+
+  useEffect(() => {
+    const loadFeaturedProjects = async () => {
+      try {
+        const projects = await getFeaturedProjects()
+        setFeaturedProjects(projects)
+      } catch (error) {
+        console.error("Error loading featured projects:", error)
+      }
+    }
+    loadFeaturedProjects()
+  }, [])
 
   return (
     <div className="min-h-screen relative overflow-hidden">
@@ -188,7 +180,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-            {sampleProjects.map((project) => (
+            {featuredProjects.map((project) => (
               <Card
                 key={project.id}
                 className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 hover:border-blue-400 transition-all duration-300 ai-glow group rounded-md"
@@ -196,7 +188,7 @@ export default function HomePage() {
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden rounded-t-md">
                     <img
-                      src={project.image || "/placeholder.svg"}
+                      src={project.image_url || "/placeholder.svg"}
                       alt={project.title}
                       className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                     />

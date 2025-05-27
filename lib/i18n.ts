@@ -53,53 +53,37 @@ export const translations = {
         contact: "Get In Touch",
       },
     },
-    // Projects
-    projects: {
-      title: "PROJECT REPOSITORY",
-      subtitle: "Case studies in strategic execution and measurable impact. Filter by expertise.",
-      categories: {
-        all: "All",
-        marketing: "Marketing Automation",
-        web: "Web Development",
-        strategy: "Full-Funnel Strategy",
-      },
-    },
-    // Articles
-    articles: {
-      title: "KNOWLEDGE CORE",
-      subtitle: "Exploring innovation, marketing paradigms, and foundational philosophies.",
-      loaded: "Articles loaded",
-    },
-    // About
-    about: {
-      title: "ABOUT ME",
-      subtitle:
-        "Senior Digital Marketing Specialist with 8+ years of experience leading diverse marketing projects and teams (up to 8+ FTEs). Business Management and Innovation graduate with academic excellence recognition. Proven ability to drive revenue growth through data-driven strategies across marketing, automation, and team leadership.",
-      role: "Senior Marketing Automation Specialist",
-      career: "Business Management and Innovation",
-      experience: "8+ Years Experience",
-      workExperience: "Work Experience",
-      education: "Education & Certifications",
-      skills: "Core Skills",
-    },
     // Contact
     contact: {
-      title: "INITIATE CONNECTION",
-      subtitle: "Ready to discuss your next initiative?",
-      form: {
-        name: "Name",
-        email: "Email",
-        message: "Message",
-        placeholder: "Tell me about your project or initiative...",
-        send: "Send Message",
+      header: {
+        title: "INITIATE CONNECTION",
+        alvaIntro: {
+          line1: "Connection Interface.",
+          line2: "Ready to discuss your next strategic initiative?",
+          line3: "Communication protocols: Active",
+        },
       },
-      direct: "Direct Contact",
-      response: "Response Time",
-      responseDesc:
-        "I typically respond to inquiries within 24 hours. For urgent matters, please indicate the priority level in your message.",
-      collaboration: "Remote Collaboration",
-      collaborationDesc:
-        "With 8+ years of experience, I'm ready for challenging remote opportunities across marketing automation, full-funnel strategies, and team leadership.",
+      form: {
+        title: "Send Message",
+        nameLabel: "Name",
+        emailLabel: "Email",
+        messageLabel: "Message",
+        messagePlaceholder: "Tell me about your project or initiative...",
+        submitButton: "Send Message",
+        submitMessage: "Form submitted successfully!",
+      },
+      info: {
+        directTitle: "Direct Contact",
+        location: "Medellín, Colombia",
+        linkedin: "LinkedIn Profile",
+        responseTitle: "Response Time",
+        responseText:
+          "I typically respond to inquiries within 24 hours. For urgent matters, please indicate the priority level in your message.",
+        remoteTitle: "Remote Collaboration",
+        remoteText:
+          "With 8+ years of experience, I'm ready for challenging remote opportunities across marketing automation, full-funnel strategies, and team leadership.",
+        alvaQuote: "Connection protocols active. Standby for strategic alignment. - A.S. Johan",
+      },
     },
     // Common
     common: {
@@ -168,53 +152,37 @@ export const translations = {
         contact: "Ponte en Contacto",
       },
     },
-    // Projects
-    projects: {
-      title: "REPOSITORIO DE PROYECTOS",
-      subtitle: "Casos de estudio en ejecución estratégica e impacto medible. Filtra por experiencia.",
-      categories: {
-        all: "Todos",
-        marketing: "Automatización de Marketing",
-        web: "Desarrollo Web",
-        strategy: "Estrategia de Embudo Completo",
-      },
-    },
-    // Articles
-    articles: {
-      title: "NÚCLEO DE CONOCIMIENTO",
-      subtitle: "Explorando innovación, paradigmas de marketing y filosofías fundamentales.",
-      loaded: "Artículos cargados",
-    },
-    // About
-    about: {
-      title: "SOBRE MÍ",
-      subtitle:
-        "Especialista Senior en Marketing Digital con más de 8 años de experiencia liderando diversos proyectos de marketing y equipos (hasta 8+ empleados). Graduado en Gestión Empresarial e Innovación con reconocimiento por excelencia académica. Capacidad comprobada para impulsar el crecimiento de ingresos a través de estrategias basadas en datos en marketing, automatización y liderazgo de equipos.",
-      role: "Especialista Senior en Automatización de Marketing",
-      career: "Gestión Empresarial e Innovación",
-      experience: "Más de 8 Años de Experiencia",
-      workExperience: "Experiencia Laboral",
-      education: "Educación y Certificaciones",
-      skills: "Habilidades Principales",
-    },
     // Contact
     contact: {
-      title: "INICIAR CONEXIÓN",
-      subtitle: "¿Listo para discutir tu próxima iniciativa?",
-      form: {
-        name: "Nombre",
-        email: "Correo Electrónico",
-        message: "Mensaje",
-        placeholder: "Cuéntame sobre tu proyecto o iniciativa...",
-        send: "Enviar Mensaje",
+      header: {
+        title: "INICIAR CONEXIÓN",
+        alvaIntro: {
+          line1: "Interfaz de Conexión.",
+          line2: "¿Listo para discutir tu próxima iniciativa estratégica?",
+          line3: "Protocolos de comunicación: Activos",
+        },
       },
-      direct: "Contacto Directo",
-      response: "Tiempo de Respuesta",
-      responseDesc:
-        "Típicamente respondo a consultas dentro de 24 horas. Para asuntos urgentes, por favor indica el nivel de prioridad en tu mensaje.",
-      collaboration: "Colaboración Remota",
-      collaborationDesc:
-        "Con más de 8 años de experiencia, estoy listo para oportunidades remotas desafiantes en automatización de marketing, estrategias de embudo completo y liderazgo de equipos.",
+      form: {
+        title: "Enviar Mensaje",
+        nameLabel: "Nombre",
+        emailLabel: "Correo Electrónico",
+        messageLabel: "Mensaje",
+        messagePlaceholder: "Cuéntame sobre tu proyecto o iniciativa...",
+        submitButton: "Enviar Mensaje",
+        submitMessage: "¡Formulario enviado exitosamente!",
+      },
+      info: {
+        directTitle: "Contacto Directo",
+        location: "Medellín, Colombia",
+        linkedin: "Perfil de LinkedIn",
+        responseTitle: "Tiempo de Respuesta",
+        responseText:
+          "Típicamente respondo a consultas dentro de 24 horas. Para asuntos urgentes, por favor indica el nivel de prioridad en tu mensaje.",
+        remoteTitle: "Colaboración Remota",
+        remoteText:
+          "Con más de 8 años de experiencia, estoy listo para oportunidades remotas desafiantes en automatización de marketing, estrategias de embudo completo y liderazgo de equipos.",
+        alvaQuote: "Protocolos de conexión activos. En espera de alineación estratégica. - A.S. Johan",
+      },
     },
     // Common
     common: {
