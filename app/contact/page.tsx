@@ -117,15 +117,15 @@ export default function ContactPage() {
                 <h3 className="text-xl font-semibold gradient-text mb-4">{t.contact.info.directTitle}</h3>
                 <div className="space-y-4">
                   <Link
-                    href="mailto:jdsub16@gmail.com"
+                    href="mailto:contact@asjohan.com"
                     className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"
                   >
                     <Mail size={20} />
-                    <span>jdsub16@gmail.com</span>
+                    <span>contact@asjohan.com</span>
                   </Link>
 
                   <Link
-                    href="tel:+573184064960"
+                    href="https://api.whatsapp.com/send?phone=573184064960&text=Hi%20Johan!"
                     className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"
                   >
                     <Phone size={20} />
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   </div>
 
                   <Link
-                    href="https://linkedin.com/in/johan-alvarez"
+                    href="https://linkedin.com/in/johanalvarez"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"

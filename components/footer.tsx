@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="bg-slate-900/95 border-t border-slate-800 py-8 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-sm text-gray-400 mb-4 md:mb-0">© Johan Alvarez {currentYear} | Innovation in Motion</div>
+          <div className="text-sm text-gray-400 mb-4 md:mb-0">© Alvarez Sanchez Johan  {currentYear} | Innovation in Motion</div>
 
           <div className="flex space-x-6">
             <Link
@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center mt-4">
-          <div className="text-xs text-gray-500 italic">"Connections maintained. Efficiency assured." - ALVA</div>
+          <div className="text-xs text-gray-500 italic">"Innovation and Efficiency assured." - A.S. Johan</div>
         </div>
       </div>
     </footer>

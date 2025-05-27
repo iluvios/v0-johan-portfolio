@@ -7,70 +7,70 @@ export const translations = {
       home: "HOME",
       projects: "PROJECTS",
       articles: "ARTICLES",
-      about: "ABOUT ME",
+      about: "ABOUT",
       contact: "CONTACT",
     },
     // Home Page
     home: {
-      title: "Transformando marcas",
-      subtitle: "con soluciones digitales",
+      title: "Elevating Brands",
+      subtitle: "with Digital Solutions",
       description:
-        "Implementing cutting edge technologies and techniques to boost results through data-driven strategies in marketing, automation, and innovative design.",
+        "Applying modern technologies and data-driven strategies to achieve impactful results through marketing, automation, and innovative design.",
       intro: {
         greeting: "Hi, I'm A.S. Johan.",
-        passion: "I have a deep passion for understanding the world, and implementing ways to make it better.",
+        passion: "I have a deep passion for understanding the world and implementing ways to make it better.",
       },
       values: {
         title: "MY VALUES",
-        subtitle: "Core principles that drive my work and decisions",
+        subtitle: "Core principles that guide my work and decisions",
         learning: {
-          title: "Always Learning",
-          description: "Continuous growth and adaptation in an ever-evolving digital landscape.",
+          title: "Continuous Learning",
+          description: "Embracing growth and adaptation in an ever-evolving digital world.",
         },
         curiosity: {
           title: "Curiosity",
           description: "Asking the right questions to uncover innovative solutions and opportunities.",
         },
         agility: {
-          title: "Quick to Change",
-          description: "Embracing change and pivoting strategies based on data and market feedback.",
+          title: "Agility",
+          description: "Adapting strategies based on data and feedback to navigate change effectively.",
         },
       },
       portfolio: {
-        title: "FEATURED PROJECTS",
-        subtitle: "Strategic implementations with measurable impact",
+        title: "SELECTED PROJECTS",
+        subtitle: "A look at strategic implementations with measurable impact",
         viewAll: "View All Projects",
       },
       blog: {
-        title: "LATEST INSIGHTS",
+        title: "LATEST ARTICLES",
         subtitle: "Thoughts on innovation, marketing, and digital transformation",
         viewAll: "Read All Articles",
       },
       cta: {
-        title: "LET'S WORK TOGETHER",
-        subtitle: "Ready to transform your digital presence?",
-        aboutMe: "Know More About Me",
+        title: "LET'S COLLABORATE",
+        subtitle: "Ready to enhance your digital presence?",
+        aboutMe: "Learn More About Me",
         contact: "Get In Touch",
       },
     },
     // Contact
     contact: {
       header: {
-        title: "INITIATE CONNECTION",
+        title: "GET IN TOUCH",
         alvaIntro: {
           line1: "Connection Interface.",
-          line2: "Ready to discuss your next strategic initiative?",
-          line3: "Communication protocols: Active",
+          line2: "Ready to discuss your next project or initiative?",
+          line3: "Communication channels: Open.",
         },
       },
       form: {
-        title: "Send Message",
+        title: "Send a Message",
         nameLabel: "Name",
         emailLabel: "Email",
         messageLabel: "Message",
-        messagePlaceholder: "Tell me about your project or initiative...",
+        messagePlaceholder: "Tell me about your project or inquiry...",
         submitButton: "Send Message",
-        submitMessage: "Form submitted successfully!",
+        submitMessage: "Message sent successfully!",
       },
       info: {
         directTitle: "Direct Contact",
@@ -78,11 +78,11 @@ export const translations = {
         linkedin: "LinkedIn Profile",
         responseTitle: "Response Time",
         responseText:
-          "I typically respond to inquiries within 24 hours. For urgent matters, please indicate the priority level in your message.",
+          "I aim to respond to inquiries within 24 hours. For urgent matters, please note it in your message.",
         remoteTitle: "Remote Collaboration",
         remoteText:
-          "With 8+ years of experience, I'm ready for challenging remote opportunities across marketing automation, full-funnel strategies, and team leadership.",
-        alvaQuote: "Connection protocols active. Standby for strategic alignment. - A.S. Johan",
+          "With 8+ years of experience, I'm equipped for challenging remote opportunities in marketing automation, full-funnel strategies, and team leadership.",
+        alvaQuote: "Connection established. Awaiting strategic dialogue. - A.S. Johan",
       },
     },
     // Common
@@ -92,11 +92,10 @@ export const translations = {
       viewProjects: "View Projects",
       readArticles: "Read Articles",
       quotes: {
-        projects: "Data points logged. Result correlation: Positive. - A.S. Johan",
-        articles: "Information processed. Dissemination active. - A.S. Johan",
-        about:
-          "Profile analysis complete. Academic excellence and strategic capabilities confirmed. 8+ years of proven results documented. - A.S. Johan",
-        contact: "Connection protocols active. Standby for strategic alignment. - A.S. Johan",
+        projects: "Strategic projects delivering high impact. - A.S. Johan",
+        articles: "Sharing insights on strategy and innovation. - A.S. Johan",
+        about: "Driven by a passion for strategic execution and achieving results. - A.S. Johan",
+        contact: "Connection established. Awaiting strategic dialogue. - A.S. Johan",
       },
     },
   },
@@ -111,43 +110,43 @@ export const translations = {
     },
     // Home Page
     home: {
-      title: "Transformando marcas",
-      subtitle: "con soluciones digitales",
+      title: "Elevando Marcas",
+      subtitle: "con Soluciones Digitales",
       description:
-        "Implementando tecnologías y técnicas de vanguardia para potenciar resultados a través de estrategias basadas en datos en marketing, automatización y diseño innovador.",
+        "Aplicando tecnologías modernas y estrategias basadas en datos para lograr resultados impactantes a través de marketing, automatización y diseño innovador.",
       intro: {
         greeting: "Hola, soy A.S. Johan.",
         passion: "Tengo una profunda pasión por entender el mundo e implementar formas de mejorarlo.",
       },
       values: {
         title: "MIS VALORES",
-        subtitle: "Principios fundamentales que impulsan mi trabajo y decisiones",
+        subtitle: "Principios fundamentales que guían mi trabajo y decisiones",
         learning: {
-          title: "Siempre Aprendiendo",
-          description: "Crecimiento continuo y adaptación en un panorama digital en constante evolución.",
+          title: "Aprendizaje Continuo",
+          description: "Abrazando el crecimiento y la adaptación en un mundo digital en constante evolución.",
         },
         curiosity: {
           title: "Curiosidad",
-          description: "Hacer las preguntas correctas para descubrir soluciones innovadoras y oportunidades.",
+          description: "Hacer las preguntas correctas para descubrir soluciones y oportunidades innovadoras.",
         },
         agility: {
-          title: "Rápido para Cambiar",
-          description: "Abrazando el cambio y pivoteando estrategias basadas en datos y retroalimentación del mercado.",
+          title: "Agilidad",
+          description: "Adaptando estrategias basadas en datos y retroalimentación para navegar el cambio eficazmente.",
         },
       },
       portfolio: {
-        title: "PROYECTOS DESTACADOS",
-        subtitle: "Implementaciones estratégicas con impacto medible",
+        title: "PROYECTOS SELECCIONADOS",
+        subtitle: "Una mirada a implementaciones estratégicas con impacto medible",
         viewAll: "Ver Todos los Proyectos",
       },
       blog: {
-        title: "ÚLTIMAS REFLEXIONES",
-        subtitle: "Pensamientos sobre innovación, marketing y transformación digital",
+        title: "ÚLTIMOS ARTÍCULOS",
+        subtitle: "Reflexiones sobre innovación, marketing y transformación digital",
         viewAll: "Leer Todos los Artículos",
       },
       cta: {
-        title: "TRABAJEMOS JUNTOS",
-        subtitle: "¿Listo para transformar tu presencia digital?",
+        title: "COLABOREMOS",
+        subtitle: "¿Listo/a para potenciar tu presencia digital?",
         aboutMe: "Conoce Más Sobre Mí",
         contact: "Ponte en Contacto",
       },
@@ -155,21 +154,21 @@ export const translations = {
     // Contact
     contact: {
       header: {
-        title: "INICIAR CONEXIÓN",
+        title: "HABLEMOS",
         alvaIntro: {
           line1: "Interfaz de Conexión.",
-          line2: "¿Listo para discutir tu próxima iniciativa estratégica?",
-          line3: "Protocolos de comunicación: Activos",
+          line2: "¿Listo/a para discutir tu próximo proyecto o iniciativa?",
+          line3: "Canales de comunicación: Abiertos.",
         },
       },
       form: {
-        title: "Enviar Mensaje",
+        title: "Enviar un Mensaje",
         nameLabel: "Nombre",
         emailLabel: "Correo Electrónico",
         messageLabel: "Mensaje",
-        messagePlaceholder: "Cuéntame sobre tu proyecto o iniciativa...",
+        messagePlaceholder: "Cuéntame sobre tu proyecto o consulta...",
         submitButton: "Enviar Mensaje",
-        submitMessage: "¡Formulario enviado exitosamente!",
+        submitMessage: "¡Mensaje enviado exitosamente!",
       },
       info: {
         directTitle: "Contacto Directo",
@@ -177,11 +176,11 @@ export const translations = {
         linkedin: "Perfil de LinkedIn",
         responseTitle: "Tiempo de Respuesta",
         responseText:
-          "Típicamente respondo a consultas dentro de 24 horas. Para asuntos urgentes, por favor indica el nivel de prioridad en tu mensaje.",
+          "Busco responder a las consultas dentro de 24 horas. Para asuntos urgentes, por favor indícalo en tu mensaje.",
         remoteTitle: "Colaboración Remota",
         remoteText:
-          "Con más de 8 años de experiencia, estoy listo para oportunidades remotas desafiantes en automatización de marketing, estrategias de embudo completo y liderazgo de equipos.",
-        alvaQuote: "Protocolos de conexión activos. En espera de alineación estratégica. - A.S. Johan",
+          "Con más de 8 años de experiencia, estoy preparado para oportunidades remotas desafiantes en automatización de marketing, estrategias full-funnel y liderazgo de equipos.",
+        alvaQuote: "Conexión establecida. Esperando diálogo estratégico. - A.S. Johan",
       },
     },
     // Common
@@ -191,11 +190,10 @@ export const translations = {
       viewProjects: "Ver Proyectos",
       readArticles: "Leer Artículos",
       quotes: {
-        projects: "Puntos de datos registrados. Correlación de resultados: Positiva. - A.S. Johan",
-        articles: "Información procesada. Diseminación activa. - A.S. Johan",
-        about:
-          "Análisis de perfil completo. Excelencia académica y capacidades estratégicas confirmadas. Más de 8 años de resultados comprobados documentados. - A.S. Johan",
-        contact: "Protocolos de conexión activos. En espera de alineación estratégica. - A.S. Johan",
+        projects: "Proyectos estratégicos que entregan alto impacto. - A.S. Johan",
+        articles: "Compartiendo ideas sobre estrategia e innovación. - A.S. Johan",
+        about: "Impulsado por la pasión por la ejecución estratégica y el logro de resultados. - A.S. Johan",
+        contact: "Conexión establecida. Esperando diálogo estratégico. - A.S. Johan",
       },
     },
   },
