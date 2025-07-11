@@ -13,7 +13,7 @@ export const translations = {
     // Home Page
     home: {
       title: "Elevating Brands",
-      subtitle: "with Digital Solutions",
+      subtitle: "con Digital Solutions",
       description:
         "Applying modern technologies and data-driven strategies to achieve impactful results through marketing, automation, and innovative design.",
       intro: {
@@ -92,7 +92,8 @@ export const translations = {
       viewProjects: "View Projects",
       readArticles: "Read Articles",
       quotes: {
-        projects: "Strategic projects delivering high impact. - A.S. Johan",
+        projects:
+          "Innovation is seeing what everybody has seen and thinking what nobody has thought. - Albert Szent-Györgyi",
         articles: "Sharing insights on strategy and innovation. - A.S. Johan",
         about: "Driven by a passion for strategic execution and achieving results. - A.S. Johan",
         contact: "Connection established. Awaiting strategic dialogue. - A.S. Johan",
@@ -190,7 +191,8 @@ export const translations = {
       viewProjects: "Ver Proyectos",
       readArticles: "Leer Artículos",
       quotes: {
-        projects: "Proyectos estratégicos que entregan alto impacto. - A.S. Johan",
+        projects:
+          "Innovar es ver lo que todo el mundo ha visto y pensar lo que nadie ha pensado. - Albert Szent-Györgyi",
         articles: "Compartiendo ideas sobre estrategia e innovación. - A.S. Johan",
         about: "Impulsado por la pasión por la ejecución estratégica y el logro de resultados. - A.S. Johan",
         contact: "Conexión establecida. Esperando diálogo estratégico. - A.S. Johan",

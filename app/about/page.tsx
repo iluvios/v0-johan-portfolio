@@ -312,14 +312,6 @@ export default function AboutPage() {
             </Card>
           </div>
         </div>
-
-        {/* A.S. Johan Insight */}
-        <div className="text-center mt-12 sm:mt-16">
-          <div className="text-xs sm:text-sm text-blue-400 font-mono italic px-4">
-            "Profile analysis complete. Academic excellence and strategic capabilities confirmed. 8+ years of proven
-            results documented." - A.S. Johan
-          </div>
-        </div>
       </div>
     </div>
   )

@@ -13,13 +13,46 @@ import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function ContactPage() {
+  const { t: translations } = useLanguage()
+  const t = translations || {
+    contact: {
+      header: {
+        title: "GET IN TOUCH",
+        alvaIntro: {
+          line1: "Connection Interface.",
+          line2: "Ready to discuss your next project or initiative?",
+          line3: "Communication channels: Open.",
+        },
+      },
+      form: {
+        title: "Send a Message",
+        nameLabel: "Name",
+        emailLabel: "Email",
+        messageLabel: "Message",
+        messagePlaceholder: "Tell me about your project or inquiry...",
+        submitButton: "Send Message",
+        submitMessage: "Message sent successfully!",
+      },
+      info: {
+        directTitle: "Direct Contact",
+        location: "Medellín, Colombia",
+        linkedin: "LinkedIn Profile",
+        responseTitle: "Response Time",
+        responseText:
+          "I aim to respond to inquiries within 24 hours. For urgent matters, please note it in your message.",
+        remoteTitle: "Remote Collaboration",
+        remoteText:
+          "With 8+ years of experience, I'm equipped for challenging remote opportunities in marketing automation, full-funnel strategies, and team leadership.",
+        alvaQuote: "Connection established. Awaiting strategic dialogue. - A.S. Johan",
+      },
+    },
+  }
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   })
-
-  const { t } = useLanguage()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -117,11 +150,11 @@ export default function ContactPage() {
                 <h3 className="text-xl font-semibold gradient-text mb-4">{t.contact.info.directTitle}</h3>
                 <div className="space-y-4">
                   <Link
-                    href="mailto:contact@asjohan.com"
+                    href="mailto:jdsub16@gmail.com"
                     className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"
                   >
                     <Mail size={20} />
-                    <span>contact@asjohan.com</span>
+                    <span>jdsub16@gmail.com</span>
                   </Link>
 
                   <Link
@@ -138,7 +171,7 @@ export default function ContactPage() {
                   </div>
 
                   <Link
-                    href="https://linkedin.com/in/johanalvarez"
+                    href="https://linkedin.com/in/johan-alvarez"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"
