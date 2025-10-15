@@ -36,7 +36,7 @@ const sampleArticles = [
 export default function HomePage() {
   const [typedText, setTypedText] = useState("")
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>([])
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
 
   const fullText = `${t.home.intro.greeting}
 
@@ -52,7 +52,7 @@ ${t.home.intro.passion}`
       } else {
         clearInterval(timer)
       }
-    }, 30) // Faster typing speed (was 50ms, now 30ms)
+    }, 30)
 
     return () => clearInterval(timer)
   }, [fullText])
@@ -75,24 +75,33 @@ ${t.home.intro.passion}`
       <section className="relative min-h-screen flex items-center justify-center px-4">
         <div className="relative z-10 text-center max-w-6xl mx-auto">
           <div className="mb-8 sm:mb-12">
-            <div className="text-xs sm:text-sm uppercase tracking-wider text-blue-400 mb-4 font-medium">
-              SENIOR MARKETING & INNOVATION STRATEGIST
+            <div className="text-sm sm:text-base md:text-lg uppercase tracking-wider text-blue-400 mb-4 font-medium">
+              {language === "en"
+                ? "SENIOR MARKETING & INNOVATION STRATEGIST"
+                : "ESTRATEGA SENIOR EN MARKETING E INNOVACIÓN"}
             </div>
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-4 sm:mb-6 gradient-text leading-tight">
-              {t.home.title}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 sm:mb-6 gradient-text leading-tight">
+              {language === "en" ? "Transforming Brands" : "Transformando marcas"}
             </h1>
-            <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 sm:mb-8 text-white/90">
-              {t.home.subtitle.split(" ").slice(0, -1).join(" ")}{" "}
-              <span className="gradient-text">{t.home.subtitle.split(" ").slice(-1)}</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-white/90">
+              {language === "en" ? (
+                <>
+                  with <span className="gradient-text">Digital Solutions</span>
+                </>
+              ) : (
+                <>
+                  con <span className="gradient-text">soluciones digitales</span>
+                </>
+              )}
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
               {t.home.description}
             </p>
           </div>
 
           {/* Typing Effect */}
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-md p-4 sm:p-6 mb-8 sm:mb-12 ai-glow border border-blue-500/20 mx-4">
-            <div className="text-blue-400 text-sm sm:text-base font-mono whitespace-pre-line min-h-[60px] sm:min-h-[80px] text-left">
+            <div className="text-blue-400 text-base sm:text-lg md:text-xl font-mono whitespace-pre-line min-h-[60px] sm:min-h-[80px] text-left">
               {typedText}
               <span className="animate-pulse">|</span>
             </div>
@@ -100,7 +109,7 @@ ${t.home.intro.passion}`
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
-            <GlowButton size="lg" className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto">
+            <GlowButton size="lg" className="px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl w-full sm:w-auto">
               <Link href="/projects" className="flex items-center justify-center">
                 {t.common.viewProjects} <ArrowRight className="ml-2" size={20} />
               </Link>
@@ -108,7 +117,7 @@ ${t.home.intro.passion}`
             <GlowButton
               variant="outline"
               size="lg"
-              className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full sm:w-auto"
+              className="px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl w-full sm:w-auto"
             >
               <Link href="/articles" className="flex items-center justify-center">
                 {t.common.readArticles} <ArrowRight className="ml-2" size={20} />
@@ -139,32 +148,32 @@ ${t.home.intro.passion}`
       <section className="py-16 sm:py-20 relative">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">{t.home.values.title}</h2>
-            <p className="text-lg sm:text-xl text-gray-300 px-4">{t.home.values.subtitle}</p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">{t.home.values.title}</h2>
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 px-4">{t.home.values.subtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 ai-glow border-blue-500/20 rounded-md">
               <CardContent className="p-6 sm:p-8 text-center">
                 <BookOpen className="text-blue-400 mx-auto mb-4" size={40} />
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">{t.home.values.learning.title}</h3>
-                <p className="text-sm sm:text-base text-gray-300">{t.home.values.learning.description}</p>
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">{t.home.values.learning.title}</h3>
+                <p className="text-base sm:text-lg text-gray-300">{t.home.values.learning.description}</p>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 ai-glow border-blue-500/20 rounded-md">
               <CardContent className="p-6 sm:p-8 text-center">
                 <Brain className="text-cyan-400 mx-auto mb-4" size={40} />
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">{t.home.values.curiosity.title}</h3>
-                <p className="text-sm sm:text-base text-gray-300">{t.home.values.curiosity.description}</p>
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">{t.home.values.curiosity.title}</h3>
+                <p className="text-base sm:text-lg text-gray-300">{t.home.values.curiosity.description}</p>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 ai-glow border-blue-500/20 rounded-md">
               <CardContent className="p-6 sm:p-8 text-center">
                 <Zap className="text-blue-500 mx-auto mb-4" size={40} />
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">{t.home.values.agility.title}</h3>
-                <p className="text-sm sm:text-base text-gray-300">{t.home.values.agility.description}</p>
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">{t.home.values.agility.title}</h3>
+                <p className="text-base sm:text-lg text-gray-300">{t.home.values.agility.description}</p>
               </CardContent>
             </Card>
           </div>
@@ -175,8 +184,8 @@ ${t.home.intro.passion}`
       <section className="py-16 sm:py-20 bg-slate-800/30 backdrop-blur-sm relative">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">{t.home.portfolio.title}</h2>
-            <p className="text-lg sm:text-xl text-gray-300 px-4">{t.home.portfolio.subtitle}</p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">{t.home.portfolio.title}</h2>
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 px-4">{t.home.portfolio.subtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
@@ -193,17 +202,17 @@ ${t.home.intro.passion}`
                     </div>
                   </CardHeader>
                   <CardContent className="p-4 sm:p-6">
-                    <Badge variant="secondary" className="text-xs mb-3">
+                    <Badge variant="secondary" className="text-sm mb-3">
                       {project.category}
                     </Badge>
-                    <CardTitle className="text-lg sm:text-xl mb-2 group-hover:text-blue-400 transition-colors">
+                    <CardTitle className="text-xl sm:text-2xl mb-2 group-hover:text-blue-400 transition-colors">
                       {project.title}
                     </CardTitle>
-                    <p className="text-green-400 font-semibold mb-3 text-sm sm:text-base">{project.impact}</p>
-                    <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
+                    <p className="text-green-400 font-semibold mb-3 text-base sm:text-lg">{project.impact}</p>
+                    <p className="text-gray-300 text-base mb-4 line-clamp-3">{project.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
-                        <Badge key={tag} variant="outline" className="text-xs">
+                        <Badge key={tag} variant="outline" className="text-sm">
                           {tag}
                         </Badge>
                       ))}
@@ -228,8 +237,8 @@ ${t.home.intro.passion}`
       <section className="py-16 sm:py-20 relative">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">{t.home.blog.title}</h2>
-            <p className="text-lg sm:text-xl text-gray-300 px-4">{t.home.blog.subtitle}</p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">{t.home.blog.title}</h2>
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 px-4">{t.home.blog.subtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
@@ -247,24 +256,24 @@ ${t.home.intro.passion}`
                   </CardHeader>
                   <CardContent className="p-4 sm:p-6">
                     <div className="flex justify-between items-center mb-3">
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-sm">
                         {article.category}
                       </Badge>
-                      <div className="flex items-center text-gray-400 text-xs space-x-2">
+                      <div className="flex items-center text-gray-400 text-sm space-x-2">
                         <Calendar size={12} />
                         <span>{new Date(article.date).toLocaleDateString()}</span>
                       </div>
                     </div>
-                    <CardTitle className="text-lg sm:text-xl mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
+                    <CardTitle className="text-xl sm:text-2xl mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
                       {article.title}
                     </CardTitle>
-                    <p className="text-gray-300 mb-4 line-clamp-3 text-sm sm:text-base">{article.excerpt}</p>
+                    <p className="text-gray-300 mb-4 line-clamp-3 text-base sm:text-lg">{article.excerpt}</p>
                     <div className="flex justify-between items-center">
-                      <div className="flex items-center text-gray-400 text-xs">
+                      <div className="flex items-center text-gray-400 text-sm">
                         <Clock size={12} className="mr-1" />
                         {article.readTime}
                       </div>
-                      <div className="text-blue-400 hover:text-blue-300 transition-colors flex items-center text-sm">
+                      <div className="text-blue-400 hover:text-blue-300 transition-colors flex items-center text-base">
                         {t.common.readMore} <ArrowRight size={14} className="ml-1" />
                       </div>
                     </div>
@@ -287,8 +296,8 @@ ${t.home.intro.passion}`
       {/* CTA Section */}
       <section className="py-16 sm:py-20 bg-slate-800/30 backdrop-blur-sm relative">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4">{t.home.cta.title}</h2>
-          <p className="text-lg sm:text-xl text-gray-300 mb-8 sm:mb-12 px-4">{t.home.cta.subtitle}</p>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold gradient-text mb-4">{t.home.cta.title}</h2>
+          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 sm:mb-12 px-4">{t.home.cta.subtitle}</p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
             <GlowButton size="lg" className="w-full sm:w-auto">
@@ -305,7 +314,7 @@ ${t.home.intro.passion}`
             </GlowButton>
           </div>
 
-          <div className="mt-8 sm:mt-12 text-xs sm:text-sm text-blue-400 font-mono italic px-4">
+          <div className="mt-8 sm:mt-12 text-base sm:text-lg md:text-xl text-blue-400 font-mono italic px-4">
             {t.common.quotes.projects}
           </div>
         </div>

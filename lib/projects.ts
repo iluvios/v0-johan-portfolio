@@ -33,6 +33,11 @@ export async function getProjects(category?: string): Promise<Project[]> {
   }
 }
 
+// Alias for getProjects to match expected export name
+export async function getAllProjects(category?: string): Promise<Project[]> {
+  return getProjects(category)
+}
+
 export async function getFeaturedProjects(): Promise<Project[]> {
   try {
     const response = await fetch("/api/projects?featured=true")

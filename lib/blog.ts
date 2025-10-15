@@ -78,6 +78,11 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
   }
 }
 
+// Alias for getAllBlogPosts to match expected export name
+export async function getAllArticles(): Promise<BlogPost[]> {
+  return getAllBlogPosts()
+}
+
 export async function uploadBlogImage(file: File): Promise<string> {
   try {
     const blob = await put(`blog-images/${Date.now()}-${file.name}`, file, {

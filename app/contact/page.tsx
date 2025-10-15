@@ -4,59 +4,26 @@ import type React from "react"
 
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { GlowButton } from "@/components/ui/glow-button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Mail, Linkedin, Send, Phone, MapPin } from "lucide-react"
-import Link from "next/link"
+import { GlowButton } from "@/components/ui/glow-button"
+import { Mail, MapPin, Phone, Send, Linkedin, Github, Twitter } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function ContactPage() {
-  const { t: translations } = useLanguage()
-  const t = translations || {
-    contact: {
-      header: {
-        title: "GET IN TOUCH",
-        alvaIntro: {
-          line1: "Connection Interface.",
-          line2: "Ready to discuss your next project or initiative?",
-          line3: "Communication channels: Open.",
-        },
-      },
-      form: {
-        title: "Send a Message",
-        nameLabel: "Name",
-        emailLabel: "Email",
-        messageLabel: "Message",
-        messagePlaceholder: "Tell me about your project or inquiry...",
-        submitButton: "Send Message",
-        submitMessage: "Message sent successfully!",
-      },
-      info: {
-        directTitle: "Direct Contact",
-        location: "Medellín, Colombia",
-        linkedin: "LinkedIn Profile",
-        responseTitle: "Response Time",
-        responseText:
-          "I aim to respond to inquiries within 24 hours. For urgent matters, please note it in your message.",
-        remoteTitle: "Remote Collaboration",
-        remoteText:
-          "With 8+ years of experience, I'm equipped for challenging remote opportunities in marketing automation, full-funnel strategies, and team leadership.",
-        alvaQuote: "Connection established. Awaiting strategic dialogue. - A.S. Johan",
-      },
-    },
-  }
+  const { t } = useLanguage()
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     message: "",
   })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log(t.contact.form.submitMessage, formData)
+    // Handle form submission here
+    console.log("Form submitted:", formData)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -67,137 +34,163 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-900 text-white grid-background">
+      {/* Floating orbs */}
+      <div className="floating-orb floating-orb-1"></div>
+      <div className="floating-orb floating-orb-2"></div>
+      <div className="floating-orb floating-orb-3"></div>
+      <div className="floating-orb floating-orb-4"></div>
+      <div className="floating-orb floating-orb-5"></div>
+
+      <div className="relative z-10 container mx-auto px-4 py-8 sm:py-12">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold gradient-text mb-6">{t.contact.header.title}</h1>
-          <div className="bg-slate-800/50 backdrop-blur-sm rounded-md p-6 max-w-2xl mx-auto ai-glow border border-blue-500/20">
-            <div className="text-blue-400 text-sm font-mono">
-              {t.contact.header.alvaIntro.line1}
-              <br />
-              {t.contact.header.alvaIntro.line2}
-              <br />
-              <span className="text-green-400">{t.contact.header.alvaIntro.line3}</span>
-            </div>
-          </div>
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 gradient-text">
+            {t.contact?.header?.title || "Get In Touch"}
+          </h1>
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">
+            {t.contact?.header?.alvaIntro?.line2 || "Let's discuss your next project or collaboration opportunity"}
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Form */}
           <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
             <CardHeader>
-              <CardTitle className="gradient-text">{t.contact.form.title}</CardTitle>
+              <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                {t.contact?.form?.title || "Send Message"}
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
-                  <Label htmlFor="name" className="text-gray-300">
-                    {t.contact.form.nameLabel}
-                  </Label>
                   <Input
-                    id="name"
+                    type="text"
                     name="name"
+                    placeholder={t.contact?.form?.nameLabel || "Full Name"}
                     value={formData.name}
                     onChange={handleChange}
-                    className="bg-slate-700 border-slate-600 text-white mt-1 rounded-md"
                     required
+                    className="bg-slate-700/50 border-slate-600 text-white placeholder-slate-400 text-base sm:text-lg md:text-xl h-12 sm:h-14"
                   />
                 </div>
-
                 <div>
-                  <Label htmlFor="email" className="text-gray-300">
-                    {t.contact.form.emailLabel}
-                  </Label>
                   <Input
-                    id="email"
-                    name="email"
                     type="email"
+                    name="email"
+                    placeholder={t.contact?.form?.emailLabel || "Email Address"}
                     value={formData.email}
                     onChange={handleChange}
-                    className="bg-slate-700 border-slate-600 text-white mt-1 rounded-md"
                     required
+                    className="bg-slate-700/50 border-slate-600 text-white placeholder-slate-400 text-base sm:text-lg md:text-xl h-12 sm:h-14"
                   />
                 </div>
-
                 <div>
-                  <Label htmlFor="message" className="text-gray-300">
-                    {t.contact.form.messageLabel}
-                  </Label>
+                  <Input
+                    type="text"
+                    name="subject"
+                    placeholder={t.contact?.form?.messageLabel || "Subject"}
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="bg-slate-700/50 border-slate-600 text-white placeholder-slate-400 text-base sm:text-lg md:text-xl h-12 sm:h-14"
+                  />
+                </div>
+                <div>
                   <Textarea
-                    id="message"
                     name="message"
+                    placeholder={t.contact?.form?.messagePlaceholder || "Your Message"}
                     value={formData.message}
                     onChange={handleChange}
-                    rows={6}
-                    className="bg-slate-700 border-slate-600 text-white mt-1 rounded-md"
-                    placeholder={t.contact.form.messagePlaceholder}
                     required
+                    rows={6}
+                    className="bg-slate-700/50 border-slate-600 text-white placeholder-slate-400 resize-none text-base sm:text-lg md:text-xl"
                   />
                 </div>
-
-                <GlowButton type="submit" className="w-full">
-                  {t.contact.form.submitButton} <Send className="ml-2" size={16} />
+                <GlowButton type="submit" size="lg" className="w-full">
+                  <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                  {t.contact?.form?.submitButton || "Send Message"}
                 </GlowButton>
               </form>
             </CardContent>
           </Card>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold gradient-text mb-4">{t.contact.info.directTitle}</h3>
-                <div className="space-y-4">
-                  <Link
-                    href="mailto:jdsub16@gmail.com"
-                    className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"
-                  >
-                    <Mail size={20} />
-                    <span>jdsub16@gmail.com</span>
-                  </Link>
-
-                  <Link
-                    href="https://api.whatsapp.com/send?phone=573184064960&text=Hi%20Johan!"
-                    className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"
-                  >
-                    <Phone size={20} />
-                    <span>+57 3184064960</span>
-                  </Link>
-
-                  <div className="flex items-center space-x-3 text-gray-300">
-                    <MapPin size={20} />
-                    <span>{t.contact.info.location}</span>
+              <CardHeader>
+                <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                  {t.contact?.info?.directTitle || "Contact Information"}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 sm:space-y-6">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+                  <div>
+                    <p className="text-sm sm:text-base md:text-lg text-slate-400">Email</p>
+                    <p className="text-base sm:text-lg md:text-xl text-white">johan@example.com</p>
                   </div>
-
-                  <Link
-                    href="https://linkedin.com/in/johan-alvarez"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"
-                  >
-                    <Linkedin size={20} />
-                    <span>{t.contact.info.linkedin}</span>
-                  </Link>
+                </div>
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+                  <div>
+                    <p className="text-sm sm:text-base md:text-lg text-slate-400">Location</p>
+                    <p className="text-base sm:text-lg md:text-xl text-white">
+                      {t.contact?.info?.location || "Medellín, Colombia"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+                  <div>
+                    <p className="text-sm sm:text-base md:text-lg text-slate-400">Availability</p>
+                    <p className="text-base sm:text-lg md:text-xl text-white">Available for remote work</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold gradient-text mb-4">{t.contact.info.responseTitle}</h3>
-                <p className="text-gray-300 text-sm">{t.contact.info.responseText}</p>
+              <CardHeader>
+                <CardTitle className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">Connect With Me</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex gap-3 sm:gap-4">
+                  <GlowButton variant="outline" size="sm" asChild>
+                    <a href="https://linkedin.com/in/johan" target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </a>
+                  </GlowButton>
+                  <GlowButton variant="outline" size="sm" asChild>
+                    <a href="https://github.com/johan" target="_blank" rel="noopener noreferrer">
+                      <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </a>
+                  </GlowButton>
+                  <GlowButton variant="outline" size="sm" asChild>
+                    <a href="https://twitter.com/johan" target="_blank" rel="noopener noreferrer">
+                      <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
+                    </a>
+                  </GlowButton>
+                </div>
               </CardContent>
             </Card>
 
             <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold gradient-text mb-4">{t.contact.info.remoteTitle}</h3>
-                <p className="text-gray-300 text-sm mb-4">{t.contact.info.remoteText}</p>
-                <div className="text-blue-400 text-xs font-mono italic">{t.contact.info.alvaQuote}</div>
+              <CardContent className="p-6 sm:p-8">
+                <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed">
+                  {t.contact?.info?.remoteText ||
+                    "With 8+ years of experience, I'm ready for challenging remote opportunities across marketing automation, full-funnel strategies, and team leadership."}
+                </p>
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Footer Quote */}
+        <div className="mt-8 sm:mt-12 text-center">
+          <p className="text-base sm:text-lg md:text-xl text-blue-400 font-mono italic">
+            {t.contact?.info?.alvaQuote || "Connection protocols active. Standby for strategic alignment. - A.S. Johan"}
+          </p>
         </div>
       </div>
     </div>
