@@ -58,7 +58,7 @@ export default function ProjectsPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-900 text-white grid-background flex items-center justify-center">
-        <div className="text-xl sm:text-2xl md:text-3xl">Loading projects...</div>
+        <div className="text-xl sm:text-2xl md:text-3xl">{t.projects?.loading || "Loading projects..."}</div>
       </div>
     )
   }
@@ -131,7 +131,7 @@ export default function ProjectsPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 {project.featured && (
                   <Badge className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-blue-500 text-white text-xs sm:text-sm">
-                    Featured
+                    {t.projects?.featured || "Featured"}
                   </Badge>
                 )}
               </div>
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
                 <div className="flex gap-2 sm:gap-3">
                   <GlowButton size="sm" asChild className="flex-1">
                     <Link href={`/projects/${project.id}`} className="text-sm sm:text-base">
-                      View Details
+                      {t.projects?.viewDetails || "View Details"}
                     </Link>
                   </GlowButton>
                   {project.website_url && (

@@ -5,30 +5,34 @@ import { Badge } from "@/components/ui/badge"
 import { GlowButton } from "@/components/ui/glow-button"
 import { MapPin, Calendar, Award, ExternalLink, Mail, Linkedin } from "lucide-react"
 import Link from "next/link"
+import { useLanguage } from "@/contexts/language-context"
 
 export default function AboutPage() {
+  const { t } = useLanguage()
+
   const workExperiences = [
     {
-      role: "Marketing Automation Specialist",
-      company: "Pvragon",
-      period: "June 2025 - Current",
-      location: "Medellín, Colombia (Remote)",
-      type: "Full-time",
-      achievements: [
+      role: t.about?.work?.pvragon?.role || "Marketing Automation Specialist",
+      company: t.about?.work?.pvragon?.company || "Pvragon",
+      period: t.about?.work?.pvragon?.period || "June 2025 - Current",
+      location: t.about?.work?.pvragon?.location || "Medellín, Colombia (Remote)",
+      type: t.about?.fullTime || "Full-time",
+      achievements: t.about?.work?.pvragon?.achievements || [
         "Leading marketing automation initiatives for international clients",
         "Implementing advanced funnel strategies and conversion optimization",
         "Developing data-driven marketing solutions and analytics frameworks",
       ],
     },
     {
-      role: "INDEPENDENT / FREELANCE",
-      company: "Marketing & Innovation Strategist",
-      period: "November 2022 - June 2025",
-      location: "Medellín, Colombia",
-      type: "Freelance",
+      role: t.about?.work?.independent?.role || "INDEPENDENT / FREELANCE",
+      company: t.about?.work?.independent?.company || "Marketing & Innovation Strategist",
+      period: t.about?.work?.independent?.period || "November 2022 - June 2025",
+      location: t.about?.work?.independent?.location || "Medellín, Colombia",
+      type: t.about?.freelance || "Freelance",
       description:
+        t.about?.work?.independent?.description ||
         "Specialized in marketing automation, full-funnel strategies, and digital transformation for diverse clients across multiple industries.",
-      achievements: [
+      achievements: t.about?.work?.independent?.achievements || [
         "Delivered 50+ successful marketing automation projects",
         "Increased client conversion rates by an average of 35%",
         "Built comprehensive marketing funnels generating $2M+ in revenue",
@@ -36,12 +40,12 @@ export default function AboutPage() {
       ],
     },
     {
-      role: "GRANDPA DEVS",
-      company: "Marketing Automation Specialist",
-      period: "September 2021 - November 2022",
-      location: "Medellín, Colombia",
-      type: "Full-time",
-      achievements: [
+      role: t.about?.work?.grandpaDevs?.role || "GRANDPA DEVS",
+      company: t.about?.work?.grandpaDevs?.company || "Marketing Automation Specialist",
+      period: t.about?.work?.grandpaDevs?.period || "September 2021 - November 2022",
+      location: t.about?.work?.grandpaDevs?.location || "Medellín, Colombia",
+      type: t.about?.fullTime || "Full-time",
+      achievements: t.about?.work?.grandpaDevs?.achievements || [
         "Implemented marketing automation workflows for 20+ clients",
         "Reduced manual marketing tasks by 60% through automation",
         "Created comprehensive lead nurturing campaigns",
@@ -52,11 +56,11 @@ export default function AboutPage() {
 
   const education = [
     {
-      degree: "Systems Engineering",
-      institution: "Universidad de Antioquia",
-      period: "2016 - 2021",
-      location: "Medellín, Colombia",
-      achievements: [
+      degree: t.about?.edu?.degree || "Systems Engineering",
+      institution: t.about?.edu?.institution || "Universidad de Antioquia",
+      period: t.about?.edu?.period || "2016 - 2021",
+      location: t.about?.edu?.location || "Medellín, Colombia",
+      achievements: t.about?.edu?.achievements || [
         "Academic Excellence Scholarship recipient",
         "Graduated with honors in Software Development",
         "Specialized in Data Analytics and Business Intelligence",
@@ -91,10 +95,11 @@ export default function AboutPage() {
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-4 sm:mb-6">
-            About Me
+            {t.about?.title || "About Me"}
           </h1>
           <p className="text-xl sm:text-2xl md:text-3xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Senior Marketing & Innovation Strategist with 8+ years of experience transforming digital landscapes
+            {t.about?.subtitle ||
+              "Senior Marketing & Innovation Strategist with 8+ years of experience transforming digital landscapes"}
           </p>
         </div>
 
@@ -104,35 +109,34 @@ export default function AboutPage() {
             <CardContent className="p-6 sm:p-8 text-center">
               <div className="w-32 h-32 sm:w-48 sm:h-48 mx-auto rounded-md overflow-hidden mb-4 sm:mb-6 ai-glow">
                 <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-09-04%20a%20las%2011.09.51_08f1e1b1.jpg-sotJrEqj14wwdpg9MLb69Rgb25sFiv.jpeg"
+                  src="/images/imagen-20de-20whatsapp-202025-09-04-20a-20las-2011.jpeg"
                   alt="Johan Alvarez"
                   className="w-full h-full object-cover object-center"
                 />
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">A.S. Johan</h2>
               <p className="text-xl sm:text-2xl md:text-3xl text-blue-400 mb-4 sm:mb-6">
-                Marketing Automation Specialist
+                {t.about?.currentRole || "Marketing Automation Specialist"}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-base sm:text-lg md:text-xl text-slate-300 mb-6 sm:mb-8">
                 <div className="flex items-center gap-2">
                   <MapPin size={20} />
-                  <span>Medellín, Colombia</span>
+                  <span>{t.about?.location || "Medellín, Colombia"}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar size={20} />
-                  <span>8+ Years Experience</span>
+                  <span>{t.about?.experience || "8+ Years Experience"}</span>
                 </div>
               </div>
               <p className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed mb-6 sm:mb-8">
-                Passionate about leveraging cutting-edge technologies and data-driven strategies to transform marketing
-                landscapes. Specialized in automation, full-funnel optimization, and innovative digital solutions that
-                drive measurable business growth.
+                {t.about?.bio ||
+                  "Passionate about leveraging cutting-edge technologies and data-driven strategies to transform marketing landscapes. Specialized in automation, full-funnel optimization, and innovative digital solutions that drive measurable business growth."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <GlowButton asChild>
                   <Link href="/contact" className="flex items-center gap-2">
                     <Mail size={18} />
-                    Get In Touch
+                    {t.about?.getInTouch || "Get In Touch"}
                   </Link>
                 </GlowButton>
                 <GlowButton variant="outline" asChild>
@@ -143,7 +147,7 @@ export default function AboutPage() {
                     className="flex items-center gap-2"
                   >
                     <Linkedin size={18} />
-                    LinkedIn Profile
+                    {t.about?.linkedinProfile || "LinkedIn Profile"}
                   </a>
                 </GlowButton>
               </div>
@@ -157,7 +161,7 @@ export default function AboutPage() {
             <CardHeader>
               <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text flex items-center gap-3">
                 <Award className="text-blue-400" size={32} />
-                Professional Experience
+                {t.about?.professionalExperience || "Professional Experience"}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6 sm:space-y-8">
@@ -202,7 +206,7 @@ export default function AboutPage() {
             <CardHeader>
               <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text flex items-center gap-3">
                 <Award className="text-blue-400" size={32} />
-                Education
+                {t.about?.education || "Education"}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6 sm:space-y-8">
@@ -237,7 +241,7 @@ export default function AboutPage() {
           <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
             <CardHeader>
               <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text">
-                Technical Skills & Expertise
+                {t.about?.technicalSkills || "Technical Skills & Expertise"}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -261,23 +265,23 @@ export default function AboutPage() {
           <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
             <CardContent className="p-6 sm:p-8">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4 sm:mb-6">
-                Let's Work Together
+                {t.about?.letsWorkTogether || "Let's Work Together"}
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-6 sm:mb-8 leading-relaxed">
-                Ready to transform your marketing strategy with cutting-edge automation and data-driven insights? Let's
-                discuss how we can drive your business forward.
+                {t.about?.ctaDescription ||
+                  "Ready to transform your marketing strategy with cutting-edge automation and data-driven insights? Let's discuss how we can drive your business forward."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <GlowButton size="lg" asChild>
                   <Link href="/contact" className="flex items-center gap-2">
                     <Mail size={20} />
-                    Start a Conversation
+                    {t.about?.startConversation || "Start a Conversation"}
                   </Link>
                 </GlowButton>
                 <GlowButton variant="outline" size="lg" asChild>
                   <Link href="/projects" className="flex items-center gap-2">
                     <ExternalLink size={20} />
-                    View My Work
+                    {t.about?.viewMyWork || "View My Work"}
                   </Link>
                 </GlowButton>
               </div>

@@ -50,7 +50,7 @@ export default function ArticlesPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-slate-900 text-white grid-background flex items-center justify-center">
-        <div className="text-xl sm:text-2xl md:text-3xl">Loading articles...</div>
+        <div className="text-xl sm:text-2xl md:text-3xl">{t.articles?.loading || "Loading articles..."}</div>
       </div>
     )
   }
@@ -68,10 +68,11 @@ export default function ArticlesPage() {
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 gradient-text">
-            Blog & Articles
+            {t.articles?.title || "Blog & Articles"}
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">
-            Insights, tutorials, and thoughts on technology, marketing automation, and development
+            {t.articles?.subtitle ||
+              "Insights, tutorials, and thoughts on technology, marketing automation, and development"}
           </p>
         </div>
 
@@ -81,7 +82,7 @@ export default function ArticlesPage() {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4 sm:w-5 sm:h-5" />
             <Input
               type="text"
-              placeholder="Search articles..."
+              placeholder={t.articles?.search || "Search articles..."}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 sm:pl-12 bg-slate-800/50 border-slate-700 text-white placeholder-slate-400 text-base sm:text-lg md:text-xl h-12 sm:h-14"
@@ -139,7 +140,7 @@ export default function ArticlesPage() {
                     href={`/articles/${article.id}`}
                     className="flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
-                    Read More
+                    {t.articles?.readMore || "Read More"}
                     <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                   </Link>
                 </GlowButton>
@@ -150,7 +151,9 @@ export default function ArticlesPage() {
 
         {filteredArticles.length === 0 && (
           <div className="text-center py-12 sm:py-16">
-            <p className="text-lg sm:text-xl md:text-2xl text-slate-400">No articles found matching your search.</p>
+            <p className="text-lg sm:text-xl md:text-2xl text-slate-400">
+              {t.articles?.noResults || "No articles found matching your search."}
+            </p>
           </div>
         )}
       </div>

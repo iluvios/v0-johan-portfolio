@@ -10,9 +10,11 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react"
 import Link from "next/link"
 import { getProject, type Project } from "@/lib/projects"
+import { useLanguage } from "@/contexts/language-context"
 
 export default function ProjectDetailPage() {
   const params = useParams()
+  const { t } = useLanguage()
   const [project, setProject] = useState<Project | null>(null)
   const [loading, setLoading] = useState(true)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -111,7 +113,7 @@ export default function ProjectDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen py-20 flex items-center justify-center">
-        <div className="text-blue-400 font-mono">Loading project...</div>
+        <div className="text-blue-400 font-mono">{t.projects?.loading || "Loading project..."}</div>
       </div>
     )
   }
@@ -120,9 +122,9 @@ export default function ProjectDetailPage() {
     return (
       <div className="min-h-screen py-20 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Project Not Found</h1>
+          <h1 className="text-2xl font-bold text-white mb-4">{t.projects?.notFound || "Project Not Found"}</h1>
           <Link href="/projects">
-            <Button>Back to Projects</Button>
+            <Button>{t.projects?.backToProjects || "Back to Projects"}</Button>
           </Link>
         </div>
       </div>
@@ -135,15 +137,19 @@ export default function ProjectDetailPage() {
         {/* Back Button */}
         <Link href="/projects" className="inline-flex items-center text-blue-400 hover:text-blue-300 mb-8">
           <ArrowLeft size={16} className="mr-2" />
-          Back to Projects
+          {t.projects?.backToProjects || "Back to Projects"}
         </Link>
 
         {/* Project Header */}
         <div className="mb-8">
           <div className="flex flex-wrap items-center gap-4 mb-4">
             <Badge variant="secondary">{project.category}</Badge>
-            {project.client && <div className="text-gray-400 text-sm">Client: {project.client}</div>}
-            {project.featured && <Badge className="bg-green-600">Featured</Badge>}
+            {project.client && (
+              <div className="text-gray-400 text-sm">
+                {t.projects?.client || "Client"}: {project.client}
+              </div>
+            )}
+            {project.featured && <Badge className="bg-green-600">{t.projects?.featured || "Featured"}</Badge>}
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold gradient-text mb-4">{project.title}</h1>
@@ -206,7 +212,7 @@ export default function ProjectDetailPage() {
         {/* Gallery Thumbnails */}
         {allImages.length > 1 && (
           <div className="mb-8">
-            <h3 className="text-lg font-semibold text-white mb-4">Project Gallery</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">{t.projects?.gallery || "Project Gallery"}</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {allImages.map((image, index) => (
                 <button
@@ -237,14 +243,14 @@ export default function ProjectDetailPage() {
               {isAutoScrolling ? (
                 <span className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
-                  Auto-scrolling enabled
+                  {t.projects?.autoScroll || "Auto-scrolling enabled"}
                 </span>
               ) : (
                 <button
                   onClick={() => setIsAutoScrolling(true)}
                   className="text-blue-400 hover:text-blue-300 transition-colors"
                 >
-                  Resume auto-scroll
+                  {t.projects?.resumeAutoScroll || "Resume auto-scroll"}
                 </button>
               )}
             </div>
@@ -263,7 +269,9 @@ export default function ProjectDetailPage() {
         {/* Tags */}
         {project.tags && project.tags.length > 0 && (
           <div className="mb-8">
-            <h3 className="text-lg font-semibold text-white mb-3">Technologies & Skills</h3>
+            <h3 className="text-lg font-semibold text-white mb-3">
+              {t.projects?.technologies || "Technologies & Skills"}
+            </h3>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <Badge key={tag} variant="outline">
@@ -277,13 +285,13 @@ export default function ProjectDetailPage() {
         {/* Footer */}
         <div className="flex items-center justify-between border-t border-gray-700 pt-8">
           <div className="text-sm text-blue-400 font-mono italic">
-            "Project analysis complete. Implementation successful." - A.S. Johan
+            "{t.projects?.projectQuote || "Project analysis complete. Implementation successful."}" - A.S. Johan
           </div>
           {project.website_url && (
             <Link href={project.website_url} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="ai-glow bg-transparent">
                 <ExternalLink size={16} className="mr-2" />
-                View Live Project
+                {t.projects?.viewLive || "View Live Project"}
               </Button>
             </Link>
           )}
@@ -342,7 +350,7 @@ export default function ProjectDetailPage() {
 
           {/* Instructions */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-gray-400 text-sm">
-            Press ESC or click outside to close
+            {t.projects?.pressEsc || "Press ESC or click outside to close"}
           </div>
         </div>
       )}
