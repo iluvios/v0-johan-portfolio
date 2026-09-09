@@ -111,8 +111,8 @@ export default function CVPage() {
       </nav>
 
       {/* Printable Resume Document Sheet */}
-      <main className="max-w-4xl mx-auto my-4 sm:my-8 print:my-0 px-3 sm:px-6 print:px-0">
-        <article className="cv-document bg-slate-900/90 print:bg-white border border-slate-800 print:border-none rounded-xl print:rounded-none overflow-hidden shadow-2xl print:shadow-none">
+      <main className="max-w-4xl mx-auto my-3 sm:my-6 print:m-0 print:p-0 print:max-w-none">
+        <article className="cv-document bg-slate-900/90 print:bg-white border border-slate-800 print:border-none rounded-xl print:rounded-none overflow-hidden shadow-2xl print:shadow-none print:m-0 print:p-0">
           {/* Header Banner - Matching Johan's Original Dark Navy Aesthetic */}
           <header className="cv-header bg-[#162032] print:bg-[#162032] text-white p-6 sm:p-7 border-b border-slate-800 print:border-none">
             {/* Top row: Name/Title on Left, Contact info on Right */}
@@ -355,10 +355,13 @@ export default function CVPage() {
         @media print {
           @page {
             size: letter portrait;
-            margin: 8mm 10mm;
+            margin: 4mm 8mm 6mm 8mm;
           }
 
+          html,
           body {
+            margin: 0 !important;
+            padding: 0 !important;
             background: #ffffff !important;
             color: #0f172a !important;
             font-size: 10pt !important;
@@ -373,8 +376,17 @@ export default function CVPage() {
           .site-footer,
           .skip-link,
           header.site-header,
-          footer.site-footer {
+          footer.site-footer,
+          nav.desktop-nav,
+          .mobile-menu-trigger {
             display: none !important;
+          }
+
+          .site-main,
+          main {
+            margin: 0 !important;
+            padding: 0 !important;
+            min-height: 0 !important;
           }
 
           .cv-document {
@@ -383,16 +395,24 @@ export default function CVPage() {
             background: #ffffff !important;
             color: #0f172a !important;
             max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
           }
 
           .cv-header {
             background-color: #162032 !important;
             color: #ffffff !important;
-            padding: 18px 22px !important;
+            padding: 16px 20px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
             border-radius: 6px !important;
-            margin-bottom: 12px !important;
             break-inside: avoid !important;
             page-break-inside: avoid !important;
+          }
+
+          .cv-header a {
+            pointer-events: auto !important;
+            color: #e2e8f0 !important;
           }
 
           .cv-entry {

@@ -2,8 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
+import SiteShell from "@/components/site-shell";
 import { LanguageProvider } from "@/contexts/language-context";
 import { PortfolioMotion } from "@/components/portfolio-motion";
 
@@ -41,11 +40,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <LanguageProvider>
           <PortfolioMotion>
-            <Navigation />
-            <main id="main-content" tabIndex={-1} className="site-main">
-              {children}
-            </main>
-            <Footer />
+            <SiteShell>{children}</SiteShell>
           </PortfolioMotion>
         </LanguageProvider>
       </body>
