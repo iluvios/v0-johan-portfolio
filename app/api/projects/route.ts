@@ -1,73 +1,134 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
+import { DEFAULT_PROJECTS, normalizeProject, type Project } from "@/lib/projects"
 
-const sql = neon(process.env.DATABASE_URL!)
-
-export interface Project {
-  id: number
-  title: string
-  client: string | null
-  impact: string | null
-  description: string | null
-  image_url: string | null
-  category: string | null
-  tags: string[]
-  gallery: string[]
-  website_url: string | null
-  featured: boolean
-  created_at: string
-  updated_at: string
+function getDatabaseUrl(): string | undefined {
+  return (
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_URL ||
+    process.env.POSTGRES_PRISMA_URL ||
+    process.env.POSTGRES_URL_NON_POOLING
+  )
 }
 
 export async function GET(request: NextRequest) {
-  try {
-    const { searchParams } = new URL(request.url)
-    const category = searchParams.get("category")
-    const featured = searchParams.get("featured")
+  const { searchParams } = new URL(request.url)
+  const category = searchParams.get("category")
+  const featured = searchParams.get("featured")
 
-    let query
+  const dbUrl = getDatabaseUrl()
+
+  if (!dbUrl) {
+    let projects = [...DEFAULT_PROJECTS]
     if (featured === "true") {
-      query = sql`
+      projects = projects.filter((p) => p.featured)
+      if (projects.length === 0) projects = DEFAULT_PROJECTS.slice(0, 2)
+    } else if (category && category !== "All") {
+      projects = projects.filter((p) => p.category === category)
+    }
+    return NextResponse.json(projects.map(normalizeProject))
+  }
+
+  try {
+    const sql = neon(dbUrl)
+
+    let projects
+    if (featured === "true") {
+      projects = await sql`
         SELECT * FROM projects 
         WHERE featured = true
-        ORDER BY created_at DESC
+        ORDER BY created_at DESC NULLS LAST, id DESC
         LIMIT 2
       `
+      // If no projects are marked as featured, fallback to latest 2 projects
+      if (!projects || projects.length === 0) {
+        projects = await sql`
+          SELECT * FROM projects 
+          ORDER BY created_at DESC NULLS LAST, id DESC
+          LIMIT 2
+        `
+      }
     } else if (category && category !== "All") {
-      query = sql`
+      projects = await sql`
         SELECT * FROM projects 
         WHERE category = ${category}
-        ORDER BY featured DESC, created_at DESC
+        ORDER BY featured DESC NULLS LAST, created_at DESC NULLS LAST, id DESC
       `
     } else {
-      query = sql`
+      projects = await sql`
         SELECT * FROM projects 
-        ORDER BY featured DESC, created_at DESC
+        ORDER BY featured DESC NULLS LAST, created_at DESC NULLS LAST, id DESC
       `
     }
 
-    const projects = await query
-    return NextResponse.json(projects)
+    if (!projects || projects.length === 0) {
+      let fallback = [...DEFAULT_PROJECTS]
+      if (featured === "true") {
+        fallback = fallback.filter((p) => p.featured)
+        if (fallback.length === 0) fallback = DEFAULT_PROJECTS.slice(0, 2)
+      } else if (category && category !== "All") {
+        fallback = fallback.filter((p) => p.category === category)
+      }
+      return NextResponse.json(fallback.map(normalizeProject))
+    }
+
+    return NextResponse.json(projects.map(normalizeProject))
   } catch (error) {
-    console.error("Error fetching projects:", error)
-    return NextResponse.json({ error: "Failed to fetch projects" }, { status: 500 })
+    console.warn("Database query error, returning fallback projects:", error)
+    let projects = [...DEFAULT_PROJECTS]
+    if (featured === "true") {
+      projects = projects.filter((p) => p.featured)
+      if (projects.length === 0) projects = DEFAULT_PROJECTS.slice(0, 2)
+    } else if (category && category !== "All") {
+      projects = projects.filter((p) => p.category === category)
+    }
+    return NextResponse.json(projects.map(normalizeProject))
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
+    const dbUrl = getDatabaseUrl()
     const project = await request.json()
+
+    if (!dbUrl) {
+      const newProject: Project = normalizeProject({
+        ...project,
+        id: Date.now(),
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      DEFAULT_PROJECTS.unshift(newProject)
+      return NextResponse.json(newProject)
+    }
+
+    const sql = neon(dbUrl)
+    const tagsArray = Array.isArray(project.tags) ? project.tags : []
+    const galleryArray = Array.isArray(project.gallery) ? project.gallery : []
 
     const result = await sql`
       INSERT INTO projects (title, client, impact, description, image_url, category, tags, gallery, website_url, featured)
-      VALUES (${project.title}, ${project.client}, ${project.impact}, ${project.description}, 
-              ${project.image_url}, ${project.category}, ${project.tags}, ${project.gallery}, ${project.website_url}, ${project.featured})
+      VALUES (
+        ${project.title || "Untitled Project"},
+        ${project.client || null},
+        ${project.impact || null},
+        ${project.description || null},
+        ${project.image_url || "/placeholder.svg"},
+        ${project.category || "General"},
+        ${tagsArray},
+        ${galleryArray},
+        ${project.website_url || null},
+        ${Boolean(project.featured)}
+      )
       RETURNING *
     `
 
-    return NextResponse.json(result[0])
+    return NextResponse.json(normalizeProject(result[0]))
   } catch (error) {
     console.error("Error creating project:", error)
-    return NextResponse.json({ error: "Failed to create project" }, { status: 500 })
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Failed to create project" },
+      { status: 500 }
+    )
   }
 }

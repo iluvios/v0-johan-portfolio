@@ -46,14 +46,17 @@ export default function ProjectsPage() {
         (project) =>
           project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
           project.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          project.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase())),
+          (project.tags || []).some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase())),
       )
     }
 
     setFilteredProjects(filtered)
   }, [projects, selectedCategory, searchTerm])
 
-  const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category).filter(Boolean)))]
+  const categories: string[] = [
+    "All",
+    ...Array.from(new Set(projects.map((p) => p.category).filter((c): c is string => Boolean(c)))),
+  ]
 
   if (loading) {
     return (
@@ -64,14 +67,7 @@ export default function ProjectsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white grid-background">
-      {/* Floating orbs */}
-      <div className="floating-orb floating-orb-1"></div>
-      <div className="floating-orb floating-orb-2"></div>
-      <div className="floating-orb floating-orb-3"></div>
-      <div className="floating-orb floating-orb-4"></div>
-      <div className="floating-orb floating-orb-5"></div>
-
+    <div className="min-h-screen text-white">
       <div className="relative z-10 container mx-auto px-4 py-8 sm:py-12">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
@@ -143,7 +139,7 @@ export default function ProjectsPage() {
                     )}
                   </div>
                   <div className="flex flex-wrap gap-1 sm:gap-2">
-                    {project.tags.slice(0, 3).map((tag, tagIndex) => (
+                    {(project.tags || []).slice(0, 3).map((tag, tagIndex) => (
                       <Badge
                         key={tagIndex}
                         variant="secondary"
@@ -152,9 +148,9 @@ export default function ProjectsPage() {
                         {tag}
                       </Badge>
                     ))}
-                    {project.tags.length > 3 && (
+                    {(project.tags || []).length > 3 && (
                       <Badge variant="secondary" className="text-xs sm:text-sm bg-slate-700 text-slate-300">
-                        +{project.tags.length - 3}
+                        +{(project.tags || []).length - 3}
                       </Badge>
                     )}
                   </div>

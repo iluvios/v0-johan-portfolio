@@ -10,6 +10,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 })
     }
 
+    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+      return NextResponse.json(
+        { error: "BLOB_READ_WRITE_TOKEN is not configured. Please set this environment variable in Vercel or your .env file." },
+        { status: 503 }
+      )
+    }
+
     const blob = await put(`blog-images/${Date.now()}-${file.name}`, file, {
       access: "public",
     })
@@ -17,6 +24,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ url: blob.url })
   } catch (error) {
     console.error("Upload error:", error)
-    return NextResponse.json({ error: "Upload failed" }, { status: 500 })
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Upload failed" },
+      { status: 500 }
+    )
   }
 }

@@ -90,7 +90,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white grid-background">
+    <div className="min-h-screen text-white">
       <div className="container mx-auto px-4 py-8 sm:py-12 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">
@@ -107,9 +107,9 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
           <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 mb-6 sm:mb-8 rounded-md">
             <CardContent className="p-6 sm:p-8 text-center">
-              <div className="w-32 h-32 sm:w-48 sm:h-48 mx-auto rounded-md overflow-hidden mb-4 sm:mb-6 ai-glow">
+              <div className="w-32 h-32 sm:w-48 sm:h-48 mx-auto rounded-md overflow-hidden mb-4 sm:mb-6 ai-glow shadow-xl">
                 <img
-                  src="/images/imagen-20de-20whatsapp-202025-09-04-20a-20las-2011.jpeg"
+                  src="/images/profile.jpeg"
                   alt="Johan Alvarez"
                   className="w-full h-full object-cover object-center"
                 />

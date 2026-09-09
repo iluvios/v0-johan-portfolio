@@ -4,14 +4,12 @@ import type React from "react"
 import type { MouseEventHandler, ReactNode } from "react"
 import { cn } from "@/lib/utils"
 
-type Props = {
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode
-  onClick?: MouseEventHandler<HTMLButtonElement>
   className?: string
   variant?: "default" | "outline" | "ghost"
   size?: "sm" | "default" | "lg"
   asChild?: boolean
-  disabled?: boolean
 }
 
 const GlowButton: React.FC<Props> = ({
@@ -21,6 +19,7 @@ const GlowButton: React.FC<Props> = ({
   variant = "default",
   size = "default",
   disabled = false,
+  type = "button",
   ...props
 }) => {
   const baseClasses =

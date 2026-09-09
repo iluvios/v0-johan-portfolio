@@ -8,34 +8,12 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Brain, Target, Zap, Code, Lightbulb, BookOpen, Users, Calendar, Clock } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { getFeaturedProjects, type Project } from "@/lib/projects"
-
-// Sample articles data
-const sampleArticles = [
-  {
-    id: "1",
-    title: "The Future of Marketing Automation: AI-Driven Personalization",
-    excerpt:
-      "Exploring how artificial intelligence is revolutionizing customer journey mapping and personalized marketing experiences at scale.",
-    category: "Innovation",
-    date: "2024-01-15",
-    readTime: "8 min read",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-  {
-    id: "2",
-    title: "Data-Driven Decision Making in Modern Marketing",
-    excerpt:
-      "A deep dive into leveraging analytics and data science to inform strategic marketing decisions and optimize campaign performance.",
-    category: "Marketing",
-    date: "2024-01-08",
-    readTime: "6 min read",
-    image: "/placeholder.svg?height=400&width=600",
-  },
-]
+import { getBlogPosts, type BlogPost } from "@/lib/blog"
 
 export default function HomePage() {
   const [typedText, setTypedText] = useState("")
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>([])
+  const [articles, setArticles] = useState<BlogPost[]>([])
   const { t, language } = useLanguage()
 
   const fullText = `${t.home.intro.greeting}
@@ -58,15 +36,19 @@ ${t.home.intro.passion}`
   }, [fullText])
 
   useEffect(() => {
-    const loadFeaturedProjects = async () => {
+    const loadContent = async () => {
       try {
-        const projects = await getFeaturedProjects()
-        setFeaturedProjects(projects)
+        const [projectsData, articlesData] = await Promise.all([
+          getFeaturedProjects(),
+          getBlogPosts(),
+        ])
+        setFeaturedProjects(projectsData)
+        setArticles(articlesData.slice(0, 2))
       } catch (error) {
-        console.error("Error loading featured projects:", error)
+        console.error("Error loading home page content:", error)
       }
     }
-    loadFeaturedProjects()
+    loadContent()
   }, [])
 
   return (
@@ -211,7 +193,7 @@ ${t.home.intro.passion}`
                     <p className="text-green-400 font-semibold mb-3 text-base sm:text-lg">{project.impact}</p>
                     <p className="text-gray-300 text-base mb-4 line-clamp-3">{project.description}</p>
                     <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
+                      {(project.tags || []).map((tag) => (
                         <Badge key={tag} variant="outline" className="text-sm">
                           {tag}
                         </Badge>
@@ -242,7 +224,7 @@ ${t.home.intro.passion}`
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
-            {sampleArticles.map((article) => (
+            {articles.map((article) => (
               <Link key={article.id} href={`/articles/${article.id}`}>
                 <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 hover:border-blue-400 transition-all duration-300 ai-glow group rounded-md cursor-pointer">
                   <CardHeader className="p-0">

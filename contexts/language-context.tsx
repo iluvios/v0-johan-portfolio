@@ -35,10 +35,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLanguage(lang)
   }
 
-  if (!mounted) {
-    return <div className="min-h-screen bg-slate-900" />
-  }
-
   return (
     <LanguageContext.Provider
       value={{

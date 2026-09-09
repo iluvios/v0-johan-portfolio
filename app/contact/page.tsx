@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { GlowButton } from "@/components/ui/glow-button"
-import { Mail, MapPin, Phone, Send, Linkedin, Github, Twitter } from "lucide-react"
+import { Mail, MapPin, Phone, Send, Linkedin, Github, Twitter, CheckCircle2, AlertCircle, Loader2 } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function ContactPage() {
@@ -20,10 +20,34 @@ export default function ContactPage() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const [responseMsg, setResponseMsg] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+    setStatus("submitting")
+    setResponseMsg("")
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message. Please try again.")
+      }
+
+      setStatus("success")
+      setResponseMsg(data.message || "Message sent successfully!")
+      setFormData({ name: "", email: "", subject: "", message: "" })
+    } catch (error) {
+      setStatus("error")
+      setResponseMsg(error instanceof Error ? error.message : "Something went wrong. Please try again.")
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -34,14 +58,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white grid-background">
-      {/* Floating orbs */}
-      <div className="floating-orb floating-orb-1"></div>
-      <div className="floating-orb floating-orb-2"></div>
-      <div className="floating-orb floating-orb-3"></div>
-      <div className="floating-orb floating-orb-4"></div>
-      <div className="floating-orb floating-orb-5"></div>
-
+    <div className="min-h-screen text-white">
       <div className="relative z-10 container mx-auto px-4 py-8 sm:py-12">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
@@ -62,6 +79,26 @@ export default function ContactPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
+              {status === "success" && (
+                <div className="mb-6 p-4 rounded-lg bg-green-950/60 border border-green-500/50 text-green-300 flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-green-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-white">Message Dispatched</p>
+                    <p className="text-sm text-green-200 mt-1">{responseMsg}</p>
+                  </div>
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="mb-6 p-4 rounded-lg bg-red-950/60 border border-red-500/50 text-red-300 flex items-start gap-3">
+                  <AlertCircle className="w-6 h-6 text-red-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-white">Failed to send</p>
+                    <p className="text-sm text-red-200 mt-1">{responseMsg}</p>
+                  </div>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
                   <Input
@@ -92,7 +129,6 @@ export default function ContactPage() {
                     placeholder={t.contact?.form?.messageLabel || "Subject"}
                     value={formData.subject}
                     onChange={handleChange}
-                    required
                     className="bg-slate-700/50 border-slate-600 text-white placeholder-slate-400 text-base sm:text-lg md:text-xl h-12 sm:h-14"
                   />
                 </div>
@@ -107,9 +143,18 @@ export default function ContactPage() {
                     className="bg-slate-700/50 border-slate-600 text-white placeholder-slate-400 resize-none text-base sm:text-lg md:text-xl"
                   />
                 </div>
-                <GlowButton type="submit" size="lg" className="w-full">
-                  <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                  {t.contact?.form?.submitButton || "Send Message"}
+                <GlowButton type="submit" size="lg" className="w-full" disabled={status === "submitting"}>
+                  {status === "submitting" ? (
+                    <>
+                      <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                      {t.contact?.form?.submitButton || "Send Message"}
+                    </>
+                  )}
                 </GlowButton>
               </form>
             </CardContent>
@@ -128,7 +173,12 @@ export default function ContactPage() {
                   <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
                   <div>
                     <p className="text-sm sm:text-base md:text-lg text-slate-400">Email</p>
-                    <p className="text-base sm:text-lg md:text-xl text-white">johan@example.com</p>
+                    <a
+                      href="mailto:jdsub16@gmail.com"
+                      className="text-base sm:text-lg md:text-xl text-white hover:text-blue-400 transition-colors"
+                    >
+                      jdsub16@gmail.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 sm:gap-4">
