@@ -72,7 +72,7 @@ export default function CVPage() {
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between gap-3 flex-wrap">
           <Link
-            href="/about"
+            href="/"
             className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-400 hover:text-white transition-colors"
           >
             <ArrowLeft size={16} />

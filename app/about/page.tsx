@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import AboutPortfolio from "@/components/about-portfolio";
+import CVPage from "@/app/cv/page";
 
 export const metadata: Metadata = {
-  title: "CV — Senior Martech Specialist",
+  title: "CV & About — Johan Alvarez",
   description:
     "Johan Alvarez’s CV: 10+ years in digital marketing, automation, and software development. Explore work experience, skills, and education, or download the PDF.",
   openGraph: {
@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return <AboutPortfolio />;
+  return <CVPage />;
 }
