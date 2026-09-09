@@ -6,94 +6,40 @@ import { GlowButton } from "@/components/ui/glow-button"
 import { MapPin, Calendar, Award, ExternalLink, Mail, Linkedin } from "lucide-react"
 import Link from "next/link"
 import { useLanguage } from "@/contexts/language-context"
+import { DEFAULT_WORK_EXPERIENCES, DEFAULT_EDUCATION, DEFAULT_SKILLS } from "@/lib/profile-data"
 
 export default function AboutPage() {
   const { t } = useLanguage()
 
-  const workExperiences = [
-    {
-      role: t.about?.work?.pvragon?.role || "Marketing Automation Specialist",
-      company: t.about?.work?.pvragon?.company || "Pvragon",
-      period: t.about?.work?.pvragon?.period || "June 2025 - Current",
-      location: t.about?.work?.pvragon?.location || "Medellín, Colombia (Remote)",
-      type: t.about?.fullTime || "Full-time",
-      achievements: t.about?.work?.pvragon?.achievements || [
-        "Leading marketing automation initiatives for international clients",
-        "Implementing advanced funnel strategies and conversion optimization",
-        "Developing data-driven marketing solutions and analytics frameworks",
-      ],
-    },
-    {
-      role: t.about?.work?.independent?.role || "INDEPENDENT / FREELANCE",
-      company: t.about?.work?.independent?.company || "Marketing & Innovation Strategist",
-      period: t.about?.work?.independent?.period || "November 2022 - June 2025",
-      location: t.about?.work?.independent?.location || "Medellín, Colombia",
-      type: t.about?.freelance || "Freelance",
-      description:
-        t.about?.work?.independent?.description ||
-        "Specialized in marketing automation, full-funnel strategies, and digital transformation for diverse clients across multiple industries.",
-      achievements: t.about?.work?.independent?.achievements || [
-        "Delivered 50+ successful marketing automation projects",
-        "Increased client conversion rates by an average of 35%",
-        "Built comprehensive marketing funnels generating $2M+ in revenue",
-        "Developed custom analytics dashboards and reporting systems",
-      ],
-    },
-    {
-      role: t.about?.work?.grandpaDevs?.role || "GRANDPA DEVS",
-      company: t.about?.work?.grandpaDevs?.company || "Marketing Automation Specialist",
-      period: t.about?.work?.grandpaDevs?.period || "September 2021 - November 2022",
-      location: t.about?.work?.grandpaDevs?.location || "Medellín, Colombia",
-      type: t.about?.fullTime || "Full-time",
-      achievements: t.about?.work?.grandpaDevs?.achievements || [
-        "Implemented marketing automation workflows for 20+ clients",
-        "Reduced manual marketing tasks by 60% through automation",
-        "Created comprehensive lead nurturing campaigns",
-        "Developed ROI tracking and performance analytics systems",
-      ],
-    },
-  ]
+  const workExperiences = DEFAULT_WORK_EXPERIENCES.map((exp, idx) => {
+    const translationKey = idx === 0 ? "pvragon" : idx === 1 ? "independent" : "grandpaDevs"
+    const trans = t.about?.work?.[translationKey as keyof typeof t.about.work]
+    return {
+      role: trans?.role || exp.role,
+      company: trans?.company || exp.company,
+      period: trans?.period || exp.period,
+      location: trans?.location || exp.location,
+      type: (idx === 1 ? t.about?.freelance : t.about?.fullTime) || exp.type,
+      description: (trans && "description" in trans ? (trans as any).description : undefined) || exp.description,
+      achievements: trans?.achievements || exp.achievements,
+    }
+  })
 
-  const education = [
-    {
-      degree: t.about?.edu?.degree || "Systems Engineering",
-      institution: t.about?.edu?.institution || "Universidad de Antioquia",
-      period: t.about?.edu?.period || "2016 - 2021",
-      location: t.about?.edu?.location || "Medellín, Colombia",
-      achievements: t.about?.edu?.achievements || [
-        "Academic Excellence Scholarship recipient",
-        "Graduated with honors in Software Development",
-        "Specialized in Data Analytics and Business Intelligence",
-      ],
-    },
-  ]
+  const education = DEFAULT_EDUCATION.map((edu) => ({
+    degree: t.about?.edu?.degree || edu.degree,
+    institution: t.about?.edu?.institution || edu.institution,
+    period: t.about?.edu?.period || edu.period,
+    location: t.about?.edu?.location || edu.location,
+    achievements: t.about?.edu?.achievements || edu.achievements,
+  }))
 
-  const skills = [
-    "Marketing Automation",
-    "HubSpot",
-    "Salesforce",
-    "Google Analytics",
-    "Facebook Ads",
-    "Google Ads",
-    "Email Marketing",
-    "Lead Generation",
-    "Conversion Optimization",
-    "A/B Testing",
-    "Data Analysis",
-    "Python",
-    "JavaScript",
-    "React",
-    "Next.js",
-    "SQL",
-    "Tableau",
-    "Power BI",
-  ]
+  const skills = DEFAULT_SKILLS
 
   return (
-    <div className="min-h-screen text-white">
+    <main className="min-h-screen text-white">
       <div className="container mx-auto px-4 py-8 sm:py-12 relative z-10">
         {/* Header Section */}
-        <div className="text-center mb-8 sm:mb-12">
+        <section data-section="about-header" className="text-center mb-8 sm:mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold gradient-text mb-4 sm:mb-6">
             {t.about?.title || "About Me"}
           </h1>
@@ -101,16 +47,16 @@ export default function AboutPage() {
             {t.about?.subtitle ||
               "Senior Marketing & Innovation Strategist with 8+ years of experience transforming digital landscapes"}
           </p>
-        </div>
+        </section>
 
         {/* Profile Card */}
-        <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
-          <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 mb-6 sm:mb-8 rounded-md">
+        <section data-section="about-profile" className="max-w-4xl mx-auto mb-8 sm:mb-12">
+          <Card className="cyber-card mb-6 sm:mb-8">
             <CardContent className="p-6 sm:p-8 text-center">
               <div className="w-32 h-32 sm:w-48 sm:h-48 mx-auto rounded-md overflow-hidden mb-4 sm:mb-6 ai-glow shadow-xl">
                 <img
                   src="/images/profile.jpeg"
-                  alt="Johan Alvarez"
+                  alt="A.S. Johan"
                   className="w-full h-full object-cover object-center"
                 />
               </div>
@@ -153,11 +99,11 @@ export default function AboutPage() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </section>
 
         {/* Work Experience */}
-        <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
-          <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
+        <section data-section="about-experience" className="max-w-4xl mx-auto mb-8 sm:mb-12">
+          <Card className="cyber-card">
             <CardHeader>
               <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text flex items-center gap-3">
                 <Award className="text-blue-400" size={32} />
@@ -198,11 +144,11 @@ export default function AboutPage() {
               ))}
             </CardContent>
           </Card>
-        </div>
+        </section>
 
         {/* Education */}
-        <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
-          <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
+        <section data-section="about-education" className="max-w-4xl mx-auto mb-8 sm:mb-12">
+          <Card className="cyber-card">
             <CardHeader>
               <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text flex items-center gap-3">
                 <Award className="text-blue-400" size={32} />
@@ -234,23 +180,23 @@ export default function AboutPage() {
               ))}
             </CardContent>
           </Card>
-        </div>
+        </section>
 
         {/* Skills */}
-        <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
-          <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
+        <section data-section="about-skills" className="max-w-4xl mx-auto mb-8 sm:mb-12">
+          <Card className="cyber-card">
             <CardHeader>
               <CardTitle className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text">
                 {t.about?.technicalSkills || "Technical Skills & Expertise"}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {skills.map((skill, index) => (
                   <Badge
                     key={index}
                     variant="secondary"
-                    className="text-base sm:text-lg px-3 py-1 bg-blue-500/20 text-blue-300 border-blue-500/30"
+                    className="text-sm sm:text-base px-3 py-1 bg-blue-500/10 text-blue-300 border border-blue-500/30"
                   >
                     {skill}
                   </Badge>
@@ -258,11 +204,11 @@ export default function AboutPage() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </section>
 
         {/* Call to Action */}
-        <div className="max-w-4xl mx-auto text-center">
-          <Card className="bg-slate-800/50 border-slate-700 ai-glow border-blue-500/20 rounded-md">
+        <section data-section="about-cta" className="max-w-4xl mx-auto text-center">
+          <Card className="cyber-card">
             <CardContent className="p-6 sm:p-8">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold gradient-text mb-4 sm:mb-6">
                 {t.about?.letsWorkTogether || "Let's Work Together"}
@@ -287,8 +233,8 @@ export default function AboutPage() {
               </div>
             </CardContent>
           </Card>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   )
 }

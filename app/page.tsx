@@ -5,8 +5,10 @@ import Link from "next/link"
 import { GlowButton } from "@/components/ui/glow-button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Brain, Target, Zap, Code, Lightbulb, BookOpen, Users, Calendar, Clock } from "lucide-react"
+import { ArrowRight, Brain, Target, Zap, Code, Lightbulb, BookOpen, Users } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
+import { ProjectCard } from "@/components/portfolio/project-card"
+import { ArticleCard } from "@/components/portfolio/article-card"
 import { getFeaturedProjects, type Project } from "@/lib/projects"
 import { getBlogPosts, type BlogPost } from "@/lib/blog"
 
@@ -135,7 +137,7 @@ ${t.home.intro.passion}`
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 ai-glow border-blue-500/20 rounded-md">
+            <Card className="cyber-card">
               <CardContent className="p-6 sm:p-8 text-center">
                 <BookOpen className="text-blue-400 mx-auto mb-4" size={40} />
                 <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">{t.home.values.learning.title}</h3>
@@ -143,7 +145,7 @@ ${t.home.intro.passion}`
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 ai-glow border-blue-500/20 rounded-md">
+            <Card className="cyber-card">
               <CardContent className="p-6 sm:p-8 text-center">
                 <Brain className="text-cyan-400 mx-auto mb-4" size={40} />
                 <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">{t.home.values.curiosity.title}</h3>
@@ -151,7 +153,7 @@ ${t.home.intro.passion}`
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 ai-glow border-blue-500/20 rounded-md">
+            <Card className="cyber-card">
               <CardContent className="p-6 sm:p-8 text-center">
                 <Zap className="text-blue-500 mx-auto mb-4" size={40} />
                 <h3 className="text-xl sm:text-2xl font-semibold text-white mb-3">{t.home.values.agility.title}</h3>
@@ -172,36 +174,7 @@ ${t.home.intro.passion}`
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
             {featuredProjects.map((project) => (
-              <Link key={project.id} href={`/projects/${project.id}`}>
-                <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 hover:border-blue-400 transition-all duration-300 ai-glow group rounded-md cursor-pointer">
-                  <CardHeader className="p-0">
-                    <div className="relative overflow-hidden rounded-t-md">
-                      <img
-                        src={project.image_url || "/placeholder.svg"}
-                        alt={project.title}
-                        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4 sm:p-6">
-                    <Badge variant="secondary" className="text-sm mb-3">
-                      {project.category}
-                    </Badge>
-                    <CardTitle className="text-xl sm:text-2xl mb-2 group-hover:text-blue-400 transition-colors">
-                      {project.title}
-                    </CardTitle>
-                    <p className="text-green-400 font-semibold mb-3 text-base sm:text-lg">{project.impact}</p>
-                    <p className="text-gray-300 text-base mb-4 line-clamp-3">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {(project.tags || []).map((tag) => (
-                        <Badge key={tag} variant="outline" className="text-sm">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+              <ProjectCard key={project.id} project={project} showDescription />
             ))}
           </div>
 
@@ -225,43 +198,11 @@ ${t.home.intro.passion}`
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
             {articles.map((article) => (
-              <Link key={article.id} href={`/articles/${article.id}`}>
-                <Card className="bg-slate-800/50 backdrop-blur-[3px] border-slate-700 hover:border-blue-400 transition-all duration-300 ai-glow group rounded-md cursor-pointer">
-                  <CardHeader className="p-0">
-                    <div className="relative overflow-hidden rounded-t-md">
-                      <img
-                        src={article.image || "/placeholder.svg"}
-                        alt={article.title}
-                        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                  </CardHeader>
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex justify-between items-center mb-3">
-                      <Badge variant="secondary" className="text-sm">
-                        {article.category}
-                      </Badge>
-                      <div className="flex items-center text-gray-400 text-sm space-x-2">
-                        <Calendar size={12} />
-                        <span>{new Date(article.date).toLocaleDateString()}</span>
-                      </div>
-                    </div>
-                    <CardTitle className="text-xl sm:text-2xl mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
-                      {article.title}
-                    </CardTitle>
-                    <p className="text-gray-300 mb-4 line-clamp-3 text-base sm:text-lg">{article.excerpt}</p>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center text-gray-400 text-sm">
-                        <Clock size={12} className="mr-1" />
-                        {article.readTime}
-                      </div>
-                      <div className="text-blue-400 hover:text-blue-300 transition-colors flex items-center text-base">
-                        {t.common.readMore} <ArrowRight size={14} className="ml-1" />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+              <ArticleCard
+                key={article.id}
+                article={article}
+                readMoreLabel={t.common.readMore}
+              />
             ))}
           </div>
 
