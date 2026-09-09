@@ -1,101 +1,115 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Menu, X } from "lucide-react"
-import { useLanguage } from "@/contexts/language-context"
-import LanguageToggle from "./language-toggle"
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, ArrowUpRight } from "lucide-react";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/contexts/language-context";
+import { portfolioCopy } from "@/lib/i18n";
+import LanguageToggle from "./language-toggle";
 
 export default function MenuComponent() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
-  const pathname = usePathname()
-  const { t } = useLanguage()
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const { language } = useLanguage();
+  const copy = portfolioCopy[language];
+  const nav =
+    language === "en"
+      ? ["Home", "Work", "Notes", "About", "Let’s talk"]
+      : ["Inicio", "Proyectos", "Notas", "Sobre mí", "Hablemos"];
+  const items = ["/", "/projects", "/articles", "/about", "/contact"].map(
+    (href, i) => ({ href, label: nav[i] }),
+  );
+  const active = (href: string) =>
+    pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
 
-  const navItems = [
-    { href: "/", label: t.nav.home },
-    { href: "/projects", label: t.nav.projects },
-    { href: "/articles", label: t.nav.articles },
-    { href: "/about", label: t.nav.about },
-    { href: "/contact", label: t.nav.contact },
-  ]
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => {
+      if (query.matches) setOpen(false);
+    };
+    query.addEventListener("change", closeOnDesktop);
+    return () => query.removeEventListener("change", closeOnDesktop);
+  }, []);
 
   return (
     <>
-      {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center space-x-8">
-        {navItems.map((item) => (
-          <div key={item.href} className="relative">
-            <Link
-              href={item.href}
-              className={`nav-item text-sm font-medium transition-colors relative group ${
-                pathname === item.href ? "text-blue-400" : "text-gray-300"
-              }`}
-              onMouseEnter={() => setHoveredItem(item.label)}
-              onMouseLeave={() => setHoveredItem(null)}
-            >
-              <span className="nav-item__content">
-                {hoveredItem === item.label ? (
-                  <span className="typing-effect" key={item.label}>
-                    {item.label}
-                  </span>
-                ) : (
-                  item.label
-                )}
-              </span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all group-hover:w-full"></span>
-            </Link>
-
-            {/* Tooltip */}
-            <span className="nav-tooltip absolute -top-8 left-1/2 transform -translate-x-1/2 bg-slate-800 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity border border-blue-500/20">
-              {item.label}
-            </span>
-          </div>
+      <nav className="desktop-nav" aria-label={copy.navigation}>
+        {items.slice(0, 4).map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={active(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </Link>
         ))}
-
         <LanguageToggle />
-      </div>
-
-      {/* Mobile menu button */}
-      <Button variant="ghost" size="sm" className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? <X size={20} /> : <Menu size={20} />}
-      </Button>
-
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 z-50">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-800 rounded-lg mt-2 border border-blue-500/20 mx-4">
-            {navItems.map((item) => (
+        <Link
+          href="/contact"
+          className="nav-contact"
+          aria-current={active("/contact") ? "page" : undefined}
+        >
+          {copy.talk}
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </Link>
+      </nav>
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger asChild>
+          <button
+            type="button"
+            className="mobile-menu-trigger"
+            aria-label={copy.menu}
+          >
+            {copy.menu}
+            <Menu size={20} aria-hidden="true" />
+          </button>
+        </SheetTrigger>
+        <SheetContent
+          closeLabel={copy.close}
+          className="flex w-full flex-col overflow-y-auto sm:max-w-md"
+          style={{
+            paddingTop: "max(5rem, env(safe-area-inset-top))",
+            paddingBottom: "max(2rem, env(safe-area-inset-bottom))",
+          }}
+        >
+          <SheetHeader>
+            <SheetTitle>{copy.navigation}</SheetTitle>
+            <SheetDescription>{copy.menuDescription}</SheetDescription>
+          </SheetHeader>
+          <nav className="mobile-navigation" aria-label={copy.navigation}>
+            {items.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`nav-item-mobile block px-3 py-2 text-sm font-medium transition-colors relative ${
-                  pathname === item.href ? "text-blue-400" : "text-gray-300"
-                }`}
-                onClick={() => setIsOpen(false)}
-                onMouseEnter={() => setHoveredItem(item.label)}
-                onMouseLeave={() => setHoveredItem(null)}
+                onClick={() => setOpen(false)}
+                aria-current={active(item.href) ? "page" : undefined}
               >
-                <span className="nav-item__content">
-                  {hoveredItem === item.label ? (
-                    <span className="typing-effect" key={item.label}>
-                      {item.label}
-                    </span>
-                  ) : (
-                    item.label
-                  )}
-                </span>
+                {item.label}
+                <ArrowUpRight size={24} aria-hidden="true" />
               </Link>
             ))}
-
-            <div className="px-3 py-2">
-              <LanguageToggle />
-            </div>
-          </div>
-        </div>
-      )}
+          </nav>
+          <Separator />
+          <LanguageToggle />
+          <a href="mailto:jdsub16@gmail.com" className="text-link">
+            jdsub16@gmail.com
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </SheetContent>
+      </Sheet>
     </>
-  )
+  );
 }

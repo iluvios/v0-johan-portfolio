@@ -1,39 +1,51 @@
-"use client"
+"use client";
 
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
-import { type Language, translations, getBrowserLanguage } from "@/lib/i18n"
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
+import { type Language, translations, getBrowserLanguage } from "@/lib/i18n";
 
 interface LanguageContextType {
-  language: Language
-  setLanguage: (lang: Language) => void
-  t: typeof translations.en
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: typeof translations.en;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined,
+);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en")
-  const [mounted, setMounted] = useState(false)
+  const [language, setLanguage] = useState<Language>("en");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Get language from localStorage or browser
-    const savedLang = localStorage.getItem("language") as Language
-    const browserLang = getBrowserLanguage()
-    const initialLang = savedLang || browserLang
-
-    setLanguage(initialLang)
-    setMounted(true)
-  }, [])
+    // Preserve the existing language preference; storage may be blocked in embedded browsers.
+    let initialLang = getBrowserLanguage();
+    try {
+      const savedLang = localStorage.getItem("language");
+      if (savedLang === "en" || savedLang === "es") initialLang = savedLang;
+    } catch {}
+    setLanguage(initialLang);
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
+    document.documentElement.lang = language;
     if (mounted) {
-      localStorage.setItem("language", language)
+      try {
+        localStorage.setItem("language", language);
+      } catch {}
     }
-  }, [language, mounted])
+  }, [language, mounted]);
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang)
-  }
+    setLanguage(lang);
+  };
 
   return (
     <LanguageContext.Provider
@@ -45,13 +57,13 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     >
       {children}
     </LanguageContext.Provider>
-  )
+  );
 }
 
 export function useLanguage() {
-  const context = useContext(LanguageContext)
+  const context = useContext(LanguageContext);
   if (context === undefined) {
-    throw new Error("useLanguage must be used within a LanguageProvider")
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
-  return context
+  return context;
 }

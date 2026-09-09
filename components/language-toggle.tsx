@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { useLanguage } from "@/contexts/language-context"
-import { Button } from "@/components/ui/button"
-import { Globe } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context";
 
 export default function LanguageToggle() {
-  const { language, setLanguage } = useLanguage()
-
-  const toggleLanguage = () => {
-    setLanguage(language === "en" ? "es" : "en")
-  }
-
+  const { language, setLanguage } = useLanguage();
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={toggleLanguage}
-      className="nav-item text-sm font-medium transition-colors relative group text-gray-300 hover:text-blue-400"
+    <button
+      type="button"
+      className="language-switch"
+      onClick={() => setLanguage(language === "en" ? "es" : "en")}
+      aria-label={language === "en" ? "Cambiar a español" : "Switch to English"}
     >
-      <Globe size={16} className="mr-2" />
-      <span className="nav-item__content">{language.toUpperCase()}</span>
-    </Button>
-  )
+      <span className={language === "en" ? "language-active" : undefined}>
+        EN
+      </span>
+      <span aria-hidden="true" className="language-divider">
+        /
+      </span>
+      <span className={language === "es" ? "language-active" : undefined}>
+        ES
+      </span>
+    </button>
+  );
 }

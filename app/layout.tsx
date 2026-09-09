@@ -1,41 +1,54 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
-import { LanguageProvider } from "@/contexts/language-context"
+import type { ReactNode } from "react";
+import type { Metadata, Viewport } from "next";
+import { Inter, Space_Grotesk } from "next/font/google";
+import "./globals.css";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
+import { LanguageProvider } from "@/contexts/language-context";
+import { PortfolioMotion } from "@/components/portfolio-motion";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+const space = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "A.S. Johan | Senior Marketing & Innovation Strategist",
+  title: {
+    default: "Johan Alvarez — Strategy, technology & a little curiosity",
+    template: "%s | Johan Alvarez",
+  },
   description:
-    "Driving revenue and engagement through data-driven strategies in marketing, automation, and innovative design.",
-    generator: 'v0.dev'
-}
+    "Marketing strategy meets digital craft. Explore Johan Alvarez’s work in marketing automation, digital experiences, and innovation. Based in Medellín, working beyond borders.",
+};
+export const viewport: Viewport = {
+  themeColor: "#080e1c",
+  width: "device-width",
+  initialScale: 1,
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} bg-slate-900 text-gray-100 min-h-screen grid-background`}>
+    <html
+      lang="en"
+      className={`dark bg-background ${inter.variable} ${space.variable}`}
+    >
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <LanguageProvider>
-          {/* Floating Orbs */}
-          <div className="floating-orb floating-orb-1"></div>
-          <div className="floating-orb floating-orb-2"></div>
-          <div className="floating-orb floating-orb-3"></div>
-          <div className="floating-orb floating-orb-4"></div>
-          <div className="floating-orb floating-orb-5"></div>
-
-          <Navigation />
-          <main className="pt-20 relative z-10">{children}</main>
-          <Footer />
+          <PortfolioMotion>
+            <Navigation />
+            <main id="main-content" tabIndex={-1} className="site-main">
+              {children}
+            </main>
+            <Footer />
+          </PortfolioMotion>
         </LanguageProvider>
       </body>
     </html>
-  )
+  );
 }

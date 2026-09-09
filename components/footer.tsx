@@ -1,42 +1,41 @@
-import Link from "next/link"
-import { Linkedin, Mail } from "lucide-react"
+"use client";
+
+import { ArrowUpRight, ArrowUp } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear()
-
+  const { language } = useLanguage();
   return (
-    <footer className="bg-slate-900/95 border-t border-slate-800 py-8 relative z-10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-sm text-gray-400 mb-4 md:mb-0">
-            © Alvarez Sanchez Johan {currentYear} | Innovation in Motion
-          </div>
-
-          <div className="flex space-x-6">
-            <Link
-              href="https://linkedin.com/in/johanalvarez"
-              className="text-gray-400 hover:text-blue-400 transition-colors ai-glow rounded-full p-2 border border-blue-500/20"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin size={20} />
-            </Link>
-            <Link
-              href="mailto:jdsub16@gmail.com"
-              className="text-gray-400 hover:text-blue-400 transition-colors ai-glow rounded-full p-2 border border-blue-500/20"
-            >
-              <Mail size={20} />
-            </Link>
-          </div>
+    <footer className="site-footer">
+      <div className="page-shell footer-inner">
+        <div className="flex flex-col gap-1">
+          <span className="font-display text-lg font-medium">
+            Johan Alvarez.
+          </span>
+          <span className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} · Medellín, Colombia
+          </span>
         </div>
-
-        <div className="text-center mt-4">
-          <div className="text-xs text-gray-500 italic">
-            "The only way to make sense out of change is to plunge into it, move with it, and join the dance." - Alan
-            Watts
-          </div>
+        <div className="footer-links">
+          <a href="mailto:jdsub16@gmail.com">
+            Email <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+          <a
+            href="https://linkedin.com/in/johanalvarez"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+          <a
+            href="#main-content"
+            aria-label={language === "en" ? "Back to top" : "Volver arriba"}
+            className="back-top"
+          >
+            <ArrowUp size={18} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </footer>
-  )
+  );
 }
