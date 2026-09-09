@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "Ideas on marketing, technology, and the things Johan Alvarez learns along the way.",
 };
+
 export default function ArticlesPage() {
   return <ArticleBrowser />;
 }

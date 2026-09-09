@@ -28,6 +28,9 @@ import {
   LogOut,
   RefreshCw,
   Search,
+  GripVertical,
+  ChevronUp,
+  ChevronDown,
 } from "lucide-react"
 import { type BlogPost, saveBlogPost, getAllBlogPosts, deleteBlogPost, uploadBlogImage } from "@/lib/blog"
 import {
@@ -36,6 +39,7 @@ import {
   createProject,
   updateProject,
   deleteProject,
+  reorderProjects,
 } from "@/lib/projects"
 import Link from "next/link"
 
@@ -59,6 +63,9 @@ export default function AdminPage() {
   const [newGalleryUrl, setNewGalleryUrl] = useState("")
   const [isSavingProject, setIsSavingProject] = useState(false)
   const [isLoadingProjects, setIsLoadingProjects] = useState(false)
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null)
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+  const [isReordering, setIsReordering] = useState(false)
 
   // Articles state
   const [posts, setPosts] = useState<BlogPost[]>([])
@@ -119,6 +126,67 @@ export default function AdminPage() {
     } finally {
       setIsLoadingProjects(false)
     }
+  }
+
+  const saveProjectOrder = async (orderedList: Project[]) => {
+    setIsReordering(true)
+    try {
+      const ids = orderedList.map((p) => p.id)
+      await reorderProjects(ids)
+      notify("success", "Project display order saved!")
+    } catch (error: any) {
+      console.error("Failed to save project order:", error)
+      notify("error", "Failed to save project order.")
+    } finally {
+      setIsReordering(false)
+    }
+  }
+
+  const handleDragStart = (e: React.DragEvent, index: number) => {
+    if (projectSearch) return
+    setDraggedIndex(index)
+    e.dataTransfer.effectAllowed = "move"
+    e.dataTransfer.setData("text/plain", index.toString())
+  }
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault()
+    if (projectSearch || draggedIndex === null || draggedIndex === index) return
+    e.dataTransfer.dropEffect = "move"
+    setDragOverIndex(index)
+  }
+
+  const handleDragEnd = () => {
+    setDraggedIndex(null)
+    setDragOverIndex(null)
+  }
+
+  const handleDrop = (e: React.DragEvent, targetIndex: number) => {
+    e.preventDefault()
+    if (projectSearch || draggedIndex === null || draggedIndex === targetIndex) {
+      setDraggedIndex(null)
+      setDragOverIndex(null)
+      return
+    }
+
+    const updated = [...projects]
+    const [moved] = updated.splice(draggedIndex, 1)
+    updated.splice(targetIndex, 0, moved)
+
+    setProjects(updated)
+    setDraggedIndex(null)
+    setDragOverIndex(null)
+    saveProjectOrder(updated)
+  }
+
+  const handleMoveProject = (index: number, direction: -1 | 1) => {
+    const targetIndex = index + direction
+    if (targetIndex < 0 || targetIndex >= projects.length) return
+    const updated = [...projects]
+    const [moved] = updated.splice(index, 1)
+    updated.splice(targetIndex, 0, moved)
+    setProjects(updated)
+    saveProjectOrder(updated)
   }
 
   const handleCreateNewProject = () => {
@@ -544,6 +612,20 @@ export default function AdminPage() {
                     />
                   </div>
 
+                  {/* Reorder instructions & status */}
+                  <div className="flex items-center justify-between text-xs text-slate-400 px-1">
+                    <span>
+                      {projectSearch ? (
+                        <span className="text-amber-400">Search active • Clear search to drag and reorder</span>
+                      ) : (
+                        <span>Drag handles or use arrows to change display order</span>
+                      )}
+                    </span>
+                    {isReordering && (
+                      <span className="text-blue-400 animate-pulse font-mono text-[11px]">Saving order...</span>
+                    )}
+                  </div>
+
                   {/* List items */}
                   <div className="space-y-3 max-h-[650px] overflow-y-auto pr-1">
                     {filteredProjects.length === 0 ? (
@@ -553,20 +635,74 @@ export default function AdminPage() {
                     ) : (
                       filteredProjects.map((project) => {
                         const isSelected = editingProject?.id === project.id
+                        const realIndex = projects.findIndex((p) => p.id === project.id)
+                        const isBeingDragged = draggedIndex === realIndex
+                        const isDragOver = dragOverIndex === realIndex
+
                         return (
                           <div
                             key={project.id}
-                            className={`p-3 sm:p-4 rounded-lg border transition-all flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between ${
-                              isSelected
+                            draggable={!projectSearch}
+                            onDragStart={(e) => handleDragStart(e, realIndex)}
+                            onDragOver={(e) => handleDragOver(e, realIndex)}
+                            onDragEnd={handleDragEnd}
+                            onDrop={(e) => handleDrop(e, realIndex)}
+                            className={`p-3 sm:p-4 rounded-lg border transition-all flex flex-col sm:flex-row gap-3 sm:gap-4 items-start sm:items-center justify-between ${
+                              isBeingDragged
+                                ? "opacity-40 border-dashed border-blue-400 scale-[0.98]"
+                                : isDragOver
+                                ? "border-t-2 border-t-blue-400 bg-blue-950/30"
+                                : isSelected
                                 ? "bg-blue-950/40 border-blue-500/50 ring-1 ring-blue-500/30"
                                 : "bg-slate-900/40 border-slate-700/60 hover:border-slate-600"
                             }`}
                           >
-                            <div className="flex items-center gap-3 flex-1 min-w-0">
+                            <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                              {/* Drag Handle & Up/Down Arrows */}
+                              {!projectSearch && (
+                                <div className="flex items-center gap-1 shrink-0">
+                                  <div
+                                    className="cursor-grab active:cursor-grabbing text-slate-500 hover:text-blue-400 p-1 flex items-center transition-colors"
+                                    title="Drag to reorder"
+                                  >
+                                    <GripVertical size={16} />
+                                  </div>
+                                  <div className="flex flex-col -space-y-1">
+                                    <button
+                                      type="button"
+                                      disabled={realIndex <= 0 || isReordering}
+                                      onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleMoveProject(realIndex, -1)
+                                      }}
+                                      className="p-0.5 text-slate-500 hover:text-blue-400 disabled:opacity-20 disabled:hover:text-slate-500 transition-colors"
+                                      title="Move up"
+                                    >
+                                      <ChevronUp size={13} />
+                                    </button>
+                                    <button
+                                      type="button"
+                                      disabled={realIndex >= projects.length - 1 || isReordering}
+                                      onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleMoveProject(realIndex, 1)
+                                      }}
+                                      className="p-0.5 text-slate-500 hover:text-blue-400 disabled:opacity-20 disabled:hover:text-slate-500 transition-colors"
+                                      title="Move down"
+                                    >
+                                      <ChevronDown size={13} />
+                                    </button>
+                                  </div>
+                                  <span className="text-[11px] font-mono text-slate-500 w-4 text-center">
+                                    #{realIndex + 1}
+                                  </span>
+                                </div>
+                              )}
+
                               <img
                                 src={project.image_url || "/placeholder.svg"}
                                 alt={project.title}
-                                className="w-16 h-12 rounded object-cover border border-slate-700 bg-slate-800 shrink-0"
+                                className="w-14 h-11 rounded object-cover border border-slate-700 bg-slate-800 shrink-0"
                               />
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-2 flex-wrap">

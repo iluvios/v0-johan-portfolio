@@ -5,8 +5,9 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "check": "tsc --noEmit && next build"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",

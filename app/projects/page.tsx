@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "Digital experiences, marketing automation, and strategies brought to life by Johan Alvarez.",
 };
+
 export default function ProjectsPage() {
   return <ProjectBrowser />;
 }

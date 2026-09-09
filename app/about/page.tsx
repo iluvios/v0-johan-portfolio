@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "Meet Johan Alvarez, a marketing and innovation strategist connecting data, design, and people from Medellín, Colombia.",
 };
+
 export default function AboutPage() {
   return <AboutPortfolio />;
 }
