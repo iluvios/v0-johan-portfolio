@@ -1220,6 +1220,18 @@
   .cv-contact { padding: 2rem; }
 }
 @media print {
+  /* Universally hide website chrome during printing */
+  .site-header,
+  .site-footer,
+  .skip-link,
+  header.site-header,
+  footer.site-footer,
+  nav.desktop-nav,
+  .mobile-menu-trigger,
+  .no-print {
+    display: none !important;
+  }
+
   html:has(.cv-page) {
     --background: 0 0% 100%;
     --foreground: 222 56% 7%;
@@ -1228,8 +1240,6 @@
     --border: 220 15% 80%;
     color-scheme: light;
   }
-  body:has(.cv-page) .site-header,
-  body:has(.cv-page) .site-footer,
   body:has(.cv-page) .cv-aside,
   body:has(.cv-page) .cv-actions,
   body:has(.cv-page) .cv-contact,

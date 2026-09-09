@@ -16,8 +16,9 @@ import {
   GraduationCap,
   Sparkles,
   Award,
-  Layers,
   Code,
+  Settings,
+  Linkedin,
 } from "lucide-react"
 import { getCVData, DEFAULT_CV_DATA, type CVProfile } from "@/lib/profile-data"
 
@@ -110,249 +111,269 @@ export default function CVPage() {
       </nav>
 
       {/* Printable Resume Document Sheet */}
-      <main className="max-w-5xl mx-auto my-4 sm:my-8 print:my-0 px-3 sm:px-6 print:px-0">
+      <main className="max-w-4xl mx-auto my-4 sm:my-8 print:my-0 px-3 sm:px-6 print:px-0">
         <article className="cv-document bg-slate-900/90 print:bg-white border border-slate-800 print:border-none rounded-xl print:rounded-none overflow-hidden shadow-2xl print:shadow-none">
-          {/* Header Banner */}
-          <header className="cv-header bg-slate-950 print:bg-slate-900 text-white p-6 sm:p-8 border-b border-slate-800 print:border-slate-700">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6">
-              <div className="flex items-center gap-5">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-blue-400 shrink-0 shadow-lg bg-slate-800">
-                  <img
-                    src="/images/profile.jpeg"
-                    alt={cv.name}
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-                <div>
-                  <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white print:text-white">
-                    {cv.name}
-                  </h1>
-                  <p className="text-lg sm:text-xl font-medium text-blue-400 print:text-cyan-300 mt-0.5">
-                    {cv.title}
-                  </p>
-                  <p className="text-xs sm:text-sm text-slate-400 print:text-slate-300 mt-1 flex items-center gap-1.5">
-                    <MapPin size={13} className="text-blue-400 shrink-0" />
-                    <span>{cv.location}</span>
-                  </p>
-                </div>
+          {/* Header Banner - Matching Johan's Original Dark Navy Aesthetic */}
+          <header className="cv-header bg-[#162032] print:bg-[#162032] text-white p-6 sm:p-7 border-b border-slate-800 print:border-none">
+            {/* Top row: Name/Title on Left, Contact info on Right */}
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5 pb-5 border-b border-slate-700/60">
+              <div>
+                <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+                  {cv.name}
+                </h1>
+                <p className="text-base sm:text-lg font-medium text-cyan-400 print:text-cyan-300 mt-0.5">
+                  {cv.title}
+                </p>
               </div>
 
-              {/* Contact Pills */}
+              {/* Contact Information */}
               <div className="flex flex-col sm:items-end gap-1.5 text-xs text-slate-300 print:text-slate-200">
                 <a
                   href={`tel:${cv.phone.replace(/\s+/g, "")}`}
-                  className="inline-flex items-center gap-1.5 hover:text-blue-300 transition-colors"
+                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
                 >
-                  <Phone size={12} className="text-blue-400 shrink-0" />
+                  <Phone size={13} className="text-cyan-400 shrink-0" />
                   <span>{cv.phone}</span>
                 </a>
                 <a
                   href={`mailto:${cv.email}`}
-                  className="inline-flex items-center gap-1.5 hover:text-blue-300 transition-colors"
+                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
                 >
-                  <Mail size={12} className="text-cyan-400 shrink-0" />
+                  <Mail size={13} className="text-cyan-400 shrink-0" />
                   <span>{cv.email}</span>
                 </a>
                 <a
-                  href={cv.website}
+                  href={cv.linkedin || "https://linkedin.com/in/johanalvarez"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-blue-300 transition-colors"
+                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
                 >
-                  <Globe size={12} className="text-blue-400 shrink-0" />
-                  <span>{cv.website.replace(/^https?:\/\//, "")}</span>
+                  <Linkedin size={13} className="text-cyan-400 shrink-0" />
+                  <span>{cv.linkedin ? cv.linkedin.replace(/^https?:\/\/(www\.)?/, "") : "linkedin.com/in/johanalvarez"}</span>
                 </a>
+                <div className="inline-flex items-center gap-2 text-slate-300">
+                  <MapPin size={13} className="text-cyan-400 shrink-0" />
+                  <span>{cv.location}</span>
+                </div>
               </div>
             </div>
 
-            {/* Executive Summary */}
-            <div className="mt-5 pt-5 border-t border-slate-800/80 print:border-slate-800 text-xs sm:text-sm leading-relaxed text-slate-300 print:text-slate-200 bg-slate-900/60 print:bg-slate-800/60 p-3.5 rounded-lg">
-              <p>{cv.summary}</p>
+            {/* Profile Photo + Executive Summary (Simple, Direct Language) */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-cyan-500/50 shrink-0 shadow-xl bg-slate-800">
+                <img
+                  src="/images/profile.jpeg"
+                  alt={cv.name}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+
+              <div className="flex-1 text-xs sm:text-[13px] leading-relaxed text-slate-200 print:text-slate-100 space-y-2">
+                {cv.summary ? (
+                  cv.summary.split("\n\n").map((para, pIdx) => <p key={pIdx}>{para}</p>)
+                ) : (
+                  <>
+                    <p>
+                      Senior Digital Marketing Specialist with 10+ years of experience leading diverse marketing projects and teams. I have a proven ability to drive revenue growth through data-driven strategies across marketing, automation, and team leadership.
+                    </p>
+                    <p>
+                      My background as a Fullstack Software Developer and Business Manager provides the technical expertise to efficiently implement and manage the tech and business aligned solutions essential for modern marketing.
+                    </p>
+                  </>
+                )}
+              </div>
             </div>
           </header>
 
-          {/* 2-Column Body Grid */}
-          <div className="cv-body grid grid-cols-1 lg:grid-cols-12 print:grid-cols-12 gap-6 p-6 sm:p-8 print:p-5">
-            {/* Main Column: Work Experience (7 of 12 columns in desktop/print) */}
-            <section
-              aria-label="Work Experience"
-              className="lg:col-span-7 print:col-span-7 space-y-5 print:space-y-4"
-            >
-              <div className="flex items-center gap-2 border-b-2 border-blue-500 pb-1 mb-4">
-                <Briefcase size={18} className="text-blue-400 print:text-blue-600" />
-                <h2 className="text-base sm:text-lg font-bold tracking-wider uppercase text-white print:text-slate-900">
-                  Work Experience
+          {/* Body Content */}
+          <div className="p-6 sm:p-7 print:p-4 space-y-6 print:space-y-5">
+            {/* 1. WORK EXPERIENCE - FULL SINGLE COLUMN */}
+            <section aria-label="Work Experience" className="space-y-4 print:space-y-3.5">
+              <div className="border-b-2 border-blue-500/80 pb-1 mb-3">
+                <h2 className="text-sm sm:text-base font-bold tracking-wider uppercase text-white print:text-slate-900 flex items-center gap-2">
+                  <Briefcase size={16} className="text-cyan-400 print:text-blue-600" />
+                  WORK EXPERIENCE
                 </h2>
               </div>
 
-              {cv.experiences.map((exp, idx) => (
-                <article
-                  key={idx}
-                  className="cv-entry relative pl-4 border-l-2 border-blue-500/30 print:border-blue-600/40 pb-4 last:pb-0"
-                >
-                  <span className="absolute -left-[5px] top-1 w-2 h-2 rounded-full bg-blue-500 print:bg-blue-600" />
-
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-0.5 mb-1">
-                    <h3 className="text-sm sm:text-base font-bold text-white print:text-slate-900">
-                      {exp.role}
-                    </h3>
-                    <span className="text-[11px] font-mono text-slate-400 print:text-slate-600">
-                      [{exp.period}]
-                    </span>
-                  </div>
-
-                  <div className="text-xs font-semibold text-blue-400 print:text-blue-700 mb-2">
-                    {exp.company} <span className="text-slate-500 font-normal">• {exp.location}</span>
-                  </div>
-
-                  {exp.description && (
-                    <p className="text-xs text-slate-300 print:text-slate-700 mb-2 leading-relaxed">
-                      {exp.description}
-                    </p>
-                  )}
-
-                  {/* Bullet achievements */}
-                  <ul className="space-y-1 text-xs text-slate-300 print:text-slate-700 leading-snug">
-                    {exp.achievements.map((ach, aIdx) => (
-                      <li key={aIdx} className="flex items-start gap-1.5">
-                        <span className="text-blue-400 print:text-blue-600 font-bold shrink-0 mt-0.5">•</span>
-                        <span>{ach}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Tool Stack Tags */}
-                  {exp.tools && exp.tools.length > 0 && (
-                    <div className="mt-2.5 flex flex-wrap items-center gap-1">
-                      <span className="text-[10px] uppercase font-semibold text-slate-400 print:text-slate-600 mr-1">
-                        Tools:
+              <div className="space-y-4 print:space-y-3.5">
+                {cv.experiences.map((exp, idx) => (
+                  <article
+                    key={idx}
+                    className="cv-entry pb-3.5 last:pb-0 border-b border-slate-800/60 print:border-slate-200 last:border-b-0"
+                  >
+                    {/* Role at Company [ Period ] */}
+                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                      <div className="text-sm sm:text-[14px] font-bold text-white print:text-slate-900">
+                        <span>{exp.role}</span>
+                        <span className="font-normal text-slate-400 print:text-slate-600"> at </span>
+                        <span className="text-cyan-400 print:text-blue-700 font-semibold">{exp.company}</span>
+                      </div>
+                      <span className="text-xs font-mono text-slate-400 print:text-slate-600 shrink-0">
+                        [ {exp.period} ]
                       </span>
-                      {exp.tools.map((tool, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="inline-block text-[10px] font-mono bg-blue-950/70 print:bg-slate-100 text-cyan-300 print:text-blue-800 border border-blue-500/30 print:border-slate-300 rounded px-1.5 py-0.5"
-                        >
-                          {tool}
-                        </span>
-                      ))}
                     </div>
-                  )}
-                </article>
-              ))}
-            </section>
 
-            {/* Sidebar Column: Skills, Education, Certifications (5 of 12 columns) */}
-            <aside
-              aria-label="Skills and Education"
-              className="lg:col-span-5 print:col-span-5 space-y-6 print:space-y-4 lg:border-l lg:border-slate-800 print:border-l print:border-slate-200 lg:pl-6 print:pl-4"
-            >
-              {/* Skills by Category */}
-              <div>
-                <div className="flex items-center gap-2 border-b-2 border-cyan-500 pb-1 mb-3">
-                  <Sparkles size={17} className="text-cyan-400 print:text-cyan-600" />
-                  <h2 className="text-base sm:text-lg font-bold tracking-wider uppercase text-white print:text-slate-900">
-                    Skills & Tools
-                  </h2>
-                </div>
+                    {/* Simple, straightforward bullets */}
+                    <ul className="space-y-1 text-xs sm:text-[12.5px] text-slate-300 print:text-slate-800 leading-snug pl-1">
+                      {exp.achievements.map((ach, aIdx) => (
+                        <li key={aIdx} className="flex items-start gap-2">
+                          <span className="text-cyan-400 print:text-blue-600 font-bold shrink-0 mt-0.5">•</span>
+                          <span>{ach}</span>
+                        </li>
+                      ))}
+                    </ul>
 
-                <div className="space-y-3.5 text-xs">
-                  {cv.skillCategories.map((cat, cIdx) => (
-                    <div key={cIdx} className="cv-skill-category">
-                      <h3 className="font-semibold text-cyan-300 print:text-cyan-800 text-[11px] uppercase tracking-wide mb-1.5 flex items-center gap-1.5">
-                        {cIdx === 0 ? <Layers size={13} /> : <Code size={13} />}
-                        {cat.category}
-                      </h3>
-                      <div className="flex flex-wrap gap-1">
-                        {cat.skills.map((skill, sIdx) => (
+                    {/* Tools Row */}
+                    {exp.tools && exp.tools.length > 0 && (
+                      <div className="mt-2 flex flex-wrap items-center gap-1 text-[10.5px]">
+                        <span className="font-semibold uppercase tracking-wider text-slate-400 print:text-slate-600 mr-1">
+                          TOOLS:
+                        </span>
+                        {exp.tools.map((tool, tIdx) => (
                           <span
-                            key={sIdx}
-                            className="bg-slate-800/80 print:bg-slate-100 text-slate-300 print:text-slate-800 border border-slate-700/60 print:border-slate-300 rounded px-2 py-0.5 text-[11px]"
+                            key={tIdx}
+                            className="bg-slate-800/80 print:bg-slate-100 text-cyan-300 print:text-slate-800 border border-slate-700/70 print:border-slate-300 rounded px-1.5 py-0.5"
                           >
-                            {skill}
+                            {tool}
                           </span>
                         ))}
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    )}
+                  </article>
+                ))}
               </div>
+            </section>
 
-              {/* Education */}
-              <div className="pt-2">
-                <div className="flex items-center gap-2 border-b-2 border-blue-500 pb-1 mb-3">
-                  <GraduationCap size={18} className="text-blue-400 print:text-blue-600" />
-                  <h2 className="text-base sm:text-lg font-bold tracking-wider uppercase text-white print:text-slate-900">
-                    Education
-                  </h2>
+            {/* 2. BELOW EXPERIENCE: SKILLS & EDUCATION SECTION (2 Balanced Columns) */}
+            <section
+              aria-label="Skills, Education and Technical Background"
+              className="cv-bottom-section pt-2 border-t-2 border-slate-800 print:border-slate-300"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-5 items-start">
+                {/* Column 1: Skills */}
+                <div className="rounded-xl border border-slate-800 print:border-slate-300 p-4 bg-slate-900/50 print:bg-slate-50/50 space-y-3">
+                  <div className="flex items-center gap-2 border-b border-slate-700/80 print:border-slate-300 pb-1.5">
+                    <Settings size={16} className="text-cyan-400 print:text-blue-600" />
+                    <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white print:text-slate-900">
+                      Skills
+                    </h3>
+                  </div>
+
+                  <div className="space-y-3 text-xs">
+                    <div>
+                      <p className="font-semibold text-cyan-400 print:text-blue-700 text-xs mb-1.5">
+                        → Marketing (7 años)
+                      </p>
+                      <ul className="space-y-1 text-slate-300 print:text-slate-800 leading-snug pl-1">
+                        {cv.skillCategories[0]?.skills.map((skill, sIdx) => (
+                          <li key={sIdx} className="flex items-start gap-1.5">
+                            <span className="text-slate-500 print:text-slate-400 shrink-0">•</span>
+                            <span>{skill}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="space-y-3">
-                  {cv.education.map((edu, eIdx) => (
-                    <div key={eIdx} className="cv-entry text-xs">
-                      <div className="flex items-baseline justify-between gap-1">
-                        <h3 className="font-bold text-white print:text-slate-900 text-xs sm:text-sm">
-                          {edu.degree}
-                        </h3>
-                        <span className="text-[10px] font-mono text-slate-400 print:text-slate-600">
-                          [{edu.period}]
-                        </span>
-                      </div>
-                      <p className="text-blue-400 print:text-blue-700 text-xs">{edu.institution}</p>
-                      <p className="text-slate-500 text-[11px]">{edu.location}</p>
-                      {edu.achievements.map((ach, aIdx) => (
-                        <p
-                          key={aIdx}
-                          className="text-[11px] text-emerald-400 print:text-emerald-700 italic mt-0.5"
-                        >
-                          ★ {ach}
+                {/* Column 2: Education + Web Development Skills */}
+                <div className="space-y-4">
+                  {/* Education Card */}
+                  <div className="rounded-xl border border-slate-800 print:border-slate-300 p-4 bg-slate-900/50 print:bg-slate-50/50 space-y-3">
+                    <div className="flex items-center gap-2 border-b border-slate-700/80 print:border-slate-300 pb-1.5">
+                      <GraduationCap size={16} className="text-cyan-400 print:text-blue-600" />
+                      <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white print:text-slate-900">
+                        Education
+                      </h3>
+                    </div>
+
+                    <div className="space-y-2.5 text-xs text-slate-300 print:text-slate-800">
+                      <div>
+                        <div className="flex justify-between items-baseline gap-1 font-semibold text-white print:text-slate-900">
+                          <span>→ Business Management and Innovation</span>
+                          <span className="font-mono text-[11px] text-slate-400 print:text-slate-600">[ 2016 - 2022 ]</span>
+                        </div>
+                        <p className="text-cyan-400 print:text-blue-700">Universidad EAFIT, Medellin</p>
+                        <p className="text-[11px] text-slate-400 print:text-slate-600 italic mt-0.5">
+                          (Fully paid scholarship for academic achievement)
                         </p>
-                      ))}
+                      </div>
+
+                      <div className="pt-1 border-t border-slate-800/60 print:border-slate-200">
+                        <div className="flex justify-between items-baseline gap-1 font-semibold text-white print:text-slate-900">
+                          <span>→ Graphic and multimedia design</span>
+                          <span className="font-mono text-[11px] text-slate-400 print:text-slate-600">[ 2014 - 2015 ]</span>
+                        </div>
+                        <p className="text-cyan-400 print:text-blue-700">SENA, Medellin, Colombia</p>
+                      </div>
+
+                      <div className="pt-1 border-t border-slate-800/60 print:border-slate-200">
+                        <p className="font-semibold text-white print:text-slate-900">→ English Level C2</p>
+                        <p className="text-slate-400 print:text-slate-600 text-[11px]">TOEFL, 2022</p>
+                      </div>
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Web Development Skills Card */}
+                  <div className="rounded-xl border border-slate-800 print:border-slate-300 p-4 bg-slate-900/50 print:bg-slate-50/50 space-y-2.5">
+                    <div className="flex items-center gap-2 border-b border-slate-700/80 print:border-slate-300 pb-1.5">
+                      <Code size={16} className="text-cyan-400 print:text-blue-600" />
+                      <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white print:text-slate-900">
+                        Web Development Skills
+                      </h3>
+                    </div>
+
+                    <div className="text-xs text-slate-300 print:text-slate-800 space-y-2 leading-relaxed">
+                      <div>
+                        <p className="font-semibold text-slate-200 print:text-slate-900 mb-1">• Low code platforms:</p>
+                        <ul className="pl-3 space-y-0.5 text-[11.5px] text-slate-400 print:text-slate-700">
+                          <li>◦ WordPress (Advanced)</li>
+                          <li>◦ Shopify (Advanced)</li>
+                          <li>◦ Webflow (Advanced)</li>
+                          <li>◦ Lovable, V0.app (advanced)</li>
+                        </ul>
+                      </div>
+
+                      <div className="pt-1 border-t border-slate-800/60 print:border-slate-200 text-[11.5px]">
+                        <p className="font-semibold text-slate-200 print:text-slate-900">Other:</p>
+                        <p className="text-slate-400 print:text-slate-700 mt-0.5">
+                          OpenAI API, Gemini API, Node.js, Javascript, Html, CSS, Next.js, Mongo DB, APIs, Tailwind
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              {/* Languages & Certifications */}
-              <div className="pt-2">
-                <div className="flex items-center gap-2 border-b-2 border-cyan-500 pb-1 mb-3">
-                  <Award size={18} className="text-cyan-400 print:text-cyan-600" />
-                  <h2 className="text-base sm:text-lg font-bold tracking-wider uppercase text-white print:text-slate-900">
-                    Languages & Certs
-                  </h2>
-                </div>
-
-                <div className="space-y-1.5 text-xs text-slate-300 print:text-slate-800">
-                  {cv.languages.map((lang, lIdx) => (
-                    <div key={lIdx} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 print:bg-cyan-600" />
-                      <span className="font-medium">{lang}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </aside>
+            </section>
           </div>
         </article>
       </main>
 
-      {/* Embedded Print CSS to guarantee condensed 2-page pagination */}
+      {/* Strict Print CSS for exact 2-page pagination & zero chrome bleed */}
       <style jsx global>{`
         @media print {
           @page {
             size: letter portrait;
-            margin: 8mm 10mm 8mm 10mm;
+            margin: 8mm 10mm;
           }
 
           body {
             background: #ffffff !important;
             color: #0f172a !important;
-            font-size: 10.5pt !important;
-            line-height: 1.35 !important;
+            font-size: 10pt !important;
+            line-height: 1.3 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
 
-          .no-print {
+          /* Hide global site navigation, footer, skip link and toolbars */
+          .no-print,
+          .site-header,
+          .site-footer,
+          .skip-link,
+          header.site-header,
+          footer.site-footer {
             display: none !important;
           }
 
@@ -361,18 +382,17 @@ export default function CVPage() {
             border: none !important;
             background: #ffffff !important;
             color: #0f172a !important;
+            max-width: 100% !important;
           }
 
           .cv-header {
-            background-color: #0f172a !important;
+            background-color: #162032 !important;
             color: #ffffff !important;
-            padding: 18px 24px !important;
+            padding: 18px 22px !important;
             border-radius: 6px !important;
             margin-bottom: 12px !important;
-          }
-
-          .cv-body {
-            padding: 0 !important;
+            break-inside: avoid !important;
+            page-break-inside: avoid !important;
           }
 
           .cv-entry {
@@ -380,7 +400,7 @@ export default function CVPage() {
             page-break-inside: avoid !important;
           }
 
-          .cv-skill-category {
+          .cv-bottom-section {
             break-inside: avoid !important;
             page-break-inside: avoid !important;
           }

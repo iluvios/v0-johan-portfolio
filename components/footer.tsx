@@ -1,10 +1,17 @@
 "use client";
 
 import { ArrowUpRight, ArrowUp } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 
 export default function Footer() {
   const { language } = useLanguage();
+  const pathname = usePathname();
+
+  if (pathname === "/cv") {
+    return null;
+  }
+
   return (
     <footer className="site-footer">
       <div className="page-shell footer-inner">

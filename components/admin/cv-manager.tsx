@@ -658,13 +658,24 @@ export function CVManager({ cvData, onChange, onSave, isSaving }: CVManagerProps
               </div>
             </div>
 
-            <div>
-              <Label className="text-xs text-slate-300">Website URL</Label>
-              <Input
-                value={cvData.website}
-                onChange={(e) => handleBasicChange("website", e.target.value)}
-                className="bg-slate-950 border-slate-700 text-xs text-white mt-1"
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <Label className="text-xs text-slate-300">Website URL</Label>
+                <Input
+                  value={cvData.website || ""}
+                  onChange={(e) => handleBasicChange("website", e.target.value)}
+                  className="bg-slate-950 border-slate-700 text-xs text-white mt-1"
+                />
+              </div>
+              <div>
+                <Label className="text-xs text-slate-300">LinkedIn Profile URL</Label>
+                <Input
+                  value={cvData.linkedin || ""}
+                  onChange={(e) => handleBasicChange("linkedin", e.target.value)}
+                  placeholder="https://linkedin.com/in/johanalvarez"
+                  className="bg-slate-950 border-slate-700 text-xs text-white mt-1"
+                />
+              </div>
             </div>
 
             <div>

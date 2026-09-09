@@ -2,11 +2,18 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import MenuComponent from "./menu";
 import { useLanguage } from "@/contexts/language-context";
 
 export default function Navigation() {
   const { language } = useLanguage();
+  const pathname = usePathname();
+
+  if (pathname === "/cv") {
+    return null;
+  }
+
   return (
     <>
       <a className="skip-link" href="#main-content">

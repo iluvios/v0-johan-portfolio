@@ -24,9 +24,9 @@ export default function MenuComponent() {
   const copy = portfolioCopy[language];
   const nav =
     language === "en"
-      ? ["Home", "Work", "Notes", "About", "CV", "Let’s talk"]
-      : ["Inicio", "Proyectos", "Notas", "Sobre mí", "CV", "Hablemos"];
-  const items = ["/", "/projects", "/articles", "/about", "/cv", "/contact"].map(
+      ? ["Home", "Work", "Notes", "About", "Let’s talk"]
+      : ["Inicio", "Proyectos", "Notas", "Sobre mí", "Hablemos"];
+  const items = ["/", "/projects", "/articles", "/about", "/contact"].map(
     (href, i) => ({ href, label: nav[i] }),
   );
   const active = (href: string) =>
@@ -47,7 +47,7 @@ export default function MenuComponent() {
   return (
     <>
       <nav className="desktop-nav" aria-label={copy.navigation}>
-        {items.slice(0, 5).map((item) => (
+        {items.slice(0, 4).map((item) => (
           <Link
             key={item.href}
             href={item.href}
