@@ -141,7 +141,7 @@ export default function AboutPage() {
                 </GlowButton>
                 <GlowButton variant="outline" asChild>
                   <a
-                    href="https://linkedin.com/in/johan-alvarez"
+                    href="https://linkedin.com/in/johanalvarez"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"

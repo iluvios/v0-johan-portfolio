@@ -157,7 +157,7 @@ export default function ContactPage() {
               <CardContent>
                 <div className="flex gap-3 sm:gap-4">
                   <GlowButton variant="outline" size="sm" asChild>
-                    <a href="https://linkedin.com/in/johan" target="_blank" rel="noopener noreferrer">
+                    <a href="https://linkedin.com/in/johanalvarez" target="_blank" rel="noopener noreferrer">
                       <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
                     </a>
                   </GlowButton>
