@@ -31,6 +31,7 @@ import {
   GripVertical,
   ChevronUp,
   ChevronDown,
+  Briefcase,
 } from "lucide-react"
 import { type BlogPost, saveBlogPost, getAllBlogPosts, deleteBlogPost, uploadBlogImage } from "@/lib/blog"
 import {
@@ -41,9 +42,11 @@ import {
   deleteProject,
   reorderProjects,
 } from "@/lib/projects"
+import { CVManager } from "@/components/admin/cv-manager"
+import { type CVProfile, DEFAULT_CV_DATA, getCVData, updateCVData } from "@/lib/profile-data"
 import Link from "next/link"
 
-type AdminTab = "projects" | "articles"
+type AdminTab = "projects" | "articles" | "cv"
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -73,6 +76,11 @@ export default function AdminPage() {
   const [isCreatingPost, setIsCreatingPost] = useState(false)
   const [articleImageUploading, setArticleImageUploading] = useState(false)
   const [newArticleTagInput, setNewArticleTagInput] = useState("")
+
+  // CV / Profile state
+  const [cvData, setCvData] = useState<CVProfile>(DEFAULT_CV_DATA)
+  const [isSavingCV, setIsSavingCV] = useState(false)
+  const [isLoadingCV, setIsLoadingCV] = useState(false)
 
   useEffect(() => {
     if (typeof window !== "undefined" && sessionStorage.getItem("admin_auth") === "true") {
@@ -104,6 +112,7 @@ export default function AdminPage() {
     if (isAuthenticated) {
       loadProjects()
       loadPosts()
+      loadCV()
     }
   }, [isAuthenticated])
 
@@ -112,6 +121,35 @@ export default function AdminPage() {
     setTimeout(() => {
       setStatusMessage((current) => (current?.text === text ? null : current))
     }, 4000)
+  }
+
+  // --- CV MANAGEMENT ---
+  const loadCV = async () => {
+    setIsLoadingCV(true)
+    try {
+      const data = await getCVData()
+      if (data) {
+        setCvData(data)
+      }
+    } catch (error) {
+      console.error("Error loading CV data:", error)
+      notify("error", "Failed to load CV profile.")
+    } finally {
+      setIsLoadingCV(false)
+    }
+  }
+
+  const handleSaveCV = async () => {
+    setIsSavingCV(true)
+    try {
+      await updateCVData(cvData)
+      notify("success", "CV profile updated and synced successfully!")
+    } catch (error: any) {
+      console.error("Error saving CV profile:", error)
+      notify("error", error?.message || "Failed to save CV profile.")
+    } finally {
+      setIsSavingCV(false)
+    }
   }
 
   // --- PROJECT MANAGEMENT ---
@@ -513,7 +551,7 @@ export default function AdminPage() {
           <div>
             <h1 className="text-3xl sm:text-4xl font-bold gradient-text">Control Center</h1>
             <p className="text-sm text-slate-400 mt-1">
-              Manage your showcase projects and publish insightful articles.
+              Manage your showcase projects, publish articles, and maintain your centralized CV profile.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -522,11 +560,32 @@ export default function AdminPage() {
                 <Plus size={16} />
                 New Project
               </Button>
-            ) : (
+            ) : activeTab === "articles" ? (
               <Button onClick={handleCreateNewArticle} className="ai-glow flex items-center gap-2">
                 <Plus size={16} />
                 New Article
               </Button>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  asChild
+                  className="border-slate-700 text-slate-300 hover:text-white"
+                >
+                  <Link href="/cv" target="_blank">
+                    <ExternalLink size={15} className="mr-1.5" />
+                    Preview & Print CV
+                  </Link>
+                </Button>
+                <Button
+                  onClick={handleSaveCV}
+                  disabled={isSavingCV}
+                  className="ai-glow flex items-center gap-2"
+                >
+                  <Save size={16} />
+                  {isSavingCV ? "Saving..." : "Save CV"}
+                </Button>
+              </div>
             )}
             <Button
               variant="outline"
@@ -541,13 +600,13 @@ export default function AdminPage() {
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex space-x-2 border-b border-slate-800 mb-8">
+        <div className="flex space-x-2 border-b border-slate-800 mb-8 overflow-x-auto pb-1">
           <button
             onClick={() => {
               setActiveTab("projects")
               setEditingPost(null)
             }}
-            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 transition-all ${
+            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
               activeTab === "projects"
                 ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
                 : "border-transparent text-slate-400 hover:text-slate-200"
@@ -565,7 +624,7 @@ export default function AdminPage() {
               setActiveTab("articles")
               setEditingProject(null)
             }}
-            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 transition-all ${
+            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
               activeTab === "articles"
                 ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
                 : "border-transparent text-slate-400 hover:text-slate-200"
@@ -575,6 +634,25 @@ export default function AdminPage() {
             Articles
             <Badge variant="secondary" className="ml-1 text-xs bg-slate-800 text-slate-300">
               {posts.length}
+            </Badge>
+          </button>
+
+          <button
+            onClick={() => {
+              setActiveTab("cv")
+              setEditingProject(null)
+              setEditingPost(null)
+            }}
+            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
+              activeTab === "cv"
+                ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
+                : "border-transparent text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Briefcase size={18} />
+            CV / Resume
+            <Badge variant="secondary" className="ml-1 text-xs bg-blue-950/60 text-blue-300 border border-blue-500/30">
+              {cvData.experiences.length} roles
             </Badge>
           </button>
         </div>
@@ -1398,6 +1476,16 @@ export default function AdminPage() {
               </div>
             )}
           </div>
+        )}
+
+        {/* TAB 3: CV / RESUME */}
+        {activeTab === "cv" && (
+          <CVManager
+            cvData={cvData}
+            onChange={setCvData}
+            onSave={handleSaveCV}
+            isSaving={isSavingCV}
+          />
         )}
 
         {/* Footer status notice */}

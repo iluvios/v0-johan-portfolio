@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUp, ArrowUpRight, Download, Mail, MapPin, Phone, Printer } from "lucide-react";
+import Link from "next/link";
+import { ArrowUp, ArrowUpRight, Download, Mail, MapPin, Phone, Printer, FileText } from "lucide-react";
 import { GlowButton } from "@/components/ui/glow-button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -37,6 +38,12 @@ function CvHeader({ language }: { language: CvLanguage }) {
         <div className="flex flex-wrap items-center gap-3">
           <GlowButton asChild><a href={cvFile} download="Johan-Alvarez-CV-2026.pdf"><Download data-icon="inline-start" aria-hidden="true" />{copy.download}</a></GlowButton>
           <GlowButton variant="outline" onClick={() => window.print()}><Printer data-icon="inline-start" aria-hidden="true" />{copy.print}</GlowButton>
+          <GlowButton asChild variant="outline">
+            <Link href="/cv">
+              <FileText data-icon="inline-start" aria-hidden="true" />
+              {language === "en" ? "Executive 2-Page CV" : "CV Ejecutivo (2 Págs)"}
+            </Link>
+          </GlowButton>
           <a className="cv-linkedin" href="https://linkedin.com/in/johanalvarez" target="_blank" rel="noopener noreferrer">LinkedIn<ArrowUpRight size={16} aria-hidden="true" /><span className="sr-only">{language === "en" ? " (opens in a new tab)" : " (abre en otra pestaña)"}</span></a>
         </div>
         <span className="text-sm text-muted-foreground">{copy.pdfNote}</span>
