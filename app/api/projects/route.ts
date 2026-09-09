@@ -32,19 +32,22 @@ export async function GET(request: NextRequest) {
   try {
     const sql = neon(dbUrl)
 
+    // Ensure order_index column exists
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS order_index INTEGER DEFAULT 0;`.catch(() => {})
+
     let projects
     if (featured === "true") {
       projects = await sql`
         SELECT * FROM projects 
         WHERE featured = true
-        ORDER BY created_at DESC NULLS LAST, id DESC
+        ORDER BY order_index ASC NULLS LAST, created_at DESC NULLS LAST, id DESC
         LIMIT 2
       `
       // If no projects are marked as featured, fallback to latest 2 projects
       if (!projects || projects.length === 0) {
         projects = await sql`
           SELECT * FROM projects 
-          ORDER BY created_at DESC NULLS LAST, id DESC
+          ORDER BY order_index ASC NULLS LAST, created_at DESC NULLS LAST, id DESC
           LIMIT 2
         `
       }
@@ -52,12 +55,12 @@ export async function GET(request: NextRequest) {
       projects = await sql`
         SELECT * FROM projects 
         WHERE category = ${category}
-        ORDER BY featured DESC NULLS LAST, created_at DESC NULLS LAST, id DESC
+        ORDER BY order_index ASC NULLS LAST, featured DESC NULLS LAST, created_at DESC NULLS LAST, id DESC
       `
     } else {
       projects = await sql`
         SELECT * FROM projects 
-        ORDER BY featured DESC NULLS LAST, created_at DESC NULLS LAST, id DESC
+        ORDER BY order_index ASC NULLS LAST, featured DESC NULLS LAST, created_at DESC NULLS LAST, id DESC
       `
     }
 
@@ -103,11 +106,13 @@ export async function POST(request: NextRequest) {
     }
 
     const sql = neon(dbUrl)
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS order_index INTEGER DEFAULT 0;`.catch(() => {})
+
     const tagsArray = Array.isArray(project.tags) ? project.tags : []
     const galleryArray = Array.isArray(project.gallery) ? project.gallery : []
 
     const result = await sql`
-      INSERT INTO projects (title, client, impact, description, image_url, category, tags, gallery, website_url, featured)
+      INSERT INTO projects (title, client, impact, description, image_url, category, tags, gallery, website_url, featured, order_index)
       VALUES (
         ${project.title || "Untitled Project"},
         ${project.client || null},
@@ -118,7 +123,8 @@ export async function POST(request: NextRequest) {
         ${tagsArray},
         ${galleryArray},
         ${project.website_url || null},
-        ${Boolean(project.featured)}
+        ${Boolean(project.featured)},
+        ${project.order_index !== undefined ? Number(project.order_index) : 0}
       )
       RETURNING *
     `

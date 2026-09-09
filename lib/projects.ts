@@ -10,6 +10,7 @@ export interface Project {
   gallery: string[]
   website_url: string | null
   featured: boolean
+  order_index?: number
   created_at: string
   updated_at: string
 }
@@ -61,6 +62,7 @@ export function normalizeProject(raw: any): Project {
     gallery,
     website_url: raw.website_url || null,
     featured: Boolean(raw.featured),
+    order_index: raw.order_index !== undefined && raw.order_index !== null ? Number(raw.order_index) : 0,
     created_at: raw.created_at ? new Date(raw.created_at).toISOString() : new Date().toISOString(),
     updated_at: raw.updated_at ? new Date(raw.updated_at).toISOString() : new Date().toISOString(),
   }
@@ -351,6 +353,26 @@ export async function deleteProject(id: number): Promise<void> {
     }
   } catch (error) {
     console.error("Error deleting project:", error)
+    throw error
+  }
+}
+
+export async function reorderProjects(projectIds: number[]): Promise<void> {
+  try {
+    const response = await fetch("/api/projects/reorder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ projectIds }),
+    })
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      throw new Error(errorData.error || "Failed to reorder projects")
+    }
+  } catch (error) {
+    console.error("Error reordering projects:", error)
     throw error
   }
 }
