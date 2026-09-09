@@ -48,6 +48,29 @@ export const cvExperience: {
   achievements: Record<CvLanguage, string[]>;
 }[] = [
   {
+    company: "Freelance",
+    role: { en: "Senior Martech Specialist", es: "Especialista Senior en Martech" },
+    period: { en: "Mar 2026 — Present", es: "Mar 2026 — Presente" },
+    summary: {
+      en: "Developing AI-powered marketing infrastructure, automated B2B outbound funnels, and modern web applications.",
+      es: "Desarrollo de infraestructura de marketing con IA, embudos automatizados de prospección B2B y aplicaciones web modernas.",
+    },
+    achievements: {
+      en: [
+        "Built automated AI content workflows using Claude and n8n to centralize paid media creation, ad copy variations, and cross-channel performance analytics.",
+        "Developed responsive websites and high-converting landing pages from Figma designs and AI prototypes (v0), strictly aligned with client brand guidelines.",
+        "Built automated B2B outbound and enrichment funnels with Clay, Apollo, and Salesforce for NY startup Building Intelligence, targeting enterprise decision-makers.",
+        "Led a complete website redesign and copy overhaul, modernizing brand positioning and improving visual clarity and user engagement.",
+      ],
+      es: [
+        "Construí flujos de contenido con IA usando Claude y n8n para centralizar la creación de pauta, variaciones de copy y analítica entre canales.",
+        "Desarrollé sitios web responsivos y páginas de aterrizaje de alta conversión a partir de diseños en Figma y prototipos con IA (v0), cumpliendo con las guías de marca.",
+        "Implementé embudos automatizados de prospección y enriquecimiento B2B con Clay, Apollo y Salesforce para la startup neoyorquina Building Intelligence, dirigidos a tomadores de decisiones.",
+        "Lideré el rediseño completo del sitio web y la optimización de copy, modernizando el posicionamiento de marca y mejorando la claridad visual y la conversión.",
+      ],
+    },
+  },
+  {
     company: "Pvragon",
     role: { en: "Senior Martech Specialist", es: "Especialista Senior en Martech" },
     period: { en: "Apr 2025 — Mar 2026", es: "Abr 2025 — Mar 2026" },
@@ -60,7 +83,7 @@ export const cvExperience: {
   {
     company: "Freelance",
     role: { en: "Marketing Freelancer", es: "Consultor de Marketing Independiente" },
-    period: { en: "Nov 2022 — Jun 2025", es: "Nov 2022 — Jun 2025" },
+    period: { en: "Nov 2022 — Mar 2025", es: "Nov 2022 — Mar 2025" },
     summary: { en: "Managed end-to-end marketing projects for clients across South America and the USA.", es: "Gestioné proyectos de marketing de principio a fin para clientes en Sudamérica y Estados Unidos." },
     achievements: {
       en: ["Delivered email marketing, copywriting, SEO, and paid advertising through Meta and Google Ads.", "Sourced and coordinated UX designers, developers, and photographers as project manager.", "Generated over $500,000 USD in attributable new client revenue through funnel and campaign optimization."],

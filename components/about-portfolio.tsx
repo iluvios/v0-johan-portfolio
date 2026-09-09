@@ -78,7 +78,7 @@ function CvExperience({ language }: { language: CvLanguage }) {
       </div>
       <div className="cv-job-list">
         {cvExperience.map((job, index) => (
-          <article key={job.company} className="cv-job">
+          <article key={`${job.company}-${index}`} className="cv-job">
             <div className="flex flex-col gap-3">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="text-base font-medium text-accent">{job.company}</p>

@@ -263,7 +263,7 @@ export default function CVPage() {
                   <div className="space-y-3 text-xs">
                     <div>
                       <p className="font-semibold text-cyan-400 print:text-blue-700 text-xs mb-1.5">
-                        → Marketing (7 años)
+                        → {cv.skillCategories[0]?.category?.replace(/\s*\(7 años\)/i, "") || "Marketing"}
                       </p>
                       <ul className="space-y-1 text-slate-300 print:text-slate-800 leading-snug pl-1">
                         {cv.skillCategories[0]?.skills.map((skill, sIdx) => (

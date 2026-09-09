@@ -50,6 +50,30 @@ export const DEFAULT_CV_DATA: CVProfile = {
   experiences: [
     {
       role: "Senior Martech Specialist",
+      company: "Freelance",
+      period: "Mar 2026 - Present",
+      location: "Medellin, Colombia / Remote",
+      type: "Freelance",
+      achievements: [
+        "Built automated AI content workflows using Claude and n8n to centralize paid media creation, ad copy variations, and cross-channel performance analytics.",
+        "Developed responsive websites and high-converting landing pages from Figma designs and AI prototypes (v0), strictly aligned with client brand guidelines.",
+        "Built automated B2B outbound and enrichment funnels with Clay, Apollo, and Salesforce for NY startup Building Intelligence, targeting enterprise decision-makers.",
+        "Led a complete website redesign and copy overhaul, modernizing brand positioning and improving visual clarity and user engagement.",
+      ],
+      tools: [
+        "HubSpot",
+        "n8n",
+        "Clay",
+        "Apollo",
+        "Salesforce",
+        "Twilio",
+        "Claude",
+        "Codex",
+        "v0",
+      ],
+    },
+    {
+      role: "Senior Martech Specialist",
       company: "Pvragon",
       period: "Apr 2025 - Mar 2026",
       location: "Medellin, Colombia",
@@ -76,7 +100,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Marketing Freelancer",
       company: "Freelance",
-      period: "Nov 2022 - Jun 2025",
+      period: "Nov 2022 - Mar 2025",
       location: "Medellin, Colombia / USA (Remote)",
       type: "Freelance",
       achievements: [
@@ -203,7 +227,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
   ],
   skillCategories: [
     {
-      category: "Marketing (7 años)",
+      category: "Marketing",
       skills: [
         "Full-Funnel Strategy & Development (Expert)",
         "Email Marketing Automation & Campaigns (Expert)",
