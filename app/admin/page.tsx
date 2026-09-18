@@ -32,6 +32,8 @@ import {
   ChevronUp,
   ChevronDown,
   Briefcase,
+  Target,
+  Users,
 } from "lucide-react"
 import { type BlogPost, saveBlogPost, getAllBlogPosts, deleteBlogPost, uploadBlogImage } from "@/lib/blog"
 import {
@@ -43,17 +45,31 @@ import {
   reorderProjects,
 } from "@/lib/projects"
 import { CVManager } from "@/components/admin/cv-manager"
+import { RoadmapManager } from "@/components/admin/roadmap-manager"
+import { CrmManager } from "@/components/admin/crm-manager"
 import { type CVProfile, DEFAULT_CV_DATA, getCVData, updateCVData } from "@/lib/profile-data"
 import Link from "next/link"
 
-type AdminTab = "projects" | "articles" | "cv"
+type AdminTab = "pipeline" | "projects" | "articles" | "cv" | "roadmap"
+
+const PROJECT_CATEGORIES = [
+  "GTM & Automation",
+  "Product & MVP",
+  "Full-Funnel Strategy",
+  "Marketing Automation",
+  "Web Development",
+  "E-commerce",
+]
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [authChecked, setAuthChecked] = useState(false)
+  const [adminConfigured, setAdminConfigured] = useState(true)
   const [passcode, setPasscode] = useState("")
-  const [passcodeError, setPasscodeError] = useState(false)
+  const [loginError, setLoginError] = useState<string | null>(null)
+  const [isLoggingIn, setIsLoggingIn] = useState(false)
 
-  const [activeTab, setActiveTab] = useState<AdminTab>("projects")
+  const [activeTab, setActiveTab] = useState<AdminTab>("pipeline")
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
 
   // Projects state
@@ -83,28 +99,43 @@ export default function AdminPage() {
   const [isLoadingCV, setIsLoadingCV] = useState(false)
 
   useEffect(() => {
-    if (typeof window !== "undefined" && sessionStorage.getItem("admin_auth") === "true") {
-      setIsAuthenticated(true)
-    }
+    fetch("/api/admin/session", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => {
+        setIsAuthenticated(Boolean(data.authenticated))
+        setAdminConfigured(data.configured !== false)
+      })
+      .catch(() => {})
+      .finally(() => setAuthChecked(true))
   }, [])
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
-    const validPasscode = process.env.NEXT_PUBLIC_ADMIN_PASSCODE || "admin123"
-    if (passcode === validPasscode || passcode === "johan2025") {
+    setIsLoggingIn(true)
+    setLoginError(null)
+    try {
+      const res = await fetch("/api/admin/session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ passcode }),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        setLoginError(data.error || "Login failed.")
+        return
+      }
+      setPasscode("")
       setIsAuthenticated(true)
-      sessionStorage.setItem("admin_auth", "true")
-      setPasscodeError(false)
-    } else {
-      setPasscodeError(true)
+    } catch {
+      setLoginError("Login failed. Check your connection and try again.")
+    } finally {
+      setIsLoggingIn(false)
     }
   }
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await fetch("/api/admin/session", { method: "DELETE" }).catch(() => {})
     setIsAuthenticated(false)
-    if (typeof window !== "undefined") {
-      sessionStorage.removeItem("admin_auth")
-    }
   }
 
   // Load initial data
@@ -471,6 +502,10 @@ export default function AdminPage() {
     )
   })
 
+  if (!authChecked) {
+    return <div className="min-h-screen" aria-busy="true" />
+  }
+
   // Login screen
   if (!isAuthenticated) {
     return (
@@ -480,30 +515,39 @@ export default function AdminPage() {
             <div className="mx-auto w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center mb-3">
               <Lock className="w-6 h-6 text-blue-400" />
             </div>
-            <CardTitle className="text-2xl font-bold gradient-text">Admin Authentication</CardTitle>
-            <p className="text-sm text-slate-400 mt-1">Please enter the administrative passcode to access the CMS.</p>
+            <CardTitle className="text-2xl font-bold gradient-text">Admin</CardTitle>
+            <p className="text-sm text-slate-400 mt-1">Enter your passcode to manage the site.</p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleLogin} className="space-y-4">
+              {!adminConfigured && (
+                <p className="text-xs text-amber-300 bg-amber-950/40 border border-amber-500/30 rounded-md p-3">
+                  Admin is disabled until the <code>ADMIN_PASSCODE</code> environment variable is set in Vercel
+                  (or in <code>.env.local</code> for local development).
+                </p>
+              )}
               <div>
                 <Input
                   type="password"
-                  placeholder="Enter passcode (default: admin123)"
+                  aria-label="Passcode"
+                  placeholder="Passcode"
                   value={passcode}
                   onChange={(e) => {
                     setPasscode(e.target.value)
-                    setPasscodeError(false)
+                    setLoginError(null)
                   }}
                   className="bg-slate-900/80 border-slate-700 text-white"
                   autoFocus
                 />
-                {passcodeError && (
-                  <p className="text-xs text-red-400 mt-1.5">Incorrect passcode. Access denied.</p>
-                )}
+                {loginError && <p className="text-xs text-red-400 mt-1.5">{loginError}</p>}
               </div>
-              <Button type="submit" className="w-full ai-glow flex items-center justify-center gap-2">
+              <Button
+                type="submit"
+                disabled={isLoggingIn || !passcode}
+                className="w-full ai-glow flex items-center justify-center gap-2"
+              >
                 <KeyRound size={16} />
-                Unlock Dashboard
+                {isLoggingIn ? "Checking…" : "Unlock"}
               </Button>
               <div className="text-center pt-2">
                 <Link href="/" className="text-xs text-slate-400 hover:text-blue-400 transition-colors">
@@ -551,11 +595,11 @@ export default function AdminPage() {
           <div>
             <h1 className="text-3xl sm:text-4xl font-bold gradient-text">Control Center</h1>
             <p className="text-sm text-slate-400 mt-1">
-              Manage your showcase projects, publish articles, and maintain your centralized CV profile.
+              Your job and client pipeline, projects, CV, and level-up roadmap.
             </p>
           </div>
           <div className="flex items-center gap-3">
-            {activeTab === "projects" ? (
+            {activeTab === "roadmap" || activeTab === "pipeline" ? null : activeTab === "projects" ? (
               <Button onClick={handleCreateNewProject} className="ai-glow flex items-center gap-2">
                 <Plus size={16} />
                 New Project
@@ -601,6 +645,22 @@ export default function AdminPage() {
 
         {/* Tab Switcher */}
         <div className="flex space-x-2 border-b border-slate-800 mb-8 overflow-x-auto pb-1">
+          <button
+            onClick={() => {
+              setActiveTab("pipeline")
+              setEditingProject(null)
+              setEditingPost(null)
+            }}
+            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
+              activeTab === "pipeline"
+                ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
+                : "border-transparent text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Users size={18} />
+            Pipeline
+          </button>
+
           <button
             onClick={() => {
               setActiveTab("projects")
@@ -654,6 +714,22 @@ export default function AdminPage() {
             <Badge variant="secondary" className="ml-1 text-xs bg-blue-950/60 text-blue-300 border border-blue-500/30">
               {cvData.experiences.length} roles
             </Badge>
+          </button>
+
+          <button
+            onClick={() => {
+              setActiveTab("roadmap")
+              setEditingProject(null)
+              setEditingPost(null)
+            }}
+            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
+              activeTab === "roadmap"
+                ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
+                : "border-transparent text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Target size={18} />
+            Roadmap
           </button>
         </div>
 
@@ -917,12 +993,16 @@ export default function AdminPage() {
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent className="bg-slate-900 border-slate-700 text-white">
-                            <SelectItem value="Full-Funnel Strategy">Full-Funnel Strategy</SelectItem>
-                            <SelectItem value="Marketing Automation">Marketing Automation</SelectItem>
-                            <SelectItem value="Innovation">Innovation</SelectItem>
-                            <SelectItem value="Design Systems">Design Systems</SelectItem>
-                            <SelectItem value="E-commerce">E-commerce</SelectItem>
-                            <SelectItem value="General">General</SelectItem>
+                            {[
+                              ...PROJECT_CATEGORIES,
+                              ...(editingProject.category && !PROJECT_CATEGORIES.includes(editingProject.category)
+                                ? [editingProject.category]
+                                : []),
+                            ].map((category) => (
+                              <SelectItem key={category} value={category}>
+                                {category}
+                              </SelectItem>
+                            ))}
                           </SelectContent>
                         </Select>
                       </div>
@@ -1177,6 +1257,10 @@ export default function AdminPage() {
             {/* Articles List */}
             <div className={editingPost ? "lg:col-span-5" : "lg:col-span-12"}>
               <Card className="bg-slate-800/50 border-slate-700">
+                <div className="mx-6 mt-6 rounded-md border border-amber-500/30 bg-amber-950/40 p-3 text-xs text-amber-300">
+                  Articles are saved in this browser only and are not visible to visitors yet. The public Notes
+                  section stays hidden until articles are stored in the database.
+                </div>
                 <CardHeader className="pb-3 flex flex-row items-center justify-between">
                   <CardTitle className="text-xl">Articles ({posts.length})</CardTitle>
                   <Button
@@ -1488,12 +1572,11 @@ export default function AdminPage() {
           />
         )}
 
-        {/* Footer status notice */}
-        <div className="mt-12 text-center">
-          <div className="text-xs text-blue-400 font-mono italic">
-            "Control center operational. Portfolio & knowledge repository synchronizing." - ALVA
-          </div>
-        </div>
+        {/* TAB 4: ROADMAP */}
+        {activeTab === "roadmap" && <RoadmapManager notify={notify} />}
+
+        {/* TAB 0: PIPELINE (job + client CRM) */}
+        {activeTab === "pipeline" && <CrmManager notify={notify} />}
       </div>
     </div>
   )

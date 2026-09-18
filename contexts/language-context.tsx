@@ -7,12 +7,11 @@ import {
   useEffect,
   type ReactNode,
 } from "react";
-import { type Language, translations, getBrowserLanguage } from "@/lib/i18n";
+import { type Language, getBrowserLanguage } from "@/lib/i18n";
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: typeof translations.en;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(
@@ -52,7 +51,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       value={{
         language,
         setLanguage: handleSetLanguage,
-        t: translations[language],
       }}
     >
       {children}

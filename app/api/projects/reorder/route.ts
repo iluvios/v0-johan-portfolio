@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 import { DEFAULT_PROJECTS } from "@/lib/projects"
+import { requireAdmin } from "@/lib/admin-auth"
 
 function getDatabaseUrl(): string | undefined {
   return (
@@ -12,6 +13,9 @@ function getDatabaseUrl(): string | undefined {
 }
 
 export async function POST(request: NextRequest) {
+  const unauthorized = requireAdmin(request)
+  if (unauthorized) return unauthorized
+
   try {
     const body = await request.json()
     const { projectIds } = body

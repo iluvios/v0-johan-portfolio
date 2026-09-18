@@ -18,12 +18,21 @@ const space = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://asjohan.com"),
   title: {
-    default: "Johan Alvarez — Strategy, technology & a little curiosity",
+    default: "Johan Alvarez — Senior Martech & GTM Engineer",
     template: "%s | Johan Alvarez",
   },
   description:
-    "Marketing strategy meets digital craft. Explore Johan Alvarez’s work in marketing automation, digital experiences, and innovation. Based in Medellín, working beyond borders.",
+    "Johan Alvarez builds outbound, marketing automation, and attribution systems for startups going from zero to one — with Clay, n8n, Salesforce, server-side tracking, and AI-built apps. Based in Medellín, working on US hours.",
+  openGraph: {
+    title: "Johan Alvarez — Senior Martech & GTM Engineer",
+    description:
+      "GTM systems for recently funded startups: outbound, CRM and lifecycle automation, attribution, and AI-built MVPs.",
+    url: "https://asjohan.com",
+    siteName: "Johan Alvarez",
+    type: "website",
+  },
 };
 export const viewport: Viewport = {
   themeColor: "#080e1c",

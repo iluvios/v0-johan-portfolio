@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import { ArrowUpRight, Loader2, Info, AlertCircle } from "lucide-react";
+import { ArrowUpRight, Info } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -14,10 +14,13 @@ import {
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { GlowButton } from "@/components/ui/glow-button";
 import { usePortfolioCopy } from "@/lib/portfolio";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 type Draft = { name: string; email: string; subject: string; message: string };
 type FieldErrors = Partial<Record<keyof Draft, "required" | "invalidEmail">>;
 
+// There is no mail backend: the form composes the message in the visitor's
+// email app so it reaches the inbox directly instead of being silently dropped.
 export default function ContactForm() {
   const { copy } = usePortfolioCopy();
   const [draft, setDraft] = useState<Draft>({
@@ -27,19 +30,15 @@ export default function ContactForm() {
     message: "",
   });
   const [errors, setErrors] = useState<FieldErrors>({});
-  const [status, setStatus] = useState<
-    "idle" | "pending" | "success" | "error"
-  >("idle");
-  const sending = useRef(false);
+  const [opened, setOpened] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   function update(field: keyof Draft, value: string) {
     setDraft((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
-    if (status !== "pending") setStatus("idle");
   }
-  async function submit(event: FormEvent<HTMLFormElement>) {
+  const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(draft.subject.trim() || "Portfolio inquiry")}&body=${encodeURIComponent(`${draft.message.trim()}\n\n${draft.name.trim()}\n${draft.email.trim()}`)}`;
+  function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (sending.current) return;
     const invalid: FieldErrors = {};
     for (const field of ["name", "email", "message"] as const)
       if (!draft[field].trim()) invalid[field] = "required";
@@ -56,37 +55,12 @@ export default function ContactForm() {
       )?.focus();
       return;
     }
-    sending.current = true;
-    setStatus("pending");
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(
-          Object.fromEntries(
-            Object.entries(draft).map(([key, value]) => [key, value.trim()]),
-          ),
-        ),
-        signal: AbortSignal.timeout(15000),
-      });
-      if (!response.ok) throw new Error("Request failed");
-      setStatus("success");
-    } catch {
-      setStatus("error");
-    } finally {
-      sending.current = false;
-    }
+    window.location.href = mailto;
+    setOpened(true);
   }
-  const mailto = `mailto:jdsub16@gmail.com?subject=${encodeURIComponent(draft.subject || "Portfolio inquiry")}&body=${encodeURIComponent(`${draft.message}\n\n${draft.name}\n${draft.email}`)}`;
 
   return (
-    <form
-      ref={formRef}
-      className="contact-form"
-      onSubmit={submit}
-      noValidate
-      aria-busy={status === "pending"}
-    >
+    <form ref={formRef} className="contact-form" onSubmit={submit} noValidate>
       <FieldGroup>
         <FieldGroup className="sm:flex-row sm:gap-5">
           <Field data-invalid={Boolean(errors.name)}>
@@ -98,7 +72,6 @@ export default function ContactForm() {
               required
               maxLength={120}
               value={draft.name}
-              disabled={status === "pending"}
               onChange={(event) => update("name", event.target.value)}
               aria-invalid={Boolean(errors.name)}
               aria-describedby={errors.name ? "name-error" : undefined}
@@ -117,7 +90,6 @@ export default function ContactForm() {
               required
               maxLength={254}
               value={draft.email}
-              disabled={status === "pending"}
               onChange={(event) => update("email", event.target.value)}
               aria-invalid={Boolean(errors.email)}
               aria-describedby={errors.email ? "email-error" : undefined}
@@ -139,7 +111,6 @@ export default function ContactForm() {
             name="subject"
             maxLength={200}
             value={draft.subject}
-            disabled={status === "pending"}
             onChange={(event) => update("subject", event.target.value)}
           />
         </Field>
@@ -153,7 +124,6 @@ export default function ContactForm() {
             rows={5}
             placeholder={copy.messageHint}
             value={draft.message}
-            disabled={status === "pending"}
             onChange={(event) => update("message", event.target.value)}
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? "message-error" : undefined}
@@ -163,39 +133,23 @@ export default function ContactForm() {
           )}
         </Field>
         <Field>
-          <GlowButton type="submit" disabled={status === "pending"}>
-            {status === "pending" ? (
-              <>
-                <Loader2 className="animate-spin" data-icon="inline-start" />
-                {copy.submitting}
-              </>
-            ) : (
-              <>
-                {copy.submit}
-                <ArrowUpRight data-icon="inline-end" />
-              </>
-            )}
+          <GlowButton type="submit">
+            {copy.submit}
+            <ArrowUpRight data-icon="inline-end" />
           </GlowButton>
           <FieldDescription>{copy.formNote}</FieldDescription>
         </Field>
-        {status === "success" && (
+        {opened && (
           <Alert role="status">
             <Info className="size-4" />
-            <AlertTitle>{copy.successTitle}</AlertTitle>
+            <AlertTitle>{copy.openedTitle}</AlertTitle>
             <AlertDescription>
-              {copy.successBody}
+              {copy.openedBody}{" "}
               <a className="text-link" href={mailto}>
-                {copy.email}
+                {CONTACT_EMAIL}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </AlertDescription>
-          </Alert>
-        )}
-        {status === "error" && (
-          <Alert variant="destructive">
-            <AlertCircle className="size-4" />
-            <AlertTitle>{copy.errorTitle}</AlertTitle>
-            <AlertDescription>{copy.errorBody}</AlertDescription>
           </Alert>
         )}
       </FieldGroup>

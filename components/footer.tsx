@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
+import { CONTACT_EMAIL, LINKEDIN_URL } from "@/lib/site";
 
 export default function Footer() {
   const { language } = useLanguage();
@@ -24,16 +26,19 @@ export default function Footer() {
           </span>
         </div>
         <div className="footer-links">
-          <a href="mailto:jdsub16@gmail.com">
+          <a href={`mailto:${CONTACT_EMAIL}`}>
             Email <ArrowUpRight size={16} aria-hidden="true" />
           </a>
-          <a
-            href="https://linkedin.com/in/johanalvarez"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
             LinkedIn <ArrowUpRight size={16} aria-hidden="true" />
           </a>
+          <Link href="/services">
+            {language === "en" ? "Services" : "Servicios"}{" "}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
+          <Link href="/about">
+            CV <ArrowUpRight size={16} aria-hidden="true" />
+          </Link>
           <a
             href="#main-content"
             aria-label={language === "en" ? "Back to top" : "Volver arriba"}

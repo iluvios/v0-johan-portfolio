@@ -15,6 +15,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/contexts/language-context";
 import { portfolioCopy } from "@/lib/i18n";
+import { CONTACT_EMAIL } from "@/lib/site";
 import LanguageToggle from "./language-toggle";
 
 export default function MenuComponent() {
@@ -24,9 +25,9 @@ export default function MenuComponent() {
   const copy = portfolioCopy[language];
   const nav =
     language === "en"
-      ? ["Home", "Work", "Notes", "About", "Let’s talk"]
-      : ["Inicio", "Proyectos", "Notas", "Sobre mí", "Hablemos"];
-  const items = ["/", "/projects", "/articles", "/about", "/contact"].map(
+      ? ["Home", "Work", "Services", "About & CV", "Let’s talk"]
+      : ["Inicio", "Proyectos", "Servicios", "Sobre mí y CV", "Hablemos"];
+  const items = ["/", "/projects", "/services", "/about", "/contact"].map(
     (href, i) => ({ href, label: nav[i] }),
   );
   const active = (href: string) =>
@@ -104,8 +105,8 @@ export default function MenuComponent() {
           </nav>
           <Separator />
           <LanguageToggle />
-          <a href="mailto:jdsub16@gmail.com" className="text-link">
-            jdsub16@gmail.com
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-link">
+            {CONTACT_EMAIL}
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </SheetContent>

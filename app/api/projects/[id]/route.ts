@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 import { DEFAULT_PROJECTS, normalizeProject, type Project } from "@/lib/projects"
+import { requireAdmin } from "@/lib/admin-auth"
 
 function getDatabaseUrl(): string | undefined {
   return (
@@ -49,6 +50,9 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 }
 
 export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const unauthorized = requireAdmin(request)
+  if (unauthorized) return unauthorized
+
   try {
     const { id: idParam } = await params
     const id = Number.parseInt(idParam)
@@ -70,21 +74,23 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     }
 
     const sql = neon(dbUrl)
-    const tagsArray = Array.isArray(project.tags) ? project.tags : []
-    const galleryArray = Array.isArray(project.gallery) ? project.gallery : []
+    // Fields missing from the request keep their stored value (partial updates must not wipe data).
+    const tagsArray = Array.isArray(project.tags) ? project.tags : null
+    const galleryArray = Array.isArray(project.gallery) ? project.gallery : null
+    const featured = typeof project.featured === "boolean" ? project.featured : null
 
     const result = await sql`
-      UPDATE projects 
+      UPDATE projects
       SET title = COALESCE(${project.title}, title),
           client = COALESCE(${project.client}, client),
           impact = COALESCE(${project.impact}, impact),
           description = COALESCE(${project.description}, description),
           image_url = COALESCE(${project.image_url}, image_url),
           category = COALESCE(${project.category}, category),
-          tags = ${tagsArray},
-          gallery = ${galleryArray},
+          tags = COALESCE(${tagsArray}, tags),
+          gallery = COALESCE(${galleryArray}, gallery),
           website_url = COALESCE(${project.website_url}, website_url),
-          featured = COALESCE(${Boolean(project.featured)}, featured),
+          featured = COALESCE(${featured}, featured),
           updated_at = CURRENT_TIMESTAMP
       WHERE id = ${id}
       RETURNING *
@@ -105,6 +111,9 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 }
 
 export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const unauthorized = requireAdmin(request)
+  if (unauthorized) return unauthorized
+
   try {
     const { id: idParam } = await params
     const id = Number.parseInt(idParam)

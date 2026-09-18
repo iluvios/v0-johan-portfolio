@@ -2,432 +2,273 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import {
-  Download,
-  ArrowLeft,
-  Mail,
-  Phone,
-  MapPin,
-  Globe,
-  Share2,
-  Check,
-  Edit3,
-  Briefcase,
-  GraduationCap,
-  Sparkles,
-  Award,
-  Code,
-  Settings,
-  Linkedin,
-} from "lucide-react"
+import { ArrowLeft, Check, Download, Edit3, Linkedin, Mail, MapPin, Phone, Share2 } from "lucide-react"
+import { GlowButton } from "@/components/ui/glow-button"
+import { useLanguage } from "@/contexts/language-context"
 import { getCVData, DEFAULT_CV_DATA, type CVProfile } from "@/lib/profile-data"
 
+const toolbarCopy = {
+  en: { back: "Back to portfolio", edit: "Edit in admin", share: "Share", copied: "Link copied", print: "Download PDF" },
+  es: { back: "Volver al portafolio", edit: "Editar en admin", share: "Compartir", copied: "Enlace copiado", print: "Descargar PDF" },
+}
+
+function SectionTitle({ children }: { children: string }) {
+  return (
+    <h2 className="mb-6 border-b border-border pb-3 text-xs font-medium uppercase tracking-[0.13em] text-muted-foreground print:mb-3 print:border-slate-300 print:pb-1.5 print:text-slate-600">
+      {children}
+    </h2>
+  )
+}
+
 export default function CVPage() {
+  const { language } = useLanguage()
+  const t = toolbarCopy[language]
   const [cv, setCv] = useState<CVProfile>(DEFAULT_CV_DATA)
   const [copied, setCopied] = useState(false)
   const [isAdmin, setIsAdmin] = useState(false)
 
   useEffect(() => {
-    const load = async () => {
-      const data = await getCVData()
-      setCv(data)
-    }
-    load()
-
-    if (typeof window !== "undefined" && sessionStorage.getItem("admin_auth") === "true") {
-      setIsAdmin(true)
-    }
+    getCVData().then(setCv)
+    fetch("/api/admin/session", { cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => setIsAdmin(Boolean(data.authenticated)))
+      .catch(() => {})
   }, [])
 
-  const handlePrint = () => {
-    window.print()
-  }
-
   const handleShare = async () => {
-    if (typeof window === "undefined") return
     if (navigator.share) {
       try {
-        await navigator.share({
-          title: `${cv.name} - CV & Resume`,
-          text: `${cv.name} | ${cv.title}`,
-          url: window.location.href,
-        })
+        await navigator.share({ title: `${cv.name} — CV`, text: `${cv.name} | ${cv.title}`, url: window.location.href })
         return
       } catch {
-        // Fallback to copy
+        // Fall back to copying the link
       }
     }
-
-    await navigator.clipboard.writeText(window.location.href)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2500)
+    try {
+      await navigator.clipboard.writeText(window.location.href)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2500)
+    } catch {}
   }
 
+  const contacts = [
+    { icon: Phone, label: cv.phone, href: `tel:${cv.phone.replace(/\s+/g, "")}` },
+    { icon: Mail, label: cv.email, href: `mailto:${cv.email}` },
+    {
+      icon: Linkedin,
+      label: cv.linkedin.replace(/^https?:\/\/(www\.)?/, ""),
+      href: cv.linkedin,
+      external: true,
+    },
+    { icon: MapPin, label: cv.location },
+  ].filter((item) => item.label)
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 print:bg-white print:text-slate-900 selection:bg-blue-500/30">
-      {/* Non-printable Floating Control Toolbar */}
+    <div className="min-h-screen bg-background text-foreground print:bg-white print:text-slate-900">
       <nav
         aria-label="CV controls"
-        className="no-print sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-3 shadow-lg"
+        className="no-print sticky top-0 z-50 border-b border-foreground/10 bg-background/85 backdrop-blur-xl"
       >
-        <div className="max-w-5xl mx-auto flex items-center justify-between gap-3 flex-wrap">
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span>Back to Portfolio</span>
+        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
+          <Link href="/" className="text-link text-muted-foreground">
+            <ArrowLeft size={16} aria-hidden="true" />
+            {t.back}
           </Link>
-
           <div className="flex items-center gap-2">
             {isAdmin && (
-              <Link
-                href="/admin"
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 px-3 py-1.5 rounded border border-blue-500/30 hover:border-blue-400 transition-colors"
-              >
-                <Edit3 size={13} />
-                <span>Edit in Admin</span>
-              </Link>
+              <GlowButton variant="ghost" size="sm" asChild className="hidden sm:inline-flex">
+                <Link href="/admin">
+                  <Edit3 aria-hidden="true" />
+                  {t.edit}
+                </Link>
+              </GlowButton>
             )}
-
-            <button
-              onClick={handleShare}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-slate-300 hover:text-white px-3 py-1.5 rounded-md border border-slate-700 hover:border-slate-600 bg-slate-800/80 transition-colors"
-              title="Share CV Link"
-            >
-              {copied ? <Check size={14} className="text-emerald-400" /> : <Share2 size={14} />}
-              <span>{copied ? "Link Copied!" : "Share"}</span>
-            </button>
-
-            <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-white px-4 py-1.5 rounded-md bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 shadow-md transition-all active:scale-95"
-            >
-              <Download size={15} />
-              <span>Download PDF / Print</span>
-            </button>
+            <GlowButton variant="outline" size="sm" onClick={handleShare}>
+              {copied ? <Check aria-hidden="true" /> : <Share2 aria-hidden="true" />}
+              {copied ? t.copied : t.share}
+            </GlowButton>
+            <GlowButton size="sm" onClick={() => window.print()}>
+              <Download aria-hidden="true" />
+              {t.print}
+            </GlowButton>
           </div>
         </div>
       </nav>
 
-      {/* Printable Resume Document Sheet */}
-      <main className="max-w-4xl mx-auto my-3 sm:my-6 print:m-0 print:p-0 print:max-w-none">
-        <article className="cv-document bg-slate-900/90 print:bg-white border border-slate-800 print:border-none rounded-xl print:rounded-none overflow-hidden shadow-2xl print:shadow-none print:m-0 print:p-0">
-          {/* Header Banner - Matching Johan's Original Dark Navy Aesthetic */}
-          <header className="cv-header bg-[#162032] print:bg-[#162032] text-white p-6 sm:p-7 border-b border-slate-800 print:border-none">
-            {/* Top row: Name/Title on Left, Contact info on Right */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-5 pb-5 border-b border-slate-700/60">
-              <div>
-                <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
-                  {cv.name}
-                </h1>
-                <p className="text-base sm:text-lg font-medium text-cyan-400 print:text-cyan-300 mt-0.5">
-                  {cv.title}
-                </p>
-              </div>
-
-              {/* Contact Information */}
-              <div className="flex flex-col sm:items-end gap-1.5 text-xs text-slate-300 print:text-slate-200">
-                <a
-                  href={`tel:${cv.phone.replace(/\s+/g, "")}`}
-                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
-                >
-                  <Phone size={13} className="text-cyan-400 shrink-0" />
-                  <span>{cv.phone}</span>
-                </a>
-                <a
-                  href={`mailto:${cv.email}`}
-                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
-                >
-                  <Mail size={13} className="text-cyan-400 shrink-0" />
-                  <span>{cv.email}</span>
-                </a>
-                <a
-                  href={cv.linkedin || "https://linkedin.com/in/johanalvarez"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 hover:text-cyan-300 transition-colors"
-                >
-                  <Linkedin size={13} className="text-cyan-400 shrink-0" />
-                  <span>{cv.linkedin ? cv.linkedin.replace(/^https?:\/\/(www\.)?/, "") : "linkedin.com/in/johanalvarez"}</span>
-                </a>
-                <div className="inline-flex items-center gap-2 text-slate-300">
-                  <MapPin size={13} className="text-cyan-400 shrink-0" />
-                  <span>{cv.location}</span>
-                </div>
+      <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 print:max-w-none print:p-0" lang="en">
+        <article className="cv-document">
+          <header className="cv-header rounded-xl border border-border bg-card p-6 sm:p-8 print:rounded-none print:border-0 print:border-b print:border-slate-300 print:bg-white print:px-0 print:pb-4 print:pt-0">
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+              <img
+                src="/images/profile.jpeg"
+                alt={cv.name}
+                width={112}
+                height={112}
+                className="h-24 w-24 shrink-0 rounded-full border border-border object-cover sm:h-28 sm:w-28 print:h-20 print:w-20"
+              />
+              <div className="min-w-0 flex-1">
+                <h1 className="font-display text-4xl font-medium sm:text-5xl print:text-3xl">{cv.name}</h1>
+                <p className="mt-2 text-lg text-accent print:mt-1 print:text-base print:text-blue-700">{cv.title}</p>
+                <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground print:mt-2 print:gap-x-4 print:text-xs print:text-slate-700">
+                  {contacts.map(({ icon: Icon, label, href, external }) => (
+                    <li key={label}>
+                      {href ? (
+                        <a
+                          href={href}
+                          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          className="inline-flex items-center gap-2 transition-colors hover:text-accent"
+                        >
+                          <Icon size={14} aria-hidden="true" className="shrink-0 text-accent print:text-blue-700" />
+                          {label}
+                        </a>
+                      ) : (
+                        <span className="inline-flex items-center gap-2">
+                          <Icon size={14} aria-hidden="true" className="shrink-0 text-accent print:text-blue-700" />
+                          {label}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-
-            {/* Profile Photo + Executive Summary (Simple, Direct Language) */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
-              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-cyan-500/50 shrink-0 shadow-xl bg-slate-800">
-                <img
-                  src="/images/profile.jpeg"
-                  alt={cv.name}
-                  className="w-full h-full object-cover object-center"
-                />
+            {cv.summary && (
+              <div className="mt-6 max-w-3xl space-y-3 text-[15px] leading-relaxed text-foreground/85 print:mt-3 print:space-y-1.5 print:text-[10pt] print:text-slate-800">
+                {cv.summary.split("\n\n").map((paragraph, i) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
               </div>
-
-              <div className="flex-1 text-xs sm:text-[13px] leading-relaxed text-slate-200 print:text-slate-100 space-y-2">
-                {cv.summary ? (
-                  cv.summary.split("\n\n").map((para, pIdx) => <p key={pIdx}>{para}</p>)
-                ) : (
-                  <>
-                    <p>
-                      Senior Digital Marketing Specialist with 10+ years of experience leading diverse marketing projects and teams. I have a proven ability to drive revenue growth through data-driven strategies across marketing, automation, and team leadership.
-                    </p>
-                    <p>
-                      My background as a Fullstack Software Developer and Business Manager provides the technical expertise to efficiently implement and manage the tech and business aligned solutions essential for modern marketing.
-                    </p>
-                  </>
-                )}
-              </div>
-            </div>
+            )}
           </header>
 
-          {/* Body Content */}
-          <div className="p-6 sm:p-7 print:p-4 space-y-6 print:space-y-5">
-            {/* 1. WORK EXPERIENCE - FULL SINGLE COLUMN */}
-            <section aria-label="Work Experience" className="space-y-4 print:space-y-3.5">
-              <div className="border-b-2 border-blue-500/80 pb-1 mb-3">
-                <h2 className="text-sm sm:text-base font-bold tracking-wider uppercase text-white print:text-slate-900 flex items-center gap-2">
-                  <Briefcase size={16} className="text-cyan-400 print:text-blue-600" />
-                  WORK EXPERIENCE
-                </h2>
-              </div>
-
-              <div className="space-y-4 print:space-y-3.5">
-                {cv.experiences.map((exp, idx) => (
-                  <article
-                    key={idx}
-                    className="cv-entry pb-3.5 last:pb-0 border-b border-slate-800/60 print:border-slate-200 last:border-b-0"
-                  >
-                    {/* Role at Company [ Period ] */}
-                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
-                      <div className="text-sm sm:text-[14px] font-bold text-white print:text-slate-900">
-                        <span>{exp.role}</span>
-                        <span className="font-normal text-slate-400 print:text-slate-600"> at </span>
-                        <span className="text-cyan-400 print:text-blue-700 font-semibold">{exp.company}</span>
-                      </div>
-                      <span className="text-xs font-mono text-slate-400 print:text-slate-600 shrink-0">
-                        [ {exp.period} ]
-                      </span>
-                    </div>
-
-                    {/* Simple, straightforward bullets */}
-                    <ul className="space-y-1 text-xs sm:text-[12.5px] text-slate-300 print:text-slate-800 leading-snug pl-1">
-                      {exp.achievements.map((ach, aIdx) => (
-                        <li key={aIdx} className="flex items-start gap-2">
-                          <span className="text-cyan-400 print:text-blue-600 font-bold shrink-0 mt-0.5">•</span>
-                          <span>{ach}</span>
+          <section aria-label="Experience" className="mt-12 print:mt-5">
+            <SectionTitle>Experience</SectionTitle>
+            <div className="flex flex-col">
+              {cv.experiences.map((exp, i) => (
+                <article
+                  key={`${exp.company}-${exp.period}-${i}`}
+                  className="cv-entry border-b border-border/60 py-6 first:pt-0 last:border-0 last:pb-0 print:border-slate-200 print:py-2.5"
+                >
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                    <h3 className="text-lg font-medium leading-snug print:text-[11pt]">
+                      {exp.role}
+                      <span className="font-normal text-muted-foreground print:text-slate-600"> · {exp.company}</span>
+                    </h3>
+                    <p className="shrink-0 text-sm tabular-nums text-muted-foreground print:text-xs print:text-slate-600">
+                      {exp.period}
+                    </p>
+                  </div>
+                  {exp.description && (
+                    <p className="mt-2 text-sm text-muted-foreground print:mt-1 print:text-xs print:text-slate-700">
+                      {exp.description}
+                    </p>
+                  )}
+                  {exp.achievements.length > 0 && (
+                    <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-relaxed text-foreground/80 marker:text-accent print:mt-1.5 print:space-y-0.5 print:text-[9.5pt] print:leading-snug print:text-slate-800 print:marker:text-blue-700">
+                      {exp.achievements.map((achievement, j) => (
+                        <li key={j}>{achievement}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {exp.tools?.length > 0 && (
+                    <ul aria-label="Tools" className="mt-3 flex flex-wrap gap-1.5 print:mt-1.5 print:gap-1">
+                      {exp.tools.map((tool) => (
+                        <li
+                          key={tool}
+                          className="rounded-full border border-border px-2.5 py-0.5 text-xs text-muted-foreground print:border-slate-300 print:px-1.5 print:text-[8pt] print:text-slate-700"
+                        >
+                          {tool}
                         </li>
                       ))}
                     </ul>
+                  )}
+                </article>
+              ))}
+            </div>
+          </section>
 
-                    {/* Tools Row */}
-                    {exp.tools && exp.tools.length > 0 && (
-                      <div className="mt-2 flex flex-wrap items-center gap-1 text-[10.5px]">
-                        <span className="font-semibold uppercase tracking-wider text-slate-400 print:text-slate-600 mr-1">
-                          TOOLS:
-                        </span>
-                        {exp.tools.map((tool, tIdx) => (
-                          <span
-                            key={tIdx}
-                            className="bg-slate-800/80 print:bg-slate-100 text-cyan-300 print:text-slate-800 border border-slate-700/70 print:border-slate-300 rounded px-1.5 py-0.5"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </article>
+          <div className="cv-bottom-section mt-12 grid grid-cols-1 gap-12 md:grid-cols-2 print:mt-5 print:grid-cols-2 print:gap-6">
+            <section aria-label="Skills">
+              <SectionTitle>Skills</SectionTitle>
+              <div className="space-y-5 print:space-y-2">
+                {cv.skillCategories.map((category) => (
+                  <div key={category.category}>
+                    <h3 className="text-sm font-medium print:text-[10pt]">{category.category}</h3>
+                    <ul className="mt-2 space-y-1 text-sm text-muted-foreground print:mt-0.5 print:space-y-0 print:text-[9pt] print:text-slate-700">
+                      {category.skills.map((skill) => (
+                        <li key={skill}>{skill}</li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
               </div>
             </section>
 
-            {/* 2. BELOW EXPERIENCE: SKILLS & EDUCATION SECTION (2 Balanced Columns) */}
-            <section
-              aria-label="Skills, Education and Technical Background"
-              className="cv-bottom-section pt-2 border-t-2 border-slate-800 print:border-slate-300"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 print:grid-cols-2 gap-5 items-start">
-                {/* Column 1: Skills */}
-                <div className="rounded-xl border border-slate-800 print:border-slate-300 p-4 bg-slate-900/50 print:bg-slate-50/50 space-y-3">
-                  <div className="flex items-center gap-2 border-b border-slate-700/80 print:border-slate-300 pb-1.5">
-                    <Settings size={16} className="text-cyan-400 print:text-blue-600" />
-                    <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white print:text-slate-900">
-                      Skills
-                    </h3>
-                  </div>
-
-                  <div className="space-y-3 text-xs">
-                    <div>
-                      <p className="font-semibold text-cyan-400 print:text-blue-700 text-xs mb-1.5">
-                        → {cv.skillCategories[0]?.category?.replace(/\s*\(7 años\)/i, "") || "Marketing"}
+            <div className="space-y-12 print:space-y-4">
+              <section aria-label="Education">
+                <SectionTitle>Education</SectionTitle>
+                <div className="space-y-5 print:space-y-2">
+                  {cv.education.map((edu) => (
+                    <div key={`${edu.degree}-${edu.period}`}>
+                      <div className="flex items-baseline justify-between gap-4">
+                        <h3 className="text-sm font-medium print:text-[10pt]">{edu.degree}</h3>
+                        <span className="shrink-0 text-xs tabular-nums text-muted-foreground print:text-slate-600">
+                          {edu.period}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-sm text-muted-foreground print:mt-0 print:text-[9pt] print:text-slate-700">
+                        {[edu.institution, edu.location].filter(Boolean).join(" · ")}
                       </p>
-                      <ul className="space-y-1 text-slate-300 print:text-slate-800 leading-snug pl-1">
-                        {cv.skillCategories[0]?.skills.map((skill, sIdx) => (
-                          <li key={sIdx} className="flex items-start gap-1.5">
-                            <span className="text-slate-500 print:text-slate-400 shrink-0">•</span>
-                            <span>{skill}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Column 2: Education + Web Development Skills */}
-                <div className="space-y-4">
-                  {/* Education Card */}
-                  <div className="rounded-xl border border-slate-800 print:border-slate-300 p-4 bg-slate-900/50 print:bg-slate-50/50 space-y-3">
-                    <div className="flex items-center gap-2 border-b border-slate-700/80 print:border-slate-300 pb-1.5">
-                      <GraduationCap size={16} className="text-cyan-400 print:text-blue-600" />
-                      <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white print:text-slate-900">
-                        Education
-                      </h3>
-                    </div>
-
-                    <div className="space-y-2.5 text-xs text-slate-300 print:text-slate-800">
-                      <div>
-                        <div className="flex justify-between items-baseline gap-1 font-semibold text-white print:text-slate-900">
-                          <span>→ Business Management and Innovation</span>
-                          <span className="font-mono text-[11px] text-slate-400 print:text-slate-600">[ 2016 - 2022 ]</span>
-                        </div>
-                        <p className="text-cyan-400 print:text-blue-700">Universidad EAFIT, Medellin</p>
-                        <p className="text-[11px] text-slate-400 print:text-slate-600 italic mt-0.5">
-                          (Fully paid scholarship for academic achievement)
+                      {edu.achievements.map((achievement) => (
+                        <p key={achievement} className="mt-1 text-xs text-accent print:text-[8.5pt] print:text-blue-700">
+                          {achievement}
                         </p>
-                      </div>
-
-                      <div className="pt-1 border-t border-slate-800/60 print:border-slate-200">
-                        <div className="flex justify-between items-baseline gap-1 font-semibold text-white print:text-slate-900">
-                          <span>→ Graphic and multimedia design</span>
-                          <span className="font-mono text-[11px] text-slate-400 print:text-slate-600">[ 2014 - 2015 ]</span>
-                        </div>
-                        <p className="text-cyan-400 print:text-blue-700">SENA, Medellin, Colombia</p>
-                      </div>
-
-                      <div className="pt-1 border-t border-slate-800/60 print:border-slate-200">
-                        <p className="font-semibold text-white print:text-slate-900">→ English Level C2</p>
-                        <p className="text-slate-400 print:text-slate-600 text-[11px]">TOEFL, 2022</p>
-                      </div>
+                      ))}
                     </div>
-                  </div>
-
-                  {/* Web Development Skills Card */}
-                  <div className="rounded-xl border border-slate-800 print:border-slate-300 p-4 bg-slate-900/50 print:bg-slate-50/50 space-y-2.5">
-                    <div className="flex items-center gap-2 border-b border-slate-700/80 print:border-slate-300 pb-1.5">
-                      <Code size={16} className="text-cyan-400 print:text-blue-600" />
-                      <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-white print:text-slate-900">
-                        Web Development Skills
-                      </h3>
-                    </div>
-
-                    <div className="text-xs text-slate-300 print:text-slate-800 space-y-2 leading-relaxed">
-                      <div>
-                        <p className="font-semibold text-slate-200 print:text-slate-900 mb-1">• Low code platforms:</p>
-                        <ul className="pl-3 space-y-0.5 text-[11.5px] text-slate-400 print:text-slate-700">
-                          <li>◦ WordPress (Advanced)</li>
-                          <li>◦ Shopify (Advanced)</li>
-                          <li>◦ Webflow (Advanced)</li>
-                          <li>◦ Lovable, V0.app (advanced)</li>
-                        </ul>
-                      </div>
-
-                      <div className="pt-1 border-t border-slate-800/60 print:border-slate-200 text-[11.5px]">
-                        <p className="font-semibold text-slate-200 print:text-slate-900">Other:</p>
-                        <p className="text-slate-400 print:text-slate-700 mt-0.5">
-                          OpenAI API, Gemini API, Node.js, Javascript, Html, CSS, Next.js, Mongo DB, APIs, Tailwind
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              </div>
-            </section>
+              </section>
+
+              {cv.languages.length > 0 && (
+                <section aria-label="Languages">
+                  <SectionTitle>Languages</SectionTitle>
+                  <ul className="space-y-1 text-sm text-muted-foreground print:text-[9pt] print:text-slate-700">
+                    {cv.languages.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              )}
+            </div>
           </div>
         </article>
       </main>
 
-      {/* Strict Print CSS for exact 2-page pagination & zero chrome bleed */}
       <style jsx global>{`
         @media print {
           @page {
             size: letter portrait;
-            margin: 4mm 8mm 6mm 8mm;
+            margin: 10mm 12mm;
           }
-
           html,
           body {
-            margin: 0 !important;
-            padding: 0 !important;
             background: #ffffff !important;
             color: #0f172a !important;
             font-size: 10pt !important;
-            line-height: 1.3 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
           }
-
-          /* Hide global site navigation, footer, skip link and toolbars */
-          .no-print,
-          .site-header,
-          .site-footer,
-          .skip-link,
-          header.site-header,
-          footer.site-footer,
-          nav.desktop-nav,
-          .mobile-menu-trigger {
+          .no-print {
             display: none !important;
           }
-
-          .site-main,
-          main {
-            margin: 0 !important;
-            padding: 0 !important;
-            min-height: 0 !important;
-          }
-
-          .cv-document {
-            box-shadow: none !important;
-            border: none !important;
-            background: #ffffff !important;
-            color: #0f172a !important;
-            max-width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-
+          .cv-entry,
           .cv-header {
-            background-color: #162032 !important;
-            color: #ffffff !important;
-            padding: 16px 20px !important;
-            margin-top: 0 !important;
-            margin-bottom: 10px !important;
-            border-radius: 6px !important;
-            break-inside: avoid !important;
-            page-break-inside: avoid !important;
+            break-inside: avoid;
+            page-break-inside: avoid;
           }
-
-          .cv-header a {
-            pointer-events: auto !important;
-            color: #e2e8f0 !important;
-          }
-
-          .cv-entry {
-            break-inside: avoid !important;
-            page-break-inside: avoid !important;
-          }
-
-          .cv-bottom-section {
-            break-inside: avoid !important;
-            page-break-inside: avoid !important;
-          }
-
           a {
-            text-decoration: none !important;
             color: inherit !important;
+            text-decoration: none !important;
           }
         }
       `}</style>

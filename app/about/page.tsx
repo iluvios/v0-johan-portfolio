@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import CVPage from "@/app/cv/page";
 
 export const metadata: Metadata = {
-  title: "CV & About — Johan Alvarez",
+  title: "About & CV",
   description:
-    "Johan Alvarez’s CV: 10+ years in digital marketing, automation, and software development. Explore work experience, skills, and education, or download the PDF.",
+    "Johan Alvarez’s CV: 10+ years across software development, growth marketing, and martech — outbound, marketing automation, CRM, and attribution. View experience, skills, and education, or download the PDF.",
   openGraph: {
-    title: "Johan Alvarez — Senior Martech Specialist",
+    title: "Johan Alvarez — Senior Martech & GTM Engineer",
     description:
-      "Marketing, technology, and business. View Johan’s professional experience, skills, education, and downloadable CV.",
+      "Experience, skills, and education. Outbound, marketing automation, CRM, and attribution systems.",
     type: "profile",
   },
 };

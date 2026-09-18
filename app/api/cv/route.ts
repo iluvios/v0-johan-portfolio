@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 import { DEFAULT_CV_DATA, type CVProfile } from "@/lib/profile-data"
+import { requireAdmin } from "@/lib/admin-auth"
 
 function getDatabaseUrl(): string | undefined {
   return (
@@ -53,6 +54,9 @@ export async function GET() {
 }
 
 export async function PUT(request: NextRequest) {
+  const unauthorized = requireAdmin(request)
+  if (unauthorized) return unauthorized
+
   try {
     const body: CVProfile = await request.json()
 

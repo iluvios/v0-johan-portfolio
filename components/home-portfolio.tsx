@@ -19,11 +19,13 @@ import {
   ContentEmpty,
   ContactInvitation,
 } from "@/components/portfolio-ui";
+import { Badge } from "@/components/ui/badge";
 import {
   usePortfolioCopy,
   useFeaturedProjects,
   useArticles,
 } from "@/lib/portfolio";
+import { STACK } from "@/lib/site";
 
 function Hero() {
   const { copy, language } = usePortfolioCopy();
@@ -108,7 +110,7 @@ function SelectedWork() {
                 }
               >
                 <span>{String(i + 1).padStart(2, "0")}</span>
-                <span>{project.client || project.title}</span>
+                <span>{project.title}</span>
               </a>
             ))}
           </nav>
@@ -136,6 +138,83 @@ function SelectedWork() {
           )}
         </div>
       </div>
+    </section>
+  );
+}
+
+function Proof() {
+  const { copy } = usePortfolioCopy();
+  return (
+    <section className="section" aria-labelledby="proof-heading">
+      <div className="section-heading">
+        <div className="flex flex-col gap-4">
+          <Eyebrow>{copy.proof}</Eyebrow>
+          <h2 id="proof-heading" className="section-title">
+            {copy.proofTitle}
+          </h2>
+        </div>
+      </div>
+      <Reveal>
+        <dl className="proof-grid">
+          {copy.metrics.map((metric) => (
+            <div key={metric.value} className="proof-item">
+              <dt className="proof-label">{metric.label}</dt>
+              <dd className="proof-value">{metric.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </Reveal>
+      <div className="proof-stack">
+        <p className="eyebrow">{copy.stackLabel}</p>
+        <ul className="flex flex-wrap gap-2">
+          {STACK.map((tool) => (
+            <li key={tool}>
+              <Badge variant="tag">{tool}</Badge>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function ServicesTeaser() {
+  const { copy } = usePortfolioCopy();
+  return (
+    <section className="section" aria-labelledby="services-heading">
+      <div className="section-heading">
+        <div className="flex flex-col gap-4">
+          <Eyebrow>{copy.servicesEyebrow}</Eyebrow>
+          <h2 id="services-heading" className="section-title">
+            {copy.servicesTeaserTitle}
+          </h2>
+          <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
+            {copy.servicesTeaserBody}
+          </p>
+        </div>
+        <Link className="text-link shrink-0" href="/services">
+          {copy.servicesCta}
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
+      </div>
+      <Reveal>
+        <div className="service-teaser-grid">
+          {copy.services.map((service, i) => (
+            <Link
+              key={service.id}
+              href={`/services#${service.id}`}
+              className="service-teaser"
+            >
+              <span className="service-index" aria-hidden="true">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3>{service.title}</h3>
+              <p>{service.outcome}</p>
+              <ArrowUpRight className="service-teaser-arrow" size={20} aria-hidden="true" />
+            </Link>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }
@@ -173,35 +252,32 @@ function Perspective() {
   );
 }
 
+// Only rendered once there are published articles to show.
 function LatestWriting() {
   const { copy } = usePortfolioCopy();
-  const { data: articles, isLoading, error, mutate } = useArticles();
+  const { data: articles } = useArticles();
+  if (!articles?.length) return null;
   return (
-    <section className="section">
-      <div className="section-heading">
-        <div className="flex flex-col gap-4">
-          <Eyebrow>{copy.journal}</Eyebrow>
-          <h2 className="section-title">{copy.journalTitle}</h2>
+    <>
+      <Separator />
+      <section className="section">
+        <div className="section-heading">
+          <div className="flex flex-col gap-4">
+            <Eyebrow>{copy.journal}</Eyebrow>
+            <h2 className="section-title">{copy.journalTitle}</h2>
+          </div>
+          <Link className="text-link" href="/articles">
+            {copy.allArticles}
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </Link>
         </div>
-        <Link className="text-link" href="/articles">
-          {copy.allArticles}
-          <ArrowUpRight size={18} aria-hidden="true" />
-        </Link>
-      </div>
-      {isLoading ? (
-        <ContentLoading />
-      ) : error ? (
-        <ContentEmpty error onReset={() => mutate()} />
-      ) : articles?.length ? (
-        articles.slice(0, 2).map((article) => (
+        {articles.slice(0, 2).map((article) => (
           <Reveal key={article.id}>
             <ArticleRow article={article} />
           </Reveal>
-        ))
-      ) : (
-        <ContentEmpty />
-      )}
-    </section>
+        ))}
+      </section>
+    </>
   );
 }
 
@@ -213,8 +289,11 @@ export default function HomePortfolio() {
         <Separator />
         <SelectedWork />
         <Separator />
-        <Perspective />
+        <Proof />
         <Separator />
+        <ServicesTeaser />
+        <Separator />
+        <Perspective />
         <LatestWriting />
         <div className="pb-16 md:pb-24">
           <ContactInvitation />

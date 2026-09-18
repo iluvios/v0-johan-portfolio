@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 import { DEFAULT_PROJECTS, normalizeProject, type Project } from "@/lib/projects"
+import { requireAdmin } from "@/lib/admin-auth"
 
 function getDatabaseUrl(): string | undefined {
   return (
@@ -41,14 +42,14 @@ export async function GET(request: NextRequest) {
         SELECT * FROM projects 
         WHERE featured = true
         ORDER BY order_index ASC NULLS LAST, created_at DESC NULLS LAST, id DESC
-        LIMIT 2
+        LIMIT 3
       `
-      // If no projects are marked as featured, fallback to latest 2 projects
+      // If no projects are marked as featured, fallback to the first 3 projects
       if (!projects || projects.length === 0) {
         projects = await sql`
-          SELECT * FROM projects 
+          SELECT * FROM projects
           ORDER BY order_index ASC NULLS LAST, created_at DESC NULLS LAST, id DESC
-          LIMIT 2
+          LIMIT 3
         `
       }
     } else if (category && category !== "All") {
@@ -90,6 +91,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const unauthorized = requireAdmin(request)
+  if (unauthorized) return unauthorized
+
   try {
     const dbUrl = getDatabaseUrl()
     const project = await request.json()
