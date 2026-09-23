@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
-import { DEFAULT_PROJECTS, normalizeProject, type Project } from "@/lib/projects"
+import { DEFAULT_PROJECTS, cleanCaseStudy, normalizeCaseStudy, normalizeProject, type Project } from "@/lib/projects"
 import { requireAdmin } from "@/lib/admin-auth"
 
 function getDatabaseUrl(): string | undefined {
@@ -78,6 +78,10 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     const tagsArray = Array.isArray(project.tags) ? project.tags : null
     const galleryArray = Array.isArray(project.gallery) ? project.gallery : null
     const featured = typeof project.featured === "boolean" ? project.featured : null
+    const caseStudy = normalizeCaseStudy(project.case_study)
+    const caseStudyJson = caseStudy ? JSON.stringify(cleanCaseStudy(caseStudy)) : null
+
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS case_study JSONB;`.catch(() => {})
 
     const result = await sql`
       UPDATE projects
@@ -91,6 +95,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
           gallery = COALESCE(${galleryArray}, gallery),
           website_url = COALESCE(${project.website_url}, website_url),
           featured = COALESCE(${featured}, featured),
+          case_study = COALESCE(${caseStudyJson}::jsonb, case_study),
           updated_at = CURRENT_TIMESTAMP
       WHERE id = ${id}
       RETURNING *

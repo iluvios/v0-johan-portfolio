@@ -47,6 +47,7 @@ import {
 import { CVManager } from "@/components/admin/cv-manager"
 import { RoadmapManager } from "@/components/admin/roadmap-manager"
 import { CrmManager } from "@/components/admin/crm-manager"
+import { CaseStudyEditor } from "@/components/admin/case-study-editor"
 import { type CVProfile, DEFAULT_CV_DATA, getCVData, updateCVData } from "@/lib/profile-data"
 import Link from "next/link"
 
@@ -1211,6 +1212,11 @@ export default function AdminPage() {
                         </div>
                       )}
                     </div>
+
+                    <CaseStudyEditor
+                      value={editingProject.case_study ?? null}
+                      onChange={(case_study) => setEditingProject({ ...editingProject, case_study })}
+                    />
 
                     {/* Featured Toggle */}
                     <div className="flex items-center space-x-3 pt-2">

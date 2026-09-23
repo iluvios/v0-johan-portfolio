@@ -1,3 +1,62 @@
+/**
+ * How a number was sourced. Shown next to every metric so a reader can weigh it:
+ * a claim with a stated source is credible, an unsourced one is not.
+ */
+export type MetricSource = "verified" | "client" | "estimate"
+
+export interface CaseStudyMetric {
+  label: string
+  value: string
+  source: MetricSource
+}
+
+export interface CaseStudyStep {
+  title: string
+  detail: string
+}
+
+export interface CaseStudyIteration {
+  label: string
+  change: string
+  result: string
+}
+
+export interface CaseStudyCreative {
+  image_url: string
+  caption: string
+}
+
+export interface CaseStudyEmailFlow {
+  name: string
+  trigger: string
+  steps: string
+  result: string
+}
+
+export interface CaseStudyTestimonial {
+  quote: string
+  author: string
+  role: string
+}
+
+/** Optional long-form story behind a project. Every section renders only when filled. */
+export interface CaseStudy {
+  year: string
+  duration: string
+  role: string
+  team: string
+  problem: string
+  approach: string
+  channels: string
+  funnel: CaseStudyStep[]
+  iterations: CaseStudyIteration[]
+  metrics: CaseStudyMetric[]
+  creatives: CaseStudyCreative[]
+  email_flows: CaseStudyEmailFlow[]
+  learnings: string
+  testimonial: CaseStudyTestimonial
+}
+
 export interface Project {
   id: number
   title: string
@@ -10,9 +69,117 @@ export interface Project {
   gallery: string[]
   website_url: string | null
   featured: boolean
+  case_study: CaseStudy | null
   order_index?: number
   created_at: string
   updated_at: string
+}
+
+export function emptyCaseStudy(): CaseStudy {
+  return {
+    year: "",
+    duration: "",
+    role: "",
+    team: "",
+    problem: "",
+    approach: "",
+    channels: "",
+    funnel: [],
+    iterations: [],
+    metrics: [],
+    creatives: [],
+    email_flows: [],
+    learnings: "",
+    testimonial: { quote: "", author: "", role: "" },
+  }
+}
+
+const METRIC_SOURCES: MetricSource[] = ["verified", "client", "estimate"]
+
+function text(value: unknown): string {
+  return typeof value === "string" ? value : ""
+}
+
+function list<T>(value: unknown, map: (item: any) => T): T[] {
+  return Array.isArray(value) ? value.filter((item) => item && typeof item === "object").map(map) : []
+}
+
+/** Accepts the JSONB value (object or string) and returns a complete, well-typed case study. */
+export function normalizeCaseStudy(raw: unknown): CaseStudy | null {
+  let value = raw
+  if (typeof value === "string") {
+    try {
+      value = JSON.parse(value)
+    } catch {
+      return null
+    }
+  }
+  if (!value || typeof value !== "object") return null
+  const cs = value as Record<string, any>
+  const testimonial = cs.testimonial && typeof cs.testimonial === "object" ? cs.testimonial : {}
+
+  return {
+    year: text(cs.year),
+    duration: text(cs.duration),
+    role: text(cs.role),
+    team: text(cs.team),
+    problem: text(cs.problem),
+    approach: text(cs.approach),
+    channels: text(cs.channels),
+    funnel: list(cs.funnel, (s) => ({ title: text(s.title), detail: text(s.detail) })),
+    iterations: list(cs.iterations, (i) => ({
+      label: text(i.label),
+      change: text(i.change),
+      result: text(i.result),
+    })),
+    metrics: list(cs.metrics, (m) => ({
+      label: text(m.label),
+      value: text(m.value),
+      source: METRIC_SOURCES.includes(m.source) ? m.source : "estimate",
+    })),
+    creatives: list(cs.creatives, (c) => ({ image_url: text(c.image_url), caption: text(c.caption) })),
+    email_flows: list(cs.email_flows, (f) => ({
+      name: text(f.name),
+      trigger: text(f.trigger),
+      steps: text(f.steps),
+      result: text(f.result),
+    })),
+    learnings: text(cs.learnings),
+    testimonial: {
+      quote: text(testimonial.quote),
+      author: text(testimonial.author),
+      role: text(testimonial.role),
+    },
+  }
+}
+
+/** Drops empty rows so half-filled editor entries never reach the public page. */
+export function cleanCaseStudy(cs: CaseStudy): CaseStudy {
+  return {
+    ...cs,
+    funnel: cs.funnel.filter((s) => s.title.trim()),
+    iterations: cs.iterations.filter((i) => i.label.trim() || i.change.trim()),
+    metrics: cs.metrics.filter((m) => m.value.trim() && m.label.trim()),
+    creatives: cs.creatives.filter((c) => c.image_url.trim()),
+    email_flows: cs.email_flows.filter((f) => f.name.trim()),
+  }
+}
+
+/** Which parts of the story are filled — drives the editor checklist. */
+export function caseStudyChecklist(cs: CaseStudy | null) {
+  const c = cs ?? emptyCaseStudy()
+  return [
+    { key: "context", label: "Context (year, duration, role)", done: Boolean(c.year && c.role) },
+    { key: "problem", label: "Problem / goal", done: Boolean(c.problem.trim()) },
+    { key: "approach", label: "Approach", done: Boolean(c.approach.trim()) },
+    { key: "funnel", label: "Funnel steps", done: c.funnel.some((s) => s.title.trim()) },
+    { key: "iterations", label: "Iterations (what changed and why)", done: c.iterations.some((i) => i.change.trim()) },
+    { key: "metrics", label: "Results with sources", done: c.metrics.some((m) => m.value.trim()) },
+    { key: "creatives", label: "Creatives", done: c.creatives.some((x) => x.image_url.trim()) },
+    { key: "email", label: "Email / lifecycle flows", done: c.email_flows.some((f) => f.name.trim()) },
+    { key: "learnings", label: "Learnings", done: Boolean(c.learnings.trim()) },
+    { key: "testimonial", label: "Testimonial / reference", done: Boolean(c.testimonial.quote.trim()) },
+  ]
 }
 
 export function normalizeProject(raw: any): Project {
@@ -62,6 +229,7 @@ export function normalizeProject(raw: any): Project {
     gallery,
     website_url: raw.website_url || null,
     featured: Boolean(raw.featured),
+    case_study: normalizeCaseStudy(raw.case_study),
     order_index: raw.order_index !== undefined && raw.order_index !== null ? Number(raw.order_index) : 0,
     created_at: raw.created_at ? new Date(raw.created_at).toISOString() : new Date().toISOString(),
     updated_at: raw.updated_at ? new Date(raw.updated_at).toISOString() : new Date().toISOString(),
@@ -84,6 +252,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     gallery: [],
     website_url: "https://refio.so/",
     featured: true,
+    case_study: null,
     order_index: 0,
     created_at: "2026-01-15T00:00:00.000Z",
     updated_at: "2026-01-15T00:00:00.000Z",
@@ -101,6 +270,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     gallery: [],
     website_url: "https://getmilotrack.com/",
     featured: true,
+    case_study: null,
     order_index: 1,
     created_at: "2026-01-10T00:00:00.000Z",
     updated_at: "2026-01-10T00:00:00.000Z",
@@ -117,6 +287,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     gallery: [],
     website_url: "https://agenticsoftwareinc.com/",
     featured: true,
+    case_study: null,
     order_index: 2,
     created_at: "2026-01-05T00:00:00.000Z",
     updated_at: "2026-01-05T00:00:00.000Z",
@@ -134,6 +305,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     gallery: [],
     website_url: "https://international-nurses.com/",
     featured: false,
+    case_study: null,
     order_index: 3,
     created_at: "2024-02-01T00:00:00.000Z",
     updated_at: "2024-02-01T00:00:00.000Z",
@@ -151,6 +323,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     gallery: [],
     website_url: "https://www.savant-international.com/",
     featured: false,
+    case_study: null,
     order_index: 4,
     created_at: "2024-01-02T00:00:00.000Z",
     updated_at: "2024-01-02T00:00:00.000Z",

@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
-import { DEFAULT_PROJECTS, normalizeProject, type Project } from "@/lib/projects"
+import { DEFAULT_PROJECTS, cleanCaseStudy, normalizeCaseStudy, normalizeProject, type Project } from "@/lib/projects"
 import { requireAdmin } from "@/lib/admin-auth"
 
 function getDatabaseUrl(): string | undefined {
@@ -111,12 +111,15 @@ export async function POST(request: NextRequest) {
 
     const sql = neon(dbUrl)
     await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS order_index INTEGER DEFAULT 0;`.catch(() => {})
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS case_study JSONB;`.catch(() => {})
 
+    const caseStudy = normalizeCaseStudy(project.case_study)
+    const caseStudyJson = caseStudy ? JSON.stringify(cleanCaseStudy(caseStudy)) : null
     const tagsArray = Array.isArray(project.tags) ? project.tags : []
     const galleryArray = Array.isArray(project.gallery) ? project.gallery : []
 
     const result = await sql`
-      INSERT INTO projects (title, client, impact, description, image_url, category, tags, gallery, website_url, featured, order_index)
+      INSERT INTO projects (title, client, impact, description, image_url, category, tags, gallery, website_url, featured, case_study, order_index)
       VALUES (
         ${project.title || "Untitled Project"},
         ${project.client || null},
@@ -128,6 +131,7 @@ export async function POST(request: NextRequest) {
         ${galleryArray},
         ${project.website_url || null},
         ${Boolean(project.featured)},
+        ${caseStudyJson}::jsonb,
         ${project.order_index !== undefined ? Number(project.order_index) : 0}
       )
       RETURNING *

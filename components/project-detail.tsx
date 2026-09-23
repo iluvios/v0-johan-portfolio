@@ -13,6 +13,7 @@ import {
   Eyebrow,
 } from "@/components/portfolio-ui";
 import ProjectGallery from "@/components/project-gallery";
+import CaseStudy from "@/components/case-study";
 import { Reveal } from "@/components/portfolio-motion";
 
 export default function ProjectDetail({ id }: { id: number }) {
@@ -89,6 +90,7 @@ export default function ProjectDetail({ id }: { id: number }) {
           </dl>
         </section>
       </Reveal>
+      {project.case_study && <CaseStudy data={project.case_study} />}
       {project.tags.length > 0 && (
         <section className="flex flex-col gap-5 pb-12">
           <h2 className="text-2xl font-medium">{copy.skills}</h2>
