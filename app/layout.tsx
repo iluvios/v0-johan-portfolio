@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     template: "%s | Johan Alvarez",
   },
   description:
-    "Johan Alvarez builds outbound, marketing automation, and attribution systems for startups going from zero to one — with Clay, n8n, Salesforce, server-side tracking, and AI-built apps. Based in Medellín, working on US hours.",
+    "Johan Alvarez runs the campaigns and builds the systems behind them: paid media, lifecycle email, and SEO, plus outbound, CRM, and attribution with Clay, n8n, Salesforce, and server-side tracking. Based in Medellín, working on US hours.",
   openGraph: {
     title: "Johan Alvarez — Senior Martech & GTM Engineer",
     description:
-      "GTM systems for recently funded startups: outbound, CRM and lifecycle automation, attribution, and AI-built MVPs.",
+      "Growth marketing and GTM systems for recently funded startups: campaigns and creative, outbound, CRM and lifecycle automation, attribution, and AI-built MVPs.",
     url: "https://asjohan.com",
     siteName: "Johan Alvarez",
     type: "website",

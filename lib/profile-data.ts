@@ -48,7 +48,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
   website: "https://asjohan.com",
   linkedin: "https://linkedin.com/in/johanalvarez",
   summary:
-    "Martech and GTM engineer with 10+ years across software development, growth marketing, and marketing operations, most of it helping startups go from zero to one. I build the systems that generate and measure pipeline: outbound and enrichment (Clay, Apollo), CRM and lifecycle automation (Salesforce, HubSpot, ActiveCampaign, n8n), and attribution (server-side GTM, GA4, Triple Whale, Wicked Reports).\n\nI started as a fullstack developer and now ship production apps with AI coding tools — including Refio.so, a platform I built end-to-end and took from idea to active users in under two months. I've set up Salesforce from scratch for four projects, including custom Apex, and managed paid media budgets up to $70K/month, so I build with CAC, ROAS, and conversion in mind.",
+    "Martech and GTM engineer with 10+ years across software development, growth marketing, and marketing operations, most of it helping startups go from zero to one. I work both halves of growth: the campaigns and creative — paid media on Meta, Google, Reddit, and LinkedIn (up to $70K/month), lifecycle email, SEO, and direct-response copy — and the systems that generate and measure the pipeline they produce: outbound and enrichment (Clay, Apollo), CRM and lifecycle automation (Salesforce, HubSpot, ActiveCampaign, n8n), and attribution (server-side GTM, GA4, Triple Whale, Wicked Reports).\n\nI started as a fullstack developer and now ship production apps with AI coding tools — including Refio.so, a platform I built end-to-end and took from idea to active users in under two months. I've set up Salesforce from scratch for four projects, including custom Apex, and I came up through agencies leading design, copy, and delivery teams, so I build with CAC, ROAS, and conversion in mind.",
   experiences: [
     {
       role: "Martech & GTM Engineer",
@@ -195,16 +195,6 @@ export const DEFAULT_CV_DATA: CVProfile = {
       ],
     },
     {
-      category: "Analytics & Attribution",
-      skills: [
-        "Server-side GTM & server-side events",
-        "Google Tag Manager, GA4, Search Console",
-        "Triple Whale, Wicked Reports",
-        "PostHog",
-        "CRO & A/B testing",
-      ],
-    },
-    {
       category: "Growth Marketing",
       skills: [
         "Full-funnel strategy",
@@ -212,6 +202,26 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Email & lifecycle marketing",
         "Technical, on-page & off-page SEO",
         "Direct-response copywriting",
+      ],
+    },
+    {
+      category: "Content, Brand & Creative",
+      skills: [
+        "Ad creative and copy variations (AI-assisted production workflows)",
+        "Landing pages and websites from Figma designs and v0 prototypes",
+        "Brand positioning and website copy overhauls",
+        "Blog, webinar, and email content programs",
+        "Social and community management; Photoshop, Premiere Pro",
+      ],
+    },
+    {
+      category: "Analytics & Attribution",
+      skills: [
+        "Server-side GTM & server-side events",
+        "Google Tag Manager, GA4, Search Console",
+        "Triple Whale, Wicked Reports",
+        "PostHog",
+        "CRO & A/B testing",
       ],
     },
     {

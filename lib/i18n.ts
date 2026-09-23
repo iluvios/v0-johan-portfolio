@@ -3,13 +3,18 @@ export type Language = "en" | "es";
 export const portfolioCopy = {
   en: {
     role: "Senior Martech & GTM Engineer",
-    hero: ["I build the", "systems behind", "your pipeline."],
+    hero: ["The campaigns.", "The systems.", "The pipeline."],
     intro:
-      "Developer turned growth operator, focused on startups going from zero to one. I build outbound, marketing automation, and attribution with Clay, n8n, Salesforce, server-side tracking, and AI-built apps.",
+      "Developer turned marketer turned martech engineer. 10+ years taking startups from zero to one — running the campaigns and the creative, and building the outbound, CRM, and attribution systems behind them.",
     work: "See the work",
     talk: "Let’s talk",
     scroll: "Scroll to explore",
-    disciplines: ["GTM engineering", "Marketing automation", "Zero-to-one startups"],
+    disciplines: [
+      "Growth marketing",
+      "Martech & GTM systems",
+      "Web, content & creative",
+      "Zero-to-one startups",
+    ],
     selected: "Selected work",
     workTitle: "Built, shipped, measured.",
     allWork: "All projects",
@@ -23,6 +28,19 @@ export const portfolioCopy = {
           "Peak paid-media budget managed across Meta, Google, Reddit, and LinkedIn",
       },
       {
+        value: "$500K+",
+        label: "Attributable new revenue generated for freelance clients",
+      },
+      {
+        value: "+50K/mo",
+        label: "Organic visits added through technical, on-page, and off-page SEO",
+      },
+      {
+        value: "35%",
+        label:
+          "Email open rate, up from 12%, after segmentation and subject-line testing",
+      },
+      {
         value: "30 → 200",
         label: "Daily user registrations after CRM and lifecycle automation work",
       },
@@ -30,19 +48,15 @@ export const portfolioCopy = {
         value: "60%",
         label: "Less manual workload from RPA and workflow automation",
       },
-      {
-        value: "$500K+",
-        label: "Attributable new revenue generated for freelance clients",
-      },
     ],
     stackLabel: "Tools I work in",
     servicesEyebrow: "For recently funded startups",
     servicesTitle: "Just raised? Let’s build the engine.",
     servicesIntro:
-      "Most of my career has been spent taking startups from zero to one. I set up the go-to-market systems a new round needs to turn into revenue — outbound, CRM, automation, tracking, and the product or site you launch with. One person who can plan it, build it, and hand it over documented.",
+      "Most of my career has been spent taking startups from zero to one. I set up everything a new round needs to turn into revenue: the campaigns and creative that make demand, the outbound, CRM, and automation that capture it, the tracking that proves what worked, and the site or product you launch with. One person who can plan it, build it, write it, and hand it over documented.",
     servicesTeaserTitle: "Zero to one is my home turf.",
     servicesTeaserBody:
-      "Recently funded and need pipeline fast? I set up the outbound, CRM, automation, and tracking a new round needs — and hand it over documented.",
+      "Recently funded and need pipeline fast? I run the campaigns and build the outbound, CRM, and tracking behind them — then hand it all over documented.",
     servicesCta: "See services",
     servicesContact: "Tell me about your startup",
     services: [
@@ -55,6 +69,17 @@ export const portfolioCopy = {
           "Clay enrichment waterfalls with Apollo and other data providers",
           "Lead scoring and routing into your CRM",
           "Outreach sequence setup and copy",
+        ],
+      },
+      {
+        id: "campaigns",
+        title: "Campaigns & creative",
+        outcome: "Demand you can see, from first ad to first meeting.",
+        includes: [
+          "Paid media on Meta, Google, Reddit, and LinkedIn: setup, creative, and management",
+          "Ad copy and creative variations, produced with AI workflows and A/B tested",
+          "Lifecycle email and nurture campaigns that turn sign-ups into pipeline",
+          "SEO, content, and landing page copy written to convert",
         ],
       },
       {
@@ -76,7 +101,7 @@ export const portfolioCopy = {
           "Server-side GTM and server-side events to recover data lost to ad blockers",
           "GA4 and PostHog analytics",
           "Multi-touch attribution with Triple Whale or Wicked Reports",
-          "Paid media setup and management on Meta, Google, Reddit, and LinkedIn",
+          "Conversion tracking and ROAS reporting across Meta, Google, Reddit, and LinkedIn",
         ],
       },
       {
@@ -147,7 +172,7 @@ export const portfolioCopy = {
     perspectiveStart: "An engineer’s instincts.",
     perspectiveEnd: "A marketer’s scoreboard.",
     perspectiveBody:
-      "I’m Johan, based in Medellín and working on US hours. I started as a fullstack developer, spent years running campaigns, clients, and teams, and now build the systems in between.",
+      "I’m Johan, based in Medellín and working on US hours. I started as a fullstack developer, spent years in agencies running campaigns, creative, and client teams, and now build the systems that connect the two.",
     moreAbout: "Read my CV",
     journal: "Thinking out loud",
     journalTitle: "Notes from the process.",
@@ -156,7 +181,7 @@ export const portfolioCopy = {
     cta: "Hiring or building?",
     ctaTitle: "Let’s talk about your stack.",
     ctaBody:
-      "Open to full-time and contract roles in GTM engineering and martech. Remote, on US hours.",
+      "Open to full-time and contract roles across martech, GTM engineering, and growth marketing. Remote, on US hours.",
     projectsTitle: "Less talk. More shipping.",
     projectsIntro:
       "Startup MVPs, automation work, and the sites and funnels I’ve built for clients in Latin America and the US.",
@@ -165,7 +190,7 @@ export const portfolioCopy = {
       "Ideas on marketing, technology, and the things I learn along the way.",
     contactTitle: "Good things start with a hello.",
     contactIntro:
-      "Hiring for GTM engineering or martech, or need a system built? Tell me what you’re working on.",
+      "Hiring for martech, GTM engineering, or growth marketing — or need a campaign or a system built? Tell me what you’re working on.",
     location: "Based in Medellín (UTC−5), working on US hours.",
     name: "Your name",
     email: "Email address",
@@ -221,13 +246,18 @@ export const portfolioCopy = {
   },
   es: {
     role: "Ingeniero Senior de Martech y GTM",
-    hero: ["Construyo los", "sistemas detrás", "de tu pipeline."],
+    hero: ["Las campañas.", "Los sistemas.", "El pipeline."],
     intro:
-      "Desarrollador convertido en operador de crecimiento, enfocado en startups que pasan de cero a uno. Construyo prospección, automatización de marketing y atribución con Clay, n8n, Salesforce, tracking server-side y apps hechas con IA.",
+      "Desarrollador convertido en marketer y luego en ingeniero martech. Más de 10 años llevando startups de cero a uno: dirijo las campañas y el creativo, y construyo los sistemas de prospección, CRM y atribución que hay detrás.",
     work: "Ver el trabajo",
     talk: "Hablemos",
     scroll: "Sigue explorando",
-    disciplines: ["Ingeniería GTM", "Automatización de marketing", "Startups de cero a uno"],
+    disciplines: [
+      "Marketing de crecimiento",
+      "Sistemas martech y GTM",
+      "Web, contenido y creativo",
+      "Startups de cero a uno",
+    ],
     selected: "Trabajo seleccionado",
     workTitle: "Construido, lanzado, medido.",
     allWork: "Todos los proyectos",
@@ -241,6 +271,19 @@ export const portfolioCopy = {
           "Presupuesto máximo de pauta gestionado en Meta, Google, Reddit y LinkedIn",
       },
       {
+        value: "$500K+",
+        label: "Nuevos ingresos atribuibles generados para clientes freelance",
+      },
+      {
+        value: "+50K/mes",
+        label: "Visitas orgánicas sumadas con SEO técnico, on-page y off-page",
+      },
+      {
+        value: "35%",
+        label:
+          "Tasa de apertura de email, desde 12%, tras segmentación y pruebas de asunto",
+      },
+      {
         value: "30 → 200",
         label:
           "Registros diarios de usuarios tras el trabajo de CRM y automatización del ciclo de vida",
@@ -249,19 +292,15 @@ export const portfolioCopy = {
         value: "60%",
         label: "Menos carga de trabajo manual con RPA y automatización de procesos",
       },
-      {
-        value: "$500K+",
-        label: "Nuevos ingresos atribuibles generados para clientes freelance",
-      },
     ],
     stackLabel: "Herramientas con las que trabajo",
     servicesEyebrow: "Para startups recién financiadas",
     servicesTitle: "¿Acabas de levantar capital? Construyamos el motor.",
     servicesIntro:
-      "La mayor parte de mi carrera la he dedicado a llevar startups de cero a uno. Monto los sistemas de go-to-market que una nueva ronda necesita para convertirse en ingresos: prospección, CRM, automatización, medición y el producto o sitio con el que lanzas. Una sola persona que lo planea, lo construye y lo entrega documentado.",
+      "La mayor parte de mi carrera la he dedicado a llevar startups de cero a uno. Monto todo lo que una nueva ronda necesita para convertirse en ingresos: las campañas y el creativo que generan demanda, la prospección, el CRM y la automatización que la capturan, la medición que demuestra qué funcionó, y el sitio o producto con el que lanzas. Una sola persona que lo planea, lo construye, lo escribe y lo entrega documentado.",
     servicesTeaserTitle: "De cero a uno es mi terreno.",
     servicesTeaserBody:
-      "¿Recién financiado y necesitas pipeline rápido? Monto la prospección, el CRM, la automatización y la medición que una nueva ronda necesita, y te lo entrego documentado.",
+      "¿Recién financiado y necesitas pipeline rápido? Dirijo las campañas y construyo la prospección, el CRM y la medición que hay detrás, y te lo entrego todo documentado.",
     servicesCta: "Ver servicios",
     servicesContact: "Cuéntame sobre tu startup",
     services: [
@@ -274,6 +313,17 @@ export const portfolioCopy = {
           "Cascadas de enriquecimiento en Clay con Apollo y otros proveedores de datos",
           "Calificación y enrutamiento de leads hacia tu CRM",
           "Configuración y copy de secuencias de outreach",
+        ],
+      },
+      {
+        id: "campaigns",
+        title: "Campañas y creativo",
+        outcome: "Demanda que se ve, del primer anuncio a la primera reunión.",
+        includes: [
+          "Pauta en Meta, Google, Reddit y LinkedIn: configuración, creativos y gestión",
+          "Copy y variaciones de creativos, producidos con flujos de IA y testeados A/B",
+          "Campañas de email y nurturing que convierten registros en pipeline",
+          "SEO, contenido y copy de landing pages orientado a conversión",
         ],
       },
       {
@@ -295,7 +345,7 @@ export const portfolioCopy = {
           "GTM server-side y eventos server-side para recuperar datos que bloquean los ad blockers",
           "Analítica con GA4 y PostHog",
           "Atribución multitouch con Triple Whale o Wicked Reports",
-          "Configuración y gestión de pauta en Meta, Google, Reddit y LinkedIn",
+          "Medición de conversiones y reportes de ROAS en Meta, Google, Reddit y LinkedIn",
         ],
       },
       {
@@ -366,7 +416,7 @@ export const portfolioCopy = {
     perspectiveStart: "Instinto de ingeniero.",
     perspectiveEnd: "Obsesión por los resultados.",
     perspectiveBody:
-      "Soy Johan, vivo en Medellín y trabajo en horario de EE. UU. Empecé como desarrollador fullstack, pasé años liderando campañas, clientes y equipos, y hoy construyo los sistemas que los conectan.",
+      "Soy Johan, vivo en Medellín y trabajo en horario de EE. UU. Empecé como desarrollador fullstack, pasé años en agencias liderando campañas, creativo y equipos de clientes, y hoy construyo los sistemas que conectan ambos mundos.",
     moreAbout: "Ver mi CV",
     journal: "Pensando en voz alta",
     journalTitle: "Notas del proceso.",
@@ -375,7 +425,7 @@ export const portfolioCopy = {
     cta: "¿Contratando o construyendo?",
     ctaTitle: "Hablemos de tu stack.",
     ctaBody:
-      "Disponible para roles de tiempo completo y contratos en ingeniería GTM y martech. Remoto, en horario de EE. UU.",
+      "Disponible para roles de tiempo completo y contratos en martech, ingeniería GTM y marketing de crecimiento. Remoto, en horario de EE. UU.",
     projectsTitle: "Menos palabras. Más lanzamientos.",
     projectsIntro:
       "MVPs para startups, automatizaciones y los sitios y embudos que he construido para clientes en Latinoamérica y EE. UU.",
@@ -384,7 +434,7 @@ export const portfolioCopy = {
       "Ideas sobre marketing, tecnología y lo que voy aprendiendo en el camino.",
     contactTitle: "Todo empieza con un hola.",
     contactIntro:
-      "¿Buscas a alguien para ingeniería GTM o martech, o necesitas construir un sistema? Cuéntame en qué estás trabajando.",
+      "¿Buscas a alguien para martech, ingeniería GTM o marketing de crecimiento, o necesitas construir una campaña o un sistema? Cuéntame en qué estás trabajando.",
     location: "Desde Medellín (UTC−5), en horario de EE. UU.",
     name: "Tu nombre",
     email: "Correo electrónico",
