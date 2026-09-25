@@ -5,6 +5,7 @@ import "./globals.css";
 import SiteShell from "@/components/site-shell";
 import { LanguageProvider } from "@/contexts/language-context";
 import { PortfolioMotion } from "@/components/portfolio-motion";
+import { CONTACT_EMAIL, LINKEDIN_URL } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Johan Alvarez",
   },
   description:
-    "Johan Alvarez runs the campaigns and builds the systems behind them: paid media, lifecycle email, and SEO, plus outbound, CRM, and attribution with Clay, n8n, Salesforce, and server-side tracking. Based in Medellín, working on US hours.",
+    "Johan Alvarez builds the outbound, CRM, and attribution systems that turn campaigns into pipeline — Clay, Salesforce, HubSpot, n8n, and server-side tracking — after years of running the campaigns too. Open to GTM engineering roles; remote on US hours.",
   openGraph: {
     title: "Johan Alvarez — Senior Martech & GTM Engineer",
     description:
@@ -33,7 +34,34 @@ export const metadata: Metadata = {
     siteName: "Johan Alvarez",
     type: "website",
   },
+  twitter: { card: "summary_large_image" },
 };
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Johan Alvarez",
+  jobTitle: "Senior Martech & GTM Engineer",
+  url: "https://asjohan.com",
+  email: `mailto:${CONTACT_EMAIL}`,
+  sameAs: [LINKEDIN_URL],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Medellín",
+    addressCountry: "CO",
+  },
+  knowsLanguage: ["en", "es"],
+  knowsAbout: [
+    "GTM engineering",
+    "Marketing automation",
+    "Clay",
+    "Salesforce",
+    "HubSpot",
+    "n8n",
+    "Attribution",
+    "Paid media",
+  ],
+};
+
 export const viewport: Viewport = {
   themeColor: "#080e1c",
   width: "device-width",
@@ -47,6 +75,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`dark bg-background ${inter.variable} ${space.variable}`}
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <LanguageProvider>
           <PortfolioMotion>
             <SiteShell>{children}</SiteShell>

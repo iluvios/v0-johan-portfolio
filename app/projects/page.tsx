@@ -4,7 +4,7 @@ import ProjectBrowser from "@/components/project-browser";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Digital experiences, marketing automation, and strategies brought to life by Johan Alvarez.",
+    "Startup MVPs, GTM automation, and the sites and funnels Johan Alvarez has built for clients in Latin America and the US.",
 };
 
 export default function ProjectsPage() {

@@ -8,8 +8,8 @@ import Footer from "@/components/footer";
 export default function SiteShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
-  // When viewing /cv or /about, render pure raw CV with zero website chrome, wrappers, or .site-main padding
-  if (pathname === "/cv" || pathname === "/about") {
+  // /cv is the standalone, chrome-free CV for sharing and printing. /about shows the same CV inside the site.
+  if (pathname === "/cv") {
     return <>{children}</>;
   }
 

@@ -10,7 +10,7 @@ export default function Navigation() {
   const { language } = useLanguage();
   const pathname = usePathname();
 
-  if (pathname === "/cv" || pathname === "/about") {
+  if (pathname === "/cv") {
     return null;
   }
 

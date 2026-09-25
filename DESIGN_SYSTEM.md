@@ -35,3 +35,6 @@ Use the tokens through Tailwind (`bg-background`, `text-muted-foreground`, `bord
 ## Content
 - All public copy lives in `lib/i18n.ts` (EN + ES). Contact details and the tool stack live in `lib/site.ts`.
 - Claims must be factual: numbers and titles come from the CV stored in the database (`/admin`).
+- Every home-page metric carries a `context` (company · years) so a reader can trace it back to the CV.
+- Primary reader is a hiring manager for GTM / martech roles; startup services are the secondary path. Copy should work for both.
+- `/about` is the CV inside the site; `/cv` is the same document without site chrome, for sharing and printing (canonical → `/about`).

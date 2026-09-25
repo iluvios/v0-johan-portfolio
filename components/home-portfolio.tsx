@@ -59,18 +59,21 @@ function Hero() {
                 <ArrowUpRight data-icon="inline-end" />
               </Link>
             </GlowButton>
-            <Link href="/contact" className="text-link">
-              {copy.talk}
+            <Link href="/about" className="text-link">
+              {copy.moreAbout}
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </div>
         <div className="hero-bottom">
-          <div className="hero-disciplines">
-            {copy.disciplines.map((item) => (
-              <span key={item}>{item}</span>
+          <ul className="hero-facts">
+            {copy.facts.map((item, i) => (
+              <li key={item}>
+                {i === 0 && <span className="status-dot" aria-hidden="true" />}
+                {item}
+              </li>
             ))}
-          </div>
+          </ul>
           <a href="#selected-work" aria-label={copy.scroll}>
             <span className="scroll-label">{copy.scroll}</span>
             <ArrowDown size={20} aria-hidden="true" />
@@ -158,12 +161,19 @@ function Proof() {
         <dl className="proof-grid">
           {copy.metrics.map((metric) => (
             <div key={metric.value} className="proof-item">
-              <dt className="proof-label">{metric.label}</dt>
+              <dt className="proof-label">
+                {metric.label}
+                <span className="proof-context">{metric.context}</span>
+              </dt>
               <dd className="proof-value">{metric.value}</dd>
             </div>
           ))}
         </dl>
       </Reveal>
+      <Link className="text-link mt-4" href="/about">
+        {copy.proofCv}
+        <ArrowUpRight size={18} aria-hidden="true" />
+      </Link>
       <div className="proof-stack">
         <p className="eyebrow">{copy.stackLabel}</p>
         <ul className="flex flex-wrap gap-2">
@@ -184,7 +194,7 @@ function ServicesTeaser() {
     <section className="section" aria-labelledby="services-heading">
       <div className="section-heading">
         <div className="flex flex-col gap-4">
-          <Eyebrow>{copy.servicesEyebrow}</Eyebrow>
+          <Eyebrow>{copy.servicesTeaserEyebrow}</Eyebrow>
           <h2 id="services-heading" className="section-title">
             {copy.servicesTeaserTitle}
           </h2>

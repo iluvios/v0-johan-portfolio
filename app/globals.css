@@ -232,7 +232,8 @@
     max-width: 850px;
   }
   .hero-title {
-    font-size: clamp(4.3rem, 8.2vw, 7.6rem);
+    /* Capped by viewport height too, so the CTAs stay above the fold on short laptop screens. */
+    font-size: clamp(4.3rem, min(8.2vw, 12.5vh), 7.6rem);
     font-weight: 500;
     line-height: 0.99;
     letter-spacing: -0.07em;
@@ -254,7 +255,7 @@
     color: hsl(var(--muted-foreground));
     font-size: 17px;
     line-height: 1.6;
-    max-width: 400px;
+    max-width: 480px;
   }
   .hero-actions {
     display: flex;
@@ -299,15 +300,31 @@
     align-items: center;
     gap: 1rem;
   }
-  .hero-disciplines {
+  .hero-facts {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem 1.4rem;
   }
-  .hero-disciplines span + span::before {
+  .hero-facts li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .hero-facts li:first-child {
+    color: hsl(var(--foreground));
+  }
+  .hero-facts li + li::before {
     content: "/";
-    margin-right: 1.4rem;
+    margin-right: 0.8rem;
     opacity: 0.35;
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: hsl(var(--accent));
+    box-shadow: 0 0 0 4px hsl(var(--accent) / 0.18);
   }
   .section {
     padding-block: clamp(4rem, 8vw, 7rem);
@@ -548,7 +565,15 @@
     color: hsl(var(--muted-foreground));
     font-size: 14px;
     line-height: 1.5;
-    max-width: 28ch;
+    max-width: 30ch;
+  }
+  .proof-context {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: hsl(var(--accent) / 0.85);
   }
   .proof-stack {
     display: flex;
@@ -1424,7 +1449,7 @@
     display: none;
   }
   .hero-inner {
-    padding-top: 92px;
+    padding-top: min(92px, 8vh);
   }
   .hero-artwork {
     width: 900px;
@@ -1506,7 +1531,7 @@
     top: -58px;
   }
   .hero-inner {
-    padding-top: 100px;
+    padding-top: min(100px, 9vh);
   }
 }
 @media (max-width: 767px) {
@@ -1557,16 +1582,15 @@
     gap: 1rem;
     align-items: flex-start;
   }
-  .hero-disciplines {
-    gap: 0.25rem 0.7rem;
+  /* One fact per line on phones reads cleaner than slash-separated wrapping. */
+  .hero-facts {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
     font-size: 14px;
-    max-width: 270px;
   }
-  .hero-disciplines span {
-    white-space: nowrap;
-  }
-  .hero-disciplines span + span::before {
-    margin-right: 0.7rem;
+  .hero-facts li + li::before {
+    display: none;
   }
   .hero-bottom .scroll-label {
     display: none;

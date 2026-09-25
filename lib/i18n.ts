@@ -5,58 +5,66 @@ export const portfolioCopy = {
     role: "Senior Martech & GTM Engineer",
     hero: ["The campaigns.", "The systems.", "The pipeline."],
     intro:
-      "Developer turned marketer turned martech engineer. 10+ years taking startups from zero to one — running the campaigns and the creative, and building the outbound, CRM, and attribution systems behind them.",
+      "Developer turned marketer turned GTM engineer. I build the outbound, CRM, and attribution systems that turn campaigns into pipeline — and I’ve run those campaigns myself, with budgets up to $70K a month.",
     work: "See the work",
     talk: "Let’s talk",
     scroll: "Scroll to explore",
-    disciplines: [
-      "Growth marketing",
-      "Martech & GTM systems",
-      "Web, content & creative",
-      "Zero-to-one startups",
+    facts: [
+      "Open to full-time & contract roles",
+      "Remote · US hours (UTC−5)",
+      "English C2 · Spanish native",
     ],
     selected: "Selected work",
-    workTitle: "Built, shipped, measured.",
+    workTitle: "Shipped, live, in use.",
     allWork: "All projects",
     viewProject: "Explore project",
     proof: "Track record",
     proofTitle: "Numbers from real roles.",
+    proofCv: "See each one in context in my CV",
     metrics: [
+      {
+        value: "30 → 200",
+        label:
+          "Daily user registrations after I rebuilt the CRM and lifecycle email in ActiveCampaign",
+        context: "Pvragon · 2025–26",
+      },
       {
         value: "$70K/mo",
         label:
           "Peak paid-media budget managed across Meta, Google, Reddit, and LinkedIn",
+        context: "Pvragon · 2025–26",
       },
       {
         value: "$500K+",
-        label: "Attributable new revenue generated for freelance clients",
+        label: "Attributable new revenue for clients from funnel optimization and CRO",
+        context: "Freelance · 2022–25",
+      },
+      {
+        value: "60%",
+        label: "Less manual workload after leading RPA and workflow automation",
+        context: "Savant International · 2022",
       },
       {
         value: "+50K/mo",
         label: "Organic visits added through technical, on-page, and off-page SEO",
+        context: "PSL Software · 2018",
       },
       {
         value: "35%",
         label:
           "Email open rate, up from 12%, after segmentation and subject-line testing",
-      },
-      {
-        value: "30 → 200",
-        label: "Daily user registrations after CRM and lifecycle automation work",
-      },
-      {
-        value: "60%",
-        label: "Less manual workload from RPA and workflow automation",
+        context: "PSL Software · 2018",
       },
     ],
     stackLabel: "Tools I work in",
     servicesEyebrow: "For recently funded startups",
     servicesTitle: "Just raised? Let’s build the engine.",
     servicesIntro:
-      "Most of my career has been spent taking startups from zero to one. I set up everything a new round needs to turn into revenue: the campaigns and creative that make demand, the outbound, CRM, and automation that capture it, the tracking that proves what worked, and the site or product you launch with. One person who can plan it, build it, write it, and hand it over documented.",
-    servicesTeaserTitle: "Zero to one is my home turf.",
+      "I set up what a new round needs to turn into revenue: the campaigns that create demand, the outbound and CRM that capture it, and the tracking that proves what worked. One person who plans it, builds it, writes it, and hands it over documented.",
+    servicesTeaserEyebrow: "What I build",
+    servicesTeaserTitle: "The whole GTM engine, end to end.",
     servicesTeaserBody:
-      "Recently funded and need pipeline fast? I run the campaigns and build the outbound, CRM, and tracking behind them — then hand it all over documented.",
+      "Hiring for it or need it built, it’s the same work: the campaigns that create demand, and the outbound, CRM, and tracking that turn it into pipeline — handed over documented.",
     servicesCta: "See services",
     servicesContact: "Tell me about your startup",
     services: [
@@ -188,9 +196,9 @@ export const portfolioCopy = {
     articlesTitle: "Always a work in progress.",
     articlesIntro:
       "Ideas on marketing, technology, and the things I learn along the way.",
-    contactTitle: "Good things start with a hello.",
+    contactTitle: "Tell me what you’re working on.",
     contactIntro:
-      "Hiring for martech, GTM engineering, or growth marketing — or need a campaign or a system built? Tell me what you’re working on.",
+      "Hiring a GTM engineer or martech lead, or need a campaign or a system built? Send the role or the problem — a few lines is enough to start.",
     location: "Based in Medellín (UTC−5), working on US hours.",
     name: "Your name",
     email: "Email address",
@@ -272,59 +280,66 @@ export const portfolioCopy = {
     role: "Ingeniero Senior de Martech y GTM",
     hero: ["Las campañas.", "Los sistemas.", "El pipeline."],
     intro:
-      "Desarrollador convertido en marketer y luego en ingeniero martech. Más de 10 años llevando startups de cero a uno: dirijo las campañas y el creativo, y construyo los sistemas de prospección, CRM y atribución que hay detrás.",
+      "Desarrollador convertido en marketer y luego en ingeniero GTM. Construyo los sistemas de prospección, CRM y atribución que convierten campañas en pipeline, y he dirigido esas campañas yo mismo, con presupuestos de hasta $70K al mes.",
     work: "Ver el trabajo",
     talk: "Hablemos",
     scroll: "Sigue explorando",
-    disciplines: [
-      "Marketing de crecimiento",
-      "Sistemas martech y GTM",
-      "Web, contenido y creativo",
-      "Startups de cero a uno",
+    facts: [
+      "Disponible para roles y contratos",
+      "Remoto · horario de EE. UU. (UTC−5)",
+      "Inglés C2 · español nativo",
     ],
     selected: "Trabajo seleccionado",
-    workTitle: "Construido, lanzado, medido.",
+    workTitle: "Lanzado, en vivo, en uso.",
     allWork: "Todos los proyectos",
     viewProject: "Explorar proyecto",
     proof: "Resultados",
     proofTitle: "Números de roles reales.",
+    proofCv: "Míralos en contexto en mi CV",
     metrics: [
+      {
+        value: "30 → 200",
+        label:
+          "Registros diarios de usuarios tras rehacer el CRM y el email de ciclo de vida en ActiveCampaign",
+        context: "Pvragon · 2025–26",
+      },
       {
         value: "$70K/mes",
         label:
           "Presupuesto máximo de pauta gestionado en Meta, Google, Reddit y LinkedIn",
+        context: "Pvragon · 2025–26",
       },
       {
         value: "$500K+",
-        label: "Nuevos ingresos atribuibles generados para clientes freelance",
+        label: "Nuevos ingresos atribuibles para clientes con optimización de embudos y CRO",
+        context: "Freelance · 2022–25",
+      },
+      {
+        value: "60%",
+        label: "Menos carga de trabajo manual tras liderar RPA y automatización de procesos",
+        context: "Savant International · 2022",
       },
       {
         value: "+50K/mes",
         label: "Visitas orgánicas sumadas con SEO técnico, on-page y off-page",
+        context: "PSL Software · 2018",
       },
       {
         value: "35%",
         label:
           "Tasa de apertura de email, desde 12%, tras segmentación y pruebas de asunto",
-      },
-      {
-        value: "30 → 200",
-        label:
-          "Registros diarios de usuarios tras el trabajo de CRM y automatización del ciclo de vida",
-      },
-      {
-        value: "60%",
-        label: "Menos carga de trabajo manual con RPA y automatización de procesos",
+        context: "PSL Software · 2018",
       },
     ],
     stackLabel: "Herramientas con las que trabajo",
     servicesEyebrow: "Para startups recién financiadas",
     servicesTitle: "¿Acabas de levantar capital? Construyamos el motor.",
     servicesIntro:
-      "La mayor parte de mi carrera la he dedicado a llevar startups de cero a uno. Monto todo lo que una nueva ronda necesita para convertirse en ingresos: las campañas y el creativo que generan demanda, la prospección, el CRM y la automatización que la capturan, la medición que demuestra qué funcionó, y el sitio o producto con el que lanzas. Una sola persona que lo planea, lo construye, lo escribe y lo entrega documentado.",
-    servicesTeaserTitle: "De cero a uno es mi terreno.",
+      "Monto lo que una nueva ronda necesita para convertirse en ingresos: las campañas que generan demanda, la prospección y el CRM que la capturan, y la medición que demuestra qué funcionó. Una sola persona que lo planea, lo construye, lo escribe y lo entrega documentado.",
+    servicesTeaserEyebrow: "Lo que construyo",
+    servicesTeaserTitle: "Todo el motor de GTM, de punta a punta.",
     servicesTeaserBody:
-      "¿Recién financiado y necesitas pipeline rápido? Dirijo las campañas y construyo la prospección, el CRM y la medición que hay detrás, y te lo entrego todo documentado.",
+      "Ya sea que quieras contratar a alguien o necesites construirlo, el trabajo es el mismo: las campañas que generan demanda, y la prospección, el CRM y la medición que la convierten en pipeline, todo entregado con documentación.",
     servicesCta: "Ver servicios",
     servicesContact: "Cuéntame sobre tu startup",
     services: [
@@ -456,9 +471,9 @@ export const portfolioCopy = {
     articlesTitle: "Siempre en construcción.",
     articlesIntro:
       "Ideas sobre marketing, tecnología y lo que voy aprendiendo en el camino.",
-    contactTitle: "Todo empieza con un hola.",
+    contactTitle: "Cuéntame en qué estás trabajando.",
     contactIntro:
-      "¿Buscas a alguien para martech, ingeniería GTM o marketing de crecimiento, o necesitas construir una campaña o un sistema? Cuéntame en qué estás trabajando.",
+      "¿Buscas un GTM engineer o líder de martech, o necesitas construir una campaña o un sistema? Envíame el rol o el problema; con unas líneas basta para empezar.",
     location: "Desde Medellín (UTC−5), en horario de EE. UU.",
     name: "Tu nombre",
     email: "Correo electrónico",

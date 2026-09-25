@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CVPage from "@/app/cv/page";
+import CVDocument from "@/components/cv-document";
 
 export const metadata: Metadata = {
   title: "About & CV",
@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return <CVPage />;
+  return <CVDocument embedded />;
 }

@@ -35,7 +35,7 @@ export default function ContactPortfolio() {
             CV
             <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
-          <p className="hidden max-w-xs items-start gap-2 text-sm text-muted-foreground lg:flex">
+          <p className="flex max-w-xs items-start gap-2 text-sm text-muted-foreground">
             <MapPin className="mt-1 shrink-0" size={16} aria-hidden="true" />
             {copy.location}
           </p>
