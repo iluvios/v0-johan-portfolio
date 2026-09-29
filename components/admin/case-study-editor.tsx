@@ -89,6 +89,44 @@ export function CaseStudyEditor({
     }
   }
 
+  const handleCreativePaste = async (index: number, e: React.ClipboardEvent) => {
+    const items = e.clipboardData?.items
+    let file: File | null = null
+    if (items) {
+      for (let j = 0; j < items.length; j++) {
+        if (items[j].type.startsWith("image/")) {
+          file = items[j].getAsFile()
+          if (file) break
+        }
+      }
+    }
+    if (!file && e.clipboardData?.files?.length) {
+      for (let j = 0; j < e.clipboardData.files.length; j++) {
+        if (e.clipboardData.files[j].type.startsWith("image/")) {
+          file = e.clipboardData.files[j]
+          break
+        }
+      }
+    }
+    if (file) {
+      e.preventDefault()
+      e.stopPropagation()
+      setUploadingIndex(index)
+      setUploadError(null)
+      try {
+        const ext = file.type ? file.type.split("/")[1] || "png" : "png"
+        const cleanName = file.name && file.name !== "image.png" ? file.name : `creative-${Date.now()}.${ext}`
+        const namedFile = new File([file], cleanName, { type: file.type || `image/${ext}` })
+        const url = await uploadMedia(namedFile)
+        updateRow("creatives", index, { image_url: url })
+      } catch (error) {
+        setUploadError(error instanceof Error ? error.message : "Upload failed")
+      } finally {
+        setUploadingIndex(null)
+      }
+    }
+  }
+
   return (
     <div className="space-y-5 border-t border-slate-700 pt-5">
       <div>
@@ -279,7 +317,8 @@ export function CaseStudyEditor({
                 <Input
                   value={creative.image_url}
                   onChange={(e) => updateRow("creatives", i, { image_url: e.target.value })}
-                  placeholder="Image/video URL or upload"
+                  onPaste={(e) => handleCreativePaste(i, e)}
+                  placeholder="Paste image (Ctrl+V) or enter URL"
                   className={`${field} flex-1`}
                 />
                 <label className="mt-1 cursor-pointer">

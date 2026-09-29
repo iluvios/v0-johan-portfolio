@@ -34,7 +34,9 @@ import {
   Briefcase,
   Target,
   Users,
+  Loader2,
 } from "lucide-react"
+import { cn } from "@/lib/utils"
 import { type BlogPost, saveBlogPost, getAllBlogPosts, deleteBlogPost, uploadBlogImage } from "@/lib/blog"
 import {
   type Project,
@@ -71,7 +73,7 @@ export default function AdminPage() {
   const [isLoggingIn, setIsLoggingIn] = useState(false)
 
   const [activeTab, setActiveTab] = useState<AdminTab>("pipeline")
-  const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
+  const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error" | "info"; text: string } | null>(null)
 
   // Projects state
   const [projects, setProjects] = useState<Project[]>([])
@@ -79,6 +81,8 @@ export default function AdminPage() {
   const [isCreatingProject, setIsCreatingProject] = useState(false)
   const [projectSearch, setProjectSearch] = useState("")
   const [projectImageUploading, setProjectImageUploading] = useState(false)
+  const [galleryUploading, setGalleryUploading] = useState(false)
+  const [isGalleryDragActive, setIsGalleryDragActive] = useState(false)
   const [newTagInput, setNewTagInput] = useState("")
   const [newGalleryUrl, setNewGalleryUrl] = useState("")
   const [isSavingProject, setIsSavingProject] = useState(false)
@@ -148,7 +152,7 @@ export default function AdminPage() {
     }
   }, [isAuthenticated])
 
-  const notify = (type: "success" | "error", text: string) => {
+  const notify = (type: "success" | "error" | "info", text: string) => {
     setStatusMessage({ type, text })
     setTimeout(() => {
       setStatusMessage((current) => (current?.text === text ? null : current))
@@ -329,20 +333,73 @@ export default function AdminPage() {
     }
   }
 
-  const handleProjectImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file || !editingProject) return
+  const extractImageFiles = (e: React.ClipboardEvent): File[] => {
+    const files: File[] = []
+    const items = e.clipboardData?.items
 
+    if (items) {
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+        if (item.type.startsWith("image/")) {
+          const file = item.getAsFile()
+          if (file) files.push(file)
+        }
+      }
+    }
+
+    if (files.length === 0 && e.clipboardData?.files) {
+      for (let i = 0; i < e.clipboardData.files.length; i++) {
+        const file = e.clipboardData.files[i]
+        if (
+          file.type.startsWith("image/") ||
+          /\.(png|jpe?g|gif|webp|svg|bmp|avif)$/i.test(file.name)
+        ) {
+          files.push(file)
+        }
+      }
+    }
+
+    return files
+  }
+
+  const uploadMainProjectImage = async (file: File) => {
+    if (!editingProject) return
     setProjectImageUploading(true)
+    notify("info", "Uploading main image...")
     try {
-      const url = await uploadBlogImage(file)
-      setEditingProject({ ...editingProject, image_url: url })
+      const ext = file.type ? file.type.split("/")[1] || "png" : "png"
+      const hasExtension = file.name && /\.[a-z0-9]+$/i.test(file.name)
+      const cleanName =
+        hasExtension && file.name !== "image.png"
+          ? file.name
+          : `main-${Date.now()}.${ext}`
+      const fileToUpload = new File([file], cleanName, {
+        type: file.type || `image/${ext}`,
+      })
+      const url = await uploadBlogImage(fileToUpload)
+      setEditingProject((prev) => (prev ? { ...prev, image_url: url } : prev))
       notify("success", "Main image uploaded successfully.")
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error uploading project image:", error)
-      notify("error", "Failed to upload image.")
+      notify("error", error?.message || "Failed to upload image.")
     } finally {
       setProjectImageUploading(false)
+    }
+  }
+
+  const handleProjectImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    await uploadMainProjectImage(file)
+    e.target.value = ""
+  }
+
+  const handleMainImagePaste = async (e: React.ClipboardEvent) => {
+    const files = extractImageFiles(e)
+    if (files.length > 0) {
+      e.preventDefault()
+      e.stopPropagation()
+      await uploadMainProjectImage(files[0])
     }
   }
 
@@ -374,18 +431,67 @@ export default function AdminPage() {
     setNewGalleryUrl("")
   }
 
-  const handleGalleryUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file || !editingProject) return
+  const uploadGalleryFiles = async (files: File[]) => {
+    if (!editingProject || files.length === 0) return
 
+    setGalleryUploading(true)
+    notify(
+      "info",
+      `Uploading ${files.length} image${files.length > 1 ? "s" : ""}...`
+    )
     try {
-      const url = await uploadBlogImage(file)
-      const currentGallery = editingProject.gallery || []
-      setEditingProject({ ...editingProject, gallery: [...currentGallery, url] })
-      notify("success", "Gallery image uploaded and added.")
-    } catch (error) {
+      const uploadedUrls: string[] = []
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i]
+        const ext = file.type ? file.type.split("/")[1] || "png" : "png"
+        const hasExtension = file.name && /\.[a-z0-9]+$/i.test(file.name)
+        const cleanName =
+          hasExtension && file.name !== "image.png"
+            ? file.name
+            : `gallery-${Date.now()}-${i + 1}.${ext}`
+        const fileToUpload = new File([file], cleanName, {
+          type: file.type || `image/${ext}`,
+        })
+
+        const url = await uploadBlogImage(fileToUpload)
+        uploadedUrls.push(url)
+      }
+
+      setEditingProject((prev) => {
+        if (!prev) return prev
+        const currentGallery = prev.gallery || []
+        return {
+          ...prev,
+          gallery: [...currentGallery, ...uploadedUrls],
+        }
+      })
+      notify(
+        "success",
+        uploadedUrls.length === 1
+          ? "Gallery image uploaded and added."
+          : `${uploadedUrls.length} gallery images uploaded and added.`
+      )
+    } catch (error: any) {
       console.error("Error uploading gallery image:", error)
-      notify("error", "Failed to upload gallery image.")
+      notify("error", error?.message || "Failed to upload gallery image.")
+    } finally {
+      setGalleryUploading(false)
+    }
+  }
+
+  const handleGalleryUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || [])
+    if (files.length === 0) return
+    await uploadGalleryFiles(files)
+    e.target.value = ""
+  }
+
+  const handleGalleryPaste = async (e: React.ClipboardEvent) => {
+    const files = extractImageFiles(e)
+    if (files.length > 0) {
+      e.preventDefault()
+      e.stopPropagation()
+      await uploadGalleryFiles(files)
     }
   }
 
@@ -460,20 +566,44 @@ export default function AdminPage() {
     }
   }
 
-  const handleArticleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (!file || !editingPost) return
-
+  const uploadArticleImage = async (file: File) => {
+    if (!editingPost) return
     setArticleImageUploading(true)
+    notify("info", "Uploading article image...")
     try {
-      const imageUrl = await uploadBlogImage(file)
-      setEditingPost({ ...editingPost, image: imageUrl })
+      const ext = file.type ? file.type.split("/")[1] || "png" : "png"
+      const hasExtension = file.name && /\.[a-z0-9]+$/i.test(file.name)
+      const cleanName =
+        hasExtension && file.name !== "image.png"
+          ? file.name
+          : `article-${Date.now()}.${ext}`
+      const fileToUpload = new File([file], cleanName, {
+        type: file.type || `image/${ext}`,
+      })
+      const imageUrl = await uploadBlogImage(fileToUpload)
+      setEditingPost((prev) => (prev ? { ...prev, image: imageUrl } : prev))
       notify("success", "Article image uploaded successfully.")
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error uploading image:", error)
-      notify("error", "Failed to upload image.")
+      notify("error", error?.message || "Failed to upload image.")
     } finally {
       setArticleImageUploading(false)
+    }
+  }
+
+  const handleArticleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+    await uploadArticleImage(file)
+    event.target.value = ""
+  }
+
+  const handleArticleImagePaste = async (e: React.ClipboardEvent) => {
+    const files = extractImageFiles(e)
+    if (files.length > 0) {
+      e.preventDefault()
+      e.stopPropagation()
+      await uploadArticleImage(files[0])
     }
   }
 
@@ -571,12 +701,16 @@ export default function AdminPage() {
             className={`mb-6 p-4 rounded-lg flex items-center justify-between border transition-all ${
               statusMessage.type === "success"
                 ? "bg-emerald-950/60 border-emerald-500/40 text-emerald-300"
+                : statusMessage.type === "info"
+                ? "bg-cyan-950/60 border-cyan-500/40 text-cyan-300"
                 : "bg-red-950/60 border-red-500/40 text-red-300"
             }`}
           >
             <div className="flex items-center gap-2">
               {statusMessage.type === "success" ? (
                 <CheckCircle2 size={18} className="text-emerald-400 shrink-0" />
+              ) : statusMessage.type === "info" ? (
+                <Loader2 size={18} className="animate-spin text-cyan-400 shrink-0" />
               ) : (
                 <AlertCircle size={18} className="text-red-400 shrink-0" />
               )}
@@ -1060,17 +1194,40 @@ export default function AdminPage() {
 
                     {/* Main Image */}
                     <div>
-                      <Label className="text-slate-200">Main Display Image</Label>
-                      <div className="flex gap-2 mt-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <Label className="text-slate-200">Main Display Image</Label>
+                        <span className="text-[11px] text-slate-400">
+                          Paste with <kbd className="px-1 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-[10px]">Ctrl+V</kbd>
+                        </span>
+                      </div>
+                      <div className="flex gap-2">
                         <Input
                           value={editingProject.image_url || ""}
                           onChange={(e) =>
                             setEditingProject({ ...editingProject, image_url: e.target.value })
                           }
-                          placeholder="/path/to/image.png or https://"
-                          className="bg-slate-900/80 border-slate-700 text-white flex-1"
+                          onPaste={handleMainImagePaste}
+                          onDrop={async (e) => {
+                            e.preventDefault()
+                            const files = Array.from(e.dataTransfer.files).filter(
+                              (f) =>
+                                f.type.startsWith("image/") ||
+                                /\.(png|jpe?g|gif|webp|svg|bmp|avif)$/i.test(f.name)
+                            )
+                            if (files.length > 0) {
+                              await uploadMainProjectImage(files[0])
+                            }
+                          }}
+                          onDragOver={(e) => {
+                            if (e.dataTransfer.types.includes("Files")) {
+                              e.preventDefault()
+                            }
+                          }}
+                          placeholder="Paste image (Ctrl+V) or enter URL"
+                          disabled={projectImageUploading}
+                          className="bg-slate-900/80 border-slate-700 text-white flex-1 focus-visible:ring-cyan-500"
                         />
-                        <label className="cursor-pointer">
+                        <label className={`cursor-pointer ${projectImageUploading ? "pointer-events-none opacity-50" : ""}`}>
                           <input
                             type="file"
                             accept="image/*"
@@ -1086,8 +1243,15 @@ export default function AdminPage() {
                             asChild
                           >
                             <span>
-                              <Upload size={14} className="mr-1.5" />
-                              {projectImageUploading ? "Uploading..." : "Upload"}
+                              {projectImageUploading ? (
+                                <>
+                                  <Loader2 size={14} className="mr-1.5 animate-spin" /> Uploading...
+                                </>
+                              ) : (
+                                <>
+                                  <Upload size={14} className="mr-1.5" /> Upload
+                                </>
+                              )}
                             </span>
                           </Button>
                         </label>
@@ -1149,45 +1313,110 @@ export default function AdminPage() {
                     </div>
 
                     {/* Gallery Manager */}
-                    <div>
-                      <Label className="text-slate-200">Project Gallery Images</Label>
+                    <div
+                      className={cn(
+                        "p-3 rounded-lg border transition-all",
+                        isGalleryDragActive
+                          ? "border-cyan-500 bg-cyan-950/20 ring-1 ring-cyan-500/30"
+                          : "border-slate-800/80 bg-slate-900/30"
+                      )}
+                      onPaste={handleGalleryPaste}
+                      onDragOver={(e) => {
+                        if (e.dataTransfer.types.includes("Files")) {
+                          e.preventDefault()
+                          setIsGalleryDragActive(true)
+                        }
+                      }}
+                      onDragLeave={(e) => {
+                        if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                          setIsGalleryDragActive(false)
+                        }
+                      }}
+                      onDrop={async (e) => {
+                        e.preventDefault()
+                        setIsGalleryDragActive(false)
+                        const files = Array.from(e.dataTransfer.files).filter(
+                          (f) =>
+                            f.type.startsWith("image/") ||
+                            /\.(png|jpe?g|gif|webp|svg|bmp|avif)$/i.test(f.name)
+                        )
+                        if (files.length > 0) {
+                          await uploadGalleryFiles(files)
+                        }
+                      }}
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <Label className="text-slate-200">Project Gallery Images</Label>
+                        <span className="text-[11px] text-slate-400">
+                          Paste with <kbd className="px-1 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-[10px]">Ctrl+V</kbd>
+                        </span>
+                      </div>
                       <div className="flex gap-2 mt-1">
                         <Input
                           value={newGalleryUrl}
                           onChange={(e) => setNewGalleryUrl(e.target.value)}
-                          placeholder="Add image URL or upload below"
-                          className="bg-slate-900/80 border-slate-700 text-white flex-1"
+                          onPaste={handleGalleryPaste}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              e.preventDefault()
+                              handleAddGalleryUrl()
+                            }
+                          }}
+                          placeholder="Paste image (Ctrl+V) or enter URL"
+                          disabled={galleryUploading}
+                          className="bg-slate-900/80 border-slate-700 text-white flex-1 focus-visible:ring-cyan-500"
                         />
                         <Button
                           type="button"
                           variant="outline"
                           onClick={handleAddGalleryUrl}
+                          disabled={galleryUploading || !newGalleryUrl.trim()}
                           className="border-slate-700 hover:border-blue-400 text-slate-300"
                         >
                           Add URL
                         </Button>
-                        <label className="cursor-pointer">
+                        <label className={`cursor-pointer ${galleryUploading ? "pointer-events-none opacity-50" : ""}`}>
                           <input
                             type="file"
                             accept="image/*"
+                            multiple
                             onChange={handleGalleryUpload}
+                            disabled={galleryUploading}
                             className="hidden"
                           />
                           <Button
                             type="button"
                             variant="outline"
                             className="border-slate-700 hover:border-blue-400 text-slate-300"
+                            disabled={galleryUploading}
                             asChild
                           >
                             <span>
-                              <Upload size={14} className="mr-1" /> File
+                              {galleryUploading ? (
+                                <>
+                                  <Loader2 size={14} className="mr-1 animate-spin" /> Uploading...
+                                </>
+                              ) : (
+                                <>
+                                  <Upload size={14} className="mr-1" /> File
+                                </>
+                              )}
                             </span>
                           </Button>
                         </label>
                       </div>
 
+                      <div className="flex items-center justify-between text-[11px] text-slate-400 mt-1.5 px-0.5">
+                        <span>You can paste screenshots directly or drag and drop image files here.</span>
+                        {galleryUploading && (
+                          <span className="text-cyan-400 flex items-center gap-1 font-medium">
+                            <Loader2 size={11} className="animate-spin" /> Uploading image...
+                          </span>
+                        )}
+                      </div>
+
                       {/* Gallery preview chips */}
-                      {(editingProject.gallery || []).length > 0 && (
+                      {((editingProject.gallery || []).length > 0 || galleryUploading) && (
                         <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 mt-3">
                           {(editingProject.gallery || []).map((imgUrl, idx) => (
                             <div
@@ -1209,6 +1438,12 @@ export default function AdminPage() {
                               </button>
                             </div>
                           ))}
+                          {galleryUploading && (
+                            <div className="h-16 rounded border border-cyan-500/50 border-dashed bg-cyan-950/30 flex flex-col items-center justify-center text-cyan-400">
+                              <Loader2 size={16} className="animate-spin mb-1" />
+                              <span className="text-[10px] font-medium">Uploading...</span>
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
@@ -1432,15 +1667,38 @@ export default function AdminPage() {
                     </div>
 
                     <div>
-                      <Label className="text-slate-200">Featured Image</Label>
-                      <div className="flex gap-2 mt-1">
+                      <div className="flex items-center justify-between mb-1">
+                        <Label className="text-slate-200">Featured Image</Label>
+                        <span className="text-[11px] text-slate-400">
+                          Paste with <kbd className="px-1 py-0.5 rounded bg-slate-800 border border-slate-700 text-slate-300 font-mono text-[10px]">Ctrl+V</kbd>
+                        </span>
+                      </div>
+                      <div className="flex gap-2">
                         <Input
                           value={editingPost.image || ""}
                           onChange={(e) => setEditingPost({ ...editingPost, image: e.target.value })}
-                          placeholder="/path/to/image.png or https://"
-                          className="bg-slate-900/80 border-slate-700 text-white flex-1"
+                          onPaste={handleArticleImagePaste}
+                          onDrop={async (e) => {
+                            e.preventDefault()
+                            const files = Array.from(e.dataTransfer.files).filter(
+                              (f) =>
+                                f.type.startsWith("image/") ||
+                                /\.(png|jpe?g|gif|webp|svg|bmp|avif)$/i.test(f.name)
+                            )
+                            if (files.length > 0) {
+                              await uploadArticleImage(files[0])
+                            }
+                          }}
+                          onDragOver={(e) => {
+                            if (e.dataTransfer.types.includes("Files")) {
+                              e.preventDefault()
+                            }
+                          }}
+                          placeholder="Paste image (Ctrl+V) or enter URL"
+                          disabled={articleImageUploading}
+                          className="bg-slate-900/80 border-slate-700 text-white flex-1 focus-visible:ring-cyan-500"
                         />
-                        <label className="cursor-pointer">
+                        <label className={`cursor-pointer ${articleImageUploading ? "pointer-events-none opacity-50" : ""}`}>
                           <input
                             type="file"
                             accept="image/*"
@@ -1456,8 +1714,15 @@ export default function AdminPage() {
                             asChild
                           >
                             <span>
-                              <Upload size={14} className="mr-1.5" />
-                              {articleImageUploading ? "Uploading..." : "Upload"}
+                              {articleImageUploading ? (
+                                <>
+                                  <Loader2 size={14} className="mr-1.5 animate-spin" /> Uploading...
+                                </>
+                              ) : (
+                                <>
+                                  <Upload size={14} className="mr-1.5" /> Upload
+                                </>
+                              )}
                             </span>
                           </Button>
                         </label>
