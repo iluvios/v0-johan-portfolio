@@ -15,6 +15,7 @@ import {
   emptyCaseStudy,
 } from "@/lib/projects"
 import { isVideoUrl, uploadMedia } from "@/lib/media"
+import { extractImageFiles } from "./admin-utils"
 
 const field = "bg-slate-900/80 border-slate-700 text-white mt-1"
 const addButton = "border-slate-700 hover:border-blue-400 text-slate-300"
@@ -90,30 +91,14 @@ export function CaseStudyEditor({
   }
 
   const handleCreativePaste = async (index: number, e: React.ClipboardEvent) => {
-    const items = e.clipboardData?.items
-    let file: File | null = null
-    if (items) {
-      for (let j = 0; j < items.length; j++) {
-        if (items[j].type.startsWith("image/")) {
-          file = items[j].getAsFile()
-          if (file) break
-        }
-      }
-    }
-    if (!file && e.clipboardData?.files?.length) {
-      for (let j = 0; j < e.clipboardData.files.length; j++) {
-        if (e.clipboardData.files[j].type.startsWith("image/")) {
-          file = e.clipboardData.files[j]
-          break
-        }
-      }
-    }
-    if (file) {
+    const files = extractImageFiles(e)
+    if (files.length > 0) {
       e.preventDefault()
       e.stopPropagation()
       setUploadingIndex(index)
       setUploadError(null)
       try {
+        const file = files[0]
         const ext = file.type ? file.type.split("/")[1] || "png" : "png"
         const cleanName = file.name && file.name !== "image.png" ? file.name : `creative-${Date.now()}.${ext}`
         const namedFile = new File([file], cleanName, { type: file.type || `image/${ext}` })
