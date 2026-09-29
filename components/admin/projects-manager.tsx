@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { Switch } from "@/components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog"
 import {
   Plus,
   Save,
@@ -389,9 +390,9 @@ export function ProjectsManager({
   })
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <>
       {/* Projects List */}
-      <div className={editingProject ? "lg:col-span-5" : "lg:col-span-12"}>
+      <div>
         <Card className="bg-slate-800/50 border-slate-700">
           <CardHeader className="pb-3 flex flex-row items-center justify-between">
             <CardTitle className="text-xl">
@@ -445,7 +446,7 @@ export function ProjectsManager({
             </div>
 
             {/* List items */}
-            <div className="space-y-3 max-h-[650px] overflow-y-auto pr-1">
+            <div className="space-y-3">
               {filteredProjects.length === 0 ? (
                 <div className="text-center py-12 text-slate-400 text-sm">
                   No projects found.
@@ -587,31 +588,27 @@ export function ProjectsManager({
         </Card>
       </div>
 
-      {/* Project Editor */}
-      {editingProject && (
-        <div className="lg:col-span-7">
-          <Card className="bg-slate-800/60 border-slate-700 ai-glow">
-            <CardHeader className="pb-4 flex flex-row items-center justify-between">
-              <div>
-                <CardTitle className="text-xl">
-                  {isCreatingProject ? "Create New Project" : "Edit Project"}
-                </CardTitle>
-                {editingProject.id && (
-                  <p className="text-xs text-slate-400 font-mono mt-1">
-                    Project ID: #{editingProject.id}
-                  </p>
-                )}
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setEditingProject(null)}
-                className="text-slate-400 hover:text-white"
-              >
-                <X size={16} />
-              </Button>
-            </CardHeader>
-            <CardContent className="space-y-4 max-h-[750px] overflow-y-auto pr-2">
+      {/* Project Editor (modal) */}
+      <Dialog
+        open={Boolean(editingProject)}
+        onOpenChange={(open) => {
+          if (!open) setEditingProject(null)
+        }}
+      >
+        {editingProject && (
+          <DialogContent
+            onInteractOutside={(e) => e.preventDefault()}
+            className="max-w-3xl w-[calc(100%-2rem)] max-h-[90vh] p-0 gap-0 flex flex-col overflow-hidden bg-slate-900 border-slate-700 text-white"
+          >
+            <div className="px-6 pt-6 pb-4 pr-14 border-b border-slate-800">
+              <DialogTitle className="text-xl">
+                {isCreatingProject ? "Create New Project" : "Edit Project"}
+              </DialogTitle>
+              <DialogDescription className="text-xs text-slate-400 font-mono mt-1">
+                {editingProject.id ? `Project ID: #${editingProject.id}` : "Fill in the details, then create."}
+              </DialogDescription>
+            </div>
+            <div className="space-y-4 overflow-y-auto px-6 py-5 flex-1">
               <div>
                 <Label htmlFor="proj-title" className="text-slate-200">
                   Project Title *
@@ -994,28 +991,29 @@ export function ProjectsManager({
                 </Label>
               </div>
 
-              {/* Action buttons */}
-              <div className="flex gap-3 pt-4 border-t border-slate-700">
-                <Button
-                  onClick={handleSaveProject}
-                  disabled={isSavingProject}
-                  className="ai-glow flex-1 flex items-center justify-center gap-2"
-                >
-                  <Save size={16} />
-                  {isSavingProject ? "Saving..." : isCreatingProject ? "Create Project" : "Save Changes"}
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => setEditingProject(null)}
-                  className="border-slate-700 text-slate-300 hover:text-white"
-                >
-                  Cancel
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-    </div>
+            </div>
+
+            {/* Action buttons */}
+            <div className="flex gap-3 px-6 py-4 border-t border-slate-800 bg-slate-900">
+              <Button
+                onClick={handleSaveProject}
+                disabled={isSavingProject}
+                className="ai-glow flex-1 flex items-center justify-center gap-2"
+              >
+                <Save size={16} />
+                {isSavingProject ? "Saving..." : isCreatingProject ? "Create Project" : "Save Changes"}
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setEditingProject(null)}
+                className="border-slate-700 text-slate-300 hover:text-white"
+              >
+                Cancel
+              </Button>
+            </div>
+          </DialogContent>
+        )}
+      </Dialog>
+    </>
   )
 }
