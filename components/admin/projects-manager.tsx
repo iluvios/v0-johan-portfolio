@@ -24,6 +24,8 @@ import {
   GripVertical,
   ChevronUp,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Star,
   RefreshCw,
   Loader2,
@@ -68,6 +70,8 @@ export function ProjectsManager({
   const [projectImageUploading, setProjectImageUploading] = useState(false)
   const [galleryUploading, setGalleryUploading] = useState(false)
   const [isGalleryDragActive, setIsGalleryDragActive] = useState(false)
+  const [galleryDragIndex, setGalleryDragIndex] = useState<number | null>(null)
+  const [galleryDragOverIndex, setGalleryDragOverIndex] = useState<number | null>(null)
   const [newTagInput, setNewTagInput] = useState("")
   const [newGalleryUrl, setNewGalleryUrl] = useState("")
   const [isSavingProject, setIsSavingProject] = useState(false)
@@ -369,6 +373,15 @@ export function ProjectsManager({
       e.stopPropagation()
       await uploadGalleryFiles(files)
     }
+  }
+
+  const handleMoveGalleryImage = (from: number, to: number) => {
+    if (!editingProject) return
+    const gallery = [...(editingProject.gallery || [])]
+    if (from === to || to < 0 || to >= gallery.length) return
+    const [moved] = gallery.splice(from, 1)
+    gallery.splice(to, 0, moved)
+    setEditingProject({ ...editingProject, gallery })
   }
 
   const handleRemoveGalleryImage = (indexToRemove: number) => {
@@ -931,7 +944,7 @@ export function ProjectsManager({
                 </div>
 
                 <div className="flex items-center justify-between text-[11px] text-slate-400 mt-1.5 px-0.5">
-                  <span>You can paste screenshots directly or drag and drop image files here.</span>
+                  <span>Paste screenshots or drop image files here. Drag thumbnails (or use the arrows) to reorder.</span>
                   {galleryUploading && (
                     <span className="text-cyan-400 flex items-center gap-1 font-medium">
                       <Loader2 size={11} className="animate-spin" /> Uploading image...
@@ -942,16 +955,70 @@ export function ProjectsManager({
                 {/* Gallery preview chips */}
                 {((editingProject.gallery || []).length > 0 || galleryUploading) && (
                   <div className="grid grid-cols-4 sm:grid-cols-6 gap-2 mt-3">
-                    {(editingProject.gallery || []).map((imgUrl, idx) => (
+                    {(editingProject.gallery || []).map((imgUrl, idx, gallery) => (
                       <div
-                        key={idx}
-                        className="relative group h-16 rounded border border-slate-700 overflow-hidden bg-slate-900"
+                        key={`${imgUrl}-${idx}`}
+                        draggable
+                        onDragStart={(e) => {
+                          e.dataTransfer.effectAllowed = "move"
+                          setGalleryDragIndex(idx)
+                        }}
+                        onDragOver={(e) => {
+                          if (galleryDragIndex === null) return
+                          e.preventDefault()
+                          e.stopPropagation()
+                          setGalleryDragOverIndex(idx)
+                        }}
+                        onDrop={(e) => {
+                          if (galleryDragIndex === null) return
+                          e.preventDefault()
+                          e.stopPropagation()
+                          handleMoveGalleryImage(galleryDragIndex, idx)
+                          setGalleryDragIndex(null)
+                          setGalleryDragOverIndex(null)
+                        }}
+                        onDragEnd={() => {
+                          setGalleryDragIndex(null)
+                          setGalleryDragOverIndex(null)
+                        }}
+                        className={cn(
+                          "relative group h-16 rounded border overflow-hidden bg-slate-900 cursor-grab active:cursor-grabbing transition-all",
+                          galleryDragIndex === idx
+                            ? "opacity-40 border-dashed border-cyan-400"
+                            : galleryDragOverIndex === idx
+                            ? "border-cyan-400 ring-2 ring-cyan-400/50"
+                            : "border-slate-700"
+                        )}
                       >
                         <img
                           src={imgUrl}
-                          alt={`Gallery item ${idx}`}
-                          className="w-full h-full object-cover"
+                          alt={`Gallery item ${idx + 1}`}
+                          draggable={false}
+                          className="w-full h-full object-cover pointer-events-none"
                         />
+                        <span className="absolute top-1 left-1 bg-black/70 text-white text-[9px] font-mono rounded px-1">
+                          {idx + 1}
+                        </span>
+                        <div className="absolute bottom-1 inset-x-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button
+                            type="button"
+                            disabled={idx === 0}
+                            onClick={() => handleMoveGalleryImage(idx, idx - 1)}
+                            className="bg-black/80 hover:bg-cyan-600 disabled:invisible text-white rounded-full p-0.5"
+                            title="Move left"
+                          >
+                            <ChevronLeft size={12} />
+                          </button>
+                          <button
+                            type="button"
+                            disabled={idx === gallery.length - 1}
+                            onClick={() => handleMoveGalleryImage(idx, idx + 1)}
+                            className="bg-black/80 hover:bg-cyan-600 disabled:invisible text-white rounded-full p-0.5"
+                            title="Move right"
+                          >
+                            <ChevronRight size={12} />
+                          </button>
+                        </div>
                         <button
                           type="button"
                           onClick={() => handleRemoveGalleryImage(idx)}
