@@ -1,0 +1,31 @@
+<svg width="1260" height="360" viewBox="0 0 1260 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="promoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#0369a1" />
+      <stop offset="100%" stop-color="#075985" />
+    </linearGradient>
+    <radialGradient id="promoGlow" cx="90%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1260" height="360" fill="url(#promoBg)" />
+  <rect width="1260" height="360" fill="url(#promoGlow)" />
+
+  <g transform="translate(80, 80)">
+    <rect width="210" height="34" rx="17" fill="#ffffff" fill-opacity="0.2" stroke="#ffffff" stroke-width="1.5" />
+    <text x="105" y="22" font-family="'Open Sans', sans-serif" font-size="13" font-weight="800" fill="#ffffff" letter-spacing="2" text-anchor="middle">TARIFAS ESPECIALES</text>
+
+    <text x="0" y="85" font-family="'Open Sans', sans-serif" font-size="44" font-weight="900" fill="#ffffff">PROMOCIONES DEL MES</text>
+    <text x="0" y="125" font-family="'Open Sans', sans-serif" font-size="20" font-weight="500" fill="#bae6fd">Aprovecha nuestras tarifas preferenciales de soporte, horas prepagadas y licenciamiento</text>
+  </g>
+
+  <!-- Accent Icon Right -->
+  <g transform="translate(1020, 180)">
+    <circle cx="0" cy="0" r="90" fill="#ffffff" fill-opacity="0.08" />
+    <circle cx="0" cy="0" r="65" fill="#ffffff" fill-opacity="0.12" />
+    <text x="0" y="16" font-family="'Open Sans', sans-serif" font-size="44" font-weight="900" fill="#ffffff" text-anchor="middle">%</text>
+  </g>
+</svg>
