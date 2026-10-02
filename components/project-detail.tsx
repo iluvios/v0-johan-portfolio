@@ -41,6 +41,13 @@ export default function ProjectDetail({ id }: { id: number }) {
     ),
   ];
   const website = safeWebsite(project.website_url);
+  const facts = [
+    { label: copy.client, value: project.client },
+    { label: copy.caseStudy.year, value: project.case_study?.year },
+    { label: copy.caseStudy.role, value: project.case_study?.role },
+  ].filter((fact): fact is { label: string; value: string } =>
+    Boolean(fact.value?.trim()),
+  );
   return (
     <div className="page-shell">
       <header className="detail-intro">
@@ -72,22 +79,16 @@ export default function ProjectDetail({ id }: { id: number }) {
               <p className="detail-summary">{project.description}</p>
             )}
           </div>
-          <dl className="flex min-w-48 flex-col gap-5">
-            {project.client && (
-              <div>
-                <dt className="text-sm text-muted-foreground">{copy.client}</dt>
-                <dd className="mt-1 text-base">{project.client}</dd>
-              </div>
-            )}
-            {project.category && (
-              <div>
-                <dt className="text-sm text-muted-foreground">
-                  {copy.category}
-                </dt>
-                <dd className="mt-1 text-base">{project.category}</dd>
-              </div>
-            )}
-          </dl>
+          {facts.length > 0 && (
+            <dl className="flex min-w-48 max-w-sm flex-col gap-5">
+              {facts.map((fact) => (
+                <div key={fact.label}>
+                  <dt className="text-sm text-muted-foreground">{fact.label}</dt>
+                  <dd className="mt-1 text-base">{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
         </section>
       </Reveal>
       {project.case_study && <CaseStudy data={project.case_study} />}

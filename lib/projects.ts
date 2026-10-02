@@ -1,36 +1,6 @@
-/**
- * How a number was sourced. Shown next to every metric so a reader can weigh it:
- * a claim with a stated source is credible, an unsourced one is not.
- */
-export type MetricSource = "verified" | "client" | "estimate"
-
 export interface CaseStudyMetric {
   label: string
   value: string
-  source: MetricSource
-}
-
-export interface CaseStudyStep {
-  title: string
-  detail: string
-}
-
-export interface CaseStudyIteration {
-  label: string
-  change: string
-  result: string
-}
-
-export interface CaseStudyCreative {
-  image_url: string
-  caption: string
-}
-
-export interface CaseStudyEmailFlow {
-  name: string
-  trigger: string
-  steps: string
-  result: string
 }
 
 export interface CaseStudyTestimonial {
@@ -39,20 +9,13 @@ export interface CaseStudyTestimonial {
   role: string
 }
 
-/** Optional long-form story behind a project. Every section renders only when filled. */
+/** Optional story behind a project. Every section renders only when filled. */
 export interface CaseStudy {
   year: string
-  duration: string
   role: string
-  team: string
   problem: string
   approach: string
-  channels: string
-  funnel: CaseStudyStep[]
-  iterations: CaseStudyIteration[]
   metrics: CaseStudyMetric[]
-  creatives: CaseStudyCreative[]
-  email_flows: CaseStudyEmailFlow[]
   learnings: string
   testimonial: CaseStudyTestimonial
 }
@@ -78,30 +41,17 @@ export interface Project {
 export function emptyCaseStudy(): CaseStudy {
   return {
     year: "",
-    duration: "",
     role: "",
-    team: "",
     problem: "",
     approach: "",
-    channels: "",
-    funnel: [],
-    iterations: [],
     metrics: [],
-    creatives: [],
-    email_flows: [],
     learnings: "",
     testimonial: { quote: "", author: "", role: "" },
   }
 }
 
-const METRIC_SOURCES: MetricSource[] = ["verified", "client", "estimate"]
-
 function text(value: unknown): string {
   return typeof value === "string" ? value : ""
-}
-
-function list<T>(value: unknown, map: (item: any) => T): T[] {
-  return Array.isArray(value) ? value.filter((item) => item && typeof item === "object").map(map) : []
 }
 
 /** Accepts the JSONB value (object or string) and returns a complete, well-typed case study. */
@@ -120,30 +70,14 @@ export function normalizeCaseStudy(raw: unknown): CaseStudy | null {
 
   return {
     year: text(cs.year),
-    duration: text(cs.duration),
     role: text(cs.role),
-    team: text(cs.team),
     problem: text(cs.problem),
     approach: text(cs.approach),
-    channels: text(cs.channels),
-    funnel: list(cs.funnel, (s) => ({ title: text(s.title), detail: text(s.detail) })),
-    iterations: list(cs.iterations, (i) => ({
-      label: text(i.label),
-      change: text(i.change),
-      result: text(i.result),
-    })),
-    metrics: list(cs.metrics, (m) => ({
-      label: text(m.label),
-      value: text(m.value),
-      source: METRIC_SOURCES.includes(m.source) ? m.source : "estimate",
-    })),
-    creatives: list(cs.creatives, (c) => ({ image_url: text(c.image_url), caption: text(c.caption) })),
-    email_flows: list(cs.email_flows, (f) => ({
-      name: text(f.name),
-      trigger: text(f.trigger),
-      steps: text(f.steps),
-      result: text(f.result),
-    })),
+    metrics: Array.isArray(cs.metrics)
+      ? cs.metrics
+          .filter((m: unknown) => m && typeof m === "object")
+          .map((m: any) => ({ label: text(m.label), value: text(m.value) }))
+      : [],
     learnings: text(cs.learnings),
     testimonial: {
       quote: text(testimonial.quote),
@@ -155,31 +89,7 @@ export function normalizeCaseStudy(raw: unknown): CaseStudy | null {
 
 /** Drops empty rows so half-filled editor entries never reach the public page. */
 export function cleanCaseStudy(cs: CaseStudy): CaseStudy {
-  return {
-    ...cs,
-    funnel: cs.funnel.filter((s) => s.title.trim()),
-    iterations: cs.iterations.filter((i) => i.label.trim() || i.change.trim()),
-    metrics: cs.metrics.filter((m) => m.value.trim() && m.label.trim()),
-    creatives: cs.creatives.filter((c) => c.image_url.trim()),
-    email_flows: cs.email_flows.filter((f) => f.name.trim()),
-  }
-}
-
-/** Which parts of the story are filled — drives the editor checklist. */
-export function caseStudyChecklist(cs: CaseStudy | null) {
-  const c = cs ?? emptyCaseStudy()
-  return [
-    { key: "context", label: "Context (year, duration, role)", done: Boolean(c.year && c.role) },
-    { key: "problem", label: "Problem / goal", done: Boolean(c.problem.trim()) },
-    { key: "approach", label: "Approach", done: Boolean(c.approach.trim()) },
-    { key: "funnel", label: "Funnel steps", done: c.funnel.some((s) => s.title.trim()) },
-    { key: "iterations", label: "Iterations (what changed and why)", done: c.iterations.some((i) => i.change.trim()) },
-    { key: "metrics", label: "Results with sources", done: c.metrics.some((m) => m.value.trim()) },
-    { key: "creatives", label: "Creatives", done: c.creatives.some((x) => x.image_url.trim()) },
-    { key: "email", label: "Email / lifecycle flows", done: c.email_flows.some((f) => f.name.trim()) },
-    { key: "learnings", label: "Learnings", done: Boolean(c.learnings.trim()) },
-    { key: "testimonial", label: "Testimonial / reference", done: Boolean(c.testimonial.quote.trim()) },
-  ]
+  return { ...cs, metrics: cs.metrics.filter((m) => m.value.trim() && m.label.trim()) }
 }
 
 export function normalizeProject(raw: any): Project {
@@ -299,7 +209,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     impact: "Professional services platform",
     description:
       "Consulting platform for Latin American nurses seeking to work in the United States.",
-    image_url: "https://energymedia.com.co/wp-content/uploads/2024/02/international-nurses.png",
+    image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/portfolio-images/international-nurses.png",
     category: "Full-Funnel Strategy",
     tags: ["Healthcare", "Professional Services", "Consulting"],
     gallery: [],
@@ -317,7 +227,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     impact: "Business process outsourcing website",
     description:
       "Corporate website for an international BPO offering RPA, automation services, and business process optimization.",
-    image_url: "https://energymedia.com.co/wp-content/uploads/2024/09/savant-international.png",
+    image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/portfolio-images/savant-international.png",
     category: "Marketing Automation",
     tags: ["BPO", "Automation", "Corporate Website"],
     gallery: [],

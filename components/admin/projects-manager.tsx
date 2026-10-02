@@ -39,6 +39,7 @@ import {
   reorderProjects,
 } from "@/lib/projects"
 import { uploadBlogImage } from "@/lib/blog"
+import { isVideoUrl, uploadMedia } from "@/lib/media"
 import { CaseStudyEditor } from "@/components/admin/case-study-editor"
 import { extractImageFiles, type AdminNotify } from "@/components/admin/admin-utils"
 import { cn } from "@/lib/utils"
@@ -333,7 +334,8 @@ export function ProjectsManager({
           type: file.type || `image/${ext}`,
         })
 
-        const url = await uploadBlogImage(fileToUpload)
+        // Straight-to-Blob upload: handles videos and files over the 4.5 MB function limit
+        const url = await uploadMedia(fileToUpload)
         uploadedUrls.push(url)
       }
 
@@ -875,7 +877,8 @@ export function ProjectsManager({
                   const files = Array.from(e.dataTransfer.files).filter(
                     (f) =>
                       f.type.startsWith("image/") ||
-                      /\.(png|jpe?g|gif|webp|svg|bmp|avif)$/i.test(f.name)
+                      f.type.startsWith("video/") ||
+                      /\.(png|jpe?g|gif|webp|svg|bmp|avif|mp4|webm|mov)$/i.test(f.name)
                   )
                   if (files.length > 0) {
                     await uploadGalleryFiles(files)
@@ -915,7 +918,7 @@ export function ProjectsManager({
                   <label className={`cursor-pointer ${galleryUploading ? "pointer-events-none opacity-50" : ""}`}>
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/*,video/mp4,video/webm,video/quicktime"
                       multiple
                       onChange={handleGalleryUpload}
                       disabled={galleryUploading}
@@ -944,7 +947,7 @@ export function ProjectsManager({
                 </div>
 
                 <div className="flex items-center justify-between text-[11px] text-slate-400 mt-1.5 px-0.5">
-                  <span>Paste screenshots or drop image files here. Drag thumbnails (or use the arrows) to reorder.</span>
+                  <span>Paste screenshots or drop images/videos here. Drag thumbnails (or use the arrows) to reorder.</span>
                   {galleryUploading && (
                     <span className="text-cyan-400 flex items-center gap-1 font-medium">
                       <Loader2 size={11} className="animate-spin" /> Uploading image...
@@ -990,12 +993,22 @@ export function ProjectsManager({
                             : "border-slate-700"
                         )}
                       >
-                        <img
-                          src={imgUrl}
-                          alt={`Gallery item ${idx + 1}`}
-                          draggable={false}
-                          className="w-full h-full object-cover pointer-events-none"
-                        />
+                        {isVideoUrl(imgUrl) ? (
+                          <video
+                            src={imgUrl}
+                            muted
+                            playsInline
+                            preload="metadata"
+                            className="w-full h-full object-cover pointer-events-none"
+                          />
+                        ) : (
+                          <img
+                            src={imgUrl}
+                            alt={`Gallery item ${idx + 1}`}
+                            draggable={false}
+                            className="w-full h-full object-cover pointer-events-none"
+                          />
+                        )}
                         <span className="absolute top-1 left-1 bg-black/70 text-white text-[9px] font-mono rounded px-1">
                           {idx + 1}
                         </span>
