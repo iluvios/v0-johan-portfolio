@@ -30,10 +30,19 @@ import { ArticlesManager } from "@/components/admin/articles-manager"
 import { type CVProfile, DEFAULT_CV_DATA, getCVData, updateCVData } from "@/lib/profile-data"
 import type { AdminNotify } from "@/components/admin/admin-utils"
 import Link from "next/link"
+import { useParams, useRouter } from "next/navigation"
 
 type AdminTab = "pipeline" | "projects" | "articles" | "cv" | "roadmap"
 
-export default function AdminPage() {
+const TABS: AdminTab[] = ["pipeline", "projects", "articles", "cv", "roadmap"]
+
+/** /admin is the pipeline; every other tab, and the project or article open in an editor, lives in the path. */
+function adminPath(tab: AdminTab, itemId?: string | null) {
+  const base = tab === "pipeline" ? "/admin" : `/admin/${tab}`
+  return itemId ? `${base}/${encodeURIComponent(itemId)}` : base
+}
+
+export function AdminApp() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [authChecked, setAuthChecked] = useState(false)
   const [adminConfigured, setAdminConfigured] = useState(true)
@@ -41,16 +50,17 @@ export default function AdminPage() {
   const [loginError, setLoginError] = useState<string | null>(null)
   const [isLoggingIn, setIsLoggingIn] = useState(false)
 
-  const [activeTab, setActiveTab] = useState<AdminTab>("pipeline")
+  const router = useRouter()
+  const params = useParams<{ slug?: string[] }>()
+  const [tabSegment, itemSegment] = params.slug ?? []
+  const activeTab: AdminTab = TABS.includes(tabSegment as AdminTab) ? (tabSegment as AdminTab) : "pipeline"
+  const openItemId = itemSegment ? decodeURIComponent(itemSegment) : null
+  const openItem = (id: string | null) => router.push(adminPath(activeTab, id), { scroll: false })
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error" | "info"; text: string } | null>(null)
 
   // Counts for tab badges
   const [projectsCount, setProjectsCount] = useState<number | null>(null)
   const [articlesCount, setArticlesCount] = useState<number | null>(null)
-
-  // Triggers for top-bar buttons
-  const [newProjectTrigger, setNewProjectTrigger] = useState(0)
-  const [newArticleTrigger, setNewArticleTrigger] = useState(0)
 
   // CV / Profile state
   const [cvData, setCvData] = useState<CVProfile>(DEFAULT_CV_DATA)
@@ -240,12 +250,12 @@ export default function AdminPage() {
           </div>
           <div className="flex items-center gap-3">
             {activeTab === "projects" ? (
-              <Button onClick={() => setNewProjectTrigger((n) => n + 1)} className="ai-glow flex items-center gap-2">
+              <Button onClick={() => openItem("new")} className="ai-glow flex items-center gap-2">
                 <Plus size={16} />
                 New Project
               </Button>
             ) : activeTab === "articles" ? (
-              <Button onClick={() => setNewArticleTrigger((n) => n + 1)} className="ai-glow flex items-center gap-2">
+              <Button onClick={() => openItem("new")} className="ai-glow flex items-center gap-2">
                 <Plus size={16} />
                 New Article
               </Button>
@@ -285,8 +295,9 @@ export default function AdminPage() {
 
         {/* Tab Switcher */}
         <div className="flex space-x-2 border-b border-slate-800 mb-8 overflow-x-auto pb-1">
-          <button
-            onClick={() => setActiveTab("pipeline")}
+          <Link
+            href={adminPath("pipeline")}
+            scroll={false}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
               activeTab === "pipeline"
                 ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
@@ -295,10 +306,11 @@ export default function AdminPage() {
           >
             <Users size={18} />
             Pipeline
-          </button>
+          </Link>
 
-          <button
-            onClick={() => setActiveTab("projects")}
+          <Link
+            href={adminPath("projects")}
+            scroll={false}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
               activeTab === "projects"
                 ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
@@ -312,10 +324,11 @@ export default function AdminPage() {
                 {projectsCount}
               </Badge>
             )}
-          </button>
+          </Link>
 
-          <button
-            onClick={() => setActiveTab("articles")}
+          <Link
+            href={adminPath("articles")}
+            scroll={false}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
               activeTab === "articles"
                 ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
@@ -329,10 +342,11 @@ export default function AdminPage() {
                 {articlesCount}
               </Badge>
             )}
-          </button>
+          </Link>
 
-          <button
-            onClick={() => setActiveTab("cv")}
+          <Link
+            href={adminPath("cv")}
+            scroll={false}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
               activeTab === "cv"
                 ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
@@ -344,10 +358,11 @@ export default function AdminPage() {
             <Badge variant="secondary" className="ml-1 text-xs bg-blue-950/60 text-blue-300 border border-blue-500/30">
               {cvData.experiences.length} roles
             </Badge>
-          </button>
+          </Link>
 
-          <button
-            onClick={() => setActiveTab("roadmap")}
+          <Link
+            href={adminPath("roadmap")}
+            scroll={false}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
               activeTab === "roadmap"
                 ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
@@ -356,7 +371,7 @@ export default function AdminPage() {
           >
             <Target size={18} />
             Roadmap
-          </button>
+          </Link>
         </div>
 
         {/* TAB 0: PIPELINE (job + client CRM) */}
@@ -367,7 +382,8 @@ export default function AdminPage() {
           <ProjectsManager
             notify={notify}
             onProjectsCountChange={setProjectsCount}
-            createTrigger={newProjectTrigger}
+            openId={openItemId}
+            onOpenChange={openItem}
           />
         )}
 
@@ -376,7 +392,8 @@ export default function AdminPage() {
           <ArticlesManager
             notify={notify}
             onPostsCountChange={setArticlesCount}
-            createTrigger={newArticleTrigger}
+            openId={openItemId}
+            onOpenChange={openItem}
           />
         )}
 

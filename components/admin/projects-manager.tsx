@@ -56,13 +56,16 @@ const PROJECT_CATEGORIES = [
 interface ProjectsManagerProps {
   notify: AdminNotify
   onProjectsCountChange?: (count: number) => void
-  createTrigger?: number
+  /** Which project the editor shows, from the URL: a project id, "new", or null for closed. */
+  openId: string | null
+  onOpenChange: (id: string | null) => void
 }
 
 export function ProjectsManager({
   notify,
   onProjectsCountChange,
-  createTrigger,
+  openId,
+  onOpenChange,
 }: ProjectsManagerProps) {
   const [projects, setProjects] = useState<Project[]>([])
   const [editingProject, setEditingProject] = useState<Partial<Project> | null>(null)
@@ -99,12 +102,26 @@ export function ProjectsManager({
     loadProjects()
   }, [])
 
-  // Listen to external create triggers (e.g. from top bar)
+  // The URL (/admin/projects/<id> or /admin/projects/new) decides what the editor shows
   useEffect(() => {
-    if (createTrigger && createTrigger > 0) {
-      handleCreateNewProject()
+    if (!openId) {
+      setEditingProject(null)
+      setIsCreatingProject(false)
+      return
     }
-  }, [createTrigger])
+    if (openId === "new") {
+      if (!isCreatingProject) handleCreateNewProject()
+      return
+    }
+    if (String(editingProject?.id) === openId || projects.length === 0) return
+    const project = projects.find((p) => String(p.id) === openId)
+    if (project) {
+      handleEditProject(project)
+    } else {
+      notify("error", `Project #${openId} not found.`)
+      onOpenChange(null)
+    }
+  }, [openId, projects])
 
   const saveProjectOrder = async (orderedList: Project[]) => {
     setIsReordering(true)
@@ -215,8 +232,7 @@ export function ProjectsManager({
         setProjects(updatedList)
         notify("success", `Project "${updated.title}" updated successfully!`)
       }
-      setEditingProject(null)
-      setIsCreatingProject(false)
+      onOpenChange(null)
     } catch (error: any) {
       console.error("Error saving project:", error)
       notify("error", error?.message || "Failed to save project.")
@@ -233,7 +249,7 @@ export function ProjectsManager({
       setProjects(updatedList)
       onProjectsCountChange?.(updatedList.length)
       if (editingProject?.id === id) {
-        setEditingProject(null)
+        onOpenChange(null)
       }
       notify("success", `Project "${title}" deleted.`)
     } catch (error: any) {
@@ -417,7 +433,7 @@ export function ProjectsManager({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={handleCreateNewProject}
+                onClick={() => onOpenChange("new")}
                 className="border-slate-700 hover:border-blue-400 text-slate-300 text-xs h-8"
               >
                 <Plus size={14} className="mr-1" /> New Project
@@ -578,7 +594,7 @@ export function ProjectsManager({
                         <Button
                           size="sm"
                           variant="outline"
-                          onClick={() => handleEditProject(project)}
+                          onClick={() => onOpenChange(String(project.id))}
                           className="border-slate-700 hover:border-blue-400 hover:text-blue-400 h-8 px-2.5"
                           title="Edit project"
                         >
@@ -607,7 +623,7 @@ export function ProjectsManager({
       <Dialog
         open={Boolean(editingProject)}
         onOpenChange={(open) => {
-          if (!open) setEditingProject(null)
+          if (!open) onOpenChange(null)
         }}
       >
         {editingProject && (
@@ -1085,7 +1101,7 @@ export function ProjectsManager({
               </Button>
               <Button
                 variant="outline"
-                onClick={() => setEditingProject(null)}
+                onClick={() => onOpenChange(null)}
                 className="border-slate-700 text-slate-300 hover:text-white"
               >
                 Cancel

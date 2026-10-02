@@ -32,7 +32,9 @@ import { extractImageFiles, type AdminNotify } from "@/components/admin/admin-ut
 interface ArticlesManagerProps {
   notify: AdminNotify
   onPostsCountChange?: (count: number) => void
-  createTrigger?: number
+  /** Which article the editor shows, from the URL: an article id, "new", or null for closed. */
+  openId: string | null
+  onOpenChange: (id: string | null) => void
 }
 
 const emptyPost: BlogPost = {
@@ -51,7 +53,8 @@ const emptyPost: BlogPost = {
 export function ArticlesManager({
   notify,
   onPostsCountChange,
-  createTrigger,
+  openId,
+  onOpenChange,
 }: ArticlesManagerProps) {
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null)
@@ -78,11 +81,26 @@ export function ArticlesManager({
     loadPosts()
   }, [])
 
+  // The URL (/admin/articles/<id> or /admin/articles/new) decides what the editor shows
   useEffect(() => {
-    if (createTrigger && createTrigger > 0) {
-      handleCreateNewArticle()
+    if (!openId) {
+      setEditingPost(null)
+      setIsCreatingPost(false)
+      return
     }
-  }, [createTrigger])
+    if (openId === "new") {
+      if (!isCreatingPost) handleCreateNewArticle()
+      return
+    }
+    if (editingPost?.id === openId || posts.length === 0) return
+    const post = posts.find((p) => p.id === openId)
+    if (post) {
+      handleEditArticle(post)
+    } else {
+      notify("error", `Article "${openId}" not found.`)
+      onOpenChange(null)
+    }
+  }, [openId, posts])
 
   const handleCreateNewArticle = () => {
     setEditingPost({ ...emptyPost, id: Date.now().toString() })
@@ -104,8 +122,7 @@ export function ArticlesManager({
     try {
       await saveBlogPost(editingPost)
       await loadPosts()
-      setEditingPost(null)
-      setIsCreatingPost(false)
+      onOpenChange(null)
       notify("success", `Article "${editingPost.title}" saved successfully!`)
     } catch (error) {
       console.error("Error saving post:", error)
@@ -119,7 +136,7 @@ export function ArticlesManager({
       await deleteBlogPost(id)
       await loadPosts()
       if (editingPost?.id === id) {
-        setEditingPost(null)
+        onOpenChange(null)
       }
       notify("success", `Article "${title}" deleted.`)
     } catch (error) {
@@ -199,7 +216,7 @@ export function ArticlesManager({
               <Button
                 variant="outline"
                 size="sm"
-                onClick={handleCreateNewArticle}
+                onClick={() => onOpenChange("new")}
                 className="border-slate-700 hover:border-blue-400 text-slate-300 text-xs h-8"
               >
                 <Plus size={14} className="mr-1" /> New Article
@@ -262,7 +279,7 @@ export function ArticlesManager({
                       <Button
                         size="sm"
                         variant="outline"
-                        onClick={() => handleEditArticle(post)}
+                        onClick={() => onOpenChange(post.id)}
                         className="border-slate-700 hover:border-blue-400 hover:text-blue-400 h-8 px-2.5"
                         title="Edit article"
                       >
@@ -297,7 +314,7 @@ export function ArticlesManager({
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => setEditingPost(null)}
+                onClick={() => onOpenChange(null)}
                 className="text-slate-400 hover:text-white"
               >
                 <X size={16} />
@@ -522,7 +539,7 @@ export function ArticlesManager({
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={() => setEditingPost(null)}
+                  onClick={() => onOpenChange(null)}
                   className="border-slate-700 text-slate-300 hover:text-white"
                 >
                   Cancel

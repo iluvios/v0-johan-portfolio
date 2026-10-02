@@ -1,3 +1,5 @@
+import { compressImage } from "@/lib/media"
+
 export interface BlogPost {
   id: string
   title: string
@@ -81,7 +83,7 @@ export async function getAllArticles(): Promise<BlogPost[]> {
 export async function uploadBlogImage(file: File): Promise<string> {
   try {
     const formData = new FormData()
-    formData.append("file", file)
+    formData.append("file", await compressImage(file))
 
     const response = await fetch("/api/blog/upload", {
       method: "POST",
