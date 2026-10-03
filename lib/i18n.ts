@@ -2,10 +2,10 @@ export type Language = "en" | "es";
 
 export const portfolioCopy = {
   en: {
-    role: "Senior Martech & GTM Engineer",
-    hero: ["The campaigns.", "The systems.", "The pipeline."],
+    role: "Senior Growth Marketer",
+    hero: ["The campaigns.", "The systems.", "The results."],
     intro:
-      "Developer turned marketer turned GTM engineer. I build the outbound, CRM, and attribution systems that turn campaigns into pipeline — and I’ve run those campaigns myself, with budgets up to $70K a month.",
+      "Developer turned growth marketer. I run the campaigns — paid media, landing pages, lifecycle email, and SEO — and build the stack that measures and scales them, with budgets up to $70K a month.",
     work: "See the work",
     talk: "Let’s talk",
     scroll: "Scroll to explore",
@@ -23,37 +23,36 @@ export const portfolioCopy = {
     proofCv: "See each one in context in my CV",
     metrics: [
       {
+        value: "−61%",
+        label: "Meta cost per registered user, while scaling monthly spend 13×",
+        context: "Revy Autos · Pvragon · 2025",
+      },
+      {
         value: "30 → 200",
         label:
           "Daily user registrations after I rebuilt the CRM and lifecycle email in ActiveCampaign",
-        context: "Pvragon · 2025–26",
+        context: "Revy Autos · Pvragon · 2025",
+      },
+      {
+        value: "+132%",
+        label: "Orders for a Shopify store I rebuilt, with conversion rate up 114%",
+        context: "Autobruder · Freelance · 2025",
+      },
+      {
+        value: "3.7×",
+        label: "Google search clicks after an SEO optimization of a nonprofit site I rebuilt",
+        context: "Rainforest Foundation US · 2025",
+      },
+      {
+        value: "69K",
+        label: "Site visits from $59.8K in donated Google Ad Grants",
+        context: "Fundación Lupines · 2019–22",
       },
       {
         value: "$70K/mo",
         label:
           "Peak paid-media budget managed across Meta, Google, Reddit, and LinkedIn",
-        context: "Pvragon · 2025–26",
-      },
-      {
-        value: "$500K+",
-        label: "Attributable new revenue for clients from funnel optimization and CRO",
-        context: "Freelance · 2022–25",
-      },
-      {
-        value: "60%",
-        label: "Less manual workload after leading RPA and workflow automation",
-        context: "Savant International · 2022",
-      },
-      {
-        value: "+50K/mo",
-        label: "Organic visits added through technical, on-page, and off-page SEO",
-        context: "PSL Software · 2018",
-      },
-      {
-        value: "35%",
-        label:
-          "Email open rate, up from 12%, after segmentation and subject-line testing",
-        context: "PSL Software · 2018",
+        context: "Pvragon · 2025",
       },
     ],
     stackLabel: "Tools I work in",
@@ -62,9 +61,9 @@ export const portfolioCopy = {
     servicesIntro:
       "I set up what a new round needs to turn into revenue: the campaigns that create demand, the outbound and CRM that capture it, and the tracking that proves what worked. One person who plans it, builds it, writes it, and hands it over documented.",
     servicesTeaserEyebrow: "What I build",
-    servicesTeaserTitle: "The whole GTM engine, end to end.",
+    servicesTeaserTitle: "The whole growth engine, end to end.",
     servicesTeaserBody:
-      "Hiring for it or need it built, it’s the same work: the campaigns that create demand, and the outbound, CRM, and tracking that turn it into pipeline — handed over documented.",
+      "Hiring for it or need it built, it’s the same work: the campaigns that create demand, and the outbound, CRM, and tracking that turn it into revenue — handed over documented.",
     servicesCta: "See services",
     servicesContact: "Tell me about your startup",
     services: [
@@ -86,7 +85,7 @@ export const portfolioCopy = {
         includes: [
           "Paid media on Meta, Google, Reddit, and LinkedIn: setup, creative, and management",
           "Ad copy and creative variations, produced with AI workflows and A/B tested",
-          "Lifecycle email and nurture campaigns that turn sign-ups into pipeline",
+          "Lifecycle email and nurture campaigns that turn sign-ups into customers",
           "SEO, content, and landing page copy written to convert",
         ],
       },
@@ -130,17 +129,17 @@ export const portfolioCopy = {
       {
         title: "Launch sprint",
         meta: "2–6 weeks · fixed scope",
-        body: "One system built end to end — your outbound engine, CRM, or tracking — with documentation and walkthrough videos at hand-off.",
+        body: "One growth system built end to end — a campaign and its landing pages, your CRM and lifecycle flows, or your tracking — with documentation and walkthrough videos at hand-off.",
       },
       {
-        title: "Fractional GTM engineer",
+        title: "Fractional growth marketer",
         meta: "Monthly · part-time",
-        body: "Ongoing ownership of your GTM stack: new automations, fixes, reporting, and growth experiments as you scale.",
+        body: "Ongoing ownership of your growth: campaigns, landing pages, automations, reporting, and experiments as you scale.",
       },
       {
         title: "Full-time or contract role",
         meta: "Remote · US hours",
-        body: "Hiring a GTM engineer or martech lead? I’m open to joining your team.",
+        body: "Hiring a growth marketer or martech lead? I’m open to joining your team.",
       },
     ],
     processTitle: "How it works",
@@ -170,7 +169,7 @@ export const portfolioCopy = {
       },
       {
         name: "Pvragon",
-        body: "Ran the martech and GTM automation stack for venture-backed startups, with ad budgets up to $70K a month.",
+        body: "Ran paid media, lifecycle automation, and attribution for venture-backed startups, with ad budgets up to $70K a month.",
       },
     ],
     servicesContactTitle: "Tell me what you’re building.",
@@ -189,7 +188,7 @@ export const portfolioCopy = {
     cta: "Hiring or building?",
     ctaTitle: "Let’s talk about your stack.",
     ctaBody:
-      "Open to full-time and contract roles across martech, GTM engineering, and growth marketing. Remote, on US hours.",
+      "Open to full-time and contract roles in growth marketing and martech. Remote, on US hours.",
     projectsTitle: "Less talk. More shipping.",
     projectsIntro:
       "Startup MVPs, automation work, and the sites and funnels I’ve built for clients in Latin America and the US.",
@@ -198,7 +197,7 @@ export const portfolioCopy = {
       "Ideas on marketing, technology, and the things I learn along the way.",
     contactTitle: "Tell me what you’re working on.",
     contactIntro:
-      "Hiring a GTM engineer or martech lead, or need a campaign or a system built? Send the role or the problem — a few lines is enough to start.",
+      "Hiring a growth marketer or martech lead, or need a campaign or a system built? Send the role or the problem — a few lines is enough to start.",
     location: "Based in Medellín (UTC−5), working on US hours.",
     name: "Your name",
     email: "Email address",
@@ -261,10 +260,10 @@ export const portfolioCopy = {
     menuDescription: "Explore the work and the person behind it.",
   },
   es: {
-    role: "Ingeniero Senior de Martech y GTM",
-    hero: ["Las campañas.", "Los sistemas.", "El pipeline."],
+    role: "Growth Marketer Senior",
+    hero: ["Las campañas.", "Los sistemas.", "Los resultados."],
     intro:
-      "Desarrollador convertido en marketer y luego en ingeniero GTM. Construyo los sistemas de prospección, CRM y atribución que convierten campañas en pipeline, y he dirigido esas campañas yo mismo, con presupuestos de hasta $70K al mes.",
+      "Desarrollador convertido en growth marketer. Dirijo las campañas —pauta, landing pages, email de ciclo de vida y SEO— y construyo el stack que las mide y las escala, con presupuestos de hasta $70K al mes.",
     work: "Ver el trabajo",
     talk: "Hablemos",
     scroll: "Sigue explorando",
@@ -282,37 +281,36 @@ export const portfolioCopy = {
     proofCv: "Míralos en contexto en mi CV",
     metrics: [
       {
+        value: "−61%",
+        label: "Costo por usuario registrado en Meta, mientras la inversión mensual crecía 13×",
+        context: "Revy Autos · Pvragon · 2025",
+      },
+      {
         value: "30 → 200",
         label:
           "Registros diarios de usuarios tras rehacer el CRM y el email de ciclo de vida en ActiveCampaign",
-        context: "Pvragon · 2025–26",
+        context: "Revy Autos · Pvragon · 2025",
+      },
+      {
+        value: "+132%",
+        label: "Pedidos de una tienda Shopify que reconstruí, con la conversión un 114% más alta",
+        context: "Autobruder · Freelance · 2025",
+      },
+      {
+        value: "3.7×",
+        label: "Clics desde Google tras optimizar el SEO de un sitio sin ánimo de lucro que reconstruí",
+        context: "Rainforest Foundation US · 2025",
+      },
+      {
+        value: "69K",
+        label: "Visitas al sitio con $59.8K en anuncios donados por Google Ad Grants",
+        context: "Fundación Lupines · 2019–22",
       },
       {
         value: "$70K/mes",
         label:
           "Presupuesto máximo de pauta gestionado en Meta, Google, Reddit y LinkedIn",
-        context: "Pvragon · 2025–26",
-      },
-      {
-        value: "$500K+",
-        label: "Nuevos ingresos atribuibles para clientes con optimización de embudos y CRO",
-        context: "Freelance · 2022–25",
-      },
-      {
-        value: "60%",
-        label: "Menos carga de trabajo manual tras liderar RPA y automatización de procesos",
-        context: "Savant International · 2022",
-      },
-      {
-        value: "+50K/mes",
-        label: "Visitas orgánicas sumadas con SEO técnico, on-page y off-page",
-        context: "PSL Software · 2018",
-      },
-      {
-        value: "35%",
-        label:
-          "Tasa de apertura de email, desde 12%, tras segmentación y pruebas de asunto",
-        context: "PSL Software · 2018",
+        context: "Pvragon · 2025",
       },
     ],
     stackLabel: "Herramientas con las que trabajo",
@@ -321,9 +319,9 @@ export const portfolioCopy = {
     servicesIntro:
       "Monto lo que una nueva ronda necesita para convertirse en ingresos: las campañas que generan demanda, la prospección y el CRM que la capturan, y la medición que demuestra qué funcionó. Una sola persona que lo planea, lo construye, lo escribe y lo entrega documentado.",
     servicesTeaserEyebrow: "Lo que construyo",
-    servicesTeaserTitle: "Todo el motor de GTM, de punta a punta.",
+    servicesTeaserTitle: "Todo el motor de crecimiento, de punta a punta.",
     servicesTeaserBody:
-      "Ya sea que quieras contratar a alguien o necesites construirlo, el trabajo es el mismo: las campañas que generan demanda, y la prospección, el CRM y la medición que la convierten en pipeline, todo entregado con documentación.",
+      "Ya sea que quieras contratar a alguien o necesites construirlo, el trabajo es el mismo: las campañas que generan demanda, y la prospección, el CRM y la medición que la convierten en ingresos, todo entregado con documentación.",
     servicesCta: "Ver servicios",
     servicesContact: "Cuéntame sobre tu startup",
     services: [
@@ -345,7 +343,7 @@ export const portfolioCopy = {
         includes: [
           "Pauta en Meta, Google, Reddit y LinkedIn: configuración, creativos y gestión",
           "Copy y variaciones de creativos, producidos con flujos de IA y testeados A/B",
-          "Campañas de email y nurturing que convierten registros en pipeline",
+          "Campañas de email y nurturing que convierten registros en clientes",
           "SEO, contenido y copy de landing pages orientado a conversión",
         ],
       },
@@ -389,17 +387,17 @@ export const portfolioCopy = {
       {
         title: "Sprint de lanzamiento",
         meta: "2–6 semanas · alcance fijo",
-        body: "Un sistema construido de principio a fin —tu motor de prospección, CRM o medición— con documentación y videos explicativos en la entrega.",
+        body: "Un sistema de crecimiento construido de principio a fin —una campaña con sus landing pages, tu CRM y flujos de ciclo de vida, o tu medición— con documentación y videos explicativos en la entrega.",
       },
       {
-        title: "GTM engineer fraccional",
+        title: "Growth marketer fraccional",
         meta: "Mensual · medio tiempo",
-        body: "Me hago cargo de tu stack de GTM: nuevas automatizaciones, ajustes, reportes y experimentos de crecimiento mientras escalas.",
+        body: "Me hago cargo de tu crecimiento: campañas, landing pages, automatizaciones, reportes y experimentos mientras escalas.",
       },
       {
         title: "Rol de tiempo completo o contrato",
         meta: "Remoto · horario de EE. UU.",
-        body: "¿Buscas un GTM engineer o líder de martech? Estoy abierto a unirme a tu equipo.",
+        body: "¿Buscas un growth marketer o líder de martech? Estoy abierto a unirme a tu equipo.",
       },
     ],
     processTitle: "Cómo funciona",
@@ -429,7 +427,7 @@ export const portfolioCopy = {
       },
       {
         name: "Pvragon",
-        body: "Gestioné el stack de martech y automatización GTM para startups financiadas por capital de riesgo, con pauta de hasta $70K al mes.",
+        body: "Dirigí pauta, automatización de ciclo de vida y atribución para startups financiadas por capital de riesgo, con presupuestos de hasta $70K al mes.",
       },
     ],
     servicesContactTitle: "Cuéntame qué estás construyendo.",
@@ -448,7 +446,7 @@ export const portfolioCopy = {
     cta: "¿Contratando o construyendo?",
     ctaTitle: "Hablemos de tu stack.",
     ctaBody:
-      "Disponible para roles de tiempo completo y contratos en martech, ingeniería GTM y marketing de crecimiento. Remoto, en horario de EE. UU.",
+      "Disponible para roles de tiempo completo y contratos en growth marketing y martech. Remoto, en horario de EE. UU.",
     projectsTitle: "Menos palabras. Más lanzamientos.",
     projectsIntro:
       "MVPs para startups, automatizaciones y los sitios y embudos que he construido para clientes en Latinoamérica y EE. UU.",
@@ -457,7 +455,7 @@ export const portfolioCopy = {
       "Ideas sobre marketing, tecnología y lo que voy aprendiendo en el camino.",
     contactTitle: "Cuéntame en qué estás trabajando.",
     contactIntro:
-      "¿Buscas un GTM engineer o líder de martech, o necesitas construir una campaña o un sistema? Envíame el rol o el problema; con unas líneas basta para empezar.",
+      "¿Buscas un growth marketer o líder de martech, o necesitas construir una campaña o un sistema? Envíame el rol o el problema; con unas líneas basta para empezar.",
     location: "Desde Medellín (UTC−5), en horario de EE. UU.",
     name: "Tu nombre",
     email: "Correo electrónico",

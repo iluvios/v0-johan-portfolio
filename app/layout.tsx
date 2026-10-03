@@ -21,15 +21,15 @@ const space = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://asjohan.com"),
   title: {
-    default: "Johan Alvarez — Senior Martech & GTM Engineer",
+    default: "Johan Alvarez — Senior Growth Marketer",
     template: "%s | Johan Alvarez",
   },
   description:
-    "Johan Alvarez builds the outbound, CRM, and attribution systems that turn campaigns into pipeline — Clay, Salesforce, HubSpot, n8n, and server-side tracking — after years of running the campaigns too. Open to GTM engineering roles; remote on US hours.",
+    "Johan Alvarez is a growth marketer who runs the campaigns — paid media, landing pages, lifecycle email, and SEO — and builds the stack behind them: attribution, CRM, and automation. Open to growth marketing roles; remote on US hours.",
   openGraph: {
-    title: "Johan Alvarez — Senior Martech & GTM Engineer",
+    title: "Johan Alvarez — Senior Growth Marketer",
     description:
-      "Growth marketing and GTM systems for recently funded startups: campaigns and creative, outbound, CRM and lifecycle automation, attribution, and AI-built MVPs.",
+      "Growth marketing for startups: campaigns and creative, landing pages, CRM and lifecycle automation, attribution, and AI-built MVPs.",
     url: "https://asjohan.com",
     siteName: "Johan Alvarez",
     type: "website",
@@ -40,7 +40,7 @@ const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Johan Alvarez",
-  jobTitle: "Senior Martech & GTM Engineer",
+  jobTitle: "Senior Growth Marketer",
   url: "https://asjohan.com",
   email: `mailto:${CONTACT_EMAIL}`,
   sameAs: [LINKEDIN_URL],
@@ -51,7 +51,7 @@ const personJsonLd = {
   },
   knowsLanguage: ["en", "es"],
   knowsAbout: [
-    "GTM engineering",
+    "Growth marketing",
     "Marketing automation",
     "Clay",
     "Salesforce",

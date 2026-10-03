@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 // Share card for LinkedIn, Slack, and email previews. Colors mirror the tokens in globals.css.
-export const alt = "Johan Alvarez — Senior Martech & GTM Engineer";
+export const alt = "Johan Alvarez — Senior Growth Marketer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,7 +41,7 @@ export default function OpengraphImage() {
               background: "#67e3f9",
             }}
           />
-          Senior Martech & GTM Engineer
+          Senior Growth Marketer
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
           <div style={{ fontSize: 84, fontWeight: 600, letterSpacing: -3 }}>
@@ -58,7 +58,7 @@ export default function OpengraphImage() {
               color: "#67e3f9",
             }}
           >
-            The pipeline.
+            The results.
           </div>
         </div>
         <div

@@ -41,17 +41,17 @@ export interface CVProfile {
 // stored in Neon; every claim here is taken from that record or confirmed directly by Johan.
 export const DEFAULT_CV_DATA: CVProfile = {
   name: "Johan Alvarez",
-  title: "Senior Martech & GTM Engineer",
+  title: "Senior Growth Marketer · Martech & Automation",
   phone: "+57 318 406 4960",
   email: "contact@asjohan.com",
   location: "Medellín, Colombia · Remote (US hours)",
   website: "https://asjohan.com",
   linkedin: "https://linkedin.com/in/johanalvarez",
   summary:
-    "Martech and GTM engineer with 10+ years across software development, growth marketing, and marketing operations, most of it helping startups go from zero to one. I work both halves of growth: the campaigns and creative — paid media on Meta, Google, Reddit, and LinkedIn (up to $70K/month), lifecycle email, SEO, and direct-response copy — and the systems that generate and measure the pipeline they produce: outbound and enrichment (Clay, Apollo), CRM and lifecycle automation (Salesforce, HubSpot, ActiveCampaign, n8n), and attribution (server-side GTM, GA4, Triple Whale, Wicked Reports).\n\nI started as a fullstack developer and now ship production apps with AI coding tools — including Refio.so, a platform I built end-to-end and took from idea to active users in under two months. I've set up Salesforce from scratch for four projects, including custom Apex, and I came up through agencies leading design, copy, and delivery teams, so I build with CAC, ROAS, and conversion in mind.",
+    "Growth marketer with 10+ years across software development, performance marketing and marketing operations, mostly helping startups go from zero to one. I run the full funnel (paid media, landing pages, lifecycle email and SEO) and build the stack underneath it: attribution, CRM and automation, and the sites themselves.\n\nRecent results: cut Meta cost per registered user 61% while scaling spend 13× (Revy Autos), +132% orders for a Shopify store (Autobruder), and 3.7× Google search clicks after an SEO optimization of a nonprofit site I had rebuilt (Rainforest Foundation US). I started as a fullstack developer and now ship production apps with AI coding tools: Refio.so went from idea to active users in under two months.",
   experiences: [
     {
-      role: "Martech & GTM Engineer",
+      role: "Growth & Martech Consultant",
       company: "Freelance",
       period: "Mar 2026 - Present",
       location: "Medellín, Colombia / Remote",
@@ -111,7 +111,6 @@ export const DEFAULT_CV_DATA: CVProfile = {
       achievements: [
         "Ran end-to-end digital marketing for clients: lifecycle email, direct-response copywriting, technical SEO, and paid media (Meta Ads, Google Ads).",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
-        "Generated $500K+ USD in attributable new revenue for clients through funnel optimization and CRO testing.",
       ],
       tools: ["HubSpot", "ActiveCampaign", "Salesforce", "GoHighLevel", "Meta Ads", "Google Ads", "GA4", "SEMrush", "Webflow", "WordPress", "Figma"],
     },
@@ -152,7 +151,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Ran B2B demand generation for 2 SaaS ERP products: email nurture, blog content, and webinars.",
         "Increased email open rates from 12% to 35% through segmentation and subject-line A/B testing.",
         "Raised webinar attendance from 20% to 55% with multi-touch reminder sequences.",
-        "Grew organic traffic by 50,000+ monthly visits through technical, on-page, and off-page SEO.",
+        "Built software-contable.co, a comparison site for accounting software used for SEO and display-ad traffic; three years later it still drew ~1,500 Google clicks a month.",
       ],
       tools: ["Mailchimp", "GoToWebinar", "WordPress", "Ahrefs", "Google Search Console", "Google Analytics"],
     },
