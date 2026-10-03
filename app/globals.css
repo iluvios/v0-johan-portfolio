@@ -995,6 +995,8 @@
     display: flex;
     gap: 0.75rem;
     overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
     padding: 5px;
     margin: -5px;
   }
@@ -1386,6 +1388,10 @@
   }
 }
 @media (max-width: 767px) {
+  /* Portrait ads and vertical videos get a portrait frame on phones instead of a short, wide one */
+  .gallery-main--portrait {
+    aspect-ratio: 4 / 5;
+  }
   .site-main {
     padding-top: 76px;
   }

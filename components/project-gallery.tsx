@@ -18,10 +18,13 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { usePortfolioCopy } from "@/lib/portfolio";
-import { isVideoUrl } from "@/lib/media";
+import { galleryView, isVideoUrl } from "@/lib/media";
 
-/** Height / width above which a screenshot (full landing page, email) scrolls instead of shrinking. */
-const TALL_RATIO = 1.2;
+/**
+ * Height / width above which an image scrolls instead of fitting. Social ad formats (4:5, 9:16 = 1.78)
+ * stay whole; full landing pages and emails scroll. The admin can override it per image.
+ */
+const TALL_RATIO = 2;
 const AUTO_SCROLL_DELAY_MS = 1500;
 const AUTO_SCROLL_PX_PER_SECOND = 60;
 
@@ -39,30 +42,37 @@ export default function ProjectGallery({
   const [playing, setPlaying] = useState(false);
   const count = images.length;
   const current = Math.min(index, Math.max(0, count - 1));
-  const [tall, setTall] = useState<Record<string, boolean>>({});
+  // Height / width of each image or video, measured once it starts loading
+  const [ratios, setRatios] = useState<Record<string, number>>({});
   const scrollRef = useRef<HTMLDivElement>(null);
   const currentImage = images[current];
-  const isTall = Boolean(tall[currentImage]);
+  const scrolls = (src: string) => {
+    const view = galleryView(src);
+    return view === "auto" ? (ratios[src] ?? 0) > TALL_RATIO : view === "scroll";
+  };
+  const isTall = scrolls(currentImage);
+  // Portrait media that fits whole gets a taller frame on phones, so it isn't shown tiny
+  const portraitClass = !isTall && (ratios[currentImage] ?? 0) > 1 ? " gallery-main--portrait" : "";
 
-  function measure(src: string, img: HTMLImageElement) {
-    if (!img.naturalWidth) return;
-    const isTallImage = img.naturalHeight / img.naturalWidth > TALL_RATIO;
-    setTall((prev) => (prev[src] === isTallImage ? prev : { ...prev, [src]: isTallImage }));
+  function measure(src: string, width: number, height: number) {
+    if (!width) return;
+    const ratio = height / width;
+    setRatios((prev) => (prev[src] === ratio ? prev : { ...prev, [src]: ratio }));
   }
 
   // Large screenshots take a while to finish downloading; their size is known much earlier.
   useEffect(() => {
-    if (!currentImage || isVideoUrl(currentImage) || currentImage in tall) return;
+    if (!currentImage || isVideoUrl(currentImage) || currentImage in ratios) return;
     const probe = new Image();
     probe.src = currentImage;
     const timer = window.setInterval(() => {
       if (probe.naturalWidth) {
         clearInterval(timer);
-        measure(currentImage, probe);
+        measure(currentImage, probe.naturalWidth, probe.naturalHeight);
       }
     }, 100);
     return () => clearInterval(timer);
-  }, [currentImage, tall]);
+  }, [currentImage, ratios]);
 
   // Tall screenshots start at the top, then drift down slowly until the visitor scrolls themselves.
   useEffect(() => {
@@ -160,7 +170,7 @@ export default function ProjectGallery({
         }}
       >
         {isVideoUrl(images[current]) ? (
-          <div className="gallery-main">
+          <div className={`gallery-main${portraitClass}`}>
             <video
               key={images[current]}
               src={images[current]}
@@ -168,6 +178,7 @@ export default function ProjectGallery({
               playsInline
               preload="metadata"
               aria-label={`${title} — ${copy.image} ${current + 1}`}
+              onLoadedMetadata={(e) => measure(currentImage, e.currentTarget.videoWidth, e.currentTarget.videoHeight)}
               onPlay={() => setPlaying(false)}
             />
           </div>
@@ -183,7 +194,7 @@ export default function ProjectGallery({
                 src={currentImage}
                 alt={`${title} — ${copy.image} ${current + 1}`}
                 decoding="async"
-                onLoad={(e) => measure(currentImage, e.currentTarget)}
+                onLoad={(e) => measure(currentImage, e.currentTarget.naturalWidth, e.currentTarget.naturalHeight)}
               />
             </div>
             <DialogTrigger asChild>
@@ -196,7 +207,7 @@ export default function ProjectGallery({
           <DialogTrigger asChild>
             <button
               type="button"
-              className="gallery-main"
+              className={`gallery-main${portraitClass}`}
               aria-label={`${copy.zoom}: ${title}`}
             >
               <img
@@ -205,7 +216,7 @@ export default function ProjectGallery({
                 width={1600}
                 height={1000}
                 decoding="async"
-                onLoad={(e) => measure(currentImage, e.currentTarget)}
+                onLoad={(e) => measure(currentImage, e.currentTarget.naturalWidth, e.currentTarget.naturalHeight)}
               />
               <span className="project-open" aria-hidden="true">
                 <Maximize2 size={20} />
@@ -290,8 +301,8 @@ export default function ProjectGallery({
                   <img
                     src={image}
                     alt=""
-                    className={tall[image] ? "object-top" : undefined}
-                    onLoad={(e) => measure(image, e.currentTarget)}
+                    className={scrolls(image) ? "object-top" : undefined}
+                    onLoad={(e) => measure(image, e.currentTarget.naturalWidth, e.currentTarget.naturalHeight)}
                     width={176}
                     height={116}
                     loading="lazy"

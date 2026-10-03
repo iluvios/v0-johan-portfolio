@@ -39,7 +39,7 @@ import {
   reorderProjects,
 } from "@/lib/projects"
 import { uploadBlogImage } from "@/lib/blog"
-import { isVideoUrl, uploadMedia } from "@/lib/media"
+import { type GalleryView, galleryView, isVideoUrl, uploadMedia, withGalleryView } from "@/lib/media"
 import { CaseStudyEditor } from "@/components/admin/case-study-editor"
 import { extractImageFiles, type AdminNotify } from "@/components/admin/admin-utils"
 import { cn } from "@/lib/utils"
@@ -391,6 +391,16 @@ export function ProjectsManager({
       e.stopPropagation()
       await uploadGalleryFiles(files)
     }
+  }
+
+  // Auto → Fit (whole image) → Scroll (full width, for landing pages and emails) → Auto
+  const handleCycleGalleryView = (index: number) => {
+    if (!editingProject) return
+    const order: GalleryView[] = ["auto", "fit", "scroll"]
+    const gallery = [...(editingProject.gallery || [])]
+    const next = order[(order.indexOf(galleryView(gallery[index])) + 1) % order.length]
+    gallery[index] = withGalleryView(gallery[index], next)
+    setEditingProject({ ...editingProject, gallery })
   }
 
   const handleMoveGalleryImage = (from: number, to: number) => {
@@ -1028,6 +1038,19 @@ export function ProjectsManager({
                         <span className="absolute top-1 left-1 bg-black/70 text-white text-[9px] font-mono rounded px-1">
                           {idx + 1}
                         </span>
+                        {!isVideoUrl(imgUrl) && (
+                          <button
+                            type="button"
+                            onClick={() => handleCycleGalleryView(idx)}
+                            className={cn(
+                              "absolute top-1 left-1/2 -translate-x-1/2 rounded px-1 text-[9px] font-medium text-white transition-colors",
+                              galleryView(imgUrl) === "auto" ? "bg-black/70 hover:bg-cyan-600" : "bg-cyan-600 hover:bg-cyan-500"
+                            )}
+                            title="How it shows on the site: Auto decides from the shape, Fit shows the whole image, Scroll fills the width and scrolls (landing pages, emails). Click to change."
+                          >
+                            {{ auto: "Auto", fit: "Fit", scroll: "Scroll" }[galleryView(imgUrl)]}
+                          </button>
+                        )}
                         <div className="absolute bottom-1 inset-x-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity">
                           <button
                             type="button"

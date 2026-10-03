@@ -32,14 +32,12 @@ export default function ProjectDetail({ id }: { id: number }) {
       </div>
     );
   if (!project) return <MissingContent kind="project" />;
-  const images = [
-    ...new Set(
-      [project.image_url, ...project.gallery].filter(
-        (image): image is string =>
-          Boolean(image) && !image!.includes("placeholder"),
-      ),
-    ),
-  ];
+  // One entry per image: the gallery's copy wins over the cover, since it may carry a #view setting
+  const byImage = new Map<string, string>();
+  for (const image of [project.image_url, ...project.gallery]) {
+    if (image && !image.includes("placeholder")) byImage.set(image.split("#")[0], image);
+  }
+  const images = [...byImage.values()];
   const website = safeWebsite(project.website_url);
   const facts = [
     { label: copy.client, value: project.client },

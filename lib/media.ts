@@ -12,6 +12,24 @@ export function isVideoUrl(url: string): boolean {
 }
 
 /**
+ * How a gallery image is shown: "fit" keeps the whole image in the frame, "scroll" fills the width
+ * and scrolls (full landing pages, emails), "auto" decides from the image's shape. Stored as a
+ * #view= fragment on the gallery URL, so it travels with the image when the gallery is reordered.
+ */
+export type GalleryView = "auto" | "fit" | "scroll"
+
+const VIEW_FRAGMENT = /#view=(fit|scroll)$/
+
+export function galleryView(url: string): GalleryView {
+  return (url.match(VIEW_FRAGMENT)?.[1] as GalleryView | undefined) ?? "auto"
+}
+
+export function withGalleryView(url: string, view: GalleryView): string {
+  const base = url.replace(VIEW_FRAGMENT, "")
+  return view === "auto" ? base : `${base}#view=${view}`
+}
+
+/**
  * Shrinks screenshots before upload: at most 1600 px wide, re-encoded as WebP. Tall captures keep
  * their full height. Returns the original file when it's already small, not a raster image, or
  * when re-encoding wouldn't save much.
