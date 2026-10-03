@@ -112,7 +112,7 @@ export default function CVDocument({ embedded = false }: { embedded?: boolean })
           <header className="cv-header rounded-xl border border-border bg-card p-6 sm:p-8 print:rounded-none print:border-0 print:border-b print:border-slate-300 print:bg-white print:px-0 print:pb-4 print:pt-0">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
               <img
-                src="/images/profile.jpeg"
+                src="/images/johan-avatar.webp"
                 alt={cv.name}
                 width={112}
                 height={112}

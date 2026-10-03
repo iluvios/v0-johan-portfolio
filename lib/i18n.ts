@@ -181,6 +181,22 @@ export const portfolioCopy = {
     perspectiveBody:
       "I’m Johan, based in Medellín and working on US hours. I started as a fullstack developer, spent years in agencies running campaigns, creative, and client teams, and now build the systems that connect the two.",
     moreAbout: "Read my CV",
+    offClock: "Off the clock",
+    offItems: [
+      {
+        title: "Movement",
+        body: "Parkour and calisthenics, five days a week. Growth in miniature: read the route, commit, adjust mid-air.",
+      },
+      {
+        title: "Creativity",
+        body: "Photo, video, 3D capture, and piano. It’s where the eye behind every ad and landing page comes from.",
+      },
+      {
+        title: "Mind",
+        body: "Years of Zen practice. Calm is a skill when the numbers swing.",
+      },
+    ],
+    offQuote: "To live I must have faith and trust myself to the totally unknown.",
     journal: "Thinking out loud",
     journalTitle: "Notes from the process.",
     allArticles: "All articles",
@@ -439,6 +455,22 @@ export const portfolioCopy = {
     perspectiveBody:
       "Soy Johan, vivo en Medellín y trabajo en horario de EE. UU. Empecé como desarrollador fullstack, pasé años en agencias liderando campañas, creativo y equipos de clientes, y hoy construyo los sistemas que conectan ambos mundos.",
     moreAbout: "Ver mi CV",
+    offClock: "Fuera del horario",
+    offItems: [
+      {
+        title: "Movimiento",
+        body: "Parkour y calistenia, cinco días a la semana. Es growth en miniatura: leer la ruta, comprometerse, ajustar en el aire.",
+      },
+      {
+        title: "Creatividad",
+        body: "Foto, video, captura 3D y piano. De ahí sale el ojo detrás de cada anuncio y cada landing.",
+      },
+      {
+        title: "Mente",
+        body: "Años de práctica Zen. La calma es una habilidad cuando los números se mueven.",
+      },
+    ],
+    offQuote: "Para vivir debo tener fe y confiar en mí mismo ante lo totalmente desconocido.",
     journal: "Pensando en voz alta",
     journalTitle: "Notas del proceso.",
     allArticles: "Todos los artículos",

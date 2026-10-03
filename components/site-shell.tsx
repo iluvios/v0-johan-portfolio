@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
+import FlowField from "@/components/flow-field";
 
 export default function SiteShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -15,6 +16,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <>
+      {!pathname.startsWith("/admin") && <FlowField />}
       <Navigation />
       <main id="main-content" tabIndex={-1} className="site-main">
         {children}

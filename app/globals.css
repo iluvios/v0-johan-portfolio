@@ -87,9 +87,9 @@
     position: fixed;
     inset: 0 0 auto;
     z-index: 40;
-    background: hsl(var(--background) / 0.8);
+    background: hsl(var(--background) / 0.55);
     color: hsl(var(--foreground));
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(18px) saturate(140%);
     border-bottom: 1px solid hsl(var(--foreground) / 0.07);
   }
   .header-inner {
@@ -220,7 +220,51 @@
   }
   .hero-inner {
     position: relative;
-    padding-block: 84px 34px;
+    z-index: 1;
+    /* Below 1024px the copy starts over the faded lower edge of the portrait. */
+    padding-block: calc(min(64svh, 560px) - 7.5rem) 34px;
+  }
+  /* The living portrait: a static image first, then the WebGL version fades in over it. */
+  .hero-portrait {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: min(64svh, 560px);
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 52%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 52%, transparent 100%);
+  }
+  .hero-portrait img,
+  .hero-portrait canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hero-portrait img {
+    object-fit: cover;
+    transition: opacity 0.9s ease;
+  }
+  .hero-portrait canvas {
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+  .hero-portrait[data-live] canvas {
+    opacity: 1;
+  }
+  .hero-portrait[data-live] img {
+    opacity: 0;
+  }
+  /* A soft shade behind the copy keeps the light field from competing with the text. */
+  .hero-copy::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -12% -18% -14% -30%;
+    background: radial-gradient(closest-side, hsl(var(--background) / 0.82), hsl(var(--background) / 0.5) 60%, transparent);
+    pointer-events: none;
   }
   .hero-copy {
     position: relative;
@@ -242,14 +286,32 @@
     display: block;
   }
   .hero-title .hero-last {
+    /* A band of light sweeps across the last line now and then. */
     background: linear-gradient(
       100deg,
-      hsl(var(--primary)) 5%,
-      hsl(var(--accent)) 85%
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent)) 30%,
+      hsl(var(--primary)) 45%,
+      hsl(0 0% 100%) 50%,
+      hsl(var(--accent)) 55%,
+      hsl(var(--primary)) 70%,
+      hsl(var(--accent)) 100%
     );
+    background-size: 300% 100%;
+    background-position: 0% 0;
     color: transparent;
     background-clip: text;
     padding-bottom: 0.12em;
+    animation: hero-shine 9s cubic-bezier(0.65, 0, 0.35, 1) 1.2s infinite;
+  }
+  @keyframes hero-shine {
+    0% {
+      background-position: 0% 0;
+    }
+    28%,
+    100% {
+      background-position: 100% 0;
+    }
   }
   .hero-description {
     color: hsl(var(--muted-foreground));
@@ -262,29 +324,6 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 1.5rem;
-  }
-  .hero-artwork {
-    position: absolute;
-    z-index: -1;
-    width: 820px;
-    right: -220px;
-    top: -12px;
-    pointer-events: none;
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      black 25%,
-      black 90%,
-      transparent
-    );
-  }
-  .artwork-motion img {
-    width: 100%;
-    height: auto;
-    mix-blend-mode: screen;
-  }
-  .hero-artwork .artwork-motion {
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
   }
   .hero-bottom {
     position: relative;
@@ -531,10 +570,11 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1px;
-    background: hsl(var(--border));
     border: 1px solid hsl(var(--border));
     border-radius: 12px;
     overflow: hidden;
+    background: hsl(var(--background) / 0.5);
+    backdrop-filter: blur(14px) saturate(130%);
   }
   .proof-item {
     display: flex;
@@ -542,7 +582,7 @@
     justify-content: flex-end;
     gap: 0.85rem;
     padding: clamp(1.25rem, 3vw, 2rem);
-    background: hsl(var(--background));
+    box-shadow: 0 0 0 1px hsl(var(--border));
   }
   .proof-value {
     font-family: var(--font-space), sans-serif;
@@ -603,9 +643,10 @@
     border-radius: 12px;
     background: linear-gradient(
       160deg,
-      hsl(var(--primary) / 0.08),
-      hsl(var(--background)) 60%
+      hsl(var(--primary) / 0.1),
+      hsl(var(--background) / 0.55) 60%
     );
+    backdrop-filter: blur(12px) saturate(130%);
     transition: border-color 0.2s;
   }
   .service-teaser:hover {
@@ -731,13 +772,6 @@
     flex-direction: column;
     gap: 3rem;
   }
-  .perspective-portrait {
-    width: 100%;
-    max-width: 280px;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    border-radius: 8px;
-  }
   .perspective-copy {
     display: flex;
     flex-direction: column;
@@ -784,10 +818,26 @@
     border-radius: 12px;
     background: linear-gradient(
       115deg,
-      hsl(var(--primary) / 0.12),
-      hsl(var(--background)) 70%
+      hsl(var(--primary) / 0.14),
+      hsl(var(--background) / 0.45) 70%
     );
+    backdrop-filter: blur(8px) saturate(130%);
     color: hsl(var(--foreground));
+  }
+  /* Where the light field converges. */
+  .flow-attractor {
+    animation: attractor-pulse 3.2s ease-in-out infinite;
+  }
+  @keyframes attractor-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 22px 0 hsl(var(--primary) / 0.35);
+    }
+    50% {
+      box-shadow:
+        0 0 42px 6px hsl(var(--accent) / 0.4),
+        0 0 0 1px hsl(var(--accent) / 0.5);
+    }
   }
   .contact-invitation-inner {
     padding: clamp(1.75rem, 6vw, 5rem);
@@ -1226,10 +1276,6 @@
     align-items: center;
     gap: 5rem;
   }
-  .perspective-portrait {
-    width: 25%;
-    max-width: none;
-  }
   .perspective-copy {
     flex: 1;
   }
@@ -1306,16 +1352,36 @@
   .mobile-menu-trigger {
     display: none;
   }
-  .hero-inner {
-    padding-top: min(92px, 8vh);
+  .hero {
+    min-height: calc(100svh - 88px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .hero-artwork {
-    width: 900px;
-    right: -210px;
-    top: -24px;
+  .hero-inner {
+    padding-top: min(72px, 6vh);
+  }
+  .hero-portrait {
+    left: auto;
+    width: auto;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    /* The photo is 3:2 and Johan stands at 55% of it: this lands him at 70% of the viewport. */
+    right: calc(30vw - 0.675 * (100svh - 88px));
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 36%),
+      linear-gradient(to bottom, transparent 0%, #000 14%, #000 74%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 36%),
+      linear-gradient(to bottom, transparent 0%, #000 14%, #000 74%, transparent 100%);
+    mask-composite: intersect;
   }
   .hero-copy {
-    max-width: 850px;
+    max-width: min(620px, 46vw);
+  }
+  .hero-title {
+    font-size: clamp(3.6rem, min(5.6vw, 10.5vh), 6.2rem);
   }
   .hero-bottom {
     padding-top: 96px;
@@ -1383,13 +1449,8 @@
   }
 }
 @media (min-width: 1440px) {
-  .hero-artwork {
-    width: 1000px;
-    right: -195px;
-    top: -58px;
-  }
   .hero-inner {
-    padding-top: min(100px, 9vh);
+    padding-top: min(80px, 7vh);
   }
 }
 @media (max-width: 767px) {
@@ -1407,7 +1468,7 @@
     width: 77px;
   }
   .hero-inner {
-    padding-block: 44px 26px;
+    padding-bottom: 26px;
   }
   .hero-copy {
     gap: 1.5rem;
@@ -1428,13 +1489,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem 1.5rem;
-  }
-  .hero-artwork {
-    width: 610px;
-    right: -330px;
-    top: 20px;
-    opacity: 0.42;
-    mask-image: linear-gradient(to right, transparent 20%, black 70%);
   }
   .hero-actions {
     gap: 0.6rem 1.25rem;
@@ -1467,10 +1521,6 @@
   }
   .perspective-layout {
     gap: 2rem;
-  }
-  .perspective-portrait {
-    width: 112px;
-    aspect-ratio: 1;
   }
   .reading-shell {
     width: calc(100% - 48px);
@@ -1529,7 +1579,6 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .artwork-motion,
   .work-motion {
     transform: none !important;
   }
@@ -1543,8 +1592,190 @@
   }
 }
 @media (hover: none), (max-width: 767px) {
-  .artwork-motion,
   .work-motion {
     transform: none !important;
+  }
+}
+
+@layer components {
+  /* The light field behind the site (components/flow-field.tsx). */
+  .flow-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100lvh;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1.4s ease;
+  }
+  .flow-field[data-ready] {
+    opacity: 1;
+  }
+
+  /* Off the clock: movement, creativity, mind. */
+  .off-clock {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: clamp(3rem, 6vw, 5rem);
+  }
+  .off-clock-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .off-clock-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.5rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 12px;
+    background: hsl(var(--background) / 0.5);
+    backdrop-filter: blur(12px) saturate(130%);
+  }
+  .off-clock-item h3 {
+    font-size: 1.35rem;
+  }
+  .off-clock-item p {
+    color: hsl(var(--muted-foreground));
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .off-clock-quote {
+    max-width: 640px;
+    padding-top: 0.5rem;
+  }
+  .off-clock-quote p {
+    font-family: var(--font-space), sans-serif;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.35;
+    letter-spacing: -0.02em;
+    color: hsl(var(--foreground) / 0.85);
+  }
+  .off-clock-quote footer {
+    margin-top: 0.6rem;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: hsl(var(--accent));
+  }
+  .glyph {
+    width: 100%;
+    max-width: 210px;
+    height: auto;
+    margin-bottom: 0.75rem;
+    overflow: visible;
+  }
+  .glyph rect {
+    fill: hsl(var(--foreground) / 0.05);
+    stroke: hsl(var(--foreground) / 0.22);
+    stroke-width: 1;
+  }
+  .glyph-route {
+    fill: none;
+    stroke: hsl(var(--foreground) / 0.2);
+    stroke-width: 1;
+    stroke-dasharray: 1.5 2.5;
+  }
+  .glyph-trace {
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-dasharray: 24 300;
+    stroke-dashoffset: 24;
+    animation: glyph-trace 3.2s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  }
+  @keyframes glyph-trace {
+    to {
+      stroke-dashoffset: -76;
+    }
+  }
+  .glyph-runner {
+    fill: #fff;
+    filter: drop-shadow(0 0 4px #5fe1f7);
+  }
+  .glyph-prism {
+    fill: hsl(var(--foreground) / 0.06);
+    stroke: hsl(var(--foreground) / 0.5);
+    stroke-width: 1.2;
+    stroke-linejoin: round;
+  }
+  .glyph-beam-in,
+  .glyph-beam {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: 12 9;
+    animation: glyph-flow 1.6s linear infinite;
+  }
+  .glyph-beam-in {
+    stroke: #fff;
+  }
+  @keyframes glyph-flow {
+    to {
+      stroke-dashoffset: -21;
+    }
+  }
+  .glyph-enso {
+    fill: hsl(var(--foreground) / 0.9);
+  }
+  /* The mask stroke follows the brush path and reveals the ensō as it "paints". */
+  .glyph-enso-reveal {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 14;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: glyph-enso 7s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+  @keyframes glyph-enso {
+    0% {
+      stroke-dashoffset: 100;
+      opacity: 1;
+    }
+    32%,
+    80% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+    94% {
+      stroke-dashoffset: 0;
+      opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 100;
+      opacity: 0;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .off-clock-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .hero-last,
+  .flow-attractor {
+    animation: none;
+  }
+  .glyph-trace,
+  .glyph-beam-in,
+  .glyph-beam,
+  .glyph-enso-reveal {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  .glyph-trace {
+    stroke-dasharray: 100 300;
+  }
+}
+@media print {
+  .flow-field,
+  .hero-portrait canvas {
+    display: none !important;
   }
 }

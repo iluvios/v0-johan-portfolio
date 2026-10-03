@@ -254,7 +254,8 @@ export function ContactInvitation() {
           <h2>{copy.ctaTitle}</h2>
           <div className="flex flex-wrap items-center gap-6">
             <GlowButton asChild>
-              <Link href="/contact">
+              {/* The light field pours into this button: the page is a funnel too. */}
+              <Link href="/contact" data-flow-attract className="flow-attractor">
                 {copy.talk}
                 <ArrowUpRight data-icon="inline-end" />
               </Link>

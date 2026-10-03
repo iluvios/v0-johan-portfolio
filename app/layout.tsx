@@ -42,6 +42,7 @@ const personJsonLd = {
   name: "Johan Alvarez",
   jobTitle: "Senior Growth Marketer",
   url: "https://asjohan.com",
+  image: "https://asjohan.com/images/johan-portrait.webp",
   email: `mailto:${CONTACT_EMAIL}`,
   sameAs: [LINKEDIN_URL],
   address: {
@@ -74,7 +75,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`dark bg-background ${inter.variable} ${space.variable}`}
     >
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+      {/* No body background: the html element paints it, so the fixed light field (z-index -1) shows through. */}
+      <body className="min-h-screen font-sans text-foreground antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

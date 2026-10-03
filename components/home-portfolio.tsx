@@ -1,16 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { GlowButton } from "@/components/ui/glow-button";
 import { Separator } from "@/components/ui/separator";
-import {
-  Reveal,
-  ScrollArtwork,
-  ScrollWorkItem,
-} from "@/components/portfolio-motion";
+import { Reveal, ScrollWorkItem } from "@/components/portfolio-motion";
+import HeroPortrait from "@/components/hero-portrait";
+import OffTheClock from "@/components/off-the-clock";
 import {
   Eyebrow,
   ProjectCard,
@@ -31,19 +28,16 @@ function Hero() {
   const { copy, language } = usePortfolioCopy();
   return (
     <section className="hero" aria-labelledby="hero-heading">
+      <HeroPortrait alt="Johan Alvarez" />
       <div className="page-shell hero-inner">
-        <ScrollArtwork className="hero-artwork">
-          <Image
-            src="/images/glass-aperture.png"
-            alt=""
-            width={1536}
-            height={1024}
-            priority
-            sizes="(max-width: 767px) 610px, 1000px"
-          />
-        </ScrollArtwork>
         <div className="hero-copy">
-          <Eyebrow>{copy.role}</Eyebrow>
+          <Eyebrow>
+            <span>
+              <span className="text-foreground">Johan Alvarez</span>
+              <span aria-hidden="true"> · </span>
+              {copy.role}
+            </span>
+          </Eyebrow>
           <h1 id="hero-heading" className="hero-title" lang={language}>
             {copy.hero.map((line, i) => (
               <span key={i} className={i === 2 ? "hero-last" : undefined}>
@@ -158,7 +152,7 @@ function Proof() {
         </div>
       </div>
       <Reveal>
-        <dl className="proof-grid">
+        <dl className="proof-grid" data-flow-order>
           {copy.metrics.map((metric) => (
             <div key={metric.value} className="proof-item">
               <dt className="proof-label">
@@ -234,14 +228,6 @@ function Perspective() {
   return (
     <section className="section">
       <Reveal className="perspective-layout">
-        <Image
-          className="perspective-portrait"
-          src="/images/profile.jpeg"
-          alt="Johan Alvarez"
-          width={420}
-          height={525}
-          sizes="(max-width: 767px) 112px, 300px"
-        />
         <div className="perspective-copy">
           <Eyebrow>{copy.perspective}</Eyebrow>
           <h2 className="perspective-statement">
@@ -258,6 +244,7 @@ function Perspective() {
           </Link>
         </div>
       </Reveal>
+      <OffTheClock />
     </section>
   );
 }
