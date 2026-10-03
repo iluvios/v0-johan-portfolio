@@ -5,8 +5,10 @@ import { ArrowUpRight, RotateCcw } from "lucide-react";
 import { GlowButton } from "@/components/ui/glow-button";
 import { Separator } from "@/components/ui/separator";
 import { Eyebrow, PageIntro } from "@/components/portfolio-ui";
+import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/portfolio-motion";
 import { usePortfolioCopy } from "@/lib/portfolio";
+import { STACK } from "@/lib/site";
 
 // One method, not a menu: the five parts of a digital sales system, connected in a loop.
 export default function ServicesPortfolio() {
@@ -55,6 +57,16 @@ export default function ServicesPortfolio() {
             </p>
           </div>
         </Reveal>
+        <div className="system-tools">
+          <p>{copy.systemTools}</p>
+          <ul className="flex flex-wrap gap-2">
+            {STACK.map((tool) => (
+              <li key={tool}>
+                <Badge variant="tag">{tool}</Badge>
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <Separator />

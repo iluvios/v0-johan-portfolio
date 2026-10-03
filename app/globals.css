@@ -1573,6 +1573,16 @@
     color: hsl(var(--accent));
   }
 
+  .system-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3.5rem;
+  }
+  .system-tools > p {
+    font-size: 14px;
+    color: hsl(var(--muted-foreground));
+  }
   .method-proof {
     border-top: 1px solid hsl(var(--border));
   }

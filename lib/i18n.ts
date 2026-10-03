@@ -99,6 +99,7 @@ export const portfolioCopy = {
       },
     ],
     systemLoop: "Measure feeds attract. Every month the system gets a little better.",
+    systemTools: "Built with the tools you already use, or the right ones:",
     processTitle: "How we work",
     process: [
       {
@@ -306,6 +307,7 @@ export const portfolioCopy = {
       },
     ],
     systemLoop: "Medir alimenta a atraer. Cada mes el sistema mejora un poco.",
+    systemTools: "Construido con las herramientas que ya usas, o con las correctas:",
     processTitle: "Cómo trabajamos",
     process: [
       {
