@@ -633,62 +633,11 @@
     color: hsl(var(--accent));
     transform: translate(3px, -3px);
   }
-  .service-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
-  }
-  .service-grid > * {
-    min-width: 0;
-  }
-  .service-card {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    height: 100%;
-    padding: clamp(1.5rem, 3vw, 2.25rem);
-    border: 1px solid hsl(var(--border));
-    border-radius: 12px;
-    background: linear-gradient(
-      160deg,
-      hsl(var(--primary) / 0.1),
-      hsl(var(--background)) 55%
-    );
-  }
-  .service-title {
-    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
-    font-weight: 500;
-  }
-  .service-outcome {
-    font-size: 17px;
-    line-height: 1.5;
-    color: hsl(var(--foreground) / 0.85);
-  }
-  .service-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    font-size: 15px;
-    line-height: 1.5;
-    color: hsl(var(--muted-foreground));
-  }
-  .service-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
-  }
-  .service-list svg {
-    flex-shrink: 0;
-    margin-top: 0.2rem;
-    color: hsl(var(--accent));
-  }
-  .engagement-grid,
   .process-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
   }
-  .engagement-card,
   .process-step {
     display: flex;
     flex-direction: column;
@@ -696,35 +645,13 @@
     padding-top: 1.5rem;
     border-top: 1px solid hsl(var(--border));
   }
-  .engagement-card h3,
-  .process-step h4 {
+  .process-step h3 {
     font-size: 1.4rem;
   }
-  .engagement-card p:last-child,
   .process-step p {
     color: hsl(var(--muted-foreground));
     font-size: 15px;
     line-height: 1.6;
-  }
-  .engagement-meta {
-    color: hsl(var(--accent));
-    font-size: 13px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .proof-row {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-block: 1.5rem;
-    border-top: 1px solid hsl(var(--border));
-  }
-  .proof-row h3 {
-    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
-  }
-  .proof-row p {
-    color: hsl(var(--muted-foreground));
-    max-width: 640px;
   }
   .perspective-layout {
     display: flex;
@@ -1256,27 +1183,15 @@
   .project-grid > :nth-child(even) {
     margin-top: 4.5rem;
   }
-  .service-teaser-grid,
-  .service-grid {
+  .service-teaser-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   /* Odd number of service cards: the last one fills the rest of its row. */
-  .service-teaser-grid > :last-child:nth-child(odd),
-  .service-grid > :last-child:nth-child(odd) {
+  .service-teaser-grid > :last-child:nth-child(odd) {
     grid-column: 1 / -1;
   }
-  .engagement-grid,
   .process-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .proof-row {
-    flex-direction: row;
-    align-items: baseline;
-    gap: 3rem;
-  }
-  .proof-row h3 {
-    width: 31%;
-    flex-shrink: 0;
   }
   .article-lead {
     grid-template-columns: 1.1fr 1fr;
@@ -1546,5 +1461,221 @@
   .artwork-motion,
   .work-motion {
     transform: none !important;
+  }
+}
+
+@layer components {
+  /* Services: the five parts of the sales system on one wire, with a pulse of light running through. */
+  .system-flow {
+    --gap: 1.75rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.25rem;
+    padding-left: 2.5rem;
+  }
+  .system-flow::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background-color: hsl(var(--border));
+    background-image: linear-gradient(to bottom, transparent, hsl(var(--accent)), transparent);
+    background-size: 100% 30%;
+    background-repeat: no-repeat;
+    animation: system-wire-y 5s linear infinite;
+  }
+  @keyframes system-wire-y {
+    from {
+      background-position: 0 -45%;
+    }
+    to {
+      background-position: 0 145%;
+    }
+  }
+  .system-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+  .system-node {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.2rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid hsl(var(--accent));
+    background: hsl(var(--background));
+    animation: system-node 5s ease-out infinite;
+    animation-delay: calc(var(--i) * 1s);
+  }
+  @keyframes system-node {
+    0%,
+    30%,
+    100% {
+      background: hsl(var(--background));
+      box-shadow: none;
+    }
+    8% {
+      background: hsl(var(--accent));
+      box-shadow: 0 0 18px 2px hsl(var(--accent) / 0.6);
+    }
+  }
+  .system-step h2 {
+    font-size: clamp(1.6rem, 2.4vw, 2rem);
+    font-weight: 500;
+    margin-top: 0.2rem;
+  }
+  .system-outcome {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: hsl(var(--foreground) / 0.92);
+  }
+  .system-body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: hsl(var(--muted-foreground));
+  }
+  .system-loop {
+    margin-top: 2rem;
+  }
+  .system-loop svg {
+    display: none;
+  }
+  .system-loop path {
+    fill: none;
+    stroke: hsl(var(--accent) / 0.55);
+    stroke-width: 1.5;
+    stroke-dasharray: 4 7;
+    animation: system-loop 1.2s linear infinite;
+  }
+  @keyframes system-loop {
+    to {
+      stroke-dashoffset: -11;
+    }
+  }
+  .system-loop p {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 14px;
+    color: hsl(var(--muted-foreground));
+  }
+  .system-loop p svg {
+    display: block;
+    flex-shrink: 0;
+    color: hsl(var(--accent));
+  }
+
+  .method-proof {
+    border-top: 1px solid hsl(var(--border));
+  }
+  .method-proof a {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.3rem 1rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+  .method-proof-kind {
+    grid-column: 1 / -1;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: hsl(var(--accent));
+  }
+  .method-proof-name {
+    font-family: var(--font-space), sans-serif;
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+    letter-spacing: -0.03em;
+    transition: color 0.2s;
+  }
+  .method-proof-result {
+    grid-column: 1;
+    color: hsl(var(--muted-foreground));
+    font-size: 15px;
+  }
+  .method-proof a svg {
+    grid-column: 2;
+    grid-row: 2;
+    color: hsl(var(--muted-foreground));
+    transition: transform 0.25s, color 0.2s;
+  }
+  .method-proof a:hover .method-proof-name,
+  .method-proof a:hover svg {
+    color: hsl(var(--accent));
+  }
+  .method-proof a:hover svg {
+    transform: translate(3px, -3px);
+  }
+}
+@media (min-width: 768px) {
+  .method-proof a {
+    grid-template-columns: minmax(9rem, 0.7fr) minmax(0, 1.2fr) minmax(0, 1fr) auto;
+    align-items: center;
+  }
+  .method-proof-kind,
+  .method-proof-result,
+  .method-proof a svg {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+@media (min-width: 1024px) {
+  .system-flow {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--gap);
+    padding-left: 0;
+    padding-top: 2.5rem;
+  }
+  .system-flow::before {
+    top: 7px;
+    bottom: auto;
+    left: 8px;
+    /* Ends at the last node: one column minus the node radius from the right edge. */
+    right: calc((100% - 4 * var(--gap)) / 5 - 8px);
+    width: auto;
+    height: 2px;
+    background-image: linear-gradient(to right, transparent, hsl(var(--accent)), transparent);
+    background-size: 30% 100%;
+    animation-name: system-wire-x;
+  }
+  @keyframes system-wire-x {
+    from {
+      background-position: -45% 0;
+    }
+    to {
+      background-position: 145% 0;
+    }
+  }
+  .system-node {
+    left: 0;
+    top: -2.5rem;
+  }
+  .system-loop {
+    margin-top: 0.75rem;
+  }
+  .system-loop svg {
+    display: block;
+    width: 100%;
+    height: 40px;
+  }
+  .system-loop p {
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .system-flow::before,
+  .system-node,
+  .system-loop path {
+    animation: none;
   }
 }

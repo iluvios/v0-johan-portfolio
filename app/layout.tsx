@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Johan Alvarez — Senior Growth Marketer",
     description:
-      "Growth marketing for startups: campaigns and creative, landing pages, CRM and lifecycle automation, attribution, and AI-built MVPs.",
+      "Growth marketing and digital sales systems for any business that sells online: campaigns, landing pages, CRM and lifecycle automation, and attribution.",
     url: "https://asjohan.com",
     siteName: "Johan Alvarez",
     type: "website",

@@ -4,7 +4,7 @@ import ProjectBrowser from "@/components/project-browser";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Startup MVPs, GTM automation, and the sites and funnels Johan Alvarez has built for clients in Latin America and the US.",
+    "Campaigns, websites, funnels, and MVPs Johan Alvarez has built for companies in Latin America and the US.",
 };
 
 export default function ProjectsPage() {

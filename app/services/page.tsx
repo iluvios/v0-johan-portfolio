@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import ServicesPortfolio from "@/components/services-portfolio";
 
 export const metadata: Metadata = {
-  title: "Services for startups",
+  title: "Services",
   description:
-    "Growth for recently funded startups: campaigns and creative, landing pages, CRM and lifecycle automation, outbound, tracking and attribution, and AI-built MVPs. Launch sprints or a fractional growth marketer.",
+    "One digital sales system, built right for any business that sells online: attract, capture, nurture, convert, and measure. Diagnosed, built, and handed over working, by project or monthly.",
 };
 
 export default function ServicesPage() {

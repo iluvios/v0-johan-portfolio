@@ -1,15 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight, RotateCcw } from "lucide-react";
 import { GlowButton } from "@/components/ui/glow-button";
 import { Separator } from "@/components/ui/separator";
 import { Eyebrow, PageIntro } from "@/components/portfolio-ui";
 import { Reveal } from "@/components/portfolio-motion";
 import { usePortfolioCopy } from "@/lib/portfolio";
-import { SERVICE_TOOLS } from "@/lib/site";
 
+// One method, not a menu: the five parts of a digital sales system, connected in a loop.
 export default function ServicesPortfolio() {
   const { copy } = usePortfolioCopy();
   return (
@@ -34,65 +33,42 @@ export default function ServicesPortfolio() {
 
       <Separator />
       <section className="section" aria-label={copy.servicesEyebrow}>
-        <div className="service-grid">
-          {copy.services.map((service, i) => (
-            <Reveal key={service.id} delay={i * 0.05}>
-              <article id={service.id} className="service-card">
-                <span className="service-index" aria-hidden="true">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div className="flex flex-col gap-3">
-                  <h2 className="service-title">{service.title}</h2>
-                  <p className="service-outcome">{service.outcome}</p>
-                </div>
-                <ul className="service-list">
-                  {service.includes.map((item) => (
-                    <li key={item}>
-                      <Check size={16} aria-hidden="true" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <ul className="mt-auto flex flex-wrap gap-2" aria-label="Tools">
-                  {(SERVICE_TOOLS[service.id] ?? []).map((tool) => (
-                    <li key={tool}>
-                      <Badge variant="tag">{tool}</Badge>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal>
+          <ol className="system-flow">
+            {copy.services.map((stage, i) => (
+              <li key={stage.id} id={stage.id} className="system-step" style={{ "--i": i } as React.CSSProperties}>
+                <span className="system-node" aria-hidden="true" />
+                <span className="service-index">{String(i + 1).padStart(2, "0")}</span>
+                <h2>{stage.title}</h2>
+                <p className="system-outcome">{stage.outcome}</p>
+                <p className="system-body">{stage.body}</p>
+              </li>
+            ))}
+          </ol>
+          <div className="system-loop">
+            <svg viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 82.3 1 C 82.3 23, 0.6 23, 0.6 1" vectorEffect="non-scaling-stroke" />
+            </svg>
+            <p>
+              <RotateCcw size={16} aria-hidden="true" />
+              {copy.systemLoop}
+            </p>
+          </div>
+        </Reveal>
       </section>
 
       <Separator />
-      <section className="section" aria-labelledby="engagements-heading">
-        <div className="section-heading">
-          <div className="flex flex-col gap-4">
-            <Eyebrow>{copy.engagementsEyebrow}</Eyebrow>
-            <h2 id="engagements-heading" className="section-title">
-              {copy.engagementsTitle}
-            </h2>
-          </div>
+      <section className="section" aria-label={copy.processTitle}>
+        <div className="mb-8">
+          <Eyebrow>{copy.processTitle}</Eyebrow>
         </div>
-        <div className="engagement-grid">
-          {copy.engagements.map((engagement) => (
-            <div key={engagement.title} className="engagement-card">
-              <p className="engagement-meta">{engagement.meta}</p>
-              <h3>{engagement.title}</h3>
-              <p>{engagement.body}</p>
-            </div>
-          ))}
-        </div>
-        <h3 className="eyebrow mb-6 mt-16">{copy.processTitle}</h3>
         <ol className="process-grid">
           {copy.process.map((step, i) => (
             <li key={step.title} className="process-step">
               <span className="service-index" aria-hidden="true">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <h4>{step.title}</h4>
+              <h3>{step.title}</h3>
               <p>{step.body}</p>
             </li>
           ))}
@@ -113,11 +89,15 @@ export default function ServicesPortfolio() {
             <ArrowUpRight size={18} aria-hidden="true" />
           </Link>
         </div>
-        <ul>
+        <ul className="method-proof">
           {copy.servicesProof.map((item) => (
-            <li key={item.name} className="proof-row">
-              <h3>{item.name}</h3>
-              <p>{item.body}</p>
+            <li key={item.id}>
+              <Link href={`/projects/${item.id}`}>
+                <span className="method-proof-kind">{item.kind}</span>
+                <span className="method-proof-name">{item.name}</span>
+                <span className="method-proof-result">{item.result}</span>
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
             </li>
           ))}
         </ul>
