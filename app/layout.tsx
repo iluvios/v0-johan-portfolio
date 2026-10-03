@@ -42,6 +42,7 @@ const personJsonLd = {
   name: "Johan Alvarez",
   jobTitle: "Senior Growth Marketer",
   url: "https://asjohan.com",
+  image: "https://asjohan.com/images/johan-portrait.webp",
   email: `mailto:${CONTACT_EMAIL}`,
   sameAs: [LINKEDIN_URL],
   address: {

@@ -236,7 +236,7 @@ function Perspective() {
       <Reveal className="perspective-layout">
         <Image
           className="perspective-portrait"
-          src="/images/profile.jpeg"
+          src="/images/johan-portrait.webp"
           alt="Johan Alvarez"
           width={420}
           height={525}
