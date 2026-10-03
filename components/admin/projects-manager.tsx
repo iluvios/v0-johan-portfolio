@@ -39,7 +39,16 @@ import {
   reorderProjects,
 } from "@/lib/projects"
 import { uploadBlogImage } from "@/lib/blog"
-import { type GalleryView, galleryView, isVideoUrl, uploadMedia, withGalleryView } from "@/lib/media"
+import {
+  type GalleryMeta,
+  type GalleryView,
+  MEDIA_LABEL_SUGGESTIONS,
+  galleryMeta,
+  galleryView,
+  isVideoUrl,
+  uploadMedia,
+  withGalleryMeta,
+} from "@/lib/media"
 import { CaseStudyEditor } from "@/components/admin/case-study-editor"
 import { extractImageFiles, type AdminNotify } from "@/components/admin/admin-utils"
 import { cn } from "@/lib/utils"
@@ -76,6 +85,8 @@ export function ProjectsManager({
   const [isGalleryDragActive, setIsGalleryDragActive] = useState(false)
   const [galleryDragIndex, setGalleryDragIndex] = useState<number | null>(null)
   const [galleryDragOverIndex, setGalleryDragOverIndex] = useState<number | null>(null)
+  // Gallery item open in the large preview (click a thumbnail), or null
+  const [previewIndex, setPreviewIndex] = useState<number | null>(null)
   const [newTagInput, setNewTagInput] = useState("")
   const [newGalleryUrl, setNewGalleryUrl] = useState("")
   const [isSavingProject, setIsSavingProject] = useState(false)
@@ -399,7 +410,14 @@ export function ProjectsManager({
     const order: GalleryView[] = ["auto", "fit", "scroll"]
     const gallery = [...(editingProject.gallery || [])]
     const next = order[(order.indexOf(galleryView(gallery[index])) + 1) % order.length]
-    gallery[index] = withGalleryView(gallery[index], next)
+    gallery[index] = withGalleryMeta(gallery[index], { view: next })
+    setEditingProject({ ...editingProject, gallery })
+  }
+
+  const updateGalleryMeta = (index: number, patch: Partial<GalleryMeta>) => {
+    if (!editingProject) return
+    const gallery = [...(editingProject.gallery || [])]
+    gallery[index] = withGalleryMeta(gallery[index], patch)
     setEditingProject({ ...editingProject, gallery })
   }
 
@@ -1010,8 +1028,10 @@ export function ProjectsManager({
                           setGalleryDragIndex(null)
                           setGalleryDragOverIndex(null)
                         }}
+                        onClick={() => setPreviewIndex(idx)}
+                        title={galleryMeta(imgUrl).label || "Click to preview and add a description"}
                         className={cn(
-                          "relative group h-16 rounded border overflow-hidden bg-slate-900 cursor-grab active:cursor-grabbing transition-all",
+                          "relative group h-16 rounded border overflow-hidden bg-slate-900 cursor-pointer active:cursor-grabbing transition-all",
                           galleryDragIndex === idx
                             ? "opacity-40 border-dashed border-cyan-400"
                             : galleryDragOverIndex === idx
@@ -1041,7 +1061,10 @@ export function ProjectsManager({
                         {!isVideoUrl(imgUrl) && (
                           <button
                             type="button"
-                            onClick={() => handleCycleGalleryView(idx)}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleCycleGalleryView(idx)
+                            }}
                             className={cn(
                               "absolute top-1 left-1/2 -translate-x-1/2 rounded px-1 text-[9px] font-medium text-white transition-colors",
                               galleryView(imgUrl) === "auto" ? "bg-black/70 hover:bg-cyan-600" : "bg-cyan-600 hover:bg-cyan-500"
@@ -1051,11 +1074,19 @@ export function ProjectsManager({
                             {{ auto: "Auto", fit: "Fit", scroll: "Scroll" }[galleryView(imgUrl)]}
                           </button>
                         )}
+                        {galleryMeta(imgUrl).label && (
+                          <span className="absolute bottom-0 inset-x-0 truncate bg-black/75 px-1 text-[9px] text-white group-hover:opacity-0 transition-opacity">
+                            {galleryMeta(imgUrl).label}
+                          </span>
+                        )}
                         <div className="absolute bottom-1 inset-x-1 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity">
                           <button
                             type="button"
                             disabled={idx === 0}
-                            onClick={() => handleMoveGalleryImage(idx, idx - 1)}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleMoveGalleryImage(idx, idx - 1)
+                            }}
                             className="bg-black/80 hover:bg-cyan-600 disabled:invisible text-white rounded-full p-0.5"
                             title="Move left"
                           >
@@ -1064,7 +1095,10 @@ export function ProjectsManager({
                           <button
                             type="button"
                             disabled={idx === gallery.length - 1}
-                            onClick={() => handleMoveGalleryImage(idx, idx + 1)}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleMoveGalleryImage(idx, idx + 1)
+                            }}
                             className="bg-black/80 hover:bg-cyan-600 disabled:invisible text-white rounded-full p-0.5"
                             title="Move right"
                           >
@@ -1073,7 +1107,10 @@ export function ProjectsManager({
                         </div>
                         <button
                           type="button"
-                          onClick={() => handleRemoveGalleryImage(idx)}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleRemoveGalleryImage(idx)
+                          }}
                           className="absolute top-1 right-1 bg-black/80 hover:bg-red-600 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                           title="Remove image"
                         >
@@ -1089,6 +1126,12 @@ export function ProjectsManager({
                     )}
                   </div>
                 )}
+                <GalleryItemPreview
+                  gallery={editingProject.gallery || []}
+                  index={previewIndex}
+                  onIndexChange={setPreviewIndex}
+                  onMetaChange={updateGalleryMeta}
+                />
               </div>
 
               <CaseStudyEditor
@@ -1134,5 +1177,113 @@ export function ProjectsManager({
         )}
       </Dialog>
     </>
+  )
+}
+
+/** Large view of one gallery item in the admin, where its description and display mode are set. */
+function GalleryItemPreview({
+  gallery,
+  index,
+  onIndexChange,
+  onMetaChange,
+}: {
+  gallery: string[]
+  index: number | null
+  onIndexChange: (index: number | null) => void
+  onMetaChange: (index: number, patch: Partial<GalleryMeta>) => void
+}) {
+  const url = index === null ? undefined : gallery[index]
+  const meta = url ? galleryMeta(url) : null
+  const isVideo = url ? isVideoUrl(url) : false
+  const go = (step: number) => {
+    if (index === null || gallery.length === 0) return
+    onIndexChange((index + step + gallery.length) % gallery.length)
+  }
+
+  return (
+    <Dialog open={Boolean(url)} onOpenChange={(open) => !open && onIndexChange(null)}>
+      {url && meta && index !== null && (
+        <DialogContent
+          className="max-w-4xl w-[calc(100%-2rem)] max-h-[92vh] p-0 gap-0 flex flex-col overflow-hidden bg-slate-900 border-slate-700 text-white"
+          onKeyDown={(e) => {
+            if ((e.target as HTMLElement).tagName === "INPUT") return
+            if (e.key === "ArrowLeft") go(-1)
+            if (e.key === "ArrowRight") go(1)
+          }}
+        >
+          <div className="px-5 pt-5 pb-3 pr-14 border-b border-slate-800">
+            <DialogTitle className="text-base">
+              Item {index + 1} of {gallery.length}
+            </DialogTitle>
+            <DialogDescription className="text-xs text-slate-400">
+              The description shows with this item on the site. Changes are saved with Save Changes.
+            </DialogDescription>
+          </div>
+          <div className="flex-1 min-h-0 overflow-auto bg-slate-950 flex items-start justify-center">
+            {isVideo ? (
+              <video key={url} src={url} controls playsInline className="max-h-[60vh] w-auto max-w-full" />
+            ) : meta.view === "scroll" ? (
+              <img src={url} alt="" className="w-full" />
+            ) : (
+              <img src={url} alt="" className="max-h-[60vh] w-auto max-w-full object-contain" />
+            )}
+          </div>
+          <div className="px-5 py-4 border-t border-slate-800 space-y-3">
+            <div>
+              <Label htmlFor="gallery-item-label" className="text-slate-200">
+                Description
+              </Label>
+              <Input
+                id="gallery-item-label"
+                list="gallery-item-label-suggestions"
+                value={meta.label}
+                onChange={(e) => onMetaChange(index, { label: e.target.value })}
+                placeholder="e.g. Email, Social media post, Video ad"
+                className="bg-slate-950 border-slate-700 text-white mt-1"
+              />
+              <datalist id="gallery-item-label-suggestions">
+                {MEDIA_LABEL_SUGGESTIONS.map((label) => (
+                  <option key={label} value={label} />
+                ))}
+              </datalist>
+            </div>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              {!isVideo ? (
+                <div className="flex items-center gap-1 text-xs">
+                  <span className="text-slate-400 mr-1">Show as</span>
+                  {(["auto", "fit", "scroll"] as GalleryView[]).map((view) => (
+                    <button
+                      key={view}
+                      type="button"
+                      onClick={() => onMetaChange(index, { view })}
+                      className={cn(
+                        "rounded px-2 py-1 border transition-colors",
+                        meta.view === view
+                          ? "bg-cyan-600 border-cyan-500 text-white"
+                          : "border-slate-700 text-slate-300 hover:border-cyan-500"
+                      )}
+                    >
+                      {{ auto: "Auto", fit: "Fit", scroll: "Scroll" }[view]}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <span />
+              )}
+              {gallery.length > 1 && (
+                <div className="flex items-center gap-2">
+                  <Button type="button" variant="outline" size="sm" onClick={() => go(-1)} className="border-slate-700 text-slate-300">
+                    <ChevronLeft size={14} />
+                  </Button>
+                  <Button type="button" variant="outline" size="sm" onClick={() => go(1)} className="border-slate-700 text-slate-300">
+                    <ChevronRight size={14} />
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+        </DialogContent>
+      )}
+    </Dialog>
   )
 }

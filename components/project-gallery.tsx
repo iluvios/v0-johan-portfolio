@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { usePortfolioCopy } from "@/lib/portfolio";
-import { galleryView, isVideoUrl } from "@/lib/media";
+import { galleryLabel, galleryView, isVideoUrl } from "@/lib/media";
 
 /**
  * Height / width above which an image scrolls instead of fitting. Social ad formats (4:5, 9:16 = 1.78)
@@ -51,6 +51,7 @@ export default function ProjectGallery({
     return view === "auto" ? (ratios[src] ?? 0) > TALL_RATIO : view === "scroll";
   };
   const isTall = scrolls(currentImage);
+  const currentLabel = currentImage ? galleryLabel(currentImage) : "";
   // Portrait media that fits whole gets a taller frame on phones, so it isn't shown tiny
   const portraitClass = !isTall && (ratios[currentImage] ?? 0) > 1 ? " gallery-main--portrait" : "";
 
@@ -239,8 +240,8 @@ export default function ProjectGallery({
           }}
         >
           <DialogTitle className="pr-12">{title}</DialogTitle>
-          <DialogDescription className="sr-only">
-            {copy.gallery}
+          <DialogDescription className={currentLabel ? "text-sm text-muted-foreground" : "sr-only"}>
+            {currentLabel || copy.gallery}
           </DialogDescription>
           {isVideoUrl(images[current]) ? (
             <video
@@ -261,6 +262,7 @@ export default function ProjectGallery({
           {count > 1 && <div className="flex justify-center">{controls}</div>}
         </DialogContent>
       </Dialog>
+      {currentLabel && <p className="gallery-caption">{currentLabel}</p>}
       {count > 1 && (
         <>
           <div className="gallery-controls">
@@ -288,7 +290,8 @@ export default function ProjectGallery({
                 type="button"
                 key={image}
                 className="gallery-thumbnail"
-                aria-label={`${copy.image} ${i + 1}`}
+                aria-label={`${copy.image} ${i + 1}${galleryLabel(image) ? `: ${galleryLabel(image)}` : ""}`}
+                title={galleryLabel(image) || undefined}
                 aria-pressed={i === current}
                 onClick={() => {
                   setPlaying(false);

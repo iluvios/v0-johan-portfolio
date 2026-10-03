@@ -12,21 +12,57 @@ export function isVideoUrl(url: string): boolean {
 }
 
 /**
- * How a gallery image is shown: "fit" keeps the whole image in the frame, "scroll" fills the width
- * and scrolls (full landing pages, emails), "auto" decides from the image's shape. Stored as a
- * #view= fragment on the gallery URL, so it travels with the image when the gallery is reordered.
+ * Per-item gallery settings, stored in the URL fragment (#view=fit&label=Email) so they travel with
+ * the item when the gallery is reordered and need no extra database column.
+ * - view: "fit" keeps the whole image in the frame, "scroll" fills the width and scrolls (full
+ *   landing pages, emails), "auto" decides from the image's shape.
+ * - label: a short description shown with the item, e.g. "Email" or "Social media post".
  */
 export type GalleryView = "auto" | "fit" | "scroll"
 
-const VIEW_FRAGMENT = /#view=(fit|scroll)$/
-
-export function galleryView(url: string): GalleryView {
-  return (url.match(VIEW_FRAGMENT)?.[1] as GalleryView | undefined) ?? "auto"
+export interface GalleryMeta {
+  view: GalleryView
+  label: string
 }
 
-export function withGalleryView(url: string, view: GalleryView): string {
-  const base = url.replace(VIEW_FRAGMENT, "")
-  return view === "auto" ? base : `${base}#view=${view}`
+export const MEDIA_LABEL_SUGGESTIONS = [
+  "Website",
+  "Landing page",
+  "Email",
+  "Social media post",
+  "Ad creative",
+  "Video ad",
+  "UGC video",
+  "Results",
+]
+
+function fragmentParams(url: string): URLSearchParams {
+  const hash = url.indexOf("#")
+  return new URLSearchParams(hash < 0 ? "" : url.slice(hash + 1))
+}
+
+export function galleryMeta(url: string): GalleryMeta {
+  const params = fragmentParams(url)
+  const view = params.get("view")
+  return { view: view === "fit" || view === "scroll" ? view : "auto", label: params.get("label") ?? "" }
+}
+
+export function withGalleryMeta(url: string, patch: Partial<GalleryMeta>): string {
+  const meta = { ...galleryMeta(url), ...patch }
+  const params = new URLSearchParams()
+  if (meta.view !== "auto") params.set("view", meta.view)
+  // Kept as typed (not trimmed) so spaces survive while someone is typing "Social media post"
+  if (meta.label.trim()) params.set("label", meta.label)
+  const fragment = params.toString()
+  return fragment ? `${url.split("#")[0]}#${fragment}` : url.split("#")[0]
+}
+
+export function galleryView(url: string): GalleryView {
+  return galleryMeta(url).view
+}
+
+export function galleryLabel(url: string): string {
+  return galleryMeta(url).label
 }
 
 /**

@@ -80,6 +80,24 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     const featured = typeof project.featured === "boolean" ? project.featured : null
     const caseStudy = normalizeCaseStudy(project.case_study)
     const caseStudyJson = caseStudy ? JSON.stringify(cleanCaseStudy(caseStudy)) : null
+    // The admin sends back the updated_at it loaded. If the project changed since (another tab,
+    // another editor, a script), refuse the save instead of silently overwriting the newer version.
+    // Both sides go through the same driver, so the comparison holds whatever the server's timezone.
+    const loadedAt = typeof project.updated_at === "string" ? Date.parse(project.updated_at) : NaN
+    let expectedVersion: string | null = null
+    if (!Number.isNaN(loadedAt)) {
+      const [current] = await sql`SELECT updated_at, updated_at::text AS version FROM projects WHERE id = ${id}`
+      if (current && new Date(current.updated_at).getTime() !== loadedAt) {
+        return NextResponse.json(
+          {
+            error:
+              "This project was changed somewhere else after you opened it, so your save was blocked to avoid overwriting that change. Reload the page, then make your edit again.",
+          },
+          { status: 409 },
+        )
+      }
+      expectedVersion = current?.version ?? null
+    }
 
     await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS case_study JSONB;`.catch(() => {})
 
@@ -98,10 +116,21 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
           case_study = COALESCE(${caseStudyJson}::jsonb, case_study),
           updated_at = CURRENT_TIMESTAMP
       WHERE id = ${id}
+        AND (${expectedVersion}::text IS NULL OR updated_at::text = ${expectedVersion})
       RETURNING *
     `
 
     if (!result || result.length === 0) {
+      const [exists] = await sql`SELECT 1 FROM projects WHERE id = ${id}`
+      if (exists) {
+        return NextResponse.json(
+          {
+            error:
+              "This project was changed somewhere else after you opened it, so your save was blocked to avoid overwriting that change. Reload the page, then make your edit again.",
+          },
+          { status: 409 },
+        )
+      }
       return NextResponse.json({ error: "Project not found" }, { status: 404 })
     }
 
