@@ -483,6 +483,7 @@
     position: absolute;
     top: 1rem;
     left: 1rem;
+    right: 4.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -518,9 +519,15 @@
     line-height: 1.2;
   }
   .project-caption p {
-    color: hsl(var(--muted-foreground));
-    font-size: 14px;
+    color: hsl(var(--foreground) / 0.78);
+    font-size: 15px;
+    line-height: 1.5;
     margin-top: 0.5rem;
+  }
+  .project-caption p strong {
+    color: hsl(var(--accent));
+    font-weight: 600;
+    white-space: nowrap;
   }
   .project-number {
     color: hsl(var(--muted-foreground));

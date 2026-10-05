@@ -133,7 +133,7 @@ function SelectedWork() {
                 key={project.id}
                 onEnter={() => setActiveId(project.id)}
               >
-                <ProjectCard project={project} index={i} showFeatured={false} />
+                <ProjectCard project={project} index={i} />
               </ScrollWorkItem>
             ))
           ) : (

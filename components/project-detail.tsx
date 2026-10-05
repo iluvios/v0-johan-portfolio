@@ -17,7 +17,7 @@ import CaseStudy from "@/components/case-study";
 import { Reveal } from "@/components/portfolio-motion";
 
 export default function ProjectDetail({ id }: { id: number }) {
-  const { copy } = usePortfolioCopy();
+  const { copy, categoryName } = usePortfolioCopy();
   const { data: project, isLoading, error, mutate } = useProject(id);
   if (isLoading)
     return (
@@ -39,6 +39,7 @@ export default function ProjectDetail({ id }: { id: number }) {
   }
   const images = [...byImage.values()];
   const website = safeWebsite(project.website_url);
+  const work = project.case_study?.work ?? [];
   const facts = [
     { label: copy.client, value: project.client },
     { label: copy.caseStudy.year, value: project.case_study?.year },
@@ -53,12 +54,18 @@ export default function ProjectDetail({ id }: { id: number }) {
           <ArrowLeft size={16} aria-hidden="true" />
           {copy.backWork}
         </Link>
-        <div className="flex flex-wrap items-center gap-3">
-          {project.category && <Eyebrow>{project.category}</Eyebrow>}
-          {project.featured && <Badge variant="tag">{copy.featured}</Badge>}
-        </div>
+        {project.category && <Eyebrow>{categoryName(project.category)}</Eyebrow>}
         <h1 className="detail-title">{project.title}</h1>
         {project.impact && <p className="page-description">{project.impact}</p>}
+        {work.length > 0 && (
+          <ul className="flex flex-wrap gap-2" aria-label={copy.workDone}>
+            {work.map((item) => (
+              <li key={item}>
+                <Badge variant="tag">{item}</Badge>
+              </li>
+            ))}
+          </ul>
+        )}
         {website && (
           <GlowButton variant="outline" asChild>
             <a href={website} target="_blank" rel="noopener noreferrer">

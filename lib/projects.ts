@@ -11,6 +11,8 @@ export interface CaseStudyTestimonial {
 
 /** Optional story behind a project. Every section renders only when filled. */
 export interface CaseStudy {
+  /** What I did (Meta Ads, SEO, Web development…), shown as tags on the card and the project page. */
+  work: string[]
   year: string
   role: string
   problem: string
@@ -40,6 +42,7 @@ export interface Project {
 
 export function emptyCaseStudy(): CaseStudy {
   return {
+    work: [],
     year: "",
     role: "",
     problem: "",
@@ -69,6 +72,7 @@ export function normalizeCaseStudy(raw: unknown): CaseStudy | null {
   const testimonial = cs.testimonial && typeof cs.testimonial === "object" ? cs.testimonial : {}
 
   return {
+    work: Array.isArray(cs.work) ? cs.work.map(text).filter(Boolean) : [],
     year: text(cs.year),
     role: text(cs.role),
     problem: text(cs.problem),
@@ -89,7 +93,11 @@ export function normalizeCaseStudy(raw: unknown): CaseStudy | null {
 
 /** Drops empty rows so half-filled editor entries never reach the public page. */
 export function cleanCaseStudy(cs: CaseStudy): CaseStudy {
-  return { ...cs, metrics: cs.metrics.filter((m) => m.value.trim() && m.label.trim()) }
+  return {
+    ...cs,
+    work: cs.work.map((w) => w.trim()).filter(Boolean),
+    metrics: cs.metrics.filter((m) => m.value.trim() && m.label.trim()),
+  }
 }
 
 export function normalizeProject(raw: any): Project {
@@ -157,7 +165,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     description:
       "Reference-checking platform for hiring teams. I built the whole platform with AI coding tools on Next.js and Supabase, with Twilio for messaging, and took it from idea to a working product with active users in under two months.",
     image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/blog-images/1788994715822-refio.so%20home.png",
-    category: "Product & MVP",
+    category: "Apps & platforms",
     tags: ["Next.js", "Supabase", "Twilio", "Figma", "Framer"],
     gallery: [],
     website_url: "https://refio.so/",
@@ -175,7 +183,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     description:
       "Mileage tracking app for non-profit health service providers. It makes it easy to log transportation miles and produce accurate, fast reports for insurance companies and government agencies.",
     image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/blog-images/1788994834852-Milotrack.png",
-    category: "Product & MVP",
+    category: "Apps & platforms",
     tags: ["Next.js", "Supabase", "Mailchimp", "v0"],
     gallery: [],
     website_url: "https://getmilotrack.com/",
@@ -192,7 +200,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     impact: "Complete brand and website revamp",
     description: null,
     image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/blog-images/1788994150369-agentic%20software.png",
-    category: "Web Development",
+    category: "Websites",
     tags: ["Lovable", "AI content generation"],
     gallery: [],
     website_url: "https://agenticsoftwareinc.com/",
@@ -210,7 +218,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     description:
       "Consulting platform for Latin American nurses seeking to work in the United States.",
     image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/portfolio-images/international-nurses.png",
-    category: "Full-Funnel Strategy",
+    category: "Growth marketing",
     tags: ["Healthcare", "Professional Services", "Consulting"],
     gallery: [],
     website_url: "https://international-nurses.com/",
@@ -228,7 +236,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     description:
       "Corporate website for an international BPO offering RPA, automation services, and business process optimization.",
     image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/portfolio-images/savant-international.png",
-    category: "Marketing Automation",
+    category: "Websites",
     tags: ["BPO", "Automation", "Corporate Website"],
     gallery: [],
     website_url: "https://www.savant-international.com/",

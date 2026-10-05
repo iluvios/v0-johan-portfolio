@@ -141,7 +141,7 @@ export const portfolioCopy = {
       "Open to full-time and contract roles in growth marketing and martech. Remote, on US hours.",
     projectsTitle: "Less talk. More shipping.",
     projectsIntro:
-      "Startup MVPs, automation work, and the sites and funnels I’ve built for clients in Latin America and the US.",
+      "Growth marketing, websites, stores and apps for companies in Latin America and the US. Each one shows what I did and what it achieved.",
     articlesTitle: "Always a work in progress.",
     articlesIntro:
       "Ideas on marketing, technology, and the things I learn along the way.",
@@ -179,7 +179,7 @@ export const portfolioCopy = {
     skills: "Tools & expertise",
     client: "Client",
     category: "Discipline",
-    featured: "Selected",
+    workDone: "What I did",
     live: "Visit website",
     backWork: "Back to projects",
     caseStudy: {
@@ -349,7 +349,7 @@ export const portfolioCopy = {
       "Disponible para roles de tiempo completo y contratos en growth marketing y martech. Remoto, en horario de EE. UU.",
     projectsTitle: "Menos palabras. Más lanzamientos.",
     projectsIntro:
-      "MVPs para startups, automatizaciones y los sitios y embudos que he construido para clientes en Latinoamérica y EE. UU.",
+      "Growth marketing, sitios web, tiendas y apps para empresas en Latinoamérica y EE. UU. Cada uno muestra lo que hice y lo que logró.",
     articlesTitle: "Siempre en construcción.",
     articlesIntro:
       "Ideas sobre marketing, tecnología y lo que voy aprendiendo en el camino.",
@@ -387,7 +387,7 @@ export const portfolioCopy = {
     skills: "Herramientas y habilidades",
     client: "Cliente",
     category: "Disciplina",
-    featured: "Seleccionado",
+    workDone: "Lo que hice",
     live: "Visitar sitio web",
     backWork: "Volver a proyectos",
     caseStudy: {

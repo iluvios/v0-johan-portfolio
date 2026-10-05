@@ -6,9 +6,19 @@ import { getProjects, getFeaturedProjects, getProject } from "@/lib/projects";
 import { getBlogPosts, getBlogPost } from "@/lib/blog";
 import { portfolioCopy, type Language } from "@/lib/i18n";
 
+// Project categories are stored in English; Spanish visitors see them translated.
+const CATEGORY_ES: Record<string, string> = {
+  "Growth marketing": "Growth marketing",
+  Websites: "Sitios web",
+  "Apps & platforms": "Apps y plataformas",
+  "Online stores": "Tiendas online",
+};
+
 export function usePortfolioCopy() {
   const { language } = useLanguage();
-  return { copy: portfolioCopy[language], language };
+  const categoryName = (value: string) =>
+    language === "es" ? (CATEGORY_ES[value] ?? value) : value;
+  return { copy: portfolioCopy[language], language, categoryName };
 }
 
 export const useProjects = () =>

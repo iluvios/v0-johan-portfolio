@@ -14,7 +14,7 @@ import {
 import { Reveal } from "@/components/portfolio-motion";
 
 export default function ProjectBrowser() {
-  const { copy } = usePortfolioCopy();
+  const { copy, categoryName } = usePortfolioCopy();
   const { data: projects = [], isLoading, error, mutate } = useProjects();
   const [category, setCategory] = useState("all");
   const [search, setSearch] = useState("");
@@ -73,7 +73,7 @@ export default function ProjectBrowser() {
             <ToggleGroupItem value="all">{copy.all}</ToggleGroupItem>
             {categories.map((value) => (
               <ToggleGroupItem key={value} value={value}>
-                {value}
+                {categoryName(value)}
               </ToggleGroupItem>
             ))}
           </ToggleGroup>

@@ -51,18 +51,30 @@ export function PageIntro({
   );
 }
 
+// Numbers in a result line ("+132%", "$59.8K", "16.5 → 6.5") stand out so the result reads at a glance.
+const NUMBER = /([+−-]?[$~]?\d[\d.,]*\s?(?:%|×|x\b|K\b|M\b)?(?:\s?→\s?[$~]?\d[\d.,]*\s?(?:%|×|K\b|M\b)?)?)/;
+
+function Result({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(NUMBER).map((part, i) =>
+        i % 2 ? <strong key={i}>{part}</strong> : part,
+      )}
+    </>
+  );
+}
+
 export function ProjectCard({
   project,
   index,
-  showFeatured = true,
 }: {
   project: Project;
   index?: number;
-  showFeatured?: boolean;
 }) {
   const { copy } = usePortfolioCopy();
   const hasImage =
     project.image_url && !project.image_url.includes("placeholder");
+  const work = project.case_study?.work.slice(0, 4) ?? [];
   return (
     <article className="project-card" id={`work-${project.id}`}>
       <Link
@@ -85,14 +97,15 @@ export function ProjectCard({
             {project.client || project.title}
           </div>
         )}
-        <div className="project-image-meta">
-          {project.category && (
-            <Badge variant="glass">{project.category}</Badge>
-          )}
-          {showFeatured && project.featured && (
-            <Badge variant="glass">{copy.featured}</Badge>
-          )}
-        </div>
+        {work.length > 0 && (
+          <ul className="project-image-meta" aria-label={copy.workDone}>
+            {work.map((item) => (
+              <li key={item}>
+                <Badge variant="glass">{item}</Badge>
+              </li>
+            ))}
+          </ul>
+        )}
         <span className="project-open" aria-hidden="true">
           <ArrowUpRight size={22} />
         </span>
@@ -103,7 +116,9 @@ export function ProjectCard({
             <Link href={`/projects/${project.id}`}>{project.title}</Link>
           </h3>
           {(project.impact || project.client) && (
-            <p>{project.impact || project.client}</p>
+            <p>
+              <Result text={project.impact || project.client || ""} />
+            </p>
           )}
         </div>
         {index !== undefined && (

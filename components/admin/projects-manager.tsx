@@ -53,14 +53,7 @@ import { CaseStudyEditor } from "@/components/admin/case-study-editor"
 import { extractImageFiles, type AdminNotify } from "@/components/admin/admin-utils"
 import { cn } from "@/lib/utils"
 
-const PROJECT_CATEGORIES = [
-  "GTM & Automation",
-  "Product & MVP",
-  "Full-Funnel Strategy",
-  "Marketing Automation",
-  "Web Development",
-  "E-commerce",
-]
+const PROJECT_CATEGORIES = ["Growth marketing", "Websites", "Apps & platforms", "Online stores"]
 
 interface ProjectsManagerProps {
   notify: AdminNotify
@@ -202,7 +195,7 @@ export function ProjectsManager({
       impact: "",
       description: "",
       image_url: "/placeholder.svg",
-      category: "Full-Funnel Strategy",
+      category: "Growth marketing",
       tags: [],
       gallery: [],
       website_url: "",
@@ -702,7 +695,7 @@ export function ProjectsManager({
                     Category
                   </Label>
                   <Select
-                    value={editingProject.category || "Full-Funnel Strategy"}
+                    value={editingProject.category || "Growth marketing"}
                     onValueChange={(val) =>
                       setEditingProject({ ...editingProject, category: val })
                     }

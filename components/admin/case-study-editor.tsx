@@ -47,6 +47,16 @@ export function CaseStudyEditor({
       </div>
 
       <Section title="Context">
+        <div>
+          <Label className="text-slate-200">What I did (tags on the card)</Label>
+          <Input
+            value={cs.work.join(", ")}
+            onChange={(e) => set("work", e.target.value.split(",").map((w) => w.trimStart()))}
+            placeholder="Meta & Google Ads, Web development, Email, SEO"
+            className={field}
+          />
+          <p className="mt-1 text-xs text-slate-400">Comma separated. The card shows the first four.</p>
+        </div>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-[200px_1fr]">
           <div>
             <Label className="text-slate-200">When</Label>
