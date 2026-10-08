@@ -56,7 +56,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
       achievements: [
-        "Built automated B2B outbound with Clay, Apollo, and landing pages optimized by industry and Salesforce tracking for NY startup Building Intelligence, targeting enterprise decision-makers. Led a complete website redesign and copy overhaul, modernizing brand positioning. Generated 65 qualified leads who booked a call with the sales team. 4 deals closed worth 87k USD a year.",
+        "Building Intelligence (NY startup): 65 qualified sales calls and 4 closed deals worth $87K a year. Built automated B2B outbound to enterprise decision-makers with Clay, Apollo, industry-specific landing pages and Salesforce tracking, and led a full website redesign and copy overhaul.",
         "Built an AI marketing platform with Claude, Next.js and Vercel for 2 companies and moved their marketing onto it: one control center for paid media creative, ad copy variations, website, email, and cross-channel analytics, used to decide what creative to make, iterate on what works, and A/B test every step of the funnel.",
         "Helped clients improve their strategy and execution with funnels, from brand updates and website redesigns to Apollo prospecting, A/B-tested email flows, and paid media strategy, plus custom bots that answer emails and social media messages.",
       ],
@@ -86,7 +86,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Revy Autos: cut Meta cost per registered user 61% ($17.94 → $7.07) while scaling monthly Meta spend 13×, by pushing for persona landing pages and creative testing at up to 30 new ads a week.",
         "Grew daily user registrations from ~30 to 200 with paid media and ActiveCampaign lifecycle automation.",
         "Designed and implemented the martech and GTM automation stack for the agency's venture-backed startup clients.",
-        "Managed multi-channel advertising (Meta, Google, Reddit, LinkedIn) with monthly budgets up to $70K USD.",
+        "Managed multi-channel advertising (Meta, Google, Reddit, LinkedIn) with monthly budgets up to $70K.",
         "Implemented and maintained multi-touch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Automated customer support routing to manage 100+ daily tickets.",
         "Built startup MVPs end-to-end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com, taken from idea to a working platform with active users in under 2 months (Next.js, Supabase, Twilio) following strict guidelines to capture information and deliver reports to insurance companies and US government agencies.",
@@ -122,7 +122,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       achievements: [
         "Autobruder 4WD: rebuilt the Shopify store from scratch, added 10,000+ products and a custom camping-setup app; orders +132% and conversion rate +114% in the last two months measured.",
         "Rainforest Foundation US: led the technical rebuild of a 35-page nonprofit site and 220 blog posts with no lost URLs (2024); a 2025 SEO optimization (speed, content structure, internal linking, AEO) grew Google search clicks 3.7× and lifted average position from 16.5 to 6.5.",
-        "International Nurses: rebuilt the brand, developed a new website and email for a $3k consulting service. We replaced 1-on-1 sales calls with group webinars, generating 200 qualified leads a month on a $700 paid media budget.",
+        "International Nurses: rebuilt the brand, developed a new website and email for a $3K consulting service. We replaced 1-on-1 sales calls with group webinars, generating 200 qualified leads a month on a $700 paid media budget.",
         "Ran end-to-end digital marketing for clients: lifecycle email, direct-response copywriting, technical SEO, and paid media (Meta Ads, Google Ads).",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
       ],
