@@ -57,13 +57,11 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
       achievements: [
-        "Built automated B2B outbound and enrichment funnels with Clay, Apollo, and Salesforce for NY startup Building Intelligence, targeting enterprise decision-makers.",
-        "Built AI content workflows with Claude and n8n that centralize paid media creation, ad copy variations, and cross-channel performance analytics.",
-        "Implemented full-funnel attribution and tracking with Google Tag Manager, GA4, and Triple Whale to follow multi-touch journeys and measure blended ROAS.",
-        "Built responsive websites and landing pages from Figma designs and v0 prototypes, aligned with client brand guidelines.",
-        "Led a complete website redesign and copy overhaul, modernizing brand positioning.",
+        "Built automated B2B outbound and enrichment funnels with Clay, Apollo, and Salesforce for NY startup Building Intelligence, targeting enterprise decision-makers. Led a complete website redesign and copy overhaul, modernizing brand positioning. Generated 65 qualified leads who booked a call with sales team. 4 deals closed worth 87k USD a year.",
+        "Built an AI marketing platform with Claude, Next.js and Vercel for 2 companies and moved their marketing onto it: one control center for paid media creative, ad copy variations, website, email, and cross-channel analytics, used to decide what creative to make, iterate on what works, and A/B test every step of the funnel.",
+        "Delivered high-converting, brand-aligned funnels for multiple clients, from brand updates and website redesigns to Apollo prospecting, A/B-tested email flows, and paid media.",
       ],
-      tools: ["Clay", "Apollo", "Salesforce", "HubSpot", "n8n", "Claude", "Codex", "v0", "GA4", "GTM", "Twilio"],
+      tools: ["Clay", "Apollo", "Salesforce", "HubSpot", "n8n", "Claude", "Codex", "v0", "Next.js", "Vercel", "GA4", "GTM", "Twilio"],
     },
     {
       role: "Senior Martech Specialist",
