@@ -121,12 +121,12 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Full-time",
       achievements: [
-        "Launched full-funnel acquisition programs: Webflow landing pages, automated lifecycle email journeys, and SMS retargeting.",
-        "Led RPA and workflow automation across client operations, reducing manual workload by 60%.",
-        "Helped upsell automation retainers to existing accounts, increasing average client value.",
+        "Generated 90 qualified leads from a 100K-contact list managed in Segment, with email, SMS and landing-page journeys that ended in a booked sales meeting: 15 new clients at an average ticket of $2K/month.",
+        "Upsold 8 existing clients into automating 19 workflows, such as invoicing, truck loading, and trucker and truck document verification.",
+        "Led RPA with UiPath and Python, mostly on Salesforce and clients' internal software, reducing manual workload by 60%.",
         "Grew and mentored the automation team from 1 to 6 full-time specialists.",
       ],
-      tools: ["Zapier", "Make", "Twilio SMS", "ActiveCampaign", "Webflow", "Python", "Google Sheets API", "ClickUp"],
+      tools: ["UiPath", "Python", "Salesforce", "Segment", "Twilio SMS", "Zapier", "Make", "ActiveCampaign", "Webflow", "Google Sheets API", "ClickUp"],
     },
     {
       role: "Marketing & Sales Lead (Co-founder)",
