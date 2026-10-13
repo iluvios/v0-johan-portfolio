@@ -86,10 +86,10 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Revy Autos: cut Meta cost per registered user 61% ($17.94 → $7.07) while scaling monthly Meta spend 13×, by pushing for persona landing pages and creative testing at up to 30 new ads a week.",
         "Grew daily user registrations from ~30 to 200 with paid media and ActiveCampaign lifecycle automation.",
         "Designed and implemented the martech and GTM automation stack for the agency's venture-backed startup clients.",
-        "Managed multi-channel advertising (Meta, Google, Reddit, LinkedIn) with monthly budgets up to $70K.",
+        "Managed multi-channel advertising (Meta, Google, Reddit, TikTok and YouTube Shorts) with budgets of about $65K a month across channels.",
         "Implemented and maintained multi-touch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Automated customer support routing to manage 100+ daily tickets.",
-        "Built startup MVPs end-to-end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com, taken from idea to a working platform with active users in under 2 months (Next.js, Supabase, Twilio) following strict guidelines to capture information and deliver reports to insurance companies and US government agencies.",
+        "Built startup MVPs end-to-end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA-compliant mileage app for non-profits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
       ],
       tools: [
         "n8n",
@@ -120,9 +120,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Freelance",
       description: "Marketing automation, full-funnel strategy, and digital transformation for clients across South America and the US.",
       achievements: [
-        "Autobruder 4WD: rebuilt the Shopify store from scratch, added 10,000+ products and a custom camping-setup app; orders +132% and conversion rate +114% in the last two months measured.",
+        "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, added 10,000+ products and a custom camping-setup app; conversion rate went from 0.33% to 0.7% and orders grew 132% in 3 months.",
         "Rainforest Foundation US: led the technical rebuild of a 35-page nonprofit site and 220 blog posts with no lost URLs (2024); a 2025 SEO optimization (speed, content structure, internal linking, AEO) grew Google search clicks 3.7× and lifted average position from 16.5 to 6.5.",
-        "International Nurses: rebuilt the brand, developed a new website and email for a $3K consulting service. We replaced 1-on-1 sales calls with group webinars, generating 200 qualified leads a month on a $700 paid media budget.",
+        "International Nurses: rebuilt the brand, website and funnel for a $3K consultancy that helps nurses across Latin America work abroad. Added weekly group webinars (30–80 nurses a week) before the one-on-one interview and built email lists from nursing associations; new clients went from 3–4 to 6–7 a month.",
         "Ran end-to-end digital marketing for clients: lifecycle email, direct-response copywriting, technical SEO, and paid media (Meta Ads, Google Ads).",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
       ],
@@ -196,10 +196,10 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Full-time",
       achievements: [
-        "Ran B2B demand generation for 2 SaaS ERP products: email nurture, blog content, and webinars.",
+        "Ran B2B demand generation for 2 SaaS products (accounting software and an ERP): email nurture, SEO, Google Ads and webinars.",
         "Increased email open rates from 12% to 35% through segmentation and subject-line A/B testing.",
-        "Raised webinar attendance from 20% to 55% with multi-touch reminder sequences.",
-        "Built software-contable.co, a comparison site for accounting software used for SEO and display-ad traffic; three years later it still drew ~1,500 Google clicks a month.",
+        "Raised webinar show-up rate from 20% to 55% with multi-touch reminder sequences.",
+        "Built software-contable.co, an SEO comparison site for accounting software; about two years after I left, it still drew 1,496 Google clicks and 34.1K impressions in a single month.",
       ],
       tools: [
         "Mailchimp",
@@ -257,7 +257,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       category: "Growth Marketing",
       skills: [
         "Full-funnel strategy",
-        "Paid media: Meta, Google, Reddit, LinkedIn (up to $70K/mo)",
+        "Paid media: Meta, Google, Reddit, TikTok, YouTube, LinkedIn (up to ~$65K/mo)",
         "Email & lifecycle marketing",
         "Technical, on-page & off-page SEO",
         "Direct-response copywriting",
