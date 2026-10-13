@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 // Share card for LinkedIn, Slack, and email previews. Colors mirror the tokens in globals.css.
-export const alt = "Johan Alvarez — Senior Growth Marketer";
+export const alt = "Johan Alvarez | Senior Growth Marketer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

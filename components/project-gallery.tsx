@@ -178,7 +178,7 @@ export default function ProjectGallery({
               controls
               playsInline
               preload="metadata"
-              aria-label={`${title} — ${copy.image} ${current + 1}`}
+              aria-label={`${title}, ${copy.image} ${current + 1}`}
               onLoadedMetadata={(e) => measure(currentImage, e.currentTarget.videoWidth, e.currentTarget.videoHeight)}
               onPlay={() => setPlaying(false)}
             />
@@ -189,11 +189,11 @@ export default function ProjectGallery({
               ref={scrollRef}
               className="gallery-scroll"
               tabIndex={0}
-              aria-label={`${title} — ${copy.image} ${current + 1}`}
+              aria-label={`${title}, ${copy.image} ${current + 1}`}
             >
               <img
                 src={currentImage}
-                alt={`${title} — ${copy.image} ${current + 1}`}
+                alt={`${title}, ${copy.image} ${current + 1}`}
                 decoding="async"
                 onLoad={(e) => measure(currentImage, e.currentTarget.naturalWidth, e.currentTarget.naturalHeight)}
               />
@@ -213,7 +213,7 @@ export default function ProjectGallery({
             >
               <img
                 src={images[current]}
-                alt={`${title} — ${copy.image} ${current + 1}`}
+                alt={`${title}, ${copy.image} ${current + 1}`}
                 width={1600}
                 height={1000}
                 decoding="async"
@@ -255,7 +255,7 @@ export default function ProjectGallery({
           ) : (
             <img
               src={images[current]}
-              alt={`${title} — ${copy.image} ${current + 1}`}
+              alt={`${title}, ${copy.image} ${current + 1}`}
               className={isTall ? "w-full" : "max-h-[70dvh] w-full object-contain"}
             />
           )}

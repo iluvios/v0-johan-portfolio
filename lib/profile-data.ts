@@ -52,12 +52,12 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Growth & Martech Consultant",
       company: "Freelance",
-      period: "Mar 2026 - Present",
+      period: "Mar 2026 to Present",
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
       achievements: [
-        "Building Intelligence (NY startup): 65 qualified sales calls and 4 closed deals worth $87K a year. Built automated B2B outbound to enterprise decision-makers with Clay, Apollo, industry-specific landing pages and Salesforce tracking, and led a full website redesign and copy overhaul.",
-        "Built an AI marketing platform with Claude, Next.js and Vercel for 2 companies and moved their marketing onto it: one control center for paid media creative, ad copy variations, website, email, and cross-channel analytics, used to decide what creative to make, iterate on what works, and A/B test every step of the funnel.",
+        "Building Intelligence (NY startup): 65 qualified sales calls and 4 closed deals worth $87K a year. Built automated B2B outbound to enterprise decision makers with Clay, Apollo, landing pages for each industry and Salesforce tracking, and led a full website redesign and copy overhaul.",
+        "Built an AI marketing platform with Claude, Next.js and Vercel for 2 companies and moved their marketing onto it: one control center for paid media creative, ad copy variations, website, email, and cross channel analytics, used to decide what creative to make, iterate on what works, and A/B test every step of the funnel.",
       ],
       tools: [
         "Clay",
@@ -78,17 +78,17 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Senior Martech Specialist",
       company: "Pvragon",
-      period: "Apr 2025 - Mar 2026",
+      period: "Apr 2025 to Mar 2026",
       location: "Medellín, Colombia / Remote",
-      type: "Full-time, then contract from Jan 2026",
+      type: "Full time, then contract from Jan 2026",
       achievements: [
         "Revy Autos: cut Meta cost per registered user 61% ($17.94 → $7.07) while scaling monthly Meta spend 13×, by pushing for persona landing pages and creative testing at up to 30 new ads a week.",
         "Grew daily user registrations from ~30 to 200 with paid media and ActiveCampaign lifecycle automation.",
-        "Designed and implemented the martech and GTM automation stack for the agency's venture-backed startup clients.",
-        "Managed five-figure monthly ad budgets across Meta, Google, Reddit, TikTok and YouTube Shorts.",
-        "Implemented and maintained multi-touch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
+        "Designed and implemented the martech and GTM automation stack for the agency's funded startup clients.",
+        "Managed monthly ad budgets in the five figures across Meta, Google, Reddit, TikTok and YouTube Shorts.",
+        "Implemented and maintained multitouch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Automated customer support routing to manage 100+ daily tickets.",
-        "Built startup MVPs end-to-end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA-compliant mileage app for non-profits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
+        "Built startup MVPs end to end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA compliant mileage app for nonprofits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
         "Conformational Aesthetics: set up the Shopify store, Triple Whale attribution, Klaviyo flows and UGC paid social campaigns, and built the B2B pipeline for finding med spa partners (Apollo, ActiveCampaign, Calendly).",
       ],
       tools: [
@@ -115,14 +115,14 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Marketing Freelancer",
       company: "Independent Consultant",
-      period: "Nov 2022 - May 2025",
+      period: "Nov 2022 to May 2025",
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
-      description: "Marketing automation, full-funnel strategy, and digital transformation for clients across South America and the US.",
+      description: "Marketing automation, full funnel strategy, and digital transformation for clients across South America and the US.",
       achievements: [
-        "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, added 10,000+ products and a custom camping-setup app; conversion rate went from 0.33% to 0.7% and orders grew 132% in 3 months.",
-        "Rainforest Foundation US: led the technical rebuild of a 35-page nonprofit site and 220 blog posts with no lost URLs (2024); a 2025 SEO optimization (speed, content structure, internal linking, AEO) grew Google search clicks 3.7× and lifted average position from 16.5 to 6.5.",
-        "International Nurses: rebuilt the brand, website and funnel for a $3K consultancy that helps nurses across Latin America work abroad. Added weekly group webinars (30–80 nurses a week) before the one-on-one interview and built email lists from nursing associations; new clients went from 3–4 to 6–7 a month.",
+        "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, added 10,000+ products and a custom camping setup app; conversion rate went from 0.33% to 0.7% and orders grew 132% in 3 months.",
+        "Rainforest Foundation US: led the technical rebuild of a nonprofit site of 35 pages and 220 blog posts with no lost URLs (2024); a 2025 SEO optimization (speed, content structure, internal linking, AEO) grew Google search clicks 3.7× and lifted average position from 16.5 to 6.5.",
+        "International Nurses: rebuilt the brand, website and funnel for a $3K consultancy that helps nurses across Latin America work abroad. Added weekly group webinars (30 to 80 nurses a week) before the one on one interview and built email lists from nursing associations; new clients went from 3 or 4 to 6 or 7 a month.",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
       ],
       tools: [
@@ -142,14 +142,14 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Marketing & Automation Lead",
       company: "Savant International",
-      period: "Mar 2022 - Nov 2022",
+      period: "Mar 2022 to Nov 2022",
       location: "Medellín, Colombia",
-      type: "Full-time",
+      type: "Full time",
       achievements: [
         "Rebuilt the brand, the Webflow website, Salesforce CRM and tracking; the company still uses the brand, website and emails.",
-        "Ran cold email to a 90K-contact trucking list with A/B tests and GPT-3-personalized opening lines: about 60 qualified leads, closed into 6 new clients on prepaid yearly contracts starting at $1.5K/month ($108K+).",
+        "Ran cold email to a trucking list of 90K contacts with A/B tests and opening lines personalized with GPT-3: about 60 qualified leads, closed into 6 new clients on prepaid yearly contracts starting at $1.5K/month ($108K+).",
         "Managed implementation for about 6 upsold clients, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
-        "Grew and led a 4-person automation team, and handled Salesforce setup, updates and custom Apex widget development.",
+        "Grew and led an automation team of 4, and handled Salesforce setup, updates and custom Apex widget development.",
       ],
       tools: [
         "UiPath",
@@ -167,16 +167,16 @@ export const DEFAULT_CV_DATA: CVProfile = {
       ]
     },
     {
-      role: "Marketing & Sales Lead (Co-founder)",
+      role: "Marketing & Sales Lead (Cofounder)",
       company: "Energy Media Agency",
-      period: "Jan 2019 - Mar 2022",
+      period: "Jan 2019 to Mar 2022",
       location: "Medellín, Colombia",
-      type: "Full-time",
+      type: "Full time",
       achievements: [
-        "Co-founded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
+        "Cofounded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
         "Took the agency from zero to about $15K a month in revenue: about 100 websites in three years (growing from about 10 the first year to about 70 the last), about 40 paid media accounts, and app projects of up to $30K.",
-        "Ran a team of 8 full-time (4 partners, 2 designers, 2 WordPress developers), and brought in up to 6 contract software developers at a time for app and platform projects, plus video editors on demand. Hybrid team, about half remote.",
-        "Clients included nonprofits, restaurant groups, real estate agencies, clinics, e-commerce brands, an international consultancy and early-stage startups.",
+        "Ran a team of 8 full time (4 partners, 2 designers, 2 WordPress developers), and brought in up to 6 contract software developers at a time for app and platform projects, plus video editors on demand. Hybrid team, about half remote.",
+        "Clients included nonprofits, restaurant groups, real estate agencies, clinics, ecommerce brands, an international consultancy and early stage startups.",
       ],
       tools: [
         "WordPress",
@@ -191,13 +191,13 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Digital Marketing Analyst",
       company: "PSL Software (Loggro)",
-      period: "Jan 2018 - Nov 2018",
+      period: "Jan 2018 to Nov 2018",
       location: "Medellín, Colombia",
-      type: "Full-time",
+      type: "Full time",
       achievements: [
         "Ran B2B demand generation for 2 SaaS products (accounting software and an ERP): email nurture, SEO, Google Ads and webinars.",
-        "Increased email open rates from 12% to 35% through segmentation and subject-line A/B testing.",
-        "Raised webinar show-up rate from 20% to 55% with multi-touch reminder sequences.",
+        "Increased email open rates from 12% to 35% through segmentation and subject line A/B testing.",
+        "Raised webinar turnout from 20% to 55% with reminder sequences with several touches.",
         "Built software-contable.co, an SEO comparison site for accounting software; about two years after I left, it still drew 1,496 Google clicks and 34.1K impressions in a single month.",
       ],
       tools: [
@@ -212,13 +212,13 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Founder",
       company: "Loopitems.com",
-      period: "Apr 2017 - Jan 2018",
+      period: "Apr 2017 to Jan 2018",
       location: "Medellín, Colombia",
-      type: "Self-employed",
+      type: "Self employed",
       achievements: [
         "Built and ran my own gaming dropshipping store from scratch on Shopify, with orders automated to AliExpress suppliers: about $5K in sales in its first year.",
         "Made about 80% of the memes, ads and creatives myself (a designer helped with the rest), launched about 5 new ads a week and A/B tested them on Meta and Google Ads, alongside SEO and Klaviyo email.",
-        "Posted 3 times a day, scheduled two weeks ahead, and handled customer support myself; grew the social account from 0 to 5,000 followers in 12 months through partnerships with other gaming Facebook and Instagram pages and in-person gaming events.",
+        "Posted 3 times a day, scheduled two weeks ahead, and handled customer support myself; grew the social account from 0 to 5,000 followers in 12 months through partnerships with other gaming Facebook and Instagram pages and in person gaming events.",
       ],
       tools: [
         "Shopify",
@@ -233,11 +233,11 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Fullstack Software Developer",
       company: "Grandpa Devs",
-      period: "Jan 2014 - Apr 2017",
+      period: "Jan 2014 to Apr 2017",
       location: "Medellín, Colombia",
-      type: "Part-time from 11th grade, then full-time",
+      type: "Part time from 11th grade, then full time",
       achievements: [
-        "Started part-time (about 35 hours a week) in 11th grade, then worked full-time for a year and a half before starting college on a scholarship.",
+        "Started part time (about 35 hours a week) in 11th grade, then worked full time for a year and a half before starting college on a scholarship.",
         "Built features, web applications, and rapid prototypes with JavaScript, Node.js, Python, Meteor.js, and MongoDB.",
         "Worked on the company's own startup projects, including a year in Apps.co, iNNpulsa Colombia's startup accelerator.",
       ],
@@ -257,17 +257,17 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       category: "Growth Marketing",
       skills: [
-        "Full-funnel strategy",
-        "Paid media: Meta, Google, Reddit, TikTok, YouTube, LinkedIn (five-figure monthly budgets)",
+        "Full funnel strategy",
+        "Paid media: Meta, Google, Reddit, TikTok, YouTube, LinkedIn (monthly budgets in the five figures)",
         "Email & lifecycle marketing",
-        "Technical, on-page & off-page SEO",
-        "Direct-response copywriting",
+        "Technical, on page & off page SEO",
+        "Direct response copywriting",
       ]
     },
     {
       category: "Analytics & Attribution",
       skills: [
-        "Server-side GTM & server-side events",
+        "Server GTM & server events",
         "Google Tag Manager, GA4, Search Console",
         "Triple Whale, Wicked Reports",
         "PostHog",
@@ -288,7 +288,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       category: "Development & AI",
       skills: [
-        "AI-assisted development: Claude Code, OpenAI Codex, v0, Lovable",
+        "AI assisted development: Claude Code, OpenAI Codex, v0, Lovable",
         "Next.js & React, JavaScript / TypeScript, Node.js",
         "Supabase, PostgreSQL (Neon), MongoDB",
         "Python scripting",
@@ -301,7 +301,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       degree: "Business Management and Innovation",
       institution: "Universidad EAFIT",
-      period: "2016 - 2022",
+      period: "2016 to 2022",
       location: "Medellín, Colombia",
       achievements: [
         "Full scholarship for academic achievement",
@@ -311,10 +311,10 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       degree: "Technical Program in Multimedia Design & Integration",
       institution: "SENA",
-      period: "2014 - 2015",
+      period: "2014 to 2015",
       location: "Medellín, Colombia",
       achievements: [
-        "Two-year technical track (media técnica) completed during high school",
+        "Two year technical track (media técnica) completed during high school",
       ]
     },
     {
@@ -328,8 +328,8 @@ export const DEFAULT_CV_DATA: CVProfile = {
     },
   ],
   languages: [
-    "English — C2 (TOEFL, 2022)",
-    "Spanish — Native",
+    "English: C2 (TOEFL, 2022)",
+    "Spanish: Native",
   ]
 }
 

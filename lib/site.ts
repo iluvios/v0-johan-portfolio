@@ -12,7 +12,7 @@ export const STACK = [
   "Meta Ads",
   "Google Ads",
   "LinkedIn Ads",
-  "Server-side GTM",
+  "Server GTM",
   "GA4",
   "Triple Whale",
   "Wicked Reports",

@@ -21,15 +21,15 @@ const space = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL("https://asjohan.com"),
   title: {
-    default: "Johan Alvarez — Senior Growth Marketer",
+    default: "Johan Alvarez | Senior Growth Marketer",
     template: "%s | Johan Alvarez",
   },
   description:
-    "Johan Alvarez is a growth marketer who runs the campaigns — paid media, landing pages, lifecycle email, and SEO — and builds the stack behind them: attribution, CRM, and automation. Open to growth marketing roles; remote on US hours.",
+    "Johan Alvarez is a growth team of one: he runs paid media, landing pages, lifecycle email and SEO, and builds the attribution, CRM and automation behind them. Open to growth marketing roles, remote on US hours.",
   openGraph: {
-    title: "Johan Alvarez — Senior Growth Marketer",
+    title: "Johan Alvarez | Senior Growth Marketer",
     description:
-      "Growth marketing and digital sales systems for any business that sells online: campaigns, landing pages, CRM and lifecycle automation, and attribution.",
+      "Senior growth marketer: campaigns, landing pages, CRM and lifecycle automation, and attribution, with the case studies to show for it.",
     url: "https://asjohan.com",
     siteName: "Johan Alvarez",
     type: "website",

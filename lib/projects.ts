@@ -164,9 +164,9 @@ export const DEFAULT_PROJECTS: Project[] = [
     id: 45,
     title: "Refio.so",
     client: "Pvragon",
-    impact: "Built end-to-end with AI — idea to active users in under 2 months",
+    impact: "Built end to end with AI, from idea to active users in under 2 months",
     description:
-      "Reference-checking platform for hiring teams. I built the whole platform with AI coding tools on Next.js and Supabase, with Twilio for messaging, and took it from idea to a working product with active users in under two months.",
+      "Reference checking platform for hiring teams. I built the whole platform with AI coding tools on Next.js and Supabase, with Twilio for messaging, and took it from idea to a working product with active users in under two months.",
     image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/blog-images/1788994715822-refio.so%20home.png",
     category: "Apps & platforms",
     tags: ["Next.js", "Supabase", "Twilio", "Figma", "Framer"],
@@ -182,9 +182,9 @@ export const DEFAULT_PROJECTS: Project[] = [
     id: 46,
     title: "Milo Track",
     client: "Pvragon",
-    impact: "Mileage logging and reporting for non-profit health providers",
+    impact: "Mileage logging and reporting for nonprofit health providers",
     description:
-      "Mileage tracking app for non-profit health service providers. It makes it easy to log transportation miles and produce accurate, fast reports for insurance companies and government agencies.",
+      "Mileage tracking app for nonprofit health service providers. It makes it easy to log transportation miles and produce accurate, fast reports for insurance companies and government agencies.",
     image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/blog-images/1788994834852-Milotrack.png",
     category: "Apps & platforms",
     tags: ["Next.js", "Supabase", "Mailchimp", "v0"],

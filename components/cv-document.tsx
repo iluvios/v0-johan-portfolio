@@ -40,7 +40,7 @@ export default function CVDocument({ embedded = false }: { embedded?: boolean })
   const handleShare = async () => {
     if (navigator.share) {
       try {
-        await navigator.share({ title: `${cv.name} — CV`, text: `${cv.name} | ${cv.title}`, url: window.location.href })
+        await navigator.share({ title: `${cv.name} | CV`, text: `${cv.name} | ${cv.title}`, url: window.location.href })
         return
       } catch {
         // Fall back to copying the link

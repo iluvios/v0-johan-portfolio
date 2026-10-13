@@ -25,8 +25,8 @@ export default function Navigation() {
             href="/"
             aria-label={
               language === "en"
-                ? "Johan Alvarez — Home"
-                : "Johan Alvarez — Inicio"
+                ? "Johan Alvarez, home"
+                : "Johan Alvarez, inicio"
             }
             className="brand-link"
           >
