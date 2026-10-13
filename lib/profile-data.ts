@@ -174,11 +174,10 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Full-time",
       achievements: [
-        "Co-founded a digital marketing and software development agency; ran sales and managed client engagements from discovery to delivery.",
-        "Fundación Lupines: secured Google Ad Grants and ran the account for three years, turning $59.8K in donated ads into 69K site visits.",
-        "Triada Academy: built a trading-academy platform from scratch (brand, UX, courses, live classes, forum and a trading-signals app) serving about 1,200 active students.",
-        "Led delivery of full-service marketing for e-commerce and B2B clients across industries.",
-        "Managed a team of 8 full-time professionals across UX design, advertising, and software development.",
+        "Co-founded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
+        "Sold about 100 websites in three years, growing from about 10 the first year to about 70 the last, plus about 40 paid media accounts.",
+        "Ran a team of 8 full-time (4 partners, 2 designers, 2 WordPress developers), and brought in up to 6 contract software developers at a time for app and platform projects, plus video editors on demand. Hybrid team, about half remote.",
+        "Clients included nonprofits, restaurant groups, real estate agencies, clinics, e-commerce brands, an international consultancy and early-stage startups.",
       ],
       tools: [
         "WordPress",
