@@ -37,3 +37,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# local copies of Vercel Blob media (the site serves them from Blob)
+/public/blob/
