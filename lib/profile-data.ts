@@ -210,18 +210,19 @@ export const DEFAULT_CV_DATA: CVProfile = {
       ]
     },
     {
-      role: "Digital Marketing Analyst",
+      role: "Founder",
       company: "Loopitems.com",
       period: "Apr 2017 - Jan 2018",
       location: "Medellín, Colombia",
-      type: "Full-time",
+      type: "Self-employed",
       achievements: [
-        "Managed Meta Ads, Google Ads, SEO, and Klaviyo email for a gaming e-commerce store.",
-        "Ran daily social content and community management.",
-        "Grew the brand's main social account from 0 to 5,000 followers in 12 months.",
+        "Built and ran my own gaming dropshipping store from scratch on Shopify, with orders automated to AliExpress suppliers: about $5K in sales in its first year.",
+        "Made the memes, ads and creatives myself and A/B tested them on Meta and Google Ads, alongside SEO and Klaviyo email.",
+        "Grew the brand's social account from 0 to 5,000 followers in 12 months through partnerships with other gaming Facebook and Instagram pages and in-person gaming events.",
       ],
       tools: [
         "Shopify",
+        "AliExpress dropshipping",
         "Klaviyo",
         "Meta Ads",
         "Google Ads",
