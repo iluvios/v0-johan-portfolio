@@ -47,7 +47,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
   location: "Medellín, Colombia · Remote (US hours)",
   website: "https://asjohan.com",
   linkedin: "https://linkedin.com/in/johanalvarez",
-  summary: "Growth marketer with 12+ years across software development, performance marketing and GTM, mostly helping startups go from zero to one. I run the full funnel (paid media, landing pages, lifecycle email and SEO) and build the stack underneath it: attribution, CRM and automations. I heavily focus on A/B testing across all funnel steps.\n\nRecent results: cut Meta cost per registered user 61% while scaling spend 13× on RevyAutos.com, +132% orders for the Shopify store of Autobruder.com, and 3.7× Google search clicks after a complete website update and SEO optimization for RainforestFoundation.org.",
+  summary: "Growth marketer with 12+ years across software development, performance marketing and GTM, mostly helping startups go from zero to one. I run the full funnel (paid media, landing pages, lifecycle email and SEO) and build the stack underneath it: attribution, CRM and automations, with a heavy focus on A/B testing at every step.\n\nRecent results: cut Meta cost per registered user 61% while scaling spend 13× (RevyAutos.com), +132% orders on Autobruder.com's Shopify store, 3.7× Google search clicks for RainforestFoundation.org, and $108K+ in prepaid B2B contracts from cold email at Savant.",
   experiences: [
     {
       role: "Growth & Martech Consultant",
@@ -58,7 +58,6 @@ export const DEFAULT_CV_DATA: CVProfile = {
       achievements: [
         "Building Intelligence (NY startup): 65 qualified sales calls and 4 closed deals worth $87K a year. Built automated B2B outbound to enterprise decision-makers with Clay, Apollo, industry-specific landing pages and Salesforce tracking, and led a full website redesign and copy overhaul.",
         "Built an AI marketing platform with Claude, Next.js and Vercel for 2 companies and moved their marketing onto it: one control center for paid media creative, ad copy variations, website, email, and cross-channel analytics, used to decide what creative to make, iterate on what works, and A/B test every step of the funnel.",
-        "Helped clients improve their strategy and execution with funnels, from brand updates and website redesigns to Apollo prospecting, A/B-tested email flows, and paid media strategy, plus custom bots that answer emails and social media messages.",
       ],
       tools: [
         "Clay",
@@ -90,6 +89,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Implemented and maintained multi-touch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Automated customer support routing to manage 100+ daily tickets.",
         "Built startup MVPs end-to-end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA-compliant mileage app for non-profits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
+        "Conformational Aesthetics: set up the Shopify store, Triple Whale attribution, Klaviyo flows and UGC paid social campaigns, and built the B2B pipeline for finding med spa partners (Apollo, ActiveCampaign, Calendly).",
       ],
       tools: [
         "n8n",
@@ -123,7 +123,6 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, added 10,000+ products and a custom camping-setup app; conversion rate went from 0.33% to 0.7% and orders grew 132% in 3 months.",
         "Rainforest Foundation US: led the technical rebuild of a 35-page nonprofit site and 220 blog posts with no lost URLs (2024); a 2025 SEO optimization (speed, content structure, internal linking, AEO) grew Google search clicks 3.7× and lifted average position from 16.5 to 6.5.",
         "International Nurses: rebuilt the brand, website and funnel for a $3K consultancy that helps nurses across Latin America work abroad. Added weekly group webinars (30–80 nurses a week) before the one-on-one interview and built email lists from nursing associations; new clients went from 3–4 to 6–7 a month.",
-        "Ran end-to-end digital marketing for clients: lifecycle email, direct-response copywriting, technical SEO, and paid media (Meta Ads, Google Ads).",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
       ],
       tools: [
@@ -235,10 +234,11 @@ export const DEFAULT_CV_DATA: CVProfile = {
       company: "Grandpa Devs",
       period: "Jan 2014 - Apr 2017",
       location: "Medellín, Colombia",
-      type: "Full-time",
+      type: "Part-time from 11th grade, then full-time",
       achievements: [
+        "Started part-time (about 35 hours a week) in 11th grade, then worked full-time for a year and a half before starting college on a scholarship.",
         "Built features, web applications, and rapid prototypes with JavaScript, Node.js, Python, Meteor.js, and MongoDB.",
-        "Contributed to internal startup projects and prototypes.",
+        "Worked on the company's own startup projects, including a year in Apps.co, iNNpulsa Colombia's startup accelerator.",
       ],
       tools: [
         "JavaScript",
@@ -322,8 +322,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       period: "",
       location: "Antioquia, Colombia",
       achievements: [
-        "Saber 11 (ICFES) national exam: ranked 291st of 548,584 students in Colombia (top 0.1%) and 46th of 73,990 in Antioquia",
-        "Top 2 of the class throughout school",
+        "Saber 11 national exam: top 0.05% in Colombia",
       ]
     },
   ],
