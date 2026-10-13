@@ -84,7 +84,6 @@ export const DEFAULT_CV_DATA: CVProfile = {
       achievements: [
         "Revy Autos: cut Meta cost per registered user 61% ($17.94 → $7.07) while scaling monthly Meta spend 13×, by pushing for persona landing pages and creative testing at up to 30 new ads a week.",
         "Grew daily user registrations from ~30 to 200 with paid media and ActiveCampaign lifecycle automation.",
-        "Designed and implemented the martech and GTM automation stack for the agency's funded startup clients.",
         "Managed monthly ad budgets in the five figures across Meta, Google, Reddit, TikTok and YouTube Shorts.",
         "Implemented and maintained multitouch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Automated customer support routing to manage 100+ daily tickets.",
