@@ -5,7 +5,7 @@ export const portfolioCopy = {
     role: "Senior Growth Marketer",
     hero: ["The campaigns.", "The systems.", "The results."],
     intro:
-      "Developer turned growth marketer. I run the campaigns — paid media, landing pages, lifecycle email, and SEO — and build the stack that measures and scales them, with budgets up to $70K a month.",
+      "Developer turned growth marketer. I run the campaigns — paid media, landing pages, lifecycle email, and SEO — and build the stack that measures and scales them, with budgets of about $65K a month.",
     work: "See the work",
     talk: "Let’s talk",
     scroll: "Scroll to explore",
@@ -30,12 +30,12 @@ export const portfolioCopy = {
       {
         value: "30 → 200",
         label:
-          "Daily user registrations after I rebuilt the CRM and lifecycle email in ActiveCampaign",
+          "Daily user registrations with paid media and lifecycle email in ActiveCampaign",
         context: "Revy Autos · Pvragon · 2025",
       },
       {
         value: "+132%",
-        label: "Orders for a Shopify store I rebuilt, with conversion rate up 114%",
+        label: "Orders for a Shopify store I rebuilt, with conversion rate up from 0.33% to 0.7%",
         context: "Autobruder · Freelance · 2025",
       },
       {
@@ -49,9 +49,9 @@ export const portfolioCopy = {
         context: "Fundación Lupines · 2019–22",
       },
       {
-        value: "$70K/mo",
+        value: "$65K/mo",
         label:
-          "Peak paid-media budget managed across Meta, Google, Reddit, and LinkedIn",
+          "Monthly paid-media budget managed across Meta, Google, Reddit, TikTok, and YouTube",
         context: "Pvragon · 2025",
       },
     ],
@@ -213,7 +213,7 @@ export const portfolioCopy = {
     role: "Growth Marketer Senior",
     hero: ["Las campañas.", "Los sistemas.", "Los resultados."],
     intro:
-      "Desarrollador convertido en growth marketer. Dirijo las campañas —pauta, landing pages, email de ciclo de vida y SEO— y construyo el stack que las mide y las escala, con presupuestos de hasta $70K al mes.",
+      "Desarrollador convertido en growth marketer. Dirijo las campañas —pauta, landing pages, email de ciclo de vida y SEO— y construyo el stack que las mide y las escala, con presupuestos de unos $65K al mes.",
     work: "Ver el trabajo",
     talk: "Hablemos",
     scroll: "Sigue explorando",
@@ -238,12 +238,12 @@ export const portfolioCopy = {
       {
         value: "30 → 200",
         label:
-          "Registros diarios de usuarios tras rehacer el CRM y el email de ciclo de vida en ActiveCampaign",
+          "Registros diarios de usuarios con pauta y email de ciclo de vida en ActiveCampaign",
         context: "Revy Autos · Pvragon · 2025",
       },
       {
         value: "+132%",
-        label: "Pedidos de una tienda Shopify que reconstruí, con la conversión un 114% más alta",
+        label: "Pedidos de una tienda Shopify que reconstruí, con la conversión de 0.33% a 0.7%",
         context: "Autobruder · Freelance · 2025",
       },
       {
@@ -257,9 +257,9 @@ export const portfolioCopy = {
         context: "Fundación Lupines · 2019–22",
       },
       {
-        value: "$70K/mes",
+        value: "$65K/mes",
         label:
-          "Presupuesto máximo de pauta gestionado en Meta, Google, Reddit y LinkedIn",
+          "Presupuesto mensual de pauta gestionado en Meta, Google, Reddit, TikTok y YouTube",
         context: "Pvragon · 2025",
       },
     ],

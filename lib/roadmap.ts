@@ -85,7 +85,7 @@ export const DEFAULT_ROADMAP: Roadmap = {
           id: "attribution-case-study",
           type: "portfolio",
           title: "Attribution case study: server-side GTM + Triple Whale / Wicked Reports",
-          detail: "What data was lost to ad blockers, what server-side events recovered, and how it changed budget decisions on up to $70K/month in spend.",
+          detail: "What data was lost to ad blockers, what server-side events recovered, and how it changed budget decisions on about $65K/month in spend.",
           status: "todo",
           due: "2026-10-21",
         },
