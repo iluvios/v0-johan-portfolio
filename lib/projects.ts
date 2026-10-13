@@ -34,6 +34,8 @@ export interface Project {
   gallery: string[]
   website_url: string | null
   featured: boolean
+  /** Kept in the admin but left out of the public portfolio, its project page and the sitemap. */
+  hidden?: boolean
   case_study: CaseStudy | null
   order_index?: number
   created_at: string
@@ -147,6 +149,7 @@ export function normalizeProject(raw: any): Project {
     gallery,
     website_url: raw.website_url || null,
     featured: Boolean(raw.featured),
+    hidden: Boolean(raw.hidden),
     case_study: normalizeCaseStudy(raw.case_study),
     order_index: raw.order_index !== undefined && raw.order_index !== null ? Number(raw.order_index) : 0,
     created_at: raw.created_at ? new Date(raw.created_at).toISOString() : new Date().toISOString(),
@@ -298,6 +301,8 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 export async function getProject(id: number): Promise<Project | null> {
   try {
     const response = await fetch(`/api/projects/${id}`)
+    // A 404 is a real answer (deleted or hidden project), not an outage to paper over
+    if (response.status === 404) return null
     if (response.ok) {
       const data = await response.json()
       if (data && data.id) {

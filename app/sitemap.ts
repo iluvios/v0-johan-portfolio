@@ -16,7 +16,7 @@ async function projectIds(): Promise<number[]> {
   if (!dbUrl) return [];
   try {
     const sql = neon(dbUrl);
-    const rows = await sql`SELECT id FROM projects`;
+    const rows = await sql`SELECT id FROM projects WHERE hidden IS NOT TRUE`;
     return rows.map((row) => Number(row.id)).filter(Number.isSafeInteger);
   } catch {
     return [];

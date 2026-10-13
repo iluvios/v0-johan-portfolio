@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 import { DEFAULT_PROJECTS, cleanCaseStudy, normalizeCaseStudy, normalizeProject, type Project } from "@/lib/projects"
-import { requireAdmin } from "@/lib/admin-auth"
+import { isAdmin, requireAdmin } from "@/lib/admin-auth"
 
 function getDatabaseUrl(): string | undefined {
   return (
@@ -35,6 +35,11 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
     if (!result || result.length === 0) {
       const fallback = DEFAULT_PROJECTS.find((p) => p.id === id)
       if (fallback) return NextResponse.json(normalizeProject(fallback))
+      return NextResponse.json({ error: "Project not found" }, { status: 404 })
+    }
+
+    // A hidden project doesn't exist for visitors, only for the admin
+    if (result[0].hidden && !isAdmin(request)) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 })
     }
 
@@ -78,6 +83,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     const tagsArray = Array.isArray(project.tags) ? project.tags : null
     const galleryArray = Array.isArray(project.gallery) ? project.gallery : null
     const featured = typeof project.featured === "boolean" ? project.featured : null
+    const hidden = typeof project.hidden === "boolean" ? project.hidden : null
     const caseStudy = normalizeCaseStudy(project.case_study)
     const caseStudyJson = caseStudy ? JSON.stringify(cleanCaseStudy(caseStudy)) : null
     // The admin sends back the updated_at it loaded. If the project changed since (another tab,
@@ -100,6 +106,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     }
 
     await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS case_study JSONB;`.catch(() => {})
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS hidden BOOLEAN DEFAULT false;`.catch(() => {})
 
     const result = await sql`
       UPDATE projects
@@ -113,6 +120,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
           gallery = COALESCE(${galleryArray}, gallery),
           website_url = COALESCE(${project.website_url}, website_url),
           featured = COALESCE(${featured}, featured),
+          hidden = COALESCE(${hidden}, hidden),
           case_study = COALESCE(${caseStudyJson}::jsonb, case_study),
           updated_at = CURRENT_TIMESTAMP
       WHERE id = ${id}

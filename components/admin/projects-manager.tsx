@@ -29,6 +29,8 @@ import {
   Star,
   RefreshCw,
   Loader2,
+  Eye,
+  EyeOff,
 } from "lucide-react"
 import {
   type Project,
@@ -242,6 +244,26 @@ export function ProjectsManager({
       notify("error", error?.message || "Failed to save project.")
     } finally {
       setIsSavingProject(false)
+    }
+  }
+
+  const handleToggleHidden = async (project: Project) => {
+    try {
+      // Sends updated_at so a stale list can't overwrite a newer save
+      const updated = await updateProject(project.id, {
+        hidden: !project.hidden,
+        updated_at: project.updated_at,
+      })
+      setProjects((list) => list.map((p) => (p.id === updated.id ? updated : p)))
+      notify(
+        "success",
+        updated.hidden
+          ? `"${updated.title}" is hidden from the portfolio.`
+          : `"${updated.title}" is visible in the portfolio again.`,
+      )
+    } catch (error: any) {
+      console.error("Error toggling project visibility:", error)
+      notify("error", error?.message || "Failed to change project visibility.")
     }
   }
 
@@ -526,7 +548,7 @@ export function ProjectsManager({
                           : isSelected
                           ? "bg-blue-950/40 border-blue-500/50 ring-1 ring-blue-500/30"
                           : "bg-slate-900/40 border-slate-700/60 hover:border-slate-600"
-                      }`}
+                      } ${project.hidden && !isBeingDragged ? "opacity-60" : ""}`}
                     >
                       <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
                         {/* Drag Handle & Up/Down Arrows */}
@@ -585,6 +607,11 @@ export function ProjectsManager({
                                 <Star size={10} className="mr-1 fill-amber-400" /> Featured
                               </Badge>
                             )}
+                            {project.hidden && (
+                              <Badge className="bg-slate-700/60 text-slate-300 border-slate-600 text-[10px] py-0">
+                                <EyeOff size={10} className="mr-1" /> Hidden
+                              </Badge>
+                            )}
                             <Badge variant="outline" className="text-[10px] text-slate-400 py-0">
                               {project.category}
                             </Badge>
@@ -620,6 +647,16 @@ export function ProjectsManager({
                           title="Edit project"
                         >
                           <Edit size={14} />
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleToggleHidden(project)}
+                          className="border-slate-700 hover:border-slate-400 hover:text-slate-200 h-8 px-2.5"
+                          title={project.hidden ? "Show in portfolio" : "Hide from portfolio"}
+                          aria-label={project.hidden ? "Show in portfolio" : "Hide from portfolio"}
+                        >
+                          {project.hidden ? <EyeOff size={14} /> : <Eye size={14} />}
                         </Button>
                         <Button
                           size="sm"
@@ -1143,6 +1180,20 @@ export function ProjectsManager({
                 />
                 <Label htmlFor="proj-featured" className="text-slate-200 cursor-pointer">
                   Feature this project on homepage
+                </Label>
+              </div>
+
+              {/* Hidden Toggle */}
+              <div className="flex items-center space-x-3">
+                <Switch
+                  id="proj-hidden"
+                  checked={Boolean(editingProject.hidden)}
+                  onCheckedChange={(checked) =>
+                    setEditingProject({ ...editingProject, hidden: checked })
+                  }
+                />
+                <Label htmlFor="proj-hidden" className="text-slate-200 cursor-pointer">
+                  Hide from the portfolio (only you see it here)
                 </Label>
               </div>
 

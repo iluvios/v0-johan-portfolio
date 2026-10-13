@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
 import { DEFAULT_PROJECTS, cleanCaseStudy, normalizeCaseStudy, normalizeProject, type Project } from "@/lib/projects"
-import { requireAdmin } from "@/lib/admin-auth"
+import { isAdmin, requireAdmin } from "@/lib/admin-auth"
 
 function getDatabaseUrl(): string | undefined {
   return (
@@ -33,14 +33,18 @@ export async function GET(request: NextRequest) {
   try {
     const sql = neon(dbUrl)
 
-    // Ensure order_index column exists
+    // Ensure order_index and hidden columns exist
     await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS order_index INTEGER DEFAULT 0;`.catch(() => {})
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS hidden BOOLEAN DEFAULT false;`.catch(() => {})
+
+    // The admin lists every project; visitors never receive hidden ones
+    const showHidden = isAdmin(request)
 
     let projects
     if (featured === "true") {
       projects = await sql`
-        SELECT * FROM projects 
-        WHERE featured = true
+        SELECT * FROM projects
+        WHERE featured = true AND (${showHidden} OR hidden IS NOT TRUE)
         ORDER BY order_index ASC NULLS LAST, created_at DESC NULLS LAST, id DESC
         LIMIT 3
       `
@@ -48,19 +52,21 @@ export async function GET(request: NextRequest) {
       if (!projects || projects.length === 0) {
         projects = await sql`
           SELECT * FROM projects
+          WHERE ${showHidden} OR hidden IS NOT TRUE
           ORDER BY order_index ASC NULLS LAST, created_at DESC NULLS LAST, id DESC
           LIMIT 3
         `
       }
     } else if (category && category !== "All") {
       projects = await sql`
-        SELECT * FROM projects 
-        WHERE category = ${category}
+        SELECT * FROM projects
+        WHERE category = ${category} AND (${showHidden} OR hidden IS NOT TRUE)
         ORDER BY order_index ASC NULLS LAST, featured DESC NULLS LAST, created_at DESC NULLS LAST, id DESC
       `
     } else {
       projects = await sql`
-        SELECT * FROM projects 
+        SELECT * FROM projects
+        WHERE ${showHidden} OR hidden IS NOT TRUE
         ORDER BY order_index ASC NULLS LAST, featured DESC NULLS LAST, created_at DESC NULLS LAST, id DESC
       `
     }
@@ -112,6 +118,7 @@ export async function POST(request: NextRequest) {
     const sql = neon(dbUrl)
     await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS order_index INTEGER DEFAULT 0;`.catch(() => {})
     await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS case_study JSONB;`.catch(() => {})
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS hidden BOOLEAN DEFAULT false;`.catch(() => {})
 
     const caseStudy = normalizeCaseStudy(project.case_study)
     const caseStudyJson = caseStudy ? JSON.stringify(cleanCaseStudy(caseStudy)) : null
@@ -119,7 +126,7 @@ export async function POST(request: NextRequest) {
     const galleryArray = Array.isArray(project.gallery) ? project.gallery : []
 
     const result = await sql`
-      INSERT INTO projects (title, client, impact, description, image_url, category, tags, gallery, website_url, featured, case_study, order_index)
+      INSERT INTO projects (title, client, impact, description, image_url, category, tags, gallery, website_url, featured, hidden, case_study, order_index)
       VALUES (
         ${project.title || "Untitled Project"},
         ${project.client || null},
@@ -131,6 +138,7 @@ export async function POST(request: NextRequest) {
         ${galleryArray},
         ${project.website_url || null},
         ${Boolean(project.featured)},
+        ${Boolean(project.hidden)},
         ${caseStudyJson}::jsonb,
         ${project.order_index !== undefined ? Number(project.order_index) : 0}
       )
