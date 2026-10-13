@@ -85,7 +85,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Revy Autos: cut Meta cost per registered user 61% ($17.94 → $7.07) while scaling monthly Meta spend 13×, by pushing for persona landing pages and creative testing at up to 30 new ads a week.",
         "Grew daily user registrations from ~30 to 200 with paid media and ActiveCampaign lifecycle automation.",
         "Designed and implemented the martech and GTM automation stack for the agency's venture-backed startup clients.",
-        "Managed multi-channel advertising (Meta, Google, Reddit, TikTok and YouTube Shorts) with budgets of about $65K a month across channels.",
+        "Managed five-figure monthly ad budgets across Meta, Google, Reddit, TikTok and YouTube Shorts.",
         "Implemented and maintained multi-touch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Automated customer support routing to manage 100+ daily tickets.",
         "Built startup MVPs end-to-end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA-compliant mileage app for non-profits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
@@ -258,7 +258,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       category: "Growth Marketing",
       skills: [
         "Full-funnel strategy",
-        "Paid media: Meta, Google, Reddit, TikTok, YouTube, LinkedIn (up to ~$65K/mo)",
+        "Paid media: Meta, Google, Reddit, TikTok, YouTube, LinkedIn (five-figure monthly budgets)",
         "Email & lifecycle marketing",
         "Technical, on-page & off-page SEO",
         "Direct-response copywriting",

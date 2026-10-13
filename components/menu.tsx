@@ -25,9 +25,9 @@ export default function MenuComponent() {
   const copy = portfolioCopy[language];
   const nav =
     language === "en"
-      ? ["Home", "Work", "Services", "About & CV", "Let’s talk"]
-      : ["Inicio", "Proyectos", "Servicios", "Sobre mí y CV", "Hablemos"];
-  const items = ["/", "/projects", "/services", "/about", "/contact"].map(
+      ? ["Home", "Work", "About & CV", "Let’s talk"]
+      : ["Inicio", "Proyectos", "Sobre mí y CV", "Hablemos"];
+  const items = ["/", "/projects", "/about", "/contact"].map(
     (href, i) => ({ href, label: nav[i] }),
   );
   const active = (href: string) =>

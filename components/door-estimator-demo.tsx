@@ -170,9 +170,9 @@ export default function DoorEstimatorDemo() {
     <div className="mx-auto max-w-5xl py-8 px-4 sm:px-6">
       {/* Back link & Demonstration Notice */}
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
-        <Link href="/services" className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition">
+        <Link href="/projects" className="inline-flex items-center gap-2 text-sm text-neutral-400 hover:text-white transition">
           <ArrowLeft size={16} />
-          Back to GTM Services
+          Back to projects
         </Link>
         <div className="flex items-center gap-2">
           <span className="relative flex h-2 w-2">

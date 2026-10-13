@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // The services page was retired; old links land on the work instead of a 404
+  async redirects() {
+    return [{ source: "/services", destination: "/projects", permanent: true }];
+  },
   async headers() {
     return [
       {

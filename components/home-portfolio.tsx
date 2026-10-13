@@ -145,36 +145,11 @@ function SelectedWork() {
   );
 }
 
-function Proof() {
+function Stack() {
   const { copy } = usePortfolioCopy();
   return (
-    <section className="section" aria-labelledby="proof-heading">
-      <div className="section-heading">
-        <div className="flex flex-col gap-4">
-          <Eyebrow>{copy.proof}</Eyebrow>
-          <h2 id="proof-heading" className="section-title">
-            {copy.proofTitle}
-          </h2>
-        </div>
-      </div>
-      <Reveal>
-        <dl className="proof-grid">
-          {copy.metrics.map((metric) => (
-            <div key={metric.value} className="proof-item">
-              <dt className="proof-label">
-                {metric.label}
-                <span className="proof-context">{metric.context}</span>
-              </dt>
-              <dd className="proof-value">{metric.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </Reveal>
-      <Link className="text-link mt-4" href="/about">
-        {copy.proofCv}
-        <ArrowUpRight size={18} aria-hidden="true" />
-      </Link>
-      <div className="proof-stack">
+    <section className="section" aria-label={copy.stackLabel}>
+      <div className="flex flex-col gap-4">
         <p className="eyebrow">{copy.stackLabel}</p>
         <ul className="flex flex-wrap gap-2">
           {STACK.map((tool) => (
@@ -184,47 +159,6 @@ function Proof() {
           ))}
         </ul>
       </div>
-    </section>
-  );
-}
-
-function ServicesTeaser() {
-  const { copy } = usePortfolioCopy();
-  return (
-    <section className="section" aria-labelledby="services-heading">
-      <div className="section-heading">
-        <div className="flex flex-col gap-4">
-          <Eyebrow>{copy.servicesTeaserEyebrow}</Eyebrow>
-          <h2 id="services-heading" className="section-title">
-            {copy.servicesTeaserTitle}
-          </h2>
-          <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
-            {copy.servicesTeaserBody}
-          </p>
-        </div>
-        <Link className="text-link shrink-0" href="/services">
-          {copy.servicesCta}
-          <ArrowUpRight size={18} aria-hidden="true" />
-        </Link>
-      </div>
-      <Reveal>
-        <div className="service-teaser-grid">
-          {copy.services.map((service, i) => (
-            <Link
-              key={service.id}
-              href={`/services#${service.id}`}
-              className="service-teaser"
-            >
-              <span className="service-index" aria-hidden="true">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <h3>{service.title}</h3>
-              <p>{service.outcome}</p>
-              <ArrowUpRight className="service-teaser-arrow" size={20} aria-hidden="true" />
-            </Link>
-          ))}
-        </div>
-      </Reveal>
     </section>
   );
 }
@@ -299,9 +233,7 @@ export default function HomePortfolio() {
         <Separator />
         <SelectedWork />
         <Separator />
-        <Proof />
-        <Separator />
-        <ServicesTeaser />
+        <Stack />
         <Separator />
         <Perspective />
         <LatestWriting />

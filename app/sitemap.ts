@@ -24,7 +24,7 @@ async function projectIds(): Promise<number[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages = ["", "/projects", "/services", "/about", "/contact"].map(
+  const pages = ["", "/projects", "/about", "/contact"].map(
     (path) => ({ url: `${SITE}${path}` }),
   );
   const projects = (await projectIds()).map((id) => ({

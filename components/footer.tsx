@@ -32,10 +32,6 @@ export default function Footer() {
           <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
             LinkedIn <ArrowUpRight size={16} aria-hidden="true" />
           </a>
-          <Link href="/services">
-            {language === "en" ? "Services" : "Servicios"}{" "}
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </Link>
           <Link href="/about">
             CV <ArrowUpRight size={16} aria-hidden="true" />
           </Link>

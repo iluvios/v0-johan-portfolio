@@ -5,7 +5,7 @@ export const portfolioCopy = {
     role: "Senior Growth Marketer",
     hero: ["The campaigns.", "The systems.", "The results."],
     intro:
-      "Developer turned growth marketer. I run the campaigns — paid media, landing pages, lifecycle email, and SEO — and build the stack that measures and scales them, with budgets of about $65K a month.",
+      "Growth marketer and innovator. I run the campaigns — paid media, landing pages, lifecycle email, and SEO — and build the stack that measures and scales them, on budgets from a few hundred dollars to five figures a month.",
     work: "See the work",
     talk: "Let’s talk",
     scroll: "Scroll to explore",
@@ -18,118 +18,12 @@ export const portfolioCopy = {
     workTitle: "Shipped, live, in use.",
     allWork: "All projects",
     viewProject: "Explore project",
-    proof: "Track record",
-    proofTitle: "Numbers from real roles.",
-    proofCv: "See each one in context in my CV",
-    metrics: [
-      {
-        value: "−61%",
-        label: "Meta cost per registered user, while scaling monthly spend 13×",
-        context: "Revy Autos · Pvragon · 2025",
-      },
-      {
-        value: "30 → 200",
-        label:
-          "Daily user registrations with paid media and lifecycle email in ActiveCampaign",
-        context: "Revy Autos · Pvragon · 2025",
-      },
-      {
-        value: "+132%",
-        label: "Orders for a Shopify store I rebuilt, with conversion rate up from 0.33% to 0.7%",
-        context: "Autobruder · Freelance · 2025",
-      },
-      {
-        value: "3.7×",
-        label: "Google search clicks after an SEO optimization of a nonprofit site I rebuilt",
-        context: "Rainforest Foundation US · 2025",
-      },
-      {
-        value: "69K",
-        label: "Site visits from $59.8K in donated Google Ad Grants",
-        context: "Fundación Lupines · 2019–22",
-      },
-      {
-        value: "$65K/mo",
-        label:
-          "Monthly paid-media budget managed across Meta, Google, Reddit, TikTok, and YouTube",
-        context: "Pvragon · 2025",
-      },
-    ],
     stackLabel: "Tools I work in",
-    servicesEyebrow: "The method",
-    servicesTitle: "One digital sales system. Built right.",
-    servicesIntro:
-      "Every business that sells online runs on the same five parts. When they’re connected, sales become predictable. I build that system for your company, whatever you sell, and hand it over working.",
-    servicesTeaserEyebrow: "How I work",
-    servicesTeaserTitle: "One digital sales system, end to end.",
-    servicesTeaserBody:
-      "Attract, capture, nurture, convert, measure: the fundamentals, connected and built right, for any business that sells online.",
-    servicesCta: "See the method",
-    servicesContact: "Tell me about your business",
-    services: [
-      {
-        id: "attract",
-        title: "Attract",
-        outcome: "The right people find you.",
-        body: "Ads, search, content, and social, aimed at the people who actually buy.",
-      },
-      {
-        id: "capture",
-        title: "Capture",
-        outcome: "Visitors become contacts.",
-        body: "A website and landing pages built to convert, with an offer that’s easy to say yes to.",
-      },
-      {
-        id: "nurture",
-        title: "Nurture",
-        outcome: "Contacts start to trust you.",
-        body: "Email, WhatsApp, and automated follow-up that answers fast and educates without pushing.",
-      },
-      {
-        id: "convert",
-        title: "Convert",
-        outcome: "Trust turns into a sale.",
-        body: "A simple path to buy, and a CRM so no lead slips through the cracks.",
-      },
-      {
-        id: "measure",
-        title: "Measure",
-        outcome: "Every result has a cause.",
-        body: "Tracking from first click to sale, so you invest where it pays and cut what doesn’t.",
-      },
-    ],
-    systemLoop: "Measure feeds attract. Every month the system gets a little better.",
-    systemTools: "Built with the tools you already use, or the right ones:",
-    processTitle: "How we work",
-    process: [
-      {
-        title: "Diagnose",
-        body: "We map how you sell today and find the weakest link. That’s where we start.",
-      },
-      {
-        title: "Build",
-        body: "I set up each part, in order, live in weeks. Working systems, not a deck of recommendations.",
-      },
-      {
-        title: "Hand over",
-        body: "Documented, with your team trained to run it. Or I stay on and keep improving it every month.",
-      },
-    ],
-    servicesProofTitle: "Same method, different businesses.",
-    servicesProof: [
-      { id: 50, name: "Revy Autos", kind: "Car marketplace", result: "−61% cost per registered user" },
-      { id: 25, name: "Autobruder", kind: "4x4 online store", result: "+132% orders" },
-      { id: 49, name: "PSL Software", kind: "B2B software", result: "Email open rate 12% → 35%" },
-      { id: 29, name: "Rainforest Foundation US", kind: "Nonprofit", result: "3.7× clicks from Google" },
-    ],
-    servicesContactTitle: "Tell me how you sell today.",
-    servicesContactBody:
-      "A few lines about your business and where sales get stuck. I’ll reply with where I’d start. Project or monthly, in English or Spanish.",
     perspective: "The person behind the work",
-    perspectiveStart: "An engineer’s instincts.",
-    perspectiveEnd: "A marketer’s scoreboard.",
+    perspectiveStart: "Marketer by trade.",
+    perspectiveEnd: "Innovator by habit.",
     perspectiveBody:
-      "I’m Johan, based in Medellín and working on US hours. I started as a fullstack developer, spent years in agencies running campaigns, creative, and client teams, and now build the systems that connect the two.",
+      "I’m Johan, based in Medellín and working on US hours, with 12 years across marketing, innovation and code: my own online store, B2B software, an agency I co-founded, automation at a BPO and growth for funded startups. Code is one of my tools, not my title. It lets me build the tracking, automations and tests behind a campaign without waiting on another team.",
     moreAbout: "Read my CV",
     journal: "Thinking out loud",
     journalTitle: "Notes from the process.",
@@ -213,7 +107,7 @@ export const portfolioCopy = {
     role: "Growth Marketer Senior",
     hero: ["Las campañas.", "Los sistemas.", "Los resultados."],
     intro:
-      "Desarrollador convertido en growth marketer. Dirijo las campañas —pauta, landing pages, email de ciclo de vida y SEO— y construyo el stack que las mide y las escala, con presupuestos de unos $65K al mes.",
+      "Growth marketer e innovador. Dirijo las campañas —pauta, landing pages, email de ciclo de vida y SEO— y construyo el stack que las mide y las escala, con presupuestos desde unos cientos de dólares hasta cinco cifras al mes.",
     work: "Ver el trabajo",
     talk: "Hablemos",
     scroll: "Sigue explorando",
@@ -226,118 +120,12 @@ export const portfolioCopy = {
     workTitle: "Lanzado, en vivo, en uso.",
     allWork: "Todos los proyectos",
     viewProject: "Explorar proyecto",
-    proof: "Resultados",
-    proofTitle: "Números de roles reales.",
-    proofCv: "Míralos en contexto en mi CV",
-    metrics: [
-      {
-        value: "−61%",
-        label: "Costo por usuario registrado en Meta, mientras la inversión mensual crecía 13×",
-        context: "Revy Autos · Pvragon · 2025",
-      },
-      {
-        value: "30 → 200",
-        label:
-          "Registros diarios de usuarios con pauta y email de ciclo de vida en ActiveCampaign",
-        context: "Revy Autos · Pvragon · 2025",
-      },
-      {
-        value: "+132%",
-        label: "Pedidos de una tienda Shopify que reconstruí, con la conversión de 0.33% a 0.7%",
-        context: "Autobruder · Freelance · 2025",
-      },
-      {
-        value: "3.7×",
-        label: "Clics desde Google tras optimizar el SEO de un sitio sin ánimo de lucro que reconstruí",
-        context: "Rainforest Foundation US · 2025",
-      },
-      {
-        value: "69K",
-        label: "Visitas al sitio con $59.8K en anuncios donados por Google Ad Grants",
-        context: "Fundación Lupines · 2019–22",
-      },
-      {
-        value: "$65K/mes",
-        label:
-          "Presupuesto mensual de pauta gestionado en Meta, Google, Reddit, TikTok y YouTube",
-        context: "Pvragon · 2025",
-      },
-    ],
     stackLabel: "Herramientas con las que trabajo",
-    servicesEyebrow: "El método",
-    servicesTitle: "Un sistema de ventas digital. Bien hecho.",
-    servicesIntro:
-      "Todo negocio que vende en internet funciona con las mismas cinco piezas. Cuando están conectadas, las ventas se vuelven predecibles. Construyo ese sistema para tu empresa, vendas lo que vendas, y te lo entrego funcionando.",
-    servicesTeaserEyebrow: "Cómo trabajo",
-    servicesTeaserTitle: "Un sistema de ventas digital, de punta a punta.",
-    servicesTeaserBody:
-      "Atraer, capturar, nutrir, convertir y medir: los fundamentos, conectados y bien hechos, para cualquier negocio que vende en internet.",
-    servicesCta: "Ver el método",
-    servicesContact: "Cuéntame sobre tu negocio",
-    services: [
-      {
-        id: "attract",
-        title: "Atraer",
-        outcome: "Las personas correctas te encuentran.",
-        body: "Pauta, búsqueda, contenido y redes, apuntando a quien de verdad te compra.",
-      },
-      {
-        id: "capture",
-        title: "Capturar",
-        outcome: "Las visitas se vuelven contactos.",
-        body: "Un sitio y landing pages hechos para convertir, con una oferta fácil de aceptar.",
-      },
-      {
-        id: "nurture",
-        title: "Nutrir",
-        outcome: "Los contactos empiezan a confiar.",
-        body: "Email, WhatsApp y seguimiento automático que responde rápido y educa sin presionar.",
-      },
-      {
-        id: "convert",
-        title: "Convertir",
-        outcome: "La confianza se vuelve venta.",
-        body: "Un camino simple para comprar y un CRM para que ningún cliente potencial se pierda.",
-      },
-      {
-        id: "measure",
-        title: "Medir",
-        outcome: "Cada resultado tiene una causa.",
-        body: "Medición del primer clic a la venta, para invertir donde rinde y cortar lo que no.",
-      },
-    ],
-    systemLoop: "Medir alimenta a atraer. Cada mes el sistema mejora un poco.",
-    systemTools: "Construido con las herramientas que ya usas, o con las correctas:",
-    processTitle: "Cómo trabajamos",
-    process: [
-      {
-        title: "Diagnóstico",
-        body: "Miramos cómo vendes hoy y encontramos el eslabón más débil. Por ahí empezamos.",
-      },
-      {
-        title: "Construcción",
-        body: "Monto cada pieza, en orden, funcionando en semanas. Sistemas que operan, no un documento de recomendaciones.",
-      },
-      {
-        title: "Entrega",
-        body: "Documentado y con tu equipo entrenado para operarlo. O me quedo y lo sigo mejorando cada mes.",
-      },
-    ],
-    servicesProofTitle: "El mismo método, negocios distintos.",
-    servicesProof: [
-      { id: 50, name: "Revy Autos", kind: "Marketplace de carros", result: "−61% en costo por usuario registrado" },
-      { id: 25, name: "Autobruder", kind: "Tienda online 4x4", result: "+132% en pedidos" },
-      { id: 49, name: "PSL Software", kind: "Software B2B", result: "Apertura de emails de 12% a 35%" },
-      { id: 29, name: "Rainforest Foundation US", kind: "Organización sin ánimo de lucro", result: "3,7× clics desde Google" },
-    ],
-    servicesContactTitle: "Cuéntame cómo vendes hoy.",
-    servicesContactBody:
-      "Unas líneas sobre tu negocio y dónde se traban las ventas. Te respondo por dónde empezaría. Por proyecto o mensual, en español o inglés.",
     perspective: "La persona detrás del trabajo",
-    perspectiveStart: "Instinto de ingeniero.",
-    perspectiveEnd: "Obsesión por los resultados.",
+    perspectiveStart: "Marketer de oficio.",
+    perspectiveEnd: "Innovador por costumbre.",
     perspectiveBody:
-      "Soy Johan, vivo en Medellín y trabajo en horario de EE. UU. Empecé como desarrollador fullstack, pasé años en agencias liderando campañas, creativo y equipos de clientes, y hoy construyo los sistemas que conectan ambos mundos.",
+      "Soy Johan, vivo en Medellín y trabajo en horario de EE. UU., con 12 años entre marketing, innovación y código: mi propia tienda online, software B2B, una agencia que cofundé, automatización en un BPO y growth para startups con inversión. El código es una de mis herramientas, no mi título: me deja construir el tracking, las automatizaciones y las pruebas detrás de una campaña sin esperar a otro equipo.",
     moreAbout: "Ver mi CV",
     journal: "Pensando en voz alta",
     journalTitle: "Notas del proceso.",
