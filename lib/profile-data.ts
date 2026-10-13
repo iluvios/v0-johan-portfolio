@@ -56,8 +56,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
       achievements: [
-        "Building Intelligence (NY startup): 65 qualified sales calls and 4 closed deals worth $87K a year. Built automated B2B outbound to enterprise decision makers with Clay, Apollo, landing pages for each industry and Salesforce tracking, and led a full website redesign and copy overhaul.",
-        "Built an AI marketing platform with Claude, Next.js and Vercel for 2 companies and moved their marketing onto it: one control center for paid media creative, ad copy variations, website, email, and cross channel analytics, used to decide what creative to make, iterate on what works, and A/B test every step of the funnel.",
+        "Growth partner for brands and startups, from strategy to execution: brand and design updates, websites, tracking, CRM and email marketing. Current and recent clients include Rainforest Foundation US, Building Intelligence and Agentic Software.",
+        "Building Intelligence (NY startup): 65 qualified sales calls and 4 closed deals worth $87K a year, from automated B2B outbound to enterprise decision makers (Clay, Apollo, landing pages for each industry, Salesforce tracking), plus a full website redesign and copy overhaul.",
+        "Built an AI marketing platform for 2 companies and moved their marketing onto it: one control center for creative, ad copy, website, email and analytics, used to decide what to make next and A/B test every step of the funnel.",
       ],
       tools: [
         "Clay",
