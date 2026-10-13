@@ -217,8 +217,8 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Self-employed",
       achievements: [
         "Built and ran my own gaming dropshipping store from scratch on Shopify, with orders automated to AliExpress suppliers: about $5K in sales in its first year.",
-        "Made the memes, ads and creatives myself and A/B tested them on Meta and Google Ads, alongside SEO and Klaviyo email.",
-        "Grew the brand's social account from 0 to 5,000 followers in 12 months through partnerships with other gaming Facebook and Instagram pages and in-person gaming events.",
+        "Made about 80% of the memes, ads and creatives myself (a designer helped with the rest), launched about 5 new ads a week and A/B tested them on Meta and Google Ads, alongside SEO and Klaviyo email.",
+        "Posted 3 times a day, scheduled two weeks ahead, and handled customer support myself; grew the social account from 0 to 5,000 followers in 12 months through partnerships with other gaming Facebook and Instagram pages and in-person gaming events.",
       ],
       tools: [
         "Shopify",
