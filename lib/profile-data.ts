@@ -175,7 +175,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Full-time",
       achievements: [
         "Co-founded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
-        "Sold about 100 websites in three years, growing from about 10 the first year to about 70 the last, plus about 40 paid media accounts.",
+        "Took the agency from zero to about $15K a month in revenue: about 100 websites in three years (growing from about 10 the first year to about 70 the last), about 40 paid media accounts, and app projects of up to $30K.",
         "Ran a team of 8 full-time (4 partners, 2 designers, 2 WordPress developers), and brought in up to 6 contract software developers at a time for app and platform projects, plus video editors on demand. Hybrid team, about half remote.",
         "Clients included nonprofits, restaurant groups, real estate agencies, clinics, e-commerce brands, an international consultancy and early-stage startups.",
       ],
