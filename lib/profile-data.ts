@@ -57,7 +57,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Freelance",
       achievements: [
         "Building Intelligence (NY security tech company): built account based outbound to enterprise buying teams, with a landing page for each industry, generating 60+ qualified sales meetings and $87K in new ARR. Also redesigned the website and rewrote the copy.",
-        "Built an AI marketing platform for 2 companies and moved their marketing onto it: one control center for creative, ad copy, website, email and analytics, used to decide what to make next and A/B test every step of the funnel.",
+        "Built an AI marketing system for 2 companies that brings creative, ad copy, website, email and analytics into one place and A/B tests every step of the funnel.",
         "Growth partner for brands and startups, from strategy to execution: brand and design updates, websites, tracking, CRM and email marketing. Current and recent clients include Rainforest Foundation US, Building Intelligence and Agentic Software.",
       ],
       tools: [
@@ -149,7 +149,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Built the funnel and brand communications from scratch, including cold email to 90K trucking contacts with A/B tests and opening lines personalized with GPT-3; working with the sales team, we closed 10+ new automation clients worth $180K+ in ARR.",
         "Rebuilt the brand, the Webflow website, Salesforce CRM and tracking.",
         "Grew and led an automation team of 4, and handled Salesforce setup, updates and custom Apex development.",
-        "Managed implementation for new clients and 6 more upsold by the CEO, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
+        "Managed client implementations, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
       ],
       tools: [
         "UiPath",
