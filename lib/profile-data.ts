@@ -56,7 +56,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
       achievements: [
-        "Building Intelligence (NY security tech company): built account based outbound to enterprise buying teams, with a landing page for each industry, generating 60+ qualified sales meetings and $87K in new ARR. Also redesigned the website and rewrote the copy.",
+        "Building Intelligence (NY security tech company): built account based outbound to enterprise buying teams, with a landing page for each industry, generating 60+ qualified sales meetings and $90K+ in new ARR in 4 months. Also helped redesign the website and other parts of the funnel.",
         "Built an AI marketing system for 2 companies that brings creative, ad copy, website, email and analytics into one place and A/B tests every step of the funnel.",
         "Growth partner for brands and startups, from strategy to execution: brand and design updates, websites, tracking, CRM and email marketing. Current and recent clients include Rainforest Foundation US, Building Intelligence and Agentic Software.",
       ],
@@ -120,7 +120,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Freelance",
       description: "Marketing automation, full funnel strategy, and digital transformation for clients across South America and the US.",
       achievements: [
-        "International Nurses: rebuilt the brand, website and funnel for a consultancy that helps nurses across Latin America work abroad, adding weekly webinars to qualify nurses before the one on one interview and email lists built from nursing associations; new clients a month nearly doubled.",
+        "International Nurses: rebuilt the brand, website and funnel for a consultancy that helps nurses across Latin America work abroad, adding weekly webinars before the one on one interviews and email lists built from nursing associations; new clients a month nearly doubled.",
         "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, including a custom camping setup app; conversion rate more than doubled and orders grew 132% in 3 months.",
         "Rainforest Foundation US: led the technical rebuild of the nonprofit's website without losing a single URL, then ran an SEO overhaul that grew Google search clicks 3.7×.",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
@@ -174,9 +174,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Full time",
       achievements: [
         "Cofounded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
-        "Took the agency from zero to about $15K a month in revenue, delivering about 100 websites plus paid media and app projects.",
-        "Ran a team of 8 full time, plus contract developers for app and platform projects.",
-        "Clients included nonprofits, restaurant groups, real estate agencies, clinics, ecommerce brands, an international consultancy and early stage startups.",
+        "Took the agency from zero to about $15K+ a month in revenue, delivering about 100 websites plus paid media and app projects.",
+        "Ran a team of 8 full time, plus contract developers for app and software projects.",
+        "Clients included ecommerce brands, education and professional services companies, nonprofits and early stage startups.",
       ],
       tools: [
         "WordPress",
@@ -195,10 +195,10 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Full time",
       achievements: [
-        "Ran B2B demand generation for 2 SaaS products (accounting software and an ERP) together with the sales team: email nurture, SEO, Google Ads and webinars.",
+        "Contributed to B2B demand generation for 2 SaaS products (accounting software and an ERP) together with the sales team: email nurture, SEO, Google Ads and webinars.",
         "Increased email open rates from 12% to 35% through segmentation and subject line A/B testing.",
-        "Raised webinar turnout from 20% to 55% with reminder sequences.",
-        "Built software-contable.co, an SEO comparison site for accounting software that was still bringing in Google traffic two years after I left.",
+        "Grew webinar attendance from about 10 to 50 people and used the webinars to upsell existing clients, with email sequences, educational content and guidance from the sales team.",
+        "Built software-contable.co, an SEO comparison site for accounting software that was still drawing about 1,500 Google clicks a month two years after I left.",
       ],
       tools: [
         "Mailchimp",
@@ -212,12 +212,11 @@ export const DEFAULT_CV_DATA: CVProfile = {
     {
       role: "Founder",
       company: "Loopitems.com",
-      period: "Apr 2017 to Jan 2018",
+      period: "June 2016 to Jan 2018",
       location: "Medellín, Colombia",
       type: "Self employed",
       achievements: [
-        "Built and ran my own gaming dropshipping store from scratch on Shopify, with orders automated to AliExpress suppliers: about $5K in sales in its first year.",
-        "Made most of the memes, ads and creatives myself and A/B tested new ads every week on Meta Ads.",
+        "While in high school, built and ran my own gaming dropshipping store from scratch on Shopify, with orders automated to AliExpress suppliers: about $10K in sales in its first year on a $1K Meta ads budget.",
         "Grew the social account from 0 to 5,000 followers in a year through daily posting, partnerships with other gaming pages and in person gaming events, and handled customer support myself.",
       ],
       tools: [
@@ -237,7 +236,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Part time from 11th grade, then full time",
       achievements: [
-        "Started part time in 11th grade, then worked full time before starting college on a scholarship.",
+        "Started part time in 11th grade, then worked full time before starting college on a full scholarship.",
         "Built features, web applications, and rapid prototypes with JavaScript, Node.js, Python, Meteor.js, and MongoDB.",
         "Worked on the company's own startup projects, including a year in Apps.co, iNNpulsa Colombia's startup accelerator.",
       ],
