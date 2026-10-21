@@ -146,10 +146,10 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Full time",
       achievements: [
-        "Ran cold email to 90K trucking contacts with A/B tests and opening lines personalized with GPT-3, bringing in $108K+ in new ARR from 6 prepaid yearly contracts.",
+        "Built the funnel and brand communications from scratch, including cold email to 90K trucking contacts with A/B tests and opening lines personalized with GPT-3; working with the sales team, we closed 10+ new automation clients worth $180K+ in ARR.",
         "Rebuilt the brand, the Webflow website, Salesforce CRM and tracking.",
         "Grew and led an automation team of 4, and handled Salesforce setup, updates and custom Apex development.",
-        "Managed implementation for new clients, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
+        "Managed implementation for new clients and 6 more upsold by the CEO, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
       ],
       tools: [
         "UiPath",
