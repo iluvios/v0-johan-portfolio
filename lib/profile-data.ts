@@ -216,7 +216,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Self employed",
       achievements: [
-        "While in high school, built and ran my own gaming dropshipping store from scratch on Shopify, with orders automated to AliExpress suppliers: about $10K in sales in its first year on a $1K Meta ads budget.",
+        "When I started college, built and ran my own gaming dropshipping store from scratch on Shopify, with orders automated to AliExpress suppliers: about $10K in sales between the online store and in person gaming events, on a $1K Meta ads budget.",
         "Grew the social account from 0 to 5,000 followers in a year through daily posting, partnerships with other gaming pages and in person gaming events, and handled customer support myself.",
       ],
       tools: [
