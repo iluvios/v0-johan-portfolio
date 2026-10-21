@@ -195,10 +195,10 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Full time",
       achievements: [
-        "Contributed to B2B demand generation for 2 SaaS products (accounting software and an ERP) together with the sales team: email nurture, SEO, Google Ads and webinars.",
-        "Increased email open rates from 12% to 35% through segmentation and subject line A/B testing.",
-        "Grew webinar attendance from about 10 to 50 people and used the webinars to upsell existing clients, with email sequences, educational content and guidance from the sales team.",
-        "Built software-contable.co, an SEO comparison site for accounting software that was still drawing about 1,500 Google clicks a month two years after I left.",
+        "Contributed to B2B demand generation for 2 SaaS products, accounting software and an ERP, working with the sales team.",
+        "Raised email open rates from 12% to 35% with segmentation and subject line A/B tests.",
+        "Grew webinar attendance from about 10 to 50 people and used the webinars to upsell existing clients.",
+        "Built software-contable.co, an SEO comparison site still drawing about 1,500 Google clicks a month two years after I left.",
       ],
       tools: [
         "Mailchimp",
