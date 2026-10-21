@@ -78,9 +78,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
     },
     {
       role: "Senior Martech Specialist",
-      company: "Pvragon",
+      company: "Pvragon (San Diego, CA)",
       period: "Apr 2025 to Mar 2026",
-      location: "Medellín, Colombia / Remote",
+      location: "San Diego, CA / Remote",
       type: "Full time, then contract from Jan 2026",
       achievements: [
         "Revy Autos: cut Meta cost per registered user 61% ($17.94 → $7.07) while scaling monthly Meta spend 13×, by pushing for persona landing pages and creative testing at up to 30 new ads a week.",
