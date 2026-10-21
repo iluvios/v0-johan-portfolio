@@ -56,7 +56,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
       achievements: [
-        "Building Intelligence (NY security tech company): 65 qualified sales calls and 4 closed deals worth $87K a year from automated account based outbound to named enterprise accounts, reaching several decision makers at each over sales cycles of several months (Clay, Apollo, landing pages for each industry, Salesforce tracking), plus a full website redesign and copy overhaul.",
+        "Building Intelligence (NY security tech company): built account based outbound to enterprise buying teams, with a landing page for each industry, generating 60+ qualified sales meetings and $87K in new ARR. Also redesigned the website and rewrote the copy.",
         "Built an AI marketing platform for 2 companies and moved their marketing onto it: one control center for creative, ad copy, website, email and analytics, used to decide what to make next and A/B test every step of the funnel.",
         "Growth partner for brands and startups, from strategy to execution: brand and design updates, websites, tracking, CRM and email marketing. Current and recent clients include Rainforest Foundation US, Building Intelligence and Agentic Software.",
       ],
@@ -146,7 +146,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Full time",
       achievements: [
-        "Ran cold email to a trucking list of 90K contacts with A/B tests and opening lines personalized with GPT-3: about 60 qualified leads, closed into 6 new clients on prepaid yearly contracts starting at $1.5K/month ($108K+).",
+        "Ran cold email to 90K trucking contacts with A/B tests and opening lines personalized with GPT-3, bringing in $108K+ in new ARR from 6 prepaid yearly contracts.",
         "Rebuilt the brand, the Webflow website, Salesforce CRM and tracking; the company still uses the brand, website and emails.",
         "Grew and led an automation team of 4, and handled Salesforce setup, updates and custom Apex widget development.",
         "Managed implementation for about 6 upsold clients, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
