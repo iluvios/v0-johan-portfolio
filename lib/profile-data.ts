@@ -122,7 +122,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       achievements: [
         "International Nurses: rebuilt the brand, website and funnel for a consultancy that helps nurses across Latin America work abroad, adding weekly webinars to qualify nurses before the one on one interview and email lists built from nursing associations; new clients a month nearly doubled.",
         "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, including a custom camping setup app; conversion rate more than doubled and orders grew 132% in 3 months.",
-        "Rainforest Foundation US: led the rebuild of the nonprofit's website without losing a single URL, then ran an SEO overhaul that grew Google search clicks 3.7×.",
+        "Rainforest Foundation US: led the technical rebuild of the nonprofit's website without losing a single URL, then ran an SEO overhaul that grew Google search clicks 3.7×.",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
       ],
       tools: [
