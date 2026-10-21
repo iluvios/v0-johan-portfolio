@@ -21,24 +21,26 @@ import {
   Target,
   Users,
   Loader2,
+  ListChecks,
 } from "lucide-react"
 import { CVManager } from "@/components/admin/cv-manager"
 import { RoadmapManager } from "@/components/admin/roadmap-manager"
 import { CrmManager } from "@/components/admin/crm-manager"
 import { ProjectsManager } from "@/components/admin/projects-manager"
 import { ArticlesManager } from "@/components/admin/articles-manager"
+import { WorkspaceManager } from "@/components/admin/workspace-manager"
 import { type CVProfile, DEFAULT_CV_DATA, getCVData, updateCVData } from "@/lib/profile-data"
 import type { AdminNotify } from "@/components/admin/admin-utils"
 import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
 
-type AdminTab = "pipeline" | "projects" | "articles" | "cv" | "roadmap"
+type AdminTab = "workspace" | "pipeline" | "projects" | "articles" | "cv" | "roadmap"
 
-const TABS: AdminTab[] = ["pipeline", "projects", "articles", "cv", "roadmap"]
+const TABS: AdminTab[] = ["workspace", "pipeline", "projects", "articles", "cv", "roadmap"]
 
-/** /admin is the pipeline; every other tab, and the project or article open in an editor, lives in the path. */
+/** /admin is the workspace; every other tab, and the project or article open in an editor, lives in the path. */
 function adminPath(tab: AdminTab, itemId?: string | null) {
-  const base = tab === "pipeline" ? "/admin" : `/admin/${tab}`
+  const base = tab === "workspace" ? "/admin" : `/admin/${tab}`
   return itemId ? `${base}/${encodeURIComponent(itemId)}` : base
 }
 
@@ -53,7 +55,7 @@ export function AdminApp() {
   const router = useRouter()
   const params = useParams<{ slug?: string[] }>()
   const [tabSegment, itemSegment] = params.slug ?? []
-  const activeTab: AdminTab = TABS.includes(tabSegment as AdminTab) ? (tabSegment as AdminTab) : "pipeline"
+  const activeTab: AdminTab = TABS.includes(tabSegment as AdminTab) ? (tabSegment as AdminTab) : "workspace"
   const openItemId = itemSegment ? decodeURIComponent(itemSegment) : null
   const openItem = (id: string | null) => router.push(adminPath(activeTab, id), { scroll: false })
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error" | "info"; text: string } | null>(null)
@@ -296,6 +298,19 @@ export function AdminApp() {
         {/* Tab Switcher */}
         <div className="flex space-x-2 border-b border-slate-800 mb-8 overflow-x-auto pb-1">
           <Link
+            href={adminPath("workspace")}
+            scroll={false}
+            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
+              activeTab === "workspace"
+                ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
+                : "border-transparent text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <ListChecks size={18} />
+            Workspace & Tasks
+          </Link>
+
+          <Link
             href={adminPath("pipeline")}
             scroll={false}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
@@ -318,7 +333,7 @@ export function AdminApp() {
             }`}
           >
             <FolderKanban size={18} />
-            Projects
+            Portfolio Showcase
             {projectsCount !== null && (
               <Badge variant="secondary" className="ml-1 text-xs bg-slate-800 text-slate-300">
                 {projectsCount}
@@ -370,11 +385,14 @@ export function AdminApp() {
             }`}
           >
             <Target size={18} />
-            Roadmap
+            Skill Roadmap
           </Link>
         </div>
 
-        {/* TAB 0: PIPELINE (job + client CRM) */}
+        {/* TAB 0: WORKSPACE (Notion / Asana style project & task manager) */}
+        {activeTab === "workspace" && <WorkspaceManager notify={notify} />}
+
+        {/* TAB 1: PIPELINE (job + client CRM) */}
         {activeTab === "pipeline" && <CrmManager notify={notify} />}
 
         {/* TAB 1: PROJECTS */}
