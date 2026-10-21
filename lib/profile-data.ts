@@ -41,13 +41,13 @@ export interface CVProfile {
 // stored in Neon; every claim here is taken from that record or confirmed directly by Johan.
 export const DEFAULT_CV_DATA: CVProfile = {
   name: "Johan Alvarez",
-  title: "Senior Growth Marketer · Martech & Automation",
+  title: "Senior Growth Marketer · Demand Generation & Martech",
   phone: "+57 318 406 4960",
   email: "contact@asjohan.com",
   location: "Medellín, Colombia · Remote (US hours)",
   website: "https://asjohan.com",
   linkedin: "https://linkedin.com/in/johanalvarez",
-  summary: "Growth marketer with 12+ years across software development, performance marketing and GTM, mostly helping startups go from zero to one. I run the full funnel (paid media, landing pages, lifecycle email and SEO) and build the stack underneath it: attribution, CRM and automations, with a heavy focus on A/B testing at every step.\n\nRecent results: cut Meta cost per registered user 61% while scaling spend 13× (RevyAutos.com), +132% orders on Autobruder.com's Shopify store, 3.7× Google search clicks for RainforestFoundation.org, and $108K+ in prepaid B2B contracts from cold email at Savant.",
+  summary: "Growth marketer with 12+ years across performance marketing, GTM and software development, mostly helping startups go from zero to one. I build programs that turn marketing into pipeline (paid media, outbound, landing pages, lifecycle email and SEO) and the stack underneath them: attribution, CRM and automations, with a heavy focus on A/B testing at every step.\n\nRecent results: 65 qualified sales calls and 4 closed deals worth $87K a year from B2B outbound to enterprise decision makers (Building Intelligence), $108K+ in prepaid B2B contracts from cold email (Savant), Meta cost per registered user cut 61% while scaling spend 13× (RevyAutos.com), +132% orders on Autobruder.com's Shopify store and 3.7× Google search clicks for RainforestFoundation.org.",
   experiences: [
     {
       role: "Growth & Martech Consultant",
@@ -56,9 +56,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
       achievements: [
-        "Growth partner for brands and startups, from strategy to execution: brand and design updates, websites, tracking, CRM and email marketing. Current and recent clients include Rainforest Foundation US, Building Intelligence and Agentic Software.",
         "Building Intelligence (NY startup): 65 qualified sales calls and 4 closed deals worth $87K a year, from automated B2B outbound to enterprise decision makers (Clay, Apollo, landing pages for each industry, Salesforce tracking), plus a full website redesign and copy overhaul.",
         "Built an AI marketing platform for 2 companies and moved their marketing onto it: one control center for creative, ad copy, website, email and analytics, used to decide what to make next and A/B test every step of the funnel.",
+        "Growth partner for brands and startups, from strategy to execution: brand and design updates, websites, tracking, CRM and email marketing. Current and recent clients include Rainforest Foundation US, Building Intelligence and Agentic Software.",
       ],
       tools: [
         "Clay",
@@ -87,9 +87,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Grew daily user registrations from ~30 to 200 with paid media and ActiveCampaign lifecycle automation.",
         "Managed monthly ad budgets in the five figures across Meta, Google, Reddit, TikTok and YouTube Shorts.",
         "Implemented and maintained multitouch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
-        "Automated customer support routing to manage 100+ daily tickets.",
-        "Built startup MVPs end to end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA compliant mileage app for nonprofits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
         "Conformational Aesthetics: set up the Shopify store, Triple Whale attribution, Klaviyo flows and UGC paid social campaigns, and built the B2B pipeline for finding med spa partners (Apollo, ActiveCampaign, Calendly).",
+        "Built startup MVPs end to end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA compliant mileage app for nonprofits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
+        "Automated customer support routing to manage 100+ daily tickets.",
       ],
       tools: [
         "n8n",
@@ -120,9 +120,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Freelance",
       description: "Marketing automation, full funnel strategy, and digital transformation for clients across South America and the US.",
       achievements: [
+        "International Nurses: rebuilt the brand, website and funnel for a $3K consultancy that helps nurses across Latin America work abroad. Added weekly group webinars (30 to 80 nurses a week) before the one on one interview and built email lists from nursing associations; new clients went from 3 or 4 to 6 or 7 a month.",
         "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, added 10,000+ products and a custom camping setup app; conversion rate went from 0.33% to 0.7% and orders grew 132% in 3 months.",
         "Rainforest Foundation US: led the technical rebuild of a nonprofit site of 35 pages and 220 blog posts with no lost URLs (2024); a 2025 SEO optimization (speed, content structure, internal linking, AEO) grew Google search clicks 3.7× and lifted average position from 16.5 to 6.5.",
-        "International Nurses: rebuilt the brand, website and funnel for a $3K consultancy that helps nurses across Latin America work abroad. Added weekly group webinars (30 to 80 nurses a week) before the one on one interview and built email lists from nursing associations; new clients went from 3 or 4 to 6 or 7 a month.",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
       ],
       tools: [
@@ -146,10 +146,10 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Full time",
       achievements: [
-        "Rebuilt the brand, the Webflow website, Salesforce CRM and tracking; the company still uses the brand, website and emails.",
         "Ran cold email to a trucking list of 90K contacts with A/B tests and opening lines personalized with GPT-3: about 60 qualified leads, closed into 6 new clients on prepaid yearly contracts starting at $1.5K/month ($108K+).",
-        "Managed implementation for about 6 upsold clients, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
+        "Rebuilt the brand, the Webflow website, Salesforce CRM and tracking; the company still uses the brand, website and emails.",
         "Grew and led an automation team of 4, and handled Salesforce setup, updates and custom Apex widget development.",
+        "Managed implementation for about 6 upsold clients, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
       ],
       tools: [
         "UiPath",
@@ -265,6 +265,17 @@ export const DEFAULT_CV_DATA: CVProfile = {
       ]
     },
     {
+      category: "Martech & Automation",
+      skills: [
+        "HubSpot, ActiveCampaign, GoHighLevel",
+        "Salesforce (4 orgs set up from scratch, custom Apex, integrations)",
+        "Clay (enrichment, outbound)",
+        "Apollo",
+        "n8n, Make, Zapier",
+        "Lifecycle email & SMS (Twilio)",
+      ]
+    },
+    {
       category: "Analytics & Attribution",
       skills: [
         "Server GTM & server events",
@@ -272,17 +283,6 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Triple Whale, Wicked Reports",
         "PostHog",
         "CRO & A/B testing",
-      ]
-    },
-    {
-      category: "Martech & Automation",
-      skills: [
-        "Clay (enrichment, outbound)",
-        "Apollo",
-        "n8n, Make, Zapier",
-        "Salesforce (4 orgs set up from scratch, custom Apex, integrations)",
-        "HubSpot, ActiveCampaign, GoHighLevel",
-        "Lifecycle email & SMS (Twilio)",
       ]
     },
     {
