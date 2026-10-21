@@ -85,7 +85,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       achievements: [
         "Revy Autos: cut Meta cost per registered user 61% while scaling spend 13×, through persona landing pages and weekly creative testing.",
         "Grew average daily user registrations from 30 to 200 with paid media and ActiveCampaign lifecycle automation.",
-        "Managed monthly ad budgets in the five figures across Meta, Google, Reddit, TikTok and YouTube Shorts.",
+        "Managed ad budgets of $15K to $60K+ a month across Meta, Google, Reddit, TikTok and YouTube Shorts for startups.",
         "Implemented and maintained multitouch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Conformational Aesthetics: set up the Shopify store, Triple Whale attribution, Klaviyo flows and UGC paid social campaigns, and built the B2B sales pipeline for finding med spa partners, with automated email flows for every stage (Apollo, ActiveCampaign, Calendly).",
         "Built startup MVPs end to end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA compliant mileage app for nonprofits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
