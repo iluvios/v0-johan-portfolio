@@ -83,8 +83,8 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "San Diego, CA / Remote",
       type: "Full time, then contract from Jan 2026",
       achievements: [
-        "Revy Autos: cut Meta cost per registered user 61% ($17.94 → $7.07) while scaling monthly Meta spend 13×, by pushing for persona landing pages and creative testing at up to 30 new ads a week.",
-        "Grew daily user registrations from ~30 to 200 with paid media and ActiveCampaign lifecycle automation.",
+        "Revy Autos: cut Meta cost per registered user 61% while scaling spend 13×, through persona landing pages and weekly creative testing.",
+        "Grew average daily user registrations from 30 to 200 with paid media and ActiveCampaign lifecycle automation.",
         "Managed monthly ad budgets in the five figures across Meta, Google, Reddit, TikTok and YouTube Shorts.",
         "Implemented and maintained multitouch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Conformational Aesthetics: set up the Shopify store, Triple Whale attribution, Klaviyo flows and UGC paid social campaigns, and built the B2B sales pipeline for finding med spa partners, with automated email flows for every stage (Apollo, ActiveCampaign, Calendly).",
@@ -120,9 +120,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Freelance",
       description: "Marketing automation, full funnel strategy, and digital transformation for clients across South America and the US.",
       achievements: [
-        "International Nurses: rebuilt the brand, website and funnel for a $3K consultancy that helps nurses across Latin America work abroad. Added weekly group webinars (30 to 80 nurses a week) to qualify nurses before the one on one interview and built email lists from nursing associations; new clients went from 3 or 4 to 6 or 7 a month.",
-        "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, added 10,000+ products and a custom camping setup app; conversion rate went from 0.33% to 0.7% and orders grew 132% in 3 months.",
-        "Rainforest Foundation US: led the technical rebuild of a nonprofit site of 35 pages and 220 blog posts with no lost URLs (2024); a 2025 SEO optimization (speed, content structure, internal linking, AEO) grew Google search clicks 3.7× and lifted average position from 16.5 to 6.5.",
+        "International Nurses: rebuilt the brand, website and funnel for a consultancy that helps nurses across Latin America work abroad, adding weekly webinars to qualify nurses before the one on one interview and email lists built from nursing associations; new clients a month nearly doubled.",
+        "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, including a custom camping setup app; conversion rate more than doubled and orders grew 132% in 3 months.",
+        "Rainforest Foundation US: led the rebuild of the nonprofit's website without losing a single URL, then ran an SEO overhaul that grew Google search clicks 3.7×.",
         "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
       ],
       tools: [
@@ -147,9 +147,9 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Full time",
       achievements: [
         "Ran cold email to 90K trucking contacts with A/B tests and opening lines personalized with GPT-3, bringing in $108K+ in new ARR from 6 prepaid yearly contracts.",
-        "Rebuilt the brand, the Webflow website, Salesforce CRM and tracking; the company still uses the brand, website and emails.",
-        "Grew and led an automation team of 4, and handled Salesforce setup, updates and custom Apex widget development.",
-        "Managed implementation for about 6 upsold clients, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
+        "Rebuilt the brand, the Webflow website, Salesforce CRM and tracking.",
+        "Grew and led an automation team of 4, and handled Salesforce setup, updates and custom Apex development.",
+        "Managed implementation for new clients, automating invoicing, trucker and truck document checks and manual data entry with UiPath, Python and early AI tools that read invoices and emails.",
       ],
       tools: [
         "UiPath",
@@ -174,8 +174,8 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Full time",
       achievements: [
         "Cofounded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
-        "Took the agency from zero to about $15K a month in revenue: about 100 websites in three years (growing from about 10 the first year to about 70 the last), about 40 paid media accounts, and app projects of up to $30K.",
-        "Ran a team of 8 full time (4 partners, 2 designers, 2 WordPress developers), and brought in up to 6 contract software developers at a time for app and platform projects, plus video editors on demand. Hybrid team, about half remote.",
+        "Took the agency from zero to about $15K a month in revenue, delivering about 100 websites plus paid media and app projects.",
+        "Ran a team of 8 full time, plus contract developers for app and platform projects.",
         "Clients included nonprofits, restaurant groups, real estate agencies, clinics, ecommerce brands, an international consultancy and early stage startups.",
       ],
       tools: [
@@ -197,8 +197,8 @@ export const DEFAULT_CV_DATA: CVProfile = {
       achievements: [
         "Ran B2B demand generation for 2 SaaS products (accounting software and an ERP) together with the sales team: email nurture, SEO, Google Ads and webinars.",
         "Increased email open rates from 12% to 35% through segmentation and subject line A/B testing.",
-        "Raised webinar turnout from 20% to 55% with reminder sequences with several touches.",
-        "Built software-contable.co, an SEO comparison site for accounting software; about two years after I left, it still drew 1,496 Google clicks and 34.1K impressions in a single month.",
+        "Raised webinar turnout from 20% to 55% with reminder sequences.",
+        "Built software-contable.co, an SEO comparison site for accounting software that was still bringing in Google traffic two years after I left.",
       ],
       tools: [
         "Mailchimp",
@@ -217,8 +217,8 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Self employed",
       achievements: [
         "Built and ran my own gaming dropshipping store from scratch on Shopify, with orders automated to AliExpress suppliers: about $5K in sales in its first year.",
-        "Made about 80% of the memes, ads and creatives myself (a designer helped with the rest), launched about 5 new ads a week and A/B tested them on Meta and Google Ads, alongside SEO and Klaviyo email.",
-        "Posted 3 times a day, scheduled two weeks ahead, and handled customer support myself; grew the social account from 0 to 5,000 followers in 12 months through partnerships with other gaming Facebook and Instagram pages and in person gaming events.",
+        "Made most of the memes, ads and creatives myself and A/B tested new ads every week on Meta Ads.",
+        "Grew the social account from 0 to 5,000 followers in a year through daily posting, partnerships with other gaming pages and in person gaming events, and handled customer support myself.",
       ],
       tools: [
         "Shopify",
@@ -237,7 +237,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Medellín, Colombia",
       type: "Part time from 11th grade, then full time",
       achievements: [
-        "Started part time (about 35 hours a week) in 11th grade, then worked full time for a year and a half before starting college on a scholarship.",
+        "Started part time in 11th grade, then worked full time before starting college on a scholarship.",
         "Built features, web applications, and rapid prototypes with JavaScript, Node.js, Python, Meteor.js, and MongoDB.",
         "Worked on the company's own startup projects, including a year in Apps.co, iNNpulsa Colombia's startup accelerator.",
       ],
