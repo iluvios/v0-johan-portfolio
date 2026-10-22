@@ -47,7 +47,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
   location: "Medellín, Colombia · Remote (US hours)",
   website: "https://asjohan.com",
   linkedin: "https://linkedin.com/in/johanalvarez",
-  summary: "Growth marketer with 12+ years across performance marketing, GTM and software development, mostly helping startups go from zero to one. I build programs that turn marketing into pipeline (paid media, outbound, landing pages, lifecycle email and SEO) and the stack underneath them: attribution, CRM and automations, with a heavy focus on A/B testing at every step. I've run sales myself at the agency I cofounded, and I work side by side with sales teams: I learn how they sell, then build the tools and automations that make their work easier.\n\nMost of my work has been for B2B and SaaS companies, ecommerce brands and nonprofits across the US and Latin America, usually as a growth team of one, and I've also led teams of up to 8.",
+  summary: "Growth marketer who started as a software developer, with 8+ years in performance marketing and GTM, mostly helping startups go from zero to one. I build programs that turn marketing into pipeline (paid media, outbound, landing pages, lifecycle email and SEO) and the stack underneath them: attribution, CRM and automations, with a heavy focus on A/B testing at every step. I've run sales myself at the agency I cofounded, and I work side by side with sales teams: I learn how they sell, then build the tools and automations that make their work easier.\n\nMost of my work has been for B2B and SaaS companies, ecommerce brands and nonprofits across the US and Latin America, usually as a growth team of one, and I've also led teams of up to 8.",
   experiences: [
     {
       role: "Growth & Martech Consultant",
