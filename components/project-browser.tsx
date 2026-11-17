@@ -44,40 +44,42 @@ export default function ProjectBrowser() {
   }
   return (
     <div className="page-shell">
-      <PageIntro
-        eyebrow={copy.selected}
-        title={copy.projectsTitle}
-        description={copy.projectsIntro}
-        compact
-      />
-      <div className="listing-toolbar">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <SearchControl
-            label={copy.searchProjects}
-            value={search}
-            onChange={setSearch}
-          />
-          <p role="status" className="text-sm text-muted-foreground">
-            {isLoading ? copy.loading : `${filtered.length} ${copy.results}`}
-          </p>
-        </div>
-        <div className="filter-scroll">
-          <ToggleGroup
-            type="single"
-            value={category}
-            onValueChange={(value) => {
-              if (value) setCategory(value);
-            }}
-            aria-label={copy.filter}
-            className="w-max justify-start gap-2"
-          >
-            <ToggleGroupItem value="all">{copy.all}</ToggleGroupItem>
-            {categories.map((value) => (
-              <ToggleGroupItem key={value} value={value}>
-                {categoryName(value)}
-              </ToggleGroupItem>
-            ))}
-          </ToggleGroup>
+      <div className="listing-head">
+        <PageIntro
+          eyebrow={copy.selected}
+          title={copy.projectsTitle}
+          description={copy.projectsIntro}
+          compact
+        />
+        <div className="listing-toolbar">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <SearchControl
+              label={copy.searchProjects}
+              value={search}
+              onChange={setSearch}
+            />
+            <p role="status" className="text-sm text-muted-foreground">
+              {isLoading ? copy.loading : `${filtered.length} ${copy.results}`}
+            </p>
+          </div>
+          <div className="filter-scroll">
+            <ToggleGroup
+              type="single"
+              value={category}
+              onValueChange={(value) => {
+                if (value) setCategory(value);
+              }}
+              aria-label={copy.filter}
+              className="w-max justify-start gap-2"
+            >
+              <ToggleGroupItem value="all">{copy.all}</ToggleGroupItem>
+              {categories.map((value) => (
+                <ToggleGroupItem key={value} value={value}>
+                  {categoryName(value)}
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </div>
         </div>
       </div>
       {isLoading ? (
@@ -85,7 +87,7 @@ export default function ProjectBrowser() {
       ) : error ? (
         <ContentEmpty error onReset={() => mutate()} />
       ) : filtered.length ? (
-        <div className="project-grid">
+        <div className="project-grid project-grid--flat">
           {filtered.map((project, i) => (
             <Reveal key={project.id}>
               <ProjectCard project={project} index={i} />

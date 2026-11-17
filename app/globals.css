@@ -800,6 +800,32 @@
   .page-intro--compact .page-description {
     max-width: 560px;
   }
+  /* Wide screens: search and filters sit beside the title instead of under it */
+  @media (min-width: 1280px) {
+    .listing-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 40rem);
+      column-gap: 3rem;
+      align-items: end;
+      margin-bottom: 2.5rem;
+    }
+    .listing-head .page-intro {
+      padding-bottom: 0;
+    }
+    .listing-head .listing-toolbar {
+      margin-bottom: 0;
+      gap: 1rem;
+      min-width: 0;
+    }
+    .listing-head .filter-scroll {
+      overflow: visible;
+      padding-inline: 0;
+    }
+    .listing-head .filter-scroll > [role="group"] {
+      width: auto;
+      flex-wrap: wrap;
+    }
+  }
   .listing-toolbar {
     display: flex;
     flex-direction: column;
@@ -1201,6 +1227,9 @@
   }
   .project-grid > :nth-child(even) {
     margin-top: 4.5rem;
+  }
+  .project-grid--flat > :nth-child(even) {
+    margin-top: 0;
   }
   .service-teaser-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
