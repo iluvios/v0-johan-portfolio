@@ -7,7 +7,18 @@
     "dev": "next dev",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "check": "tsc --noEmit && next build"
+    "check": "tsc --noEmit && next build",
+    "prospects:discover": "tsx scripts/prospect-engine/01-discover.ts",
+    "prospects:discover-p2": "tsx scripts/prospect-engine/01-discover.ts --source=places-p2 --max-api-calls=310 --min-rating=3.5 --min-reviews=40 --max-per-cell=15",
+    "prospects:discover-p3": "tsx scripts/prospect-engine/01-discover.ts --page3 --max-api-calls=420 --min-rating=3.5 --min-reviews=35 --max-per-cell=18",
+    "prospects:crawl": "tsx scripts/prospect-engine/02-crawl-and-stitch.ts",
+    "prospects:recrawl-home": "tsx scripts/prospect-engine/02-crawl-and-stitch.ts --recrawl-incomplete --adaptive --home-only",
+    "prospects:social": "tsx scripts/prospect-engine/03-apify-social-ads.ts",
+    "prospects:w2w": "tsx scripts/prospect-engine/04a-web2wave-benchmarks.ts",
+    "prospects:score": "tsx scripts/prospect-engine/04b-score-and-hook.ts",
+    "prospects:sync": "tsx scripts/prospect-engine/05-sync-neon.ts",
+    "prospects:challengers": "tsx scripts/prospect-engine/06-export-challenger-dossiers.ts",
+    "aquitodo:collect": "tsx scripts/aquitodo-b2b/collect-contacts.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.1",
@@ -36,8 +47,11 @@
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "playwright": "^1.64.1",
     "postcss": "^8.5",
+    "sharp": "^0.35.5",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.23.15",
     "typescript": "5.7.3"
   },
   "packageManager": "pnpm@10.2.0",

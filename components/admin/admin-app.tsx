@@ -22,10 +22,12 @@ import {
   Users,
   Loader2,
   ListChecks,
+  Database,
 } from "lucide-react"
 import { CVManager } from "@/components/admin/cv-manager"
 import { RoadmapManager } from "@/components/admin/roadmap-manager"
 import { CrmManager } from "@/components/admin/crm-manager"
+import { ProspectsManager } from "@/components/admin/prospects-manager"
 import { ProjectsManager } from "@/components/admin/projects-manager"
 import { ArticlesManager } from "@/components/admin/articles-manager"
 import { WorkspaceManager } from "@/components/admin/workspace-manager"
@@ -34,9 +36,9 @@ import type { AdminNotify } from "@/components/admin/admin-utils"
 import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
 
-type AdminTab = "workspace" | "pipeline" | "projects" | "articles" | "cv" | "roadmap"
+type AdminTab = "workspace" | "pipeline" | "prospects" | "projects" | "articles" | "cv" | "roadmap"
 
-const TABS: AdminTab[] = ["workspace", "pipeline", "projects", "articles", "cv", "roadmap"]
+const TABS: AdminTab[] = ["workspace", "pipeline", "prospects", "projects", "articles", "cv", "roadmap"]
 
 /** /admin is the workspace; every other tab, and the project or article open in an editor, lives in the path. */
 function adminPath(tab: AdminTab, itemId?: string | null) {
@@ -63,6 +65,7 @@ export function AdminApp() {
   // Counts for tab badges
   const [projectsCount, setProjectsCount] = useState<number | null>(null)
   const [articlesCount, setArticlesCount] = useState<number | null>(null)
+  const [prospectsCount, setProspectsCount] = useState<number | null>(null)
 
   // CV / Profile state
   const [cvData, setCvData] = useState<CVProfile>(DEFAULT_CV_DATA)
@@ -324,6 +327,24 @@ export function AdminApp() {
           </Link>
 
           <Link
+            href={adminPath("prospects")}
+            scroll={false}
+            className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
+              activeTab === "prospects"
+                ? "border-blue-500 text-blue-400 bg-blue-500/10 rounded-t-md"
+                : "border-transparent text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <Database size={18} />
+            Prospect Database
+            {prospectsCount !== null && (
+              <Badge variant="secondary" className="ml-1 text-xs bg-slate-800 text-slate-300">
+                {prospectsCount.toLocaleString()}
+              </Badge>
+            )}
+          </Link>
+
+          <Link
             href={adminPath("projects")}
             scroll={false}
             className={`flex items-center gap-2 px-5 py-3 text-sm font-medium border-b-2 whitespace-nowrap transition-all ${
@@ -394,6 +415,11 @@ export function AdminApp() {
 
         {/* TAB 1: PIPELINE (job + client CRM) */}
         {activeTab === "pipeline" && <CrmManager notify={notify} />}
+
+        {/* TAB 1B: PROSPECT DATABASE (local-first 360° audited prospect engine) */}
+        {activeTab === "prospects" && (
+          <ProspectsManager notify={notify} onCountChange={setProspectsCount} />
+        )}
 
         {/* TAB 1: PROJECTS */}
         {activeTab === "projects" && (

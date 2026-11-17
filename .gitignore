@@ -40,3 +40,7 @@ next-env.d.ts
 
 # local copies of Vercel Blob media (the site serves them from Blob)
 /public/blob/
+
+# local prospect scraping & visual audit media (never committed or uploaded)
+/.local-audits/
+

@@ -31,6 +31,10 @@ const nextConfig = {
       },
     ],
   },
+  outputFileTracingExcludes: {
+    "/api/prospects/sheet/[domain]": ["./.local-audits/**"],
+    "/*": ["./.local-audits/**"],
+  },
 };
 
 export default nextConfig;

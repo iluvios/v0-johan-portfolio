@@ -1,0 +1,1026 @@
+{
+  "sector": "home_services_ads",
+  "sectorLabel": "Home Services (HVAC, Roofing, Plumbing, Garage & Solar)",
+  "count": 15,
+  "candidates": [
+    {
+      "domain": "gundlachco.com",
+      "company": "Gundlach Heating, Cooling, Plumbing & Electrical",
+      "websiteUrl": "https://gundlachco.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "HVAC & Plumbing",
+      "metro": "Richmond, VA",
+      "city": "Richmond",
+      "state": "VA",
+      "formattedAddress": "2707 Ellis Ln, Richmond, VA 23294, USA",
+      "googleRating": 4.6,
+      "googleReviewsCount": 339,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Kathy Smith",
+          "relativeTime": "a month ago",
+          "text": "Hayden arrived promptly on time, on the dot, for my appointment! He unclogged two bathroom sinks, replaced a toilet flusher unit, installed a new under-the-counter water filter in my kitchen, and looked at my gas fireplace. He put on booties to cover his work boots. Hallelujah, so respectful about the customer's space! He was very knowledgeable and efficient. I am loving that water drains in two sinks, my toilet flushes properly, I have clean, filtered water again in my kitchen, and I need to ca"
+        },
+        {
+          "rating": 5,
+          "author": "Jessica Schiavone",
+          "relativeTime": "a month ago",
+          "text": "Had the absolute pleasure of working with the wonderful team at Gundloch Heating, Cooling and Plumbing. After an unexpected collapse of my main sewer line, they were quick to assess the situation and get right to work getting my home back in running order.  Alaric, Corey and Jim were fantastic! They were easy to with and incredibly professional. They answered all of my questions, were quick to respond to messages and took the time to walk me through the repair process step by step. For being suc"
+        },
+        {
+          "rating": 5,
+          "author": "Raymond Wood",
+          "relativeTime": "4 months ago",
+          "text": "Called Gundluch plumbing out to replace my 50 gallon electric water heater talk to General manager Wayne Abbott on the phone he was very nice and professional and sent out Pat Wood to install my electric water heater. Pat Wood was very professional and good at explaining how water heater needs to be flushed every year and also. how everything works I would recommend this company come out to install your water heater with a great response and how they are so professional and nice"
+        }
+      ],
+      "primaryEmail": "service@gundlachco.com",
+      "primaryPhone": "(804) 288-1951",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 3,
+        "branding": 8,
+        "uxCro": 4,
+        "seoAeo": 8,
+        "trackingCrm": 8,
+        "modernizationGap": 7,
+        "rankScore": 430
+      },
+      "heroHeadline": "Your Friendly",
+      "primaryColors": [
+        "rgb(238, 238, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(206, 33, 39)",
+        "rgb(70, 57, 57)"
+      ],
+      "cmsPlatform": "Duda",
+      "topFlaws": [
+        "Earned 339 Google reviews (4.6★) but doesn't showcase them above the fold",
+        "Horizontal overflow bug on 390px mobile viewport",
+        "No interactive lead capture form or online scheduler on homepage"
+      ],
+      "personalizedHook": "Hi Gundlach Heating, Cooling, Plumbing & Electrical team, Gundlach Heating, Cooling, Plumbing & Electrical has earned serious local trust in Richmond (339 Google reviews at 4.6★), which is the hardest part — but right now gundlachco.com holds that back because it has earned 339 Google reviews (4.6★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for Gundlach Heating, Cooling, Plumbing & Electrical?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/gundlachco.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/gundlachco.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/gundlachco.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/gundlachco.com/before-vs-after.jpg",
+      "sectorRank": 1
+    },
+    {
+      "domain": "masterandsonsplumbing.com",
+      "company": "MASTER and SONS PLUMBING",
+      "websiteUrl": "http://www.masterandsonsplumbing.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "HVAC & Plumbing",
+      "metro": "Richmond, VA",
+      "city": "Richmond",
+      "state": "VA",
+      "formattedAddress": "3309 Broad Rock Blvd, Richmond, VA 23224, USA",
+      "googleRating": 4.5,
+      "googleReviewsCount": 137,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Jarelys Bosques",
+          "relativeTime": "2 months ago",
+          "text": "I cannot recommend this plumbing company enough! I was losing a massive amount of water due to an urgent leak, and they responded exceptionally fast. Our technician was phenomenal—he explained every single step of the repair process, worked efficiently, and delivered top-notch service at a very competitive price. Will definitely use them again and recommend them 100%"
+        },
+        {
+          "rating": 5,
+          "author": "strawberryblufashion",
+          "relativeTime": "a month ago",
+          "text": "Great service and they took care of our toilet breakdown needs. We had a leak coming from the toilet, along with some old, rusted screws that needed to be replaced. Our service guy took care of everything immediately and got the issue handled. Appreciate the quick and professional service!"
+        },
+        {
+          "rating": 5,
+          "author": "Luis Hidalgo",
+          "relativeTime": "2 months ago",
+          "text": "Great company ,they were fair and quick,thanks again guys"
+        }
+      ],
+      "primaryEmail": "masterandsonsplumbing@yahoo.com",
+      "primaryPhone": "(804) 323-0202",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 4,
+        "branding": 6,
+        "uxCro": 4,
+        "seoAeo": 7,
+        "trackingCrm": 7,
+        "modernizationGap": 9,
+        "rankScore": 424
+      },
+      "heroHeadline": "Let the Masters Do It Right!",
+      "primaryColors": [
+        "rgb(238, 238, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(35, 54, 139)",
+        "rgb(70, 57, 57)"
+      ],
+      "cmsPlatform": "Next.js",
+      "topFlaws": [
+        "Horizontal overflow bug on 390px mobile viewport",
+        "Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee",
+        "No interactive lead capture form or online scheduler on homepage"
+      ],
+      "personalizedHook": "Hi MASTER and SONS PLUMBING team, MASTER and SONS PLUMBING has earned serious local trust in Richmond (137 Google reviews at 4.5★), which is the hardest part — but right now masterandsonsplumbing.com holds that back because horizontal overflow bug on 390px mobile viewport. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for MASTER and SONS PLUMBING?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/masterandsonsplumbing.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/masterandsonsplumbing.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/masterandsonsplumbing.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/masterandsonsplumbing.com/before-vs-after.jpg",
+      "sectorRank": 2
+    },
+    {
+      "domain": "cvplumbingandpools.com",
+      "company": "CV Plumbing Heating and Air",
+      "websiteUrl": "https://www.cvplumbingandpools.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "HVAC & Plumbing",
+      "metro": "New York-North Jersey, NY",
+      "city": "Haverstraw",
+      "state": "NY",
+      "formattedAddress": "50 Fairmount Ave, Haverstraw, NY 10927, USA",
+      "googleRating": 4.7,
+      "googleReviewsCount": 504,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "JONATHAN BUSH",
+          "relativeTime": "3 months ago",
+          "text": "⭐⭐⭐⭐⭐\n\nI’ve used CV Plumbing more than once now, and they’ve earned my trust every single time. My water heater failed unexpectedly, and Steven and Victor were out to replace it. The first thing that impressed me was that they remembered me by name and remembered my house from previous visits. That kind of personal service goes a long way.\n\nThey were professional, courteous, and worked quickly without cutting corners. The installation was clean, they removed the old water heater, cleaned up afte"
+        },
+        {
+          "rating": 5,
+          "author": "sin_dellygreats",
+          "relativeTime": "2 weeks ago",
+          "text": "Omar did a great job with the drains and provided excellent customer service. He was professional, helpful, and made sure everything was taken care of. I really appreciate his hard work and would definitely recommend him!"
+        },
+        {
+          "rating": 5,
+          "author": "Steven Williamson",
+          "relativeTime": "8 months ago",
+          "text": "I contacted CV plumbing because I was not getting any hot water in my residents. Chris the owner returned my call immediately and asked me to take a picture of my water tank heater and send it to him. Chris was able to diagnose what may be the problem from the photo and he suggested that he could walk me through several safe and easy steps to do, over the phone to try to remedy my problem. I followed Chris simple, safe and easy directions, and within 2-3 minutes I was able to get my hot water he"
+        }
+      ],
+      "primaryEmail": "cvplumber1@aol.com",
+      "primaryPhone": "(845) 942-4700",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 3,
+        "branding": 3,
+        "uxCro": 6,
+        "seoAeo": 6,
+        "trackingCrm": 6,
+        "modernizationGap": 8,
+        "rankScore": 408
+      },
+      "heroHeadline": "Are You Searching, \"Emergency Plumbers Near Me in New City, NY & Throughout Rockland County ?\"",
+      "primaryColors": [
+        "rgb(0, 0, 0)",
+        "rgb(5, 193, 246)",
+        "rgb(0, 0, 238)"
+      ],
+      "cmsPlatform": "Duda",
+      "topFlaws": [
+        "Earned 504 Google reviews (4.7★) but doesn't showcase them above the fold",
+        "Unreplaced template placeholder phone number (e.g. 123-456-7890) visible on page",
+        "Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote"
+      ],
+      "personalizedHook": "Hi CV Plumbing Heating and Air team, CV Plumbing Heating and Air has earned serious local trust in Haverstraw (504 Google reviews at 4.7★), which is the hardest part — but right now cvplumbingandpools.com holds that back because it has earned 504 Google reviews (4.7★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for CV Plumbing Heating and Air?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/cvplumbingandpools.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/cvplumbingandpools.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/cvplumbingandpools.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/cvplumbingandpools.com/before-vs-after.jpg",
+      "sectorRank": 3
+    },
+    {
+      "domain": "callthecomfortadvisors.com",
+      "company": "Comfort Advisors Heating and Cooling",
+      "websiteUrl": "https://www.callthecomfortadvisors.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "HVAC & Plumbing",
+      "metro": "Omaha, NE",
+      "city": "Bennington",
+      "state": "NE",
+      "formattedAddress": "11916 N 161st Ave, Bennington, NE 68007, USA",
+      "googleRating": 4.6,
+      "googleReviewsCount": 309,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "David Clark",
+          "relativeTime": "8 months ago",
+          "text": "Michael arrived at our home in Ashland in short order after an emergency call at the beginning of a snow storm. He worked for several hours to reconnect the duct work to our to vents in our Kitchen inside a very cramped crawl space. He was very professional, informative and friendly!\nIf you need anything related to Heating and Cooling don’t hesitate, Call Comfort Advisors now!!!"
+        },
+        {
+          "rating": 5,
+          "author": "Jennie Ballentine",
+          "relativeTime": "2 months ago",
+          "text": "Michael was very personable and professional. I was able to make an appt for just a few days later, and he called before arriving. He was punctual and diagnosed the issue with our AC quickly, repaired it, and retested to be sure all was working appropriately before leaving. Very good experience and would recommend to anyone with HVAC issues. 👍👍👍"
+        },
+        {
+          "rating": 5,
+          "author": "Anastasia Juliana",
+          "relativeTime": "3 months ago",
+          "text": "Mike and Chris had done an amazing job cleaning the motors and replacing the parts very nicely and patiently. I highly recommend Comfort Advisors for air conditioning and furnace services. You can ask Mike and Chris to replace the parts as well."
+        }
+      ],
+      "primaryEmail": "office@callthecomfortadvisors.com",
+      "primaryPhone": "(402) 596-5263",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 6,
+        "branding": 8,
+        "uxCro": 2,
+        "seoAeo": 8,
+        "trackingCrm": 8,
+        "modernizationGap": 8,
+        "rankScore": 408
+      },
+      "heroHeadline": "Your Lifelong Comfort Partner.",
+      "primaryColors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(10, 17, 54)"
+      ],
+      "cmsPlatform": "Next.js",
+      "topFlaws": [
+        "Earned 309 Google reviews (4.6★) but doesn't showcase them above the fold",
+        "Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee",
+        "No interactive lead capture form or online scheduler on homepage"
+      ],
+      "personalizedHook": "Hi Comfort Advisors Heating and Cooling team, Comfort Advisors Heating and Cooling has earned serious local trust in Bennington (309 Google reviews at 4.6★), which is the hardest part — but right now callthecomfortadvisors.com holds that back because it has earned 309 Google reviews (4.6★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for Comfort Advisors Heating and Cooling?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/callthecomfortadvisors.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/callthecomfortadvisors.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/callthecomfortadvisors.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/callthecomfortadvisors.com/before-vs-after.jpg",
+      "sectorRank": 4
+    },
+    {
+      "domain": "wilsonroofing.com",
+      "company": "Wilson Roofing",
+      "websiteUrl": "https://www.wilsonroofing.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "Roofing & Storm Restoration",
+      "metro": "Austin, TX",
+      "city": "Austin",
+      "state": "TX",
+      "formattedAddress": "217-A Commons Ford Rd, Austin, TX 78733, USA",
+      "googleRating": 4.7,
+      "googleReviewsCount": 316,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Charlene A Urwin",
+          "relativeTime": "5 months ago",
+          "text": "We had an excellent experience with Wilson Roofing, from office staff, lead contacts, inspectors, estimators, schedulers and roof installers. They accommodated our very tight timeline, communicated quickly & clearly, presented a detailed contract, provided a competitive & reasonable bid and were professional in all aspects of their work. The large roof crew arrived on time at 7 a.m., worked 8 hours straight with only a short lunch break, laid tarps all around the house, clearly had a system and "
+        },
+        {
+          "rating": 5,
+          "author": "Mukesh Patel",
+          "relativeTime": "4 months ago",
+          "text": "Great experience with Wilson Roofing! Ian set up a thorough inspection quickly. The inspector used my leak photos to find the exact issue and offered a solid long-term fix. The crew was punctual, efficient, and finished on schedule. It’s only been two days since the repair, but I am highly satisfied with their work so far!"
+        },
+        {
+          "rating": 5,
+          "author": "Alex Furlong",
+          "relativeTime": "8 months ago",
+          "text": "Wilson Roofing did an excellent job replacing our old roof. They were timely, efficient and cleaned up after themselves. Everyone was very nice to work with, and they did it all for a fair price. I highly recommend them"
+        }
+      ],
+      "primaryEmail": "info@wilsonroofing.com",
+      "primaryPhone": "(512) 263-3157",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 4,
+        "branding": 8,
+        "uxCro": 4,
+        "seoAeo": 7,
+        "trackingCrm": 10,
+        "modernizationGap": 7,
+        "rankScore": 406
+      },
+      "heroHeadline": "What We Do",
+      "primaryColors": [
+        "rgb(255, 255, 255)",
+        "rgb(35, 35, 35)",
+        "rgb(1, 119, 191)",
+        "rgba(0, 0, 0, 0.2)"
+      ],
+      "cmsPlatform": "WordPress",
+      "topFlaws": [
+        "Earned 316 Google reviews (4.7★) but doesn't showcase them above the fold",
+        "No interactive lead capture form or online scheduler on homepage",
+        "Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote"
+      ],
+      "personalizedHook": "Hi Wilson Roofing team, Wilson Roofing has earned serious local trust in Austin (316 Google reviews at 4.7★), which is the hardest part — but right now wilsonroofing.com holds that back because it has earned 316 Google reviews (4.7★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for Wilson Roofing?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/wilsonroofing.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/wilsonroofing.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/wilsonroofing.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/wilsonroofing.com/before-vs-after.jpg",
+      "sectorRank": 5
+    },
+    {
+      "domain": "secondcityconstruction.com",
+      "company": "Second City Roofing & Exteriors",
+      "websiteUrl": "http://www.secondcityconstruction.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "Roofing & Storm Restoration",
+      "metro": "Chicago, IL",
+      "city": "Chicago",
+      "state": "IL",
+      "formattedAddress": "3006 W Diversey Ave, Chicago, IL 60647, USA",
+      "googleRating": 4.4,
+      "googleReviewsCount": 99,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Jennifer Splawski",
+          "relativeTime": "4 months ago",
+          "text": "I had an excellent experience working with Ed and Second City Roofing from start to finish. I first contacted them to perform a roofing inspection during the purchase of my new home, and they were able to come out the very next day. The inspection was incredibly thorough, and I received a detailed quote the following day. Super helpful when you need quick answers before a close of a new home.\n\nOnce the project began, the team was professional and communicative. They took the time to explain the "
+        },
+        {
+          "rating": 5,
+          "author": "Jacqueline Garfield",
+          "relativeTime": "3 months ago",
+          "text": "We used SECOND CITY for ALL of our  home renovation, and repairs. They are fantastic. From the initial estimate to the final walkthrough, their team communicated clearly and kept us in the loop. The crew was professional, cleaned up the job site every day, and completed the project on time and within our budget. Highly recommend!\".. ABSOLUTELY AWESOME!"
+        },
+        {
+          "rating": 5,
+          "author": "Charles Carper",
+          "relativeTime": "2 months ago",
+          "text": "Second City did an excellent job. We had a roof tear off and replaced the gutters. There was also significant damage to the soffit and fascia which was repaired and capped. Second City got the work done quickly and their office and work crews communicated with us through the entire process. The end product not only made for necessary repairs but really added to the curb appeal of the home."
+        }
+      ],
+      "primaryEmail": "secondcityconstruction@yahoo.com",
+      "primaryPhone": "(773) 384-6300",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 9,
+        "aesthetics": 3,
+        "branding": 6,
+        "uxCro": 6,
+        "seoAeo": 5,
+        "trackingCrm": 8,
+        "modernizationGap": 8,
+        "rankScore": 401
+      },
+      "heroHeadline": "ROOFING CONTRACTOR & EXTERIOR CONTRACTOR IN CHICAGO, IL",
+      "primaryColors": [
+        "rgb(238, 238, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(102, 102, 102)",
+        "rgb(255, 140, 68)",
+        "rgb(70, 57, 57)"
+      ],
+      "cmsPlatform": "Duda",
+      "topFlaws": [
+        "Horizontal overflow bug on 390px mobile viewport",
+        "No interactive lead capture form or online scheduler on homepage",
+        "Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote"
+      ],
+      "personalizedHook": "Hi Second City Roofing & Exteriors team, Second City Roofing & Exteriors has earned serious local trust in Chicago (99 Google reviews at 4.4★), which is the hardest part — but right now secondcityconstruction.com holds that back because horizontal overflow bug on 390px mobile viewport. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for Second City Roofing & Exteriors?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/secondcityconstruction.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/secondcityconstruction.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/secondcityconstruction.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/secondcityconstruction.com/before-vs-after.jpg",
+      "sectorRank": 6
+    },
+    {
+      "domain": "fagnelli.com",
+      "company": "Fagnelli Plumbing Heating & Cooling",
+      "websiteUrl": "https://www.fagnelli.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "HVAC & Plumbing",
+      "metro": "Pittsburgh, PA",
+      "city": "Pittsburgh",
+      "state": "PA",
+      "formattedAddress": "2852 Boulevard of the Allies, Pittsburgh, PA 15213, USA",
+      "googleRating": 4.3,
+      "googleReviewsCount": 102,
+      "googleReviewsSample": [
+        {
+          "rating": 1,
+          "author": "Kristine Lewis",
+          "relativeTime": "10 months ago",
+          "text": "Let me start by saying I rarely leave negative reviews, even when service is poor. I try to give companies the benefit of the doubt. Unfortunately, my experience with Fagnelli Plumbing & Heating was beyond unacceptable.\n\nI had no heat and already knew the issue—I simply needed a pipe capped off. They were able to come out the next day, which initially seemed great. The technician confirmed the issue and said the job could be done, but that I would need to schedule another appointment. I was told"
+        },
+        {
+          "rating": 5,
+          "author": "Fandan Go",
+          "relativeTime": "5 years ago",
+          "text": "Fagnelli Plumbing did exceptional service. We had been searching for a reliable plumber. Someone who was honest and reasonably priced. We had had some major flooding and sewage back flow into our basement after the excessive rain last month, and we had so many bad experiences with other plumbing companies that came out. Every company had a different \"solution\" to the problem and none of it made sense.  They came out to run a camera through our sewer line and diagnose the exact issues. They was t"
+        },
+        {
+          "rating": 5,
+          "author": "George Bradley",
+          "relativeTime": "7 months ago",
+          "text": "They offer very prompt and efficient service.  The people who do the service are friendly and competent.  They do a great job of keeping you informed as to when they will arrive."
+        }
+      ],
+      "primaryEmail": "info@fagnelli.com",
+      "primaryPhone": "(412) 212-2323",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 5,
+        "branding": 9,
+        "uxCro": 4,
+        "seoAeo": 10,
+        "trackingCrm": 5,
+        "modernizationGap": 8,
+        "rankScore": 399
+      },
+      "heroHeadline": "Local and Trusted Plumbing, Heating, and Cooling Services in Pittsburgh, PA",
+      "primaryColors": [
+        "rgb(238, 238, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(21, 64, 47)",
+        "rgb(17, 65, 75)",
+        "rgb(237, 205, 72)"
+      ],
+      "cmsPlatform": "Duda",
+      "topFlaws": [
+        "Earned 102 Google reviews (4.3★) but doesn't showcase them above the fold",
+        "Horizontal overflow bug on 390px mobile viewport",
+        "Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee"
+      ],
+      "personalizedHook": "Hi Fagnelli Plumbing Heating & Cooling team, Fagnelli Plumbing Heating & Cooling has earned serious local trust in Pittsburgh (102 Google reviews at 4.3★), which is the hardest part — but right now fagnelli.com holds that back because it has earned 102 Google reviews (4.3★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for Fagnelli Plumbing Heating & Cooling?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/fagnelli.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/fagnelli.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/fagnelli.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/fagnelli.com/before-vs-after.jpg",
+      "sectorRank": 7
+    },
+    {
+      "domain": "dickenschrauf.com",
+      "company": "Dickenschrauf Plumbing, Heating, & Cooling",
+      "websiteUrl": "https://www.dickenschrauf.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "HVAC & Plumbing",
+      "metro": "Milwaukee, WI",
+      "city": "Milwaukee",
+      "state": "WI",
+      "formattedAddress": "120 N 120th St, Milwaukee, WI 53226, USA",
+      "googleRating": 4.7,
+      "googleReviewsCount": 163,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Vicki Diamond",
+          "relativeTime": "5 months ago",
+          "text": "Dickenschrauf Plumbing, Heating has been great. They were referred to me by a friend. I was having a problem with my toilets that had to do with my water softener. I spoke with the owner and he walked me through what I needed to do over the phone and it was successful and I wasn’t even a client yet. I have now signed up with them to check my AC and furnace yearly. I trust them completely."
+        },
+        {
+          "rating": 1,
+          "author": "travis martinez",
+          "relativeTime": "a year ago",
+          "text": "I recently used them for a commercial kitchen project.  It seems as though this was a mistake on my part.  The plumbers seemed to not know what is needed for a project of this scope.  To start, we received a quote from them for the project with info from our architect and an equipment schedule with all the needs.  When quoted, there were a lot of things that were left off that needed to be added later.  Our final price nearly doubled from the original quote. If we had got an accurate quote from "
+        },
+        {
+          "rating": 5,
+          "author": "Jae Lee",
+          "relativeTime": "7 months ago",
+          "text": "Can’t say enough good things about the service I received during my plumbing emergency. My tankless water heater wasn’t working & we were still seeing cold 20 degree weather, so they made it out within hours & assisted by reviewing the manufacturer warranty 1st instead of trying to sell me a new install. Great pricing as well in comparison to others, while promptly providing a proposal (within hours)."
+        }
+      ],
+      "primaryEmail": "info@dickenschrauf.com",
+      "primaryPhone": "(414) 258-9703",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 4,
+        "branding": 9,
+        "uxCro": 4,
+        "seoAeo": 8,
+        "trackingCrm": 5,
+        "modernizationGap": 7,
+        "rankScore": 397
+      },
+      "heroHeadline": "Dickenschrauf Plumbing, Heating, & Cooling",
+      "primaryColors": [
+        "rgb(238, 238, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(232, 100, 32)",
+        "rgb(228, 88, 39)",
+        "rgb(70, 57, 57)"
+      ],
+      "cmsPlatform": "Duda",
+      "topFlaws": [
+        "Earned 163 Google reviews (4.7★) but doesn't showcase them above the fold",
+        "Horizontal overflow bug on 390px mobile viewport",
+        "No interactive lead capture form or online scheduler on homepage"
+      ],
+      "personalizedHook": "Hi Dickenschrauf Plumbing, Heating, & Cooling team, you clearly have real volume in Milwaukee (163 Google reviews), so I ran a quick conversion audit on dickenschrauf.com. Right now it has earned 163 Google reviews (4.7★) but doesn't showcase them above the fold, which quietly costs high-ticket inquiries before your team even speaks to them. For less than a single junior US hire, my UX partner and I rebuild your intake funnel, automate 5★ review capture after every job, and add 24/7 web/IG/FB response so leads never wait. Worth sending over the 3-point audit sheet?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/dickenschrauf.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/dickenschrauf.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/dickenschrauf.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/dickenschrauf.com/before-vs-after.jpg",
+      "sectorRank": 8
+    },
+    {
+      "domain": "twincityroofing.com",
+      "company": "Twin City Roofing Construction Specialists, Inc.",
+      "websiteUrl": "https://www.twincityroofing.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "Roofing & Storm Restoration",
+      "metro": "Minneapolis-St. Paul, MN",
+      "city": "St Paul",
+      "state": "MN",
+      "formattedAddress": "72 Ivy Ave W, St Paul, MN 55117, USA",
+      "googleRating": 4.5,
+      "googleReviewsCount": 270,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Jacob Miller",
+          "relativeTime": "4 months ago",
+          "text": "We couldn’t be happier with the roofing and siding work done by Twin City Roofing Construction Specialists. From the initial consultation to the final cleanup, everything was handled with professionalism, efficiency, and great attention to detail. The crew showed up on time, worked hard, and left our property spotless when the job was done.\n\nA huge shoutout to their representative Zach, who made the entire process smooth and stress free. Zach was knowledgeable, honest, and always quick to answer"
+        },
+        {
+          "rating": 5,
+          "author": "John W",
+          "relativeTime": "5 months ago",
+          "text": "Great job addressing a valley between the garage and house that was causing water seepage.\n\nRobert and Zach came out promptly and had a well put together quote for us. They installed a metal pan with good quality install and a responsive team."
+        },
+        {
+          "rating": 5,
+          "author": "G G",
+          "relativeTime": "3 months ago",
+          "text": "Twin City Roofing replaced the entire roof on my Minneapolis home.  Zach came out to inspect the property and provided the quote.  He was friendly, quick to respond, and provided thoughtful answers to each of my questions.  The project was started about 3 weeks after the contract was signed with much of the work done in a couple days.  Suzanne helped me with the final details and she, too, was friendly and answered all my questions.  Overall, I found Twin City Roofing to be professional, fairly "
+        }
+      ],
+      "primaryEmail": "info@twincityroofing.com",
+      "primaryPhone": "(651) 636-9640",
+      "decisionMakers": [
+        {
+          "name": "Lisa Willett",
+          "role": "Person"
+        }
+      ],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 3,
+        "branding": 8,
+        "uxCro": 7,
+        "seoAeo": 9,
+        "trackingCrm": 7,
+        "modernizationGap": 7,
+        "rankScore": 391
+      },
+      "heroHeadline": "ROOFING, SIDING & CONSTRUCTION SPECIALISTS SERVING MINNEAPOLIS, ST. PAUL & SURROUNDING SUBURBS",
+      "primaryColors": [
+        "rgb(238, 238, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(37, 37, 37)",
+        "rgb(0, 97, 192)",
+        "rgb(70, 57, 57)"
+      ],
+      "cmsPlatform": "WordPress",
+      "topFlaws": [
+        "Earned 270 Google reviews (4.5★) but doesn't showcase them above the fold",
+        "Horizontal overflow bug on 390px mobile viewport",
+        "High-friction 8-field contact form suppresses mobile leads"
+      ],
+      "personalizedHook": "Hi Lisa, Twin City Roofing Construction Specialists, Inc. has earned serious local trust in St Paul (270 Google reviews at 4.5★), which is the hardest part — but right now twincityroofing.com holds that back because it has earned 270 Google reviews (4.5★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for Twin City Roofing Construction Specialists, Inc.?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/twincityroofing.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/twincityroofing.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/twincityroofing.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/twincityroofing.com/before-vs-after.jpg",
+      "sectorRank": 9
+    },
+    {
+      "domain": "terrysplumbingserviceinc.com",
+      "company": "Terry's Plumbing Air & Energy",
+      "websiteUrl": "http://terrysplumbingserviceinc.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "HVAC & Plumbing",
+      "metro": "Naples-Sarasota, FL",
+      "city": "Sarasota",
+      "state": "FL",
+      "formattedAddress": "2401 15th St, Sarasota, FL 34237, USA",
+      "googleRating": 4.7,
+      "googleReviewsCount": 509,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Judith Nelson",
+          "relativeTime": "6 months ago",
+          "text": "Five stars is not enough for the work Terry's Plumbing did repiping my entire house.  Not only did they give me an excellent price, but the work was done in 2 days, unlike some of my neighbors whose work took more than twice as long and are still dealing with plumbing issues over a month later!! They made sure I had a bathroom/shower available the first night and the entire second day. They were professional, experienced, courteous, and efficient. I can't praise them enough, truly. They each kne"
+        },
+        {
+          "rating": 5,
+          "author": "Philip Ohanian",
+          "relativeTime": "9 months ago",
+          "text": "We had a new AC system installed by this company in June and we couldn't be happier with the whole process. It just goes to show that small local companies are the best. The bigger the company the worse the experience. We feel truly cared about by Terry's Plumbing, Air, and Energy."
+        },
+        {
+          "rating": 5,
+          "author": "John Nist",
+          "relativeTime": "4 months ago",
+          "text": "I was looking to have a water line installed and George came out from Terry's Plumbing. Very nice, honest and knowledgable man. Very happy . Friendly staff too."
+        }
+      ],
+      "primaryEmail": "tristan@terrysplumbinginc.com",
+      "primaryPhone": "(941) 842-1024",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 5,
+        "branding": 9,
+        "uxCro": 4,
+        "seoAeo": 7,
+        "trackingCrm": 6,
+        "modernizationGap": 7,
+        "rankScore": 386
+      },
+      "heroHeadline": "The Electricians, HVAC Specialists, and Plumbers Sarasota, FL Trusts",
+      "primaryColors": [
+        "rgb(238, 238, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(201, 37, 44)",
+        "rgb(70, 57, 57)"
+      ],
+      "cmsPlatform": "Duda",
+      "topFlaws": [
+        "Earned 509 Google reviews (4.7★) but doesn't showcase them above the fold",
+        "Horizontal overflow bug on 390px mobile viewport",
+        "No interactive lead capture form or online scheduler on homepage"
+      ],
+      "personalizedHook": "Hi Terry's Plumbing Air & Energy team, Terry's Plumbing Air & Energy has earned serious local trust in Sarasota (509 Google reviews at 4.7★), which is the hardest part — but right now terrysplumbingserviceinc.com holds that back because it has earned 509 Google reviews (4.7★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for Terry's Plumbing Air & Energy?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/terrysplumbingserviceinc.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/terrysplumbingserviceinc.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/terrysplumbingserviceinc.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/terrysplumbingserviceinc.com/before-vs-after.jpg",
+      "sectorRank": 10
+    },
+    {
+      "domain": "stansburyelectric.com",
+      "company": "Stansbury Electric",
+      "websiteUrl": "http://www.stansburyelectric.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "Solar & Energy Storage",
+      "metro": "Louisville, KY",
+      "city": "Louisville",
+      "state": "KY",
+      "formattedAddress": "2810 S English Station Rd Ste 101, Louisville, KY 40299, USA",
+      "googleRating": 4.7,
+      "googleReviewsCount": 148,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Gary George",
+          "relativeTime": "2 months ago",
+          "text": "Stansbury was good to work with, arrived on time, and completed job in a timely manner at the agreed on price. Very satisfactory experience."
+        },
+        {
+          "rating": 1,
+          "author": "Boris Minic",
+          "relativeTime": "5 months ago",
+          "text": "I am extremely disappointed with this company and would strongly encourage future customers to think carefully before hiring them.\n\nIn August of last year, I paid to have an EV charger installed at my home. On the day of installation, the technicians informed me they did not have the 50-amp breaker required for the installation I purchased. Instead, they installed a 40-amp breaker and assured me they would contact me as soon as the correct 50-amp breaker arrived so the installation could be comp"
+        },
+        {
+          "rating": 4,
+          "author": "John Homm",
+          "relativeTime": "2 months ago",
+          "text": "Very knowledgeable technicians diagnosed the problem very quickly and fix it within the time limit for charges. Would have given them 5 stars but was I believe I was overcharged for the replacement circuit breaker by $70 after checking with the manufacturer."
+        }
+      ],
+      "primaryEmail": "info@stansburyelectric.com",
+      "primaryPhone": "(859) 357-3509",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 5,
+        "branding": 9,
+        "uxCro": 4,
+        "seoAeo": 9,
+        "trackingCrm": 6,
+        "modernizationGap": 7,
+        "rankScore": 376
+      },
+      "heroHeadline": "Electricians",
+      "primaryColors": [
+        "rgb(238, 238, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(17, 17, 17)",
+        "rgb(234, 61, 63)",
+        "rgb(70, 57, 57)"
+      ],
+      "cmsPlatform": "Duda",
+      "topFlaws": [
+        "Earned 148 Google reviews (4.7★) but doesn't showcase them above the fold",
+        "Horizontal overflow bug on 390px mobile viewport",
+        "No interactive lead capture form or online scheduler on homepage"
+      ],
+      "personalizedHook": "Hi Stansbury Electric team, Stansbury Electric has earned serious local trust in Louisville (148 Google reviews at 4.7★), which is the hardest part — but right now stansburyelectric.com holds that back because it has earned 148 Google reviews (4.7★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for Stansbury Electric?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/stansburyelectric.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/stansburyelectric.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/stansburyelectric.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/stansburyelectric.com/before-vs-after.jpg",
+      "sectorRank": 11
+    },
+    {
+      "domain": "la-solargroup.com",
+      "company": "LA Solar Group",
+      "websiteUrl": "https://www.la-solargroup.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "Solar & Energy Storage",
+      "metro": "Los Angeles-Beverly Hills, CA",
+      "city": "Sun Valley",
+      "state": "CA",
+      "formattedAddress": "8484 San Fernando Rd, Sun Valley, CA 91352, USA",
+      "googleRating": 4.2,
+      "googleReviewsCount": 134,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Chris Hunt",
+          "relativeTime": "2 months ago",
+          "text": "LA Solar Group is a good company with great people that work for them. One of them being my main contact. She was great. She helped me through each step of the way from first contact, to the installation, then to the post installation effort. She listened to every concern i had and took it all into account. Very helpful, as well as knowledgeable in explaining every facet of the process. I valued that greatly. Everyone was good to work with, and the system that they put in place was ready to go a"
+        },
+        {
+          "rating": 5,
+          "author": "G G",
+          "relativeTime": "3 months ago",
+          "text": "David D. was fantastic to work with on our solar installation. He’s honest, transparent about the work being done, and clearly knows what he’s doing — no guesswork, no runaround, just straight answers and solid work. We also appreciated that LA Solar sent someone out quickly when the biggest issue came up, which says a lot about how the company backs its technicians and prioritizes customers.\n\nDavid took the time to explain each step, was punctual, and treated our home with care throughout the j"
+        },
+        {
+          "rating": 1,
+          "author": "Hoanglong Nguyen",
+          "relativeTime": "a month ago",
+          "text": "My experience with LA Solar Group was fine until I actually needed them to stand behind how the system was originally sold.\n\nOur SolarEdge system came with app monitoring, which allowed us to see whether the solar system was actually working. LA Solar and the sales rep themselves advertised monitoring as having \"no additional cost\" and being accessible \"365/24/7.\"\n\nLA Solar installed *cellular* communication on our system that apparently had a limited 5 year connection plan unbeknownst to me. Ye"
+        }
+      ],
+      "primaryEmail": "info@lasolargroup.com",
+      "primaryPhone": "(818) 373-0077",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 5,
+        "branding": 8,
+        "uxCro": 6,
+        "seoAeo": 6,
+        "trackingCrm": 5,
+        "modernizationGap": 8,
+        "rankScore": 375
+      },
+      "heroHeadline": "Solar Installation Los Angeles",
+      "primaryColors": [
+        "rgb(255, 255, 255)",
+        "rgb(74, 74, 74)",
+        "rgb(238, 96, 0)",
+        "rgba(2, 1, 1, 0)",
+        "rgba(255, 255, 255, 0)",
+        "rgb(252, 106, 15)"
+      ],
+      "cmsPlatform": "WordPress",
+      "topFlaws": [
+        "Earned 134 Google reviews (4.2★) but doesn't showcase them above the fold",
+        "Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote",
+        "Client-side ad pixels without Server-Side GTM / 1st-party CAPI (20-35% iOS attribution loss)"
+      ],
+      "personalizedHook": "Hi LA Solar Group team, la-solargroup.com is honestly one of the cleaner Solar & Energy Storage in Sun Valley (and 134 Google reviews at 4.2★ backs it up). The main leak I spotted auditing your funnel is that it has earned 134 Google reviews (4.2★) but doesn't showcase them above the fold. My UX partner and I plug in an interactive quote/booking flow + 1st-party ad tracking + 24/7 web/IG/FB intake assistant designed to lift booked jobs 30–50% in 90 days — for less than half the cost of one US marketing hire. Open to a 90-second teardown video?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/la-solargroup.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/la-solargroup.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/la-solargroup.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/la-solargroup.com/before-vs-after.jpg",
+      "sectorRank": 12
+    },
+    {
+      "domain": "jaeofamerica.com",
+      "company": "JA Edwards of America Roofing - Orlando",
+      "websiteUrl": "https://jaeofamerica.com/orlando-fl/",
+      "cohort": "home_services_ads",
+      "subCategory": "Roofing & Storm Restoration",
+      "metro": "Orlando, FL",
+      "city": "Orlando",
+      "state": "FL",
+      "formattedAddress": "220 Weber St, Orlando, FL 32803, USA",
+      "googleRating": 4.6,
+      "googleReviewsCount": 432,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Patricia Gesteira",
+          "relativeTime": "2 months ago",
+          "text": "We had a really good experience with JA Edwards here in Orlando. They replaced our roof and honestly made the whole process a lot easier than I expected. Everyone we dealt with was easy to talk to, they kept us updated, and whenever I had a question I could actually get an answer.\n\nThe crew showed up on time, got everything done pretty quickly and cleaned everything up when they were finished. The roof looks great.\n\nDefinitely happy we went with them and I’d recommend JA Edwards to anyone around"
+        },
+        {
+          "rating": 5,
+          "author": "Carlos Fraticelli",
+          "relativeTime": "3 months ago",
+          "text": "When they offered to inspect my roof,\nI was skeptical and doubtful about how it could possibly have any damage if it looked fine.\nBut when the Project Manager, Mr. Luis Chang Medina of JAEA (JA Edwards of America, Inc.), brought the inspector,\nthey found hail damage.\nAfter a dispute lasting a week or two, we took my home insurance company to arbitration, and they agreed to pay for the roof replacement.\nI was very satisfied with the excellent work on the roof replacement and very grateful to the "
+        },
+        {
+          "rating": 5,
+          "author": "noris lebron",
+          "relativeTime": "6 months ago",
+          "text": "Miguel Silva was wonderful to work with. The price was fair, and he took the time to educate and guide me from start to finish of my reroof project. His communication was excellent, and I always felt taken care of. The roofers, especially Abel, were outstanding. They kept my property clean the entire time, performed a magnet sweep, and even cleaned my neighbor’s yard. I am very happy with everything and would gladly recommend Miguel and his team."
+        }
+      ],
+      "primaryEmail": "info@jaeofamerica.com",
+      "primaryPhone": "(407) 677-7663",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 4,
+        "branding": 8,
+        "uxCro": 7,
+        "seoAeo": 8,
+        "trackingCrm": 8,
+        "modernizationGap": 7,
+        "rankScore": 368
+      },
+      "heroHeadline": "YOUR TRUSTED ROOFING COMPANY IN ORLANDO, FL",
+      "primaryColors": [
+        "rgb(255, 255, 255)",
+        "rgb(102, 102, 102)",
+        "rgb(20, 36, 27)",
+        "rgb(36, 115, 41)",
+        "rgb(245, 162, 0)",
+        "rgb(12, 36, 21)"
+      ],
+      "cmsPlatform": "WordPress",
+      "topFlaws": [
+        "High-friction 17-field contact form suppresses mobile leads",
+        "Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote",
+        "GBP review friction: Slow callback / unanswered inquiries"
+      ],
+      "personalizedHook": "Hi JA Edwards of America Roofing - Orlando team, you clearly have real volume in Orlando (432 Google reviews), so I ran a quick conversion audit on jaeofamerica.com. Right now high-friction 17-field contact form suppresses mobile leads, which quietly costs high-ticket inquiries before your team even speaks to them. For less than a single junior US hire, my UX partner and I rebuild your intake funnel, automate 5★ review capture after every job, and add 24/7 web/IG/FB response so leads never wait. Worth sending over the 3-point audit sheet?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/jaeofamerica.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/jaeofamerica.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/jaeofamerica.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/jaeofamerica.com/before-vs-after.jpg",
+      "sectorRank": 13
+    },
+    {
+      "domain": "rooffixhouston.com",
+      "company": "Roof Fix Houston",
+      "websiteUrl": "https://www.rooffixhouston.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "Roofing & Storm Restoration",
+      "metro": "Houston, TX",
+      "city": "Houston",
+      "state": "TX",
+      "formattedAddress": "2626 S Loop W Ste 632, Houston, TX 77054, USA",
+      "googleRating": 4.6,
+      "googleReviewsCount": 100,
+      "googleReviewsSample": [
+        {
+          "rating": 1,
+          "author": "tima",
+          "relativeTime": "2 months ago",
+          "text": "My experience with Roof Houston has been extremely frustrating and disappointing\n\nI contacted them after discovering a significant leak in my home and trying to determine where the water was coming from. They inspected my roof and told me that the leak was coming from the roof.  My insurance company also inspected the property and explained that, although some of the leaking might be related to the roof, the roof itself was not necessarily the only issue. I was told that the roof could be repair"
+        },
+        {
+          "rating": 5,
+          "author": "spongebob gamer929213",
+          "relativeTime": "a month ago",
+          "text": "I had my roof replaced by ROOF FIX Houston.  They were awesome.  Took off the old roof and put on the new one in less than two days.  Before everyone left the yard was cleaned and looking great.  Great experience, great job.  I highly recommend ROOF FIX Houston if you’re looking for a new roof."
+        },
+        {
+          "rating": 5,
+          "author": "Leo Johnney",
+          "relativeTime": "a year ago",
+          "text": "This is a two part review, my roof was replaced last year in August 2024. The work was done with no delay, clean up done and done. However, earlier this September while I was getting some painting and damaged wood replaced I noticed some damage on the roof that was not done properly. I called Logan and he got someone out to my house bright and early to take care of, not only everything that I had mentioned, but things he noticed that were not up to his standards. People can say that they guarant"
+        }
+      ],
+      "primaryEmail": "logan@rooffixusa.com",
+      "primaryPhone": "(713) 904-3904",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 9,
+        "aesthetics": 7,
+        "branding": 9,
+        "uxCro": 2,
+        "seoAeo": 8,
+        "trackingCrm": 9,
+        "modernizationGap": 8,
+        "rankScore": 368
+      },
+      "heroHeadline": "EXPERT ROOFING SERVICES IN HOUSTON",
+      "primaryColors": [
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)",
+        "rgb(224, 11, 0)",
+        "rgb(224, 43, 32)"
+      ],
+      "cmsPlatform": "WordPress",
+      "topFlaws": [
+        "Earned 100 Google reviews (4.6★) but doesn't showcase them above the fold",
+        "Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee",
+        "No interactive lead capture form or online scheduler on homepage"
+      ],
+      "personalizedHook": "Hi Roof Fix Houston team, you clearly have real volume in Houston (100 Google reviews), so I ran a quick conversion audit on rooffixhouston.com. Right now it has earned 100 Google reviews (4.6★) but doesn't showcase them above the fold, which quietly costs high-ticket inquiries before your team even speaks to them. For less than a single junior US hire, my UX partner and I rebuild your intake funnel, automate 5★ review capture after every job, and add 24/7 web/IG/FB response so leads never wait. Worth sending over the 3-point audit sheet?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/rooffixhouston.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/rooffixhouston.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/rooffixhouston.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/rooffixhouston.com/before-vs-after.jpg",
+      "sectorRank": 14
+    },
+    {
+      "domain": "joinusroofing.com",
+      "company": "US Roofing",
+      "websiteUrl": "https://joinusroofing.com/",
+      "cohort": "home_services_ads",
+      "subCategory": "Roofing & Storm Restoration",
+      "metro": "Tampa-St. Petersburg, FL",
+      "city": "Tampa",
+      "state": "FL",
+      "formattedAddress": "410 Ware Blvd, Tampa, FL 33619, USA",
+      "googleRating": 4.7,
+      "googleReviewsCount": 404,
+      "googleReviewsSample": [
+        {
+          "rating": 5,
+          "author": "Leslie Hunter",
+          "relativeTime": "6 months ago",
+          "text": "My roof was bad now it’s great. I am very glad I was able to get it taken care of and t went faster than what I thought it was. Very happy, the experience was excellent here in Sarasota. Props to Joel and Marcellus"
+        },
+        {
+          "rating": 5,
+          "author": "Sherene Stephenson",
+          "relativeTime": "10 months ago",
+          "text": "I have to say that US roofing is really cool. I was very reluctant at first, but they did such an awesome job. Everyone was nice, friendly and accommodating. My mom loves what they did, my family and neighbors as well.\nThank you, US roofing. It was great working with you and I look forward to working with you in the future."
+        },
+        {
+          "rating": 5,
+          "author": "Marie Nelson",
+          "relativeTime": "7 months ago",
+          "text": "Felipe and Nick helped us out here in lake park, Florida Andres made sure the process went smooth. Crew was professional and clean highly recommend if you are in West palm beach!"
+        }
+      ],
+      "primaryEmail": "csr@joinusroofing.com",
+      "primaryPhone": "(888) 965-0305",
+      "decisionMakers": [],
+      "hasPaidAds": true,
+      "hasVerifiedEmail": true,
+      "scores": {
+        "businessStrength": 10,
+        "aesthetics": 6,
+        "branding": 9,
+        "uxCro": 4,
+        "seoAeo": 3,
+        "trackingCrm": 6,
+        "modernizationGap": 7,
+        "rankScore": 366
+      },
+      "heroHeadline": "Roofing Solutions",
+      "primaryColors": [
+        "rgb(255, 255, 255)",
+        "rgb(23, 23, 23)",
+        "rgb(166, 31, 31)"
+      ],
+      "cmsPlatform": "Next.js",
+      "topFlaws": [
+        "Earned 404 Google reviews (4.7★) but doesn't showcase them above the fold",
+        "Horizontal overflow bug on 390px mobile viewport",
+        "No interactive lead capture form or online scheduler on homepage"
+      ],
+      "personalizedHook": "Hi US Roofing team, US Roofing has earned serious local trust in Tampa (404 Google reviews at 4.7★), which is the hardest part — but right now joinusroofing.com holds that back because it has earned 404 Google reviews (4.7★) but doesn't showcase them above the fold. My UX partner and I build fast, above-average conversion websites + CRM + paid ad tracking + 24/7 web/IG/FB lead response for less than hiring one person in the US. Mind if I send over the visual audit sheet we put together for US Roofing?",
+      "vaultBeforePath": ".local-audits/vault/home_services_ads/joinusroofing.com/desktop-full.webp",
+      "vaultHeroPath": ".local-audits/vault/home_services_ads/joinusroofing.com/desktop-hero.webp",
+      "redesign9x16Path": ".local-audits/vault/home_services_ads/joinusroofing.com/redesign-9x16-2k.jpg",
+      "beforeVsAfterPath": ".local-audits/vault/home_services_ads/joinusroofing.com/before-vs-after.jpg",
+      "sectorRank": 15
+    }
+  ]
+}
