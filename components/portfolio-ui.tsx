@@ -37,13 +37,15 @@ export function PageIntro({
   eyebrow,
   title,
   description,
+  compact = false,
 }: {
   eyebrow: string;
   title: string;
   description: string;
+  compact?: boolean;
 }) {
   return (
-    <header className="page-intro">
+    <header className={compact ? "page-intro page-intro--compact" : "page-intro"}>
       <Eyebrow>{eyebrow}</Eyebrow>
       <h1 className="page-title">{title}</h1>
       <p className="page-description">{description}</p>

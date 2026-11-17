@@ -33,9 +33,9 @@ export const portfolioCopy = {
     ctaTitle: "Let’s talk about your stack.",
     ctaBody:
       "Open to full time and contract roles in growth marketing and martech. Remote, on US hours.",
-    projectsTitle: "Less talk. More shipping.",
+    projectsTitle: "Projects and results",
     projectsIntro:
-      "Growth marketing, websites, stores and apps for companies in Latin America and the US. Each one shows what I did and what it achieved.",
+      "Growth marketing, websites, stores and apps for companies in Latin America and the US.",
     articlesTitle: "Always a work in progress.",
     articlesIntro:
       "Ideas on marketing, technology, and the things I learn along the way.",
@@ -135,9 +135,9 @@ export const portfolioCopy = {
     ctaTitle: "Hablemos de tu stack.",
     ctaBody:
       "Disponible para roles de tiempo completo y contratos en growth marketing y martech. Remoto, en horario de EE. UU.",
-    projectsTitle: "Menos palabras. Más lanzamientos.",
+    projectsTitle: "Proyectos y resultados",
     projectsIntro:
-      "Growth marketing, sitios web, tiendas y apps para empresas en Latinoamérica y EE. UU. Cada uno muestra lo que hice y lo que logró.",
+      "Growth marketing, sitios web, tiendas y apps para empresas en Latinoamérica y EE. UU.",
     articlesTitle: "Siempre en construcción.",
     articlesIntro:
       "Ideas sobre marketing, tecnología y lo que voy aprendiendo en el camino.",

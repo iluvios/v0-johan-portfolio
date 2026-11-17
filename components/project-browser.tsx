@@ -48,6 +48,7 @@ export default function ProjectBrowser() {
         eyebrow={copy.selected}
         title={copy.projectsTitle}
         description={copy.projectsIntro}
+        compact
       />
       <div className="listing-toolbar">
         <div className="flex flex-wrap items-center justify-between gap-4">
