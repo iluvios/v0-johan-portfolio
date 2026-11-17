@@ -167,7 +167,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     impact: "Built end to end with AI, from idea to active users in under 2 months",
     description:
       "Reference checking platform for hiring teams. I built the whole platform with AI coding tools on Next.js and Supabase, with Twilio for messaging, and took it from idea to a working product with active users in under two months.",
-    image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/blog-images/1788994715822-refio.so%20home.png",
+    image_url: "/media/blog-images/1788994715822-refio.so-home.png",
     category: "Apps & platforms",
     tags: ["Next.js", "Supabase", "Twilio", "Figma", "Framer"],
     gallery: [],
@@ -185,7 +185,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     impact: "Mileage logging and reporting for nonprofit health providers",
     description:
       "Mileage tracking app for nonprofit health service providers. It makes it easy to log transportation miles and produce accurate, fast reports for insurance companies and government agencies.",
-    image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/blog-images/1788994834852-Milotrack.png",
+    image_url: "/media/blog-images/1788994834852-Milotrack.png",
     category: "Apps & platforms",
     tags: ["Next.js", "Supabase", "Mailchimp", "v0"],
     gallery: [],
@@ -202,7 +202,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     client: "Agus",
     impact: "Complete brand and website revamp",
     description: null,
-    image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/blog-images/1788994150369-agentic%20software.png",
+    image_url: "/media/blog-images/1788994150369-agentic-software.png",
     category: "Websites",
     tags: ["Lovable", "AI content generation"],
     gallery: [],
@@ -220,7 +220,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     impact: "Professional services platform",
     description:
       "Consulting platform for Latin American nurses seeking to work in the United States.",
-    image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/portfolio-images/international-nurses.png",
+    image_url: "/media/portfolio-images/international-nurses.png",
     category: "Growth marketing",
     tags: ["Healthcare", "Professional Services", "Consulting"],
     gallery: [],
@@ -238,7 +238,7 @@ export const DEFAULT_PROJECTS: Project[] = [
     impact: "Business process outsourcing website",
     description:
       "Corporate website for an international BPO offering RPA, automation services, and business process optimization.",
-    image_url: "https://bds5xmchxu0in9qb.public.blob.vercel-storage.com/portfolio-images/savant-international.png",
+    image_url: "/media/portfolio-images/savant-international.png",
     category: "Websites",
     tags: ["BPO", "Automation", "Corporate Website"],
     gallery: [],
