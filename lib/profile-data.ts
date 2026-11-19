@@ -173,7 +173,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Full time",
       achievements: [
         "Cofounded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
-        "Grew the agency from zero to a team of 8 full time and led it, serving dozens of clients across paid media, web and app development each month.",
+        "Grew the agency from zero to a team of 8 full time and led it, delivering websites, paid media and custom apps for a wide range of clients.",
         "Clients included ecommerce brands, education and professional services companies, nonprofits and early stage startups.",
       ],
       tools: [
