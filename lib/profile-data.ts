@@ -47,7 +47,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
   location: "Medellín, Colombia · Remote (US hours)",
   website: "https://asjohan.com",
   linkedin: "https://linkedin.com/in/johanalvarez",
-  summary: "Growth marketer who started as a software developer, with 8+ years in performance marketing and GTM, mostly helping startups go from zero to one. I build programs that turn marketing into pipeline (paid media, outbound, landing pages, lifecycle email and SEO) and the stack underneath them: attribution, CRM and automations, with a heavy focus on A/B testing at every step. I've run sales myself at the agency I cofounded, and I work side by side with sales teams: I learn how they sell, then build the tools and automations that make their work easier.\n\nMost of my work has been for B2B and SaaS companies, ecommerce brands and nonprofits across the US and Latin America, usually as a growth team of one, and I've also led teams of up to 8.",
+  summary: "Growth marketer who started as a software developer, with 8+ years in performance marketing and GTM, mostly helping startups go from zero to one. I build programs that turn marketing into pipeline (paid media, outbound, landing pages, lifecycle email and SEO) and the stack underneath them: attribution, CRM and automations, with a heavy focus on A/B testing at every step. I've run sales myself at the agency I cofounded, and I work side by side with sales teams: I learn how they sell, then build the tools and automations that make their work easier.\n\nMost of my work has been for B2B and SaaS companies, ecommerce brands and nonprofits across the US and Latin America, leading teams of up to 8 that usually include UX designers, video editors and social media managers.",
   experiences: [
     {
       role: "Growth & Martech Consultant",
@@ -122,7 +122,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "International Nurses: rebuilt the brand, website and funnel for a consultancy that helps nurses across Latin America work abroad, adding weekly webinars before the one on one interviews and email lists built from nursing associations; new clients a month nearly doubled.",
         "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, including a custom camping setup app; conversion rate more than doubled and orders grew 132% in 3 months.",
         "Rainforest Foundation US: led the technical rebuild of the nonprofit's website without losing a single URL, then ran an SEO overhaul that grew Google search clicks 3.7×.",
-        "Served as project manager, sourcing and coordinating UX designers, developers and photographers across delivery sprints.",
+        "Led project teams as project manager, hiring and coordinating UX designers, developers and photographers across delivery sprints.",
       ],
       tools: [
         "HubSpot",
@@ -173,7 +173,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Full time",
       achievements: [
         "Cofounded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
-        "Took the agency from zero to about 8 full time employees, serving dozens of clients across paid media, web and app development each month.",
+        "Grew the agency from zero to a team of 8 full time and led it, serving dozens of clients across paid media, web and app development each month.",
         "Clients included ecommerce brands, education and professional services companies, nonprofits and early stage startups.",
       ],
       tools: [
