@@ -47,17 +47,17 @@ export const DEFAULT_CV_DATA: CVProfile = {
   location: "Medellín, Colombia · Remote (US hours)",
   website: "https://asjohan.com",
   linkedin: "https://linkedin.com/in/johanalvarez",
-  summary: "Growth marketer who started as a software developer, with 8+ years in performance marketing and GTM, mostly helping startups go from zero to one. I build programs that turn marketing into pipeline (paid media, outbound, landing pages, lifecycle email and SEO) and the stack underneath them: attribution, CRM and automations, with a heavy focus on A/B testing at every step. I've run sales myself at the agency I cofounded, and I work side by side with sales teams: I learn how they sell, then build the tools and automations that make their work easier.\n\nMost of my work has been for B2B and SaaS companies, ecommerce brands and nonprofits across the US and Latin America, leading teams of up to 8 that usually include UX designers, video editors and social media managers.",
+  summary: "Growth marketer who started as a software developer, with 8+ years in performance marketing and GTM, mostly helping startups go from zero to one. I build programs that turn marketing into pipeline (paid media, outbound, landing pages, lifecycle email and SEO) and the stack underneath them: attribution, CRM and automations, with a heavy focus on A/B testing at every step. I've run sales myself at the agency I cofounded, and I work side by side with sales teams: I learn how they sell, then build the tools and automations that make their work easier.\n\nMost of my work has been for B2B and SaaS companies, ecommerce brands and nonprofits across the US and Latin America, usually as a growth team of one, and I've also led teams of up to 8.",
   experiences: [
     {
       role: "Growth & Martech Consultant",
       company: "Freelance",
-      period: "Mar 2026 to Present",
+      period: "Feb 2026 to Present",
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
       achievements: [
         "Building Intelligence (NY security tech company): built account based outbound to enterprise buying teams, with a landing page for each industry, generating 60+ qualified sales meetings and $90K+ in new ARR in 4 months. Also helped redesign the website and other parts of the funnel.",
-        "Built an AI marketing system for 2 companies that brings creative, ad copy, website, email and analytics into one place and A/B tests every step of the funnel.",
+        "Built an AI marketing system for 2 companies that brings creative, ad copy, website, email, analytics and A/B tests into one place.",
         "Growth partner for brands and startups, from strategy to execution: brand and design updates, websites, tracking, CRM and email marketing. Current and recent clients include Rainforest Foundation US, Building Intelligence and Agentic Software.",
       ],
       tools: [
@@ -74,21 +74,20 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "GA4",
         "GTM",
         "Twilio",
-      ]
+      ],
     },
     {
       role: "Senior Martech Specialist",
       company: "Pvragon (San Diego, CA)",
-      period: "Apr 2025 to Mar 2026",
+      period: "Mar 2025 to Jan 2026",
       location: "San Diego, CA / Remote",
-      type: "Full time, then contract from Jan 2026",
+      type: "Full time, then contract",
       achievements: [
-        "Revy Autos: helped cut Meta cost per registered user 61% while scaling spend 13×, through persona landing pages and weekly creative testing.",
-        "Grew average daily user registrations from 30 to 200 with paid media and ActiveCampaign lifecycle automation.",
-        "Helped manage ad budgets of $15K to $60K+ a month across Meta, Google, Reddit, TikTok and YouTube Shorts for Revy Autos and Conformational Aesthetics.",
+        "Revy Autos: helped cut Meta cost per registered user 61% while scaling spend 13×, through persona landing pages and weekly creative testing. Grew average daily user registrations from 30 to 200 with paid media and ActiveCampaign lifecycle automation.",
+        "Helped manage ad budgets of $20K to $70K+ a month across Meta, Google, Reddit, TikTok and YouTube Shorts for Revy Autos and Conformational Aesthetics.",
         "Implemented and maintained multitouch attribution with Wicked Reports and Triple Whale to guide analysis and spend across revenue channels.",
         "Conformational Aesthetics: set up the Shopify store, Triple Whale attribution, Klaviyo flows and UGC paid social campaigns.",
-        "Built startup MVPs end to end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA compliant mileage app for nonprofits that report to insurers and US government agencies, built from requirements to field testing with the first client, plus its outreach pipeline (Apollo, ActiveCampaign, Calendly).",
+        "Built startup MVPs end to end with AI coding tools (Claude Code, OpenAI Codex), including getmilotrack.com: a HIPAA compliant mileage app for nonprofits that report to insurers and US government agencies, built from requirements to field testing with the first client.",
         "Automated customer support routing to manage 100+ daily tickets.",
       ],
       tools: [
@@ -110,7 +109,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Supabase",
         "Vercel",
         "v0",
-      ]
+      ],
     },
     {
       role: "Marketing Freelancer",
@@ -118,12 +117,12 @@ export const DEFAULT_CV_DATA: CVProfile = {
       period: "Nov 2022 to May 2025",
       location: "Medellín, Colombia / Remote",
       type: "Freelance",
-      description: "Marketing automation, full funnel strategy, and digital transformation for clients across South America and the US.",
+      description: "Marketing automation, full funnel strategy and websites for clients across South America and the US.",
       achievements: [
         "International Nurses: rebuilt the brand, website and funnel for a consultancy that helps nurses across Latin America work abroad, adding weekly webinars before the one on one interviews and email lists built from nursing associations; new clients a month nearly doubled.",
         "Autobruder 4WD: rebuilt the Shopify store, tracking and ad accounts from scratch, including a custom camping setup app; conversion rate more than doubled and orders grew 132% in 3 months.",
         "Rainforest Foundation US: led the technical rebuild of the nonprofit's website without losing a single URL, then ran an SEO overhaul that grew Google search clicks 3.7×.",
-        "Served as project manager, sourcing and coordinating UX designers, developers, and photographers across delivery sprints.",
+        "Served as project manager, sourcing and coordinating UX designers, developers and photographers across delivery sprints.",
       ],
       tools: [
         "HubSpot",
@@ -137,7 +136,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Webflow",
         "WordPress",
         "Figma",
-      ]
+      ],
     },
     {
       role: "Marketing & Automation Lead",
@@ -164,7 +163,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Webflow",
         "Google Sheets API",
         "ClickUp",
-      ]
+      ],
     },
     {
       role: "Marketing & Sales Lead (Cofounder)",
@@ -174,8 +173,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Full time",
       achievements: [
         "Cofounded a web design, marketing and software agency with 3 partners; I ran sales and client relationships from the first call to delivery.",
-        "Took the agency from zero to about $15K+ a month in revenue, delivering about 100 websites plus paid media and app projects.",
-        "Ran a team of 8 full time, plus contract developers for app and software projects.",
+        "Took the agency from zero to about 8 full time employees, serving dozens of clients across paid media, web and app development each month.",
         "Clients included ecommerce brands, education and professional services companies, nonprofits and early stage startups.",
       ],
       tools: [
@@ -186,7 +184,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Meta Business Suite",
         "Trello",
         "Slack",
-      ]
+      ],
     },
     {
       role: "Digital Marketing Analyst",
@@ -207,12 +205,12 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Ahrefs",
         "Google Search Console",
         "Google Analytics",
-      ]
+      ],
     },
     {
       role: "Founder",
       company: "Loopitems.com",
-      period: "June 2016 to Jan 2018",
+      period: "Jun 2016 to Jan 2018",
       location: "Medellín, Colombia",
       type: "Self employed",
       achievements: [
@@ -227,7 +225,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Google Ads",
         "Photoshop",
         "Premiere Pro",
-      ]
+      ],
     },
     {
       role: "Fullstack Software Developer",
@@ -237,7 +235,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
       type: "Part time from 11th grade, then full time",
       achievements: [
         "Started part time in 11th grade, then worked full time before starting college on a full scholarship.",
-        "Built features, web applications, and rapid prototypes with JavaScript, Node.js, Python, Meteor.js, and MongoDB.",
+        "Built features, web applications and rapid prototypes with JavaScript, Node.js, Python, Meteor.js and MongoDB.",
         "Worked on the company's own startup projects, including a year in Apps.co, iNNpulsa Colombia's startup accelerator.",
       ],
       tools: [
@@ -249,7 +247,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "HTML5",
         "CSS3",
         "Git",
-      ]
+      ],
     },
   ],
   skillCategories: [
@@ -262,7 +260,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Email & lifecycle marketing",
         "Technical, on page & off page SEO",
         "Direct response copywriting",
-      ]
+      ],
     },
     {
       category: "Marketing Ops & Automation",
@@ -274,7 +272,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Apollo",
         "n8n, Make, Zapier",
         "Lifecycle email & SMS (Twilio)",
-      ]
+      ],
     },
     {
       category: "Analytics & Attribution",
@@ -284,7 +282,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Triple Whale, Wicked Reports",
         "PostHog",
         "CRO & A/B testing",
-      ]
+      ],
     },
     {
       category: "Development & AI",
@@ -295,7 +293,7 @@ export const DEFAULT_CV_DATA: CVProfile = {
         "Python scripting",
         "REST APIs & webhooks; Claude, OpenAI & Gemini APIs",
         "WordPress, Shopify, Webflow",
-      ]
+      ],
     },
   ],
   education: [
@@ -307,16 +305,16 @@ export const DEFAULT_CV_DATA: CVProfile = {
       achievements: [
         "Full scholarship for academic achievement",
         "GPA 4.3/5.0 while working full time",
-      ]
+      ],
     },
     {
-      degree: "Technical Program in Multimedia Design & Integration",
+      degree: "Technical Program in Multimedia Design",
       institution: "SENA",
       period: "2014 to 2015",
       location: "Medellín, Colombia",
       achievements: [
         "Two year technical track (media técnica) completed during high school",
-      ]
+      ],
     },
     {
       degree: "High School Diploma, with honors",
@@ -325,13 +323,13 @@ export const DEFAULT_CV_DATA: CVProfile = {
       location: "Antioquia, Colombia",
       achievements: [
         "Saber 11 national exam: top 0.05% in Colombia",
-      ]
+      ],
     },
   ],
   languages: [
     "English: C2 (TOEFL, 2022)",
     "Spanish: Native",
-  ]
+  ],
 }
 
 // Backward compatibility exports
