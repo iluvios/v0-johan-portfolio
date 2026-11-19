@@ -1,16 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { GlowButton } from "@/components/ui/glow-button";
 import { Separator } from "@/components/ui/separator";
-import {
-  Reveal,
-  ScrollArtwork,
-  ScrollWorkItem,
-} from "@/components/portfolio-motion";
+import { Reveal, ScrollArtwork } from "@/components/portfolio-motion";
 import {
   Eyebrow,
   ProjectCard,
@@ -19,13 +15,9 @@ import {
   ContentEmpty,
   ContactInvitation,
 } from "@/components/portfolio-ui";
-import { Badge } from "@/components/ui/badge";
-import {
-  usePortfolioCopy,
-  useFeaturedProjects,
-  useArticles,
-} from "@/lib/portfolio";
-import { STACK } from "@/lib/site";
+import { usePortfolioCopy, useProjects, useArticles } from "@/lib/portfolio";
+import { DEFAULT_CV_DATA, getCVData } from "@/lib/profile-data";
+import { CLIENTS } from "@/lib/site";
 
 function Hero() {
   const { copy, language } = usePortfolioCopy();
@@ -84,81 +76,134 @@ function Hero() {
   );
 }
 
+function Clients() {
+  const { copy } = usePortfolioCopy();
+  return (
+    <section className="clients-strip" aria-label={copy.workedWith}>
+      <p className="eyebrow">{copy.workedWith}</p>
+      <ul>
+        {CLIENTS.map((client) => (
+          <li key={client}>{client}</li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function Offer() {
+  const { copy } = usePortfolioCopy();
+  return (
+    <section className="section" aria-labelledby="offer-heading">
+      <div className="flex flex-col gap-4">
+        <Eyebrow>{copy.offer}</Eyebrow>
+        <h2 id="offer-heading" className="section-title max-w-3xl">
+          {copy.offerTitle}
+        </h2>
+      </div>
+      <ul className="offer-grid">
+        {copy.offers.map((item) => (
+          <li key={item.title} className="offer-item">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+            <p className="offer-tools">{item.tools}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+// The first six public projects with a full case study, in the order set in the admin.
 function SelectedWork() {
   const { copy } = usePortfolioCopy();
-  const { data: projects, isLoading, error, mutate } = useFeaturedProjects();
-  const selected = projects?.slice(0, 3) || [];
-  const [activeId, setActiveId] = useState<number | null>(null);
+  const { data: projects, isLoading, error, mutate } = useProjects();
+  const selected =
+    projects?.filter((p) => p.case_study?.metrics?.length).slice(0, 6) || [];
   return (
     <section
       id="selected-work"
       className="section"
       aria-labelledby="work-heading"
     >
-      <div className="work-layout">
-        <aside className="work-aside">
+      <div className="section-heading">
+        <div className="flex flex-col gap-4">
           <Eyebrow>{copy.selected}</Eyebrow>
-          <h2 id="work-heading" className="section-title">
+          <h2 id="work-heading" className="section-title max-w-3xl">
             {copy.workTitle}
           </h2>
-          <nav className="work-index" aria-label={copy.selected}>
-            {selected.map((project, i) => (
-              <a
-                key={project.id}
-                href={`#work-${project.id}`}
-                aria-current={
-                  (activeId ?? selected[0]?.id) === project.id
-                    ? "location"
-                    : undefined
-                }
-              >
-                <span>{String(i + 1).padStart(2, "0")}</span>
-                <span>{project.title}</span>
-              </a>
-            ))}
-          </nav>
-          <Link className="text-link" href="/projects">
-            {copy.allWork}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
-        </aside>
-        <div className="work-list">
-          {isLoading ? (
-            <ContentLoading detail />
-          ) : error ? (
-            <ContentEmpty error onReset={() => mutate()} />
-          ) : selected.length ? (
-            selected.map((project, i) => (
-              <ScrollWorkItem
-                key={project.id}
-                onEnter={() => setActiveId(project.id)}
-              >
-                <ProjectCard project={project} index={i} />
-              </ScrollWorkItem>
-            ))
-          ) : (
-            <ContentEmpty />
-          )}
         </div>
+        <Link className="text-link" href="/projects">
+          {copy.allWork}
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
       </div>
+      {isLoading ? (
+        <ContentLoading detail />
+      ) : error ? (
+        <ContentEmpty error onReset={() => mutate()} />
+      ) : selected.length ? (
+        <div className="home-work-grid">
+          {selected.map((project) => (
+            <Reveal key={project.id}>
+              <ProjectCard project={project} />
+            </Reveal>
+          ))}
+        </div>
+      ) : (
+        <ContentEmpty />
+      )}
     </section>
   );
 }
 
-function Stack() {
-  const { copy } = usePortfolioCopy();
+// The CV is written in English; its dates read naturally in Spanish with these swaps.
+const ES_MONTHS: Record<string, string> = {
+  Jan: "Ene", Feb: "Feb", Mar: "Mar", Apr: "Abr", May: "May", Jun: "Jun",
+  June: "Jun", Jul: "Jul", Aug: "Ago", Sep: "Sep", Oct: "Oct", Nov: "Nov", Dec: "Dic",
+};
+function localizePeriod(period: string, language: string) {
+  if (language !== "es") return period;
+  return period
+    .replace(/\b(Jan|Feb|Mar|Apr|May|June|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b/g, (m) => ES_MONTHS[m])
+    .replace(" to Present", " a hoy")
+    .replace(" to ", " a ");
+}
+
+// Roles straight from the live CV, so the home never drifts from it.
+function Experience() {
+  const { copy, language } = usePortfolioCopy();
+  const [cv, setCv] = useState(DEFAULT_CV_DATA);
+  useEffect(() => {
+    getCVData().then(setCv);
+  }, []);
+  const roles = cv.experiences.filter((e) => !/software developer/i.test(e.role));
   return (
-    <section className="section" aria-label={copy.stackLabel}>
-      <div className="flex flex-col gap-4">
-        <p className="eyebrow">{copy.stackLabel}</p>
-        <ul className="flex flex-wrap gap-2">
-          {STACK.map((tool) => (
-            <li key={tool}>
-              <Badge variant="tag">{tool}</Badge>
-            </li>
-          ))}
-        </ul>
+    <section className="section" aria-labelledby="experience-heading">
+      <div className="section-heading">
+        <div className="flex flex-col gap-4">
+          <Eyebrow>{copy.experience}</Eyebrow>
+          <h2 id="experience-heading" className="section-title max-w-3xl">
+            {copy.experienceTitle}
+          </h2>
+        </div>
+        <Link className="text-link" href="/about">
+          {copy.moreAbout}
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
       </div>
+      <ul className="home-experience">
+        {roles.map((exp) => (
+          <li key={`${exp.company}-${exp.period}`}>
+            <span className="home-experience-period">
+              {localizePeriod(exp.period, language)}
+            </span>
+            <span className="home-experience-role">
+              {exp.role}
+              <span> · {exp.company}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -230,10 +275,13 @@ export default function HomePortfolio() {
     <>
       <Hero />
       <div className="page-shell">
+        <Clients />
+        <Separator />
+        <Offer />
         <Separator />
         <SelectedWork />
         <Separator />
-        <Stack />
+        <Experience />
         <Separator />
         <Perspective />
         <LatestWriting />

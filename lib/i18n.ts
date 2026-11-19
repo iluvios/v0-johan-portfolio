@@ -3,9 +3,31 @@ export type Language = "en" | "es";
 export const portfolioCopy = {
   en: {
     role: "Senior Growth Marketer",
-    hero: ["The campaigns.", "The systems.", "The results."],
+    hero: ["I turn marketing", "into pipeline", "and revenue."],
     intro:
-      "A growth team of one. I plan and run the campaigns, from paid media and landing pages to lifecycle email and SEO, and build the tracking and automations behind them with the best tool for each job, AI included.",
+      "A growth team of one who also leads teams. I plan and run the campaigns, from paid media and outbound to landing pages, email and SEO, and build the CRM, tracking and automations behind them.",
+    workedWith: "Worked with",
+    offer: "What I do",
+    offerTitle: "Strategy, execution and the systems behind it.",
+    offers: [
+      {
+        title: "Demand generation",
+        body: "Paid media, account based outbound, landing pages, webinars and lifecycle email, planned around pipeline and A/B tested at every step.",
+        tools: "Meta, Google, LinkedIn, Reddit, TikTok, Clay, Apollo",
+      },
+      {
+        title: "Marketing ops and automation",
+        body: "CRM setup, attribution and the automations that connect marketing with sales, so every lead gets followed up and spend can be measured.",
+        tools: "HubSpot, Salesforce, ActiveCampaign, n8n, Triple Whale, GA4",
+      },
+      {
+        title: "Building with AI",
+        body: "Websites, landing pages, internal tools and MVPs built with AI coding, so ideas go live in days instead of waiting on a dev team.",
+        tools: "Claude Code, Next.js, Shopify, WordPress, Webflow",
+      },
+    ],
+    experience: "Experience",
+    experienceTitle: "8+ years in growth, after starting as a developer.",
     work: "See the work",
     talk: "Let’s talk",
     scroll: "Scroll to explore",
@@ -15,7 +37,7 @@ export const portfolioCopy = {
       "English C2 · Spanish native",
     ],
     selected: "Selected work",
-    workTitle: "Shipped, live, in use.",
+    workTitle: "Recent projects and what they changed.",
     allWork: "All projects",
     viewProject: "Explore project",
     stackLabel: "Tools I work in",
@@ -105,9 +127,31 @@ export const portfolioCopy = {
   },
   es: {
     role: "Growth Marketer Senior",
-    hero: ["Las campañas.", "Los sistemas.", "Los resultados."],
+    hero: ["Convierto el marketing", "en pipeline", "y en ventas."],
     intro:
-      "Un equipo de growth de una sola persona. Planeo y ejecuto las campañas, desde pauta y landing pages hasta email de ciclo de vida y SEO, y construyo el tracking y las automatizaciones detrás con la mejor herramienta para cada trabajo, IA incluida.",
+      "Un equipo de growth de una sola persona que también lidera equipos. Planeo y ejecuto las campañas, desde pauta y outbound hasta landing pages, email y SEO, y construyo el CRM, el tracking y las automatizaciones detrás.",
+    workedWith: "He trabajado con",
+    offer: "Qué hago",
+    offerTitle: "Estrategia, ejecución y los sistemas detrás.",
+    offers: [
+      {
+        title: "Demand generation",
+        body: "Pauta, outbound basado en cuentas, landing pages, webinars y email de ciclo de vida, pensados para generar pipeline y con pruebas A/B en cada paso.",
+        tools: "Meta, Google, LinkedIn, Reddit, TikTok, Clay, Apollo",
+      },
+      {
+        title: "Marketing ops y automatización",
+        body: "Configuración de CRM, atribución y las automatizaciones que conectan marketing con ventas, para que cada lead tenga seguimiento y la inversión se pueda medir.",
+        tools: "HubSpot, Salesforce, ActiveCampaign, n8n, Triple Whale, GA4",
+      },
+      {
+        title: "Construir con IA",
+        body: "Sitios web, landing pages, herramientas internas y MVPs hechos con IA, para que las ideas salgan en días y no esperen a un equipo de desarrollo.",
+        tools: "Claude Code, Next.js, Shopify, WordPress, Webflow",
+      },
+    ],
+    experience: "Experiencia",
+    experienceTitle: "8+ años en growth, después de empezar como desarrollador.",
     work: "Ver el trabajo",
     talk: "Hablemos",
     scroll: "Sigue explorando",
@@ -117,7 +161,7 @@ export const portfolioCopy = {
       "Inglés C2 · español nativo",
     ],
     selected: "Trabajo seleccionado",
-    workTitle: "Lanzado, en vivo, en uso.",
+    workTitle: "Proyectos recientes y lo que cambiaron.",
     allWork: "Todos los proyectos",
     viewProject: "Explorar proyecto",
     stackLabel: "Herramientas con las que trabajo",

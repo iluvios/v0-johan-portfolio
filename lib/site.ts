@@ -4,6 +4,18 @@ export const AGENCY_EMAIL =
   process.env.NEXT_PUBLIC_AGENCY_EMAIL || "contact@energymedia.com.co";
 export const LINKEDIN_URL = "https://linkedin.com/in/johanalvarez";
 
+// Shown on the portfolio home as plain names; only clients already named publicly on the CV or a project page.
+export const CLIENTS = [
+  "Building Intelligence",
+  "Rainforest Foundation US",
+  "Revy Autos",
+  "Savant International",
+  "Autobruder 4WD",
+  "International Nurses",
+  "Conformational Aesthetics",
+  "PSL Software",
+];
+
 export const STACK = [
   "Clay",
   "Apollo",

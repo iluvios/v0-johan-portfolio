@@ -233,7 +233,7 @@
   }
   .hero-title {
     /* Capped by viewport height too, so the CTAs stay above the fold on short laptop screens. */
-    font-size: clamp(4.3rem, min(8.2vw, 12.5vh), 7.6rem);
+    font-size: clamp(3.2rem, min(6.2vw, 10.5vh), 5.8rem);
     font-weight: 500;
     line-height: 0.99;
     letter-spacing: -0.07em;
@@ -266,8 +266,8 @@
   .hero-artwork {
     position: absolute;
     z-index: -1;
-    width: 820px;
-    right: -220px;
+    width: 600px;
+    right: -160px;
     top: -12px;
     pointer-events: none;
     mask-image: linear-gradient(
@@ -448,6 +448,83 @@
     flex: 1;
     flex-direction: column;
     gap: 3rem;
+  }
+  .clients-strip {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 2.5rem;
+  }
+  .clients-strip ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 2rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 16px;
+  }
+  .offer-grid {
+    display: grid;
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  .offer-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid hsl(var(--border));
+  }
+  .offer-item h3 {
+    font-size: 1.35rem;
+    font-weight: 500;
+  }
+  .offer-item p {
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+  }
+  .offer-item .offer-tools {
+    font-size: 14px;
+    color: hsl(var(--accent));
+  }
+  .home-work-grid {
+    display: grid;
+    gap: 3rem 2rem;
+  }
+  .home-experience li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+  .home-experience-period {
+    font-size: 14px;
+    color: hsl(var(--muted-foreground));
+    font-variant-numeric: tabular-nums;
+  }
+  .home-experience-role {
+    font-size: 1.1rem;
+  }
+  .home-experience-role span {
+    color: hsl(var(--muted-foreground));
+  }
+  @media (min-width: 768px) {
+    .offer-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2rem;
+    }
+    .home-work-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .home-experience li {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 2rem;
+    }
+    .home-experience-period {
+      width: 200px;
+      flex-shrink: 0;
+    }
   }
   .project-card {
     min-width: 0;
@@ -1273,15 +1350,15 @@
     padding-top: min(92px, 8vh);
   }
   .hero-artwork {
-    width: 900px;
-    right: -210px;
+    width: 680px;
+    right: -150px;
     top: -24px;
   }
   .hero-copy {
     max-width: 850px;
   }
   .hero-bottom {
-    padding-top: 96px;
+    padding-top: 64px;
   }
   .work-layout {
     flex-direction: row;
@@ -1347,9 +1424,9 @@
 }
 @media (min-width: 1440px) {
   .hero-artwork {
-    width: 1000px;
-    right: -195px;
-    top: -58px;
+    width: 760px;
+    right: -140px;
+    top: -40px;
   }
   .hero-inner {
     padding-top: min(100px, 9vh);
