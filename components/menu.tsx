@@ -14,22 +14,61 @@ import {
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/contexts/language-context";
-import { portfolioCopy } from "@/lib/i18n";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { useSite } from "@/contexts/site-context";
+import { usePortfolioCopy } from "@/lib/portfolio";
 import LanguageToggle from "./language-toggle";
 
 export default function MenuComponent() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { language } = useLanguage();
-  const copy = portfolioCopy[language];
-  const nav =
-    language === "en"
-      ? ["Home", "Work", "About & CV", "Let’s talk"]
-      : ["Inicio", "Proyectos", "Sobre mí y CV", "Hablemos"];
-  const items = ["/", "/projects", "/about", "/contact"].map(
-    (href, i) => ({ href, label: nav[i] }),
-  );
+  const { isAgency, config } = useSite();
+  const { copy } = usePortfolioCopy();
+
+  const items = isAgency
+    ? language === "en"
+      ? [
+          { href: "/", label: "Home" },
+          { href: "/services", label: "Services" },
+          { href: "/projects", label: "Work" },
+          { href: "/about", label: "About" },
+        ]
+      : [
+          { href: "/", label: "Inicio" },
+          { href: "/services", label: "Servicios" },
+          { href: "/projects", label: "Casos" },
+          { href: "/about", label: "Nosotros" },
+        ]
+    : language === "en"
+      ? [
+          { href: "/", label: "Home" },
+          { href: "/projects", label: "Work" },
+          { href: "/about", label: "About & CV" },
+          { href: "/contact", label: "Let’s talk" },
+        ]
+      : [
+          { href: "/", label: "Inicio" },
+          { href: "/projects", label: "Proyectos" },
+          { href: "/about", label: "Sobre mí y CV" },
+          { href: "/contact", label: "Hablemos" },
+        ];
+
+  const mobileItems = isAgency
+    ? [
+        ...items,
+        {
+          href: "/contact",
+          label: language === "en" ? "Start a project" : "Contacto",
+        },
+      ]
+    : items;
+
+  const ctaLabel = isAgency
+    ? language === "en"
+      ? "Start a project"
+      : "Hablemos"
+    : copy.talk;
+
   const active = (href: string) =>
     pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
 
@@ -48,7 +87,7 @@ export default function MenuComponent() {
   return (
     <>
       <nav className="desktop-nav" aria-label={copy.navigation}>
-        {items.slice(0, 4).map((item) => (
+        {items.map((item) => (
           <Link
             key={item.href}
             href={item.href}
@@ -63,7 +102,7 @@ export default function MenuComponent() {
           className="nav-contact"
           aria-current={active("/contact") ? "page" : undefined}
         >
-          {copy.talk}
+          {ctaLabel}
           <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
       </nav>
@@ -91,7 +130,7 @@ export default function MenuComponent() {
             <SheetDescription>{copy.menuDescription}</SheetDescription>
           </SheetHeader>
           <nav className="mobile-navigation" aria-label={copy.navigation}>
-            {items.map((item) => (
+            {mobileItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -105,8 +144,8 @@ export default function MenuComponent() {
           </nav>
           <Separator />
           <LanguageToggle />
-          <a href={`mailto:${CONTACT_EMAIL}`} className="text-link">
-            {CONTACT_EMAIL}
+          <a href={`mailto:${config.email}`} className="text-link">
+            {config.email}
             <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </SheetContent>

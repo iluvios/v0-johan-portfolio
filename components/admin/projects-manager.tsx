@@ -31,6 +31,7 @@ import {
   Loader2,
   Eye,
   EyeOff,
+  Globe,
 } from "lucide-react"
 import {
   type Project,
@@ -93,7 +94,7 @@ export function ProjectsManager({
   const loadProjects = async () => {
     setIsLoadingProjects(true)
     try {
-      const data = await getProjects()
+      const data = await getProjects(undefined, { includeAll: true })
       setProjects(data)
       onProjectsCountChange?.(data.length)
     } catch (error) {
@@ -202,6 +203,9 @@ export function ProjectsManager({
       gallery: [],
       website_url: "",
       featured: false,
+      hidden: false,
+      show_on_asjohan: true,
+      show_on_energymedia: true,
     })
     setIsCreatingProject(true)
   }
@@ -244,6 +248,31 @@ export function ProjectsManager({
       notify("error", error?.message || "Failed to save project.")
     } finally {
       setIsSavingProject(false)
+    }
+  }
+
+  const handleToggleSite = async (
+    project: Project,
+    field: "show_on_asjohan" | "show_on_energymedia",
+  ) => {
+    const current = project[field] !== false
+    const next = !current
+    const siteLabel = field === "show_on_asjohan" ? "asjohan.com" : "energymedia.com.co"
+    try {
+      const updated = await updateProject(project.id, {
+        [field]: next,
+        updated_at: project.updated_at,
+      })
+      setProjects((list) => list.map((p) => (p.id === updated.id ? updated : p)))
+      notify(
+        "success",
+        next
+          ? `"${updated.title}" activated on ${siteLabel}.`
+          : `"${updated.title}" deactivated on ${siteLabel}.`,
+      )
+    } catch (error: any) {
+      console.error("Error toggling site activation:", error)
+      notify("error", error?.message || `Failed to update ${siteLabel} visibility.`)
     }
   }
 
@@ -624,6 +653,51 @@ export function ProjectsManager({
                               {project.impact}
                             </p>
                           )}
+                          <div className="flex items-center gap-1.5 mt-2 flex-wrap">
+                            <span className="text-[10px] uppercase tracking-wider text-slate-500 flex items-center gap-1 mr-0.5">
+                              <Globe size={11} /> Sites:
+                            </span>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                handleToggleSite(project, "show_on_asjohan")
+                              }}
+                              className={cn(
+                                "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors",
+                                project.show_on_asjohan !== false
+                                  ? "border-blue-500/40 bg-blue-500/15 text-blue-300 hover:bg-blue-500/25"
+                                  : "border-slate-700 bg-slate-900/60 text-slate-500 line-through hover:text-slate-300",
+                              )}
+                              title={
+                                project.show_on_asjohan !== false
+                                  ? "Active on asjohan.com — click to disable"
+                                  : "Inactive on asjohan.com — click to enable"
+                              }
+                            >
+                              asjohan.com
+                            </button>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                handleToggleSite(project, "show_on_energymedia")
+                              }}
+                              className={cn(
+                                "inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium transition-colors",
+                                project.show_on_energymedia !== false
+                                  ? "border-cyan-500/40 bg-cyan-500/15 text-cyan-300 hover:bg-cyan-500/25"
+                                  : "border-slate-700 bg-slate-900/60 text-slate-500 line-through hover:text-slate-300",
+                              )}
+                              title={
+                                project.show_on_energymedia !== false
+                                  ? "Active on energymedia.com.co — click to disable"
+                                  : "Inactive on energymedia.com.co — click to enable"
+                              }
+                            >
+                              energymedia.com.co
+                            </button>
+                          </div>
                         </div>
                       </div>
 
@@ -1169,6 +1243,38 @@ export function ProjectsManager({
                 onChange={(case_study) => setEditingProject({ ...editingProject, case_study })}
               />
 
+              {/* Website Activation Toggles */}
+              <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-3.5 space-y-3">
+                <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-slate-400">
+                  <Globe size={13} className="text-cyan-400" />
+                  Website Visibility
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Switch
+                    id="proj-site-asjohan"
+                    checked={editingProject.show_on_asjohan !== false}
+                    onCheckedChange={(checked) =>
+                      setEditingProject({ ...editingProject, show_on_asjohan: checked })
+                    }
+                  />
+                  <Label htmlFor="proj-site-asjohan" className="text-slate-200 cursor-pointer">
+                    Active on <span className="font-mono text-blue-300">asjohan.com</span>
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Switch
+                    id="proj-site-energymedia"
+                    checked={editingProject.show_on_energymedia !== false}
+                    onCheckedChange={(checked) =>
+                      setEditingProject({ ...editingProject, show_on_energymedia: checked })
+                    }
+                  />
+                  <Label htmlFor="proj-site-energymedia" className="text-slate-200 cursor-pointer">
+                    Active on <span className="font-mono text-cyan-300">energymedia.com.co</span>
+                  </Label>
+                </div>
+              </div>
+
               {/* Featured Toggle */}
               <div className="flex items-center space-x-3 pt-2">
                 <Switch
@@ -1193,7 +1299,7 @@ export function ProjectsManager({
                   }
                 />
                 <Label htmlFor="proj-hidden" className="text-slate-200 cursor-pointer">
-                  Hide from the portfolio (only you see it here)
+                  Hide from all websites (only you see it here)
                 </Label>
               </div>
 

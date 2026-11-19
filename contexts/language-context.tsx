@@ -18,32 +18,47 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined,
 );
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en");
-  const [mounted, setMounted] = useState(false);
+const MANUAL_STORAGE_KEY = "language_manual";
+const LEGACY_STORAGE_KEY = "language";
+
+export function LanguageProvider({
+  initialLanguage = "en",
+  children,
+}: {
+  initialLanguage?: Language;
+  children: ReactNode;
+}) {
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   useEffect(() => {
-    // Preserve the existing language preference; storage may be blocked in embedded browsers.
-    let initialLang = getBrowserLanguage();
+    // Respect an explicit user choice first; otherwise keep the server's
+    // GeoIP + Accept-Language detection (with browser + timezone refinement).
     try {
-      const savedLang = localStorage.getItem("language");
-      if (savedLang === "en" || savedLang === "es") initialLang = savedLang;
+      const savedManual =
+        localStorage.getItem(MANUAL_STORAGE_KEY) ||
+        localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (savedManual === "en" || savedManual === "es") {
+        setLanguageState(savedManual);
+        return;
+      }
     } catch {}
-    setLanguage(initialLang);
-    setMounted(true);
-  }, []);
+
+    const clientDetected = getBrowserLanguage(initialLanguage);
+    if (clientDetected !== initialLanguage) {
+      setLanguageState(clientDetected);
+    }
+  }, [initialLanguage]);
 
   useEffect(() => {
     document.documentElement.lang = language;
-    if (mounted) {
-      try {
-        localStorage.setItem("language", language);
-      } catch {}
-    }
-  }, [language, mounted]);
+  }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang);
+    setLanguageState(lang);
+    try {
+      localStorage.setItem(MANUAL_STORAGE_KEY, lang);
+      localStorage.setItem(LEGACY_STORAGE_KEY, lang);
+    } catch {}
   };
 
   return (

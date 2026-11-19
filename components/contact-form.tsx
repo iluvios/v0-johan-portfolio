@@ -14,7 +14,7 @@ import {
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { GlowButton } from "@/components/ui/glow-button";
 import { usePortfolioCopy } from "@/lib/portfolio";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { useSite } from "@/contexts/site-context";
 
 type Draft = { name: string; email: string; subject: string; message: string };
 type FieldErrors = Partial<Record<keyof Draft, "required" | "invalidEmail">>;
@@ -22,7 +22,8 @@ type FieldErrors = Partial<Record<keyof Draft, "required" | "invalidEmail">>;
 // There is no mail backend: the form composes the message in the visitor's
 // email app so it reaches the inbox directly instead of being silently dropped.
 export default function ContactForm() {
-  const { copy } = usePortfolioCopy();
+  const { copy, language } = usePortfolioCopy();
+  const { config } = useSite();
   const [draft, setDraft] = useState<Draft>({
     name: "",
     email: "",
@@ -36,7 +37,7 @@ export default function ContactForm() {
     setDraft((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
   }
-  const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(draft.subject.trim() || "Portfolio inquiry")}&body=${encodeURIComponent(`${draft.message.trim()}\n\n${draft.name.trim()}\n${draft.email.trim()}`)}`;
+  const mailto = `mailto:${config.email}?subject=${encodeURIComponent(draft.subject.trim() || config.contactSubjectDefault[language])}&body=${encodeURIComponent(`${draft.message.trim()}\n\n${draft.name.trim()}\n${draft.email.trim()}`)}`;
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const invalid: FieldErrors = {};
@@ -146,7 +147,7 @@ export default function ContactForm() {
             <AlertDescription>
               {copy.openedBody}{" "}
               <a className="text-link" href={mailto}>
-                {CONTACT_EMAIL}
+                {config.email}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </AlertDescription>

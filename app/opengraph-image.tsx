@@ -1,16 +1,94 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { getServerSite } from "@/lib/tenant-server";
 
 // Share card for LinkedIn, Slack, and email previews. Colors mirror the tokens in globals.css.
-export const alt = "Johan Alvarez | Senior Growth Marketer";
+export const alt = "Portfolio & Agency";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = "force-dynamic";
 
 export default async function OpengraphImage() {
+  const site = await getServerSite();
+  const line = { fontSize: 76, fontWeight: 600, letterSpacing: -3 };
+
+  if (site === "energymedia") {
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            position: "relative",
+            background: "linear-gradient(135deg, #080e1c 50%, #0f254f 100%)",
+            color: "#eef1f6",
+            fontFamily: "sans-serif",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              right: -120,
+              top: -120,
+              width: 560,
+              height: 560,
+              borderRadius: 560,
+              background:
+                "radial-gradient(circle, rgba(103,227,249,0.22) 0%, rgba(56,120,255,0.08) 45%, rgba(8,14,28,0) 70%)",
+              display: "flex",
+            }}
+          />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              padding: "72px 80px",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+                fontSize: 26,
+                letterSpacing: 4,
+                textTransform: "uppercase",
+                color: "#9ea6b6",
+              }}
+            >
+              <div
+                style={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: 12,
+                  background: "#67e3f9",
+                }}
+              />
+              Growth & Digital Systems Agency
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <div style={line}>We build</div>
+              <div style={line}>growth engines</div>
+              <div style={{ ...line, color: "#67e3f9" }}>that convert.</div>
+            </div>
+            <div style={{ display: "flex", gap: 24, fontSize: 28, color: "#9ea6b6" }}>
+              <span style={{ color: "#eef1f6" }}>Energy Media</span>
+              <span>energymedia.com.co</span>
+            </div>
+          </div>
+        </div>
+      ),
+      size,
+    );
+  }
+
   const photo = await readFile(join(process.cwd(), "public/images/hero/johan-og.jpg"));
   const photoSrc = `data:image/jpeg;base64,${photo.toString("base64")}`;
-  const line = { fontSize: 76, fontWeight: 600, letterSpacing: -3 };
 
   return new ImageResponse(
     (

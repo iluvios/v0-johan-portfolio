@@ -4,11 +4,13 @@ import Link from "next/link";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { PageIntro } from "@/components/portfolio-ui";
 import { usePortfolioCopy } from "@/lib/portfolio";
-import { CONTACT_EMAIL, LINKEDIN_URL } from "@/lib/site";
+import { useSite } from "@/contexts/site-context";
 import ContactForm from "@/components/contact-form";
 
 export default function ContactPortfolio() {
-  const { copy } = usePortfolioCopy();
+  const { copy, language } = usePortfolioCopy();
+  const { isAgency, config } = useSite();
+
   return (
     <div className="page-shell">
       <PageIntro
@@ -18,23 +20,38 @@ export default function ContactPortfolio() {
       />
       <div className="contact-layout">
         <div className="contact-direct">
-          <a href={`mailto:${CONTACT_EMAIL}`} className="text-link">
-            {CONTACT_EMAIL}
+          <a href={`mailto:${config.email}`} className="text-link">
+            {config.email}
             <ArrowUpRight size={18} aria-hidden="true" />
           </a>
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-link"
-          >
-            LinkedIn
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
-          <Link href="/about" className="text-link">
-            CV
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
+          {isAgency ? (
+            <>
+              <Link href="/services" className="text-link">
+                {language === "en" ? "Services & models" : "Servicios y modelos"}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+              <Link href="/projects" className="text-link">
+                {copy.allWork}
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            </>
+          ) : (
+            <>
+              <a
+                href={config.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link"
+              >
+                LinkedIn
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+              <Link href="/about" className="text-link">
+                CV
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </Link>
+            </>
+          )}
           <p className="flex max-w-xs items-start gap-2 text-sm text-muted-foreground">
             <MapPin className="mt-1 shrink-0" size={16} aria-hidden="true" />
             {copy.location}

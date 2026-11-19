@@ -36,6 +36,10 @@ export interface Project {
   featured: boolean
   /** Kept in the admin but left out of the public portfolio, its project page and the sitemap. */
   hidden?: boolean
+  /** Whether this project is active on asjohan.com (defaults to true). */
+  show_on_asjohan?: boolean
+  /** Whether this project is active on energymedia.com.co (defaults to true). */
+  show_on_energymedia?: boolean
   case_study: CaseStudy | null
   order_index?: number
   created_at: string
@@ -150,6 +154,8 @@ export function normalizeProject(raw: any): Project {
     website_url: raw.website_url || null,
     featured: Boolean(raw.featured),
     hidden: Boolean(raw.hidden),
+    show_on_asjohan: raw.show_on_asjohan !== false,
+    show_on_energymedia: raw.show_on_energymedia !== false,
     case_study: normalizeCaseStudy(raw.case_study),
     order_index: raw.order_index !== undefined && raw.order_index !== null ? Number(raw.order_index) : 0,
     created_at: raw.created_at ? new Date(raw.created_at).toISOString() : new Date().toISOString(),
@@ -251,17 +257,29 @@ export const DEFAULT_PROJECTS: Project[] = [
   },
 ]
 
-export async function getProjects(category?: string): Promise<Project[]> {
+export interface ProjectQueryOptions {
+  site?: "asjohan" | "energymedia"
+  includeAll?: boolean
+}
+
+export async function getProjects(category?: string, options?: ProjectQueryOptions): Promise<Project[]> {
   try {
     const params = new URLSearchParams()
     if (category) {
       params.append("category", category)
     }
+    if (options?.site) {
+      params.append("site", options.site)
+    }
+    if (options?.includeAll) {
+      params.append("scope", "all")
+    }
 
-    const response = await fetch(`/api/projects?${params.toString()}`)
+    const qs = params.toString()
+    const response = await fetch(qs ? `/api/projects?${qs}` : "/api/projects")
     if (response.ok) {
       const data = await response.json()
-      if (Array.isArray(data) && data.length > 0) {
+      if (Array.isArray(data)) {
         return data.map(normalizeProject)
       }
     }
@@ -270,23 +288,32 @@ export async function getProjects(category?: string): Promise<Project[]> {
   }
 
   // Fallback
+  const fallback = DEFAULT_PROJECTS.map(normalizeProject).filter((p) => {
+    if (options?.includeAll) return true
+    if (p.hidden) return false
+    if (options?.site === "energymedia") return p.show_on_energymedia !== false
+    if (options?.site === "asjohan") return p.show_on_asjohan !== false
+    return true
+  })
   if (category && category !== "All") {
-    return DEFAULT_PROJECTS.filter((p) => p.category === category).map(normalizeProject)
+    return fallback.filter((p) => p.category === category)
   }
-  return DEFAULT_PROJECTS.map(normalizeProject)
+  return fallback
 }
 
 // Alias for getProjects to match expected export name
-export async function getAllProjects(category?: string): Promise<Project[]> {
-  return getProjects(category)
+export async function getAllProjects(category?: string, options?: ProjectQueryOptions): Promise<Project[]> {
+  return getProjects(category, options)
 }
 
-export async function getFeaturedProjects(): Promise<Project[]> {
+export async function getFeaturedProjects(site?: "asjohan" | "energymedia"): Promise<Project[]> {
   try {
-    const response = await fetch("/api/projects?featured=true")
+    const params = new URLSearchParams({ featured: "true" })
+    if (site) params.append("site", site)
+    const response = await fetch(`/api/projects?${params.toString()}`)
     if (response.ok) {
       const data = await response.json()
-      if (Array.isArray(data) && data.length > 0) {
+      if (Array.isArray(data)) {
         return data.map(normalizeProject)
       }
     }
@@ -294,13 +321,20 @@ export async function getFeaturedProjects(): Promise<Project[]> {
     console.warn("Could not fetch featured projects from API, using fallback:", error)
   }
 
-  const featured = DEFAULT_PROJECTS.filter((p) => p.featured)
-  return (featured.length > 0 ? featured : DEFAULT_PROJECTS.slice(0, 3)).map(normalizeProject)
+  const visible = DEFAULT_PROJECTS.map(normalizeProject).filter((p) => {
+    if (p.hidden) return false
+    if (site === "energymedia") return p.show_on_energymedia !== false
+    if (site === "asjohan") return p.show_on_asjohan !== false
+    return true
+  })
+  const featured = visible.filter((p) => p.featured)
+  return featured.length > 0 ? featured : visible.slice(0, 3)
 }
 
-export async function getProject(id: number): Promise<Project | null> {
+export async function getProject(id: number, site?: "asjohan" | "energymedia"): Promise<Project | null> {
   try {
-    const response = await fetch(`/api/projects/${id}`)
+    const qs = site ? `?site=${encodeURIComponent(site)}` : ""
+    const response = await fetch(`/api/projects/${id}${qs}`)
     // A 404 is a real answer (deleted or hidden project), not an outage to paper over
     if (response.status === 404) return null
     if (response.ok) {

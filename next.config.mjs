@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // The services page and its demo were retired; old links land on the work instead of a 404
+  // Legacy demo links land on the work instead of a 404.
+  // /services redirects to /projects on asjohan.com via proxy.ts so energymedia.com.co can serve /services.
   async redirects() {
     return [
-      { source: "/services", destination: "/projects", permanent: true },
       { source: "/demo/:path*", destination: "/projects", permanent: true },
     ];
   },

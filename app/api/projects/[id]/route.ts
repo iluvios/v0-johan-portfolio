@@ -1,7 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
-import { DEFAULT_PROJECTS, cleanCaseStudy, normalizeCaseStudy, normalizeProject, type Project } from "@/lib/projects"
+import { DEFAULT_PROJECTS, cleanCaseStudy, normalizeCaseStudy, normalizeProject } from "@/lib/projects"
 import { isAdmin, requireAdmin } from "@/lib/admin-auth"
+import { SITE_HEADER, isSiteId, resolveSiteFromHost, type SiteId } from "@/lib/tenant"
 
 function getDatabaseUrl(): string | undefined {
   return (
@@ -12,14 +13,29 @@ function getDatabaseUrl(): string | undefined {
   )
 }
 
+function resolveRequestSite(request: NextRequest): SiteId {
+  const querySite = new URL(request.url).searchParams.get("site")
+  if (isSiteId(querySite)) return querySite
+  const headerSite = request.headers.get(SITE_HEADER)
+  if (isSiteId(headerSite)) return headerSite
+  return resolveSiteFromHost(request.headers.get("x-forwarded-host") || request.headers.get("host"))
+}
+
+function isVisibleForSite(row: { hidden?: boolean | null; show_on_asjohan?: boolean | null; show_on_energymedia?: boolean | null }, site: SiteId): boolean {
+  if (row.hidden) return false
+  return site === "energymedia" ? row.show_on_energymedia !== false : row.show_on_asjohan !== false
+}
+
 export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id: idParam } = await params
   const id = Number.parseInt(idParam)
   const dbUrl = getDatabaseUrl()
+  const site = resolveRequestSite(request)
+  const allowAdminBypass = new URL(request.url).searchParams.get("scope") === "all" && isAdmin(request)
 
   if (!dbUrl) {
     const project = DEFAULT_PROJECTS.find((p) => p.id === id)
-    if (!project) {
+    if (!project || (!allowAdminBypass && !isVisibleForSite(project, site))) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 })
     }
     return NextResponse.json(normalizeProject(project))
@@ -27,19 +43,23 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
   try {
     const sql = neon(dbUrl)
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS show_on_asjohan BOOLEAN DEFAULT true;`.catch(() => {})
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS show_on_energymedia BOOLEAN DEFAULT true;`.catch(() => {})
+
     const result = await sql`
-      SELECT * FROM projects 
+      SELECT * FROM projects
       WHERE id = ${id}
     `
 
     if (!result || result.length === 0) {
       const fallback = DEFAULT_PROJECTS.find((p) => p.id === id)
-      if (fallback) return NextResponse.json(normalizeProject(fallback))
+      if (fallback && (allowAdminBypass || isVisibleForSite(fallback, site))) {
+        return NextResponse.json(normalizeProject(fallback))
+      }
       return NextResponse.json({ error: "Project not found" }, { status: 404 })
     }
 
-    // A hidden project doesn't exist for visitors, only for the admin
-    if (result[0].hidden && !isAdmin(request)) {
+    if (!allowAdminBypass && !isVisibleForSite(result[0], site)) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 })
     }
 
@@ -47,7 +67,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   } catch (error) {
     console.warn("Database query error, checking fallback projects:", error)
     const project = DEFAULT_PROJECTS.find((p) => p.id === id)
-    if (project) {
+    if (project && (allowAdminBypass || isVisibleForSite(project, site))) {
       return NextResponse.json(normalizeProject(project))
     }
     return NextResponse.json({ error: "Failed to fetch project" }, { status: 500 })
@@ -84,11 +104,12 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     const galleryArray = Array.isArray(project.gallery) ? project.gallery : null
     const featured = typeof project.featured === "boolean" ? project.featured : null
     const hidden = typeof project.hidden === "boolean" ? project.hidden : null
+    const showOnAsjohan = typeof project.show_on_asjohan === "boolean" ? project.show_on_asjohan : null
+    const showOnEnergymedia = typeof project.show_on_energymedia === "boolean" ? project.show_on_energymedia : null
     const caseStudy = normalizeCaseStudy(project.case_study)
     const caseStudyJson = caseStudy ? JSON.stringify(cleanCaseStudy(caseStudy)) : null
     // The admin sends back the updated_at it loaded. If the project changed since (another tab,
     // another editor, a script), refuse the save instead of silently overwriting the newer version.
-    // Both sides go through the same driver, so the comparison holds whatever the server's timezone.
     const loadedAt = typeof project.updated_at === "string" ? Date.parse(project.updated_at) : NaN
     let expectedVersion: string | null = null
     if (!Number.isNaN(loadedAt)) {
@@ -107,6 +128,8 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 
     await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS case_study JSONB;`.catch(() => {})
     await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS hidden BOOLEAN DEFAULT false;`.catch(() => {})
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS show_on_asjohan BOOLEAN DEFAULT true;`.catch(() => {})
+    await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS show_on_energymedia BOOLEAN DEFAULT true;`.catch(() => {})
 
     const result = await sql`
       UPDATE projects
@@ -121,6 +144,8 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
           website_url = COALESCE(${project.website_url}, website_url),
           featured = COALESCE(${featured}, featured),
           hidden = COALESCE(${hidden}, hidden),
+          show_on_asjohan = COALESCE(${showOnAsjohan}, show_on_asjohan),
+          show_on_energymedia = COALESCE(${showOnEnergymedia}, show_on_energymedia),
           case_study = COALESCE(${caseStudyJson}::jsonb, case_study),
           updated_at = CURRENT_TIMESTAMP
       WHERE id = ${id}

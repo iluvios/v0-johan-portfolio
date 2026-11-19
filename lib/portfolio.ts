@@ -2,9 +2,16 @@
 
 import useSWR from "swr";
 import { useLanguage } from "@/contexts/language-context";
+import { useSite } from "@/contexts/site-context";
 import { getProjects, getFeaturedProjects, getProject } from "@/lib/projects";
 import { getBlogPosts, getBlogPost } from "@/lib/blog";
-import { portfolioCopy, type Language } from "@/lib/i18n";
+import {
+  portfolioCopy,
+  agencyCopy,
+  agencyPortfolioOverrides,
+  type Language,
+  type PortfolioCopy,
+} from "@/lib/i18n";
 
 // Project categories are stored in English; Spanish visitors see them translated.
 const CATEGORY_ES: Record<string, string> = {
@@ -16,19 +23,51 @@ const CATEGORY_ES: Record<string, string> = {
 
 export function usePortfolioCopy() {
   const { language } = useLanguage();
+  const { isAgency } = useSite();
+  const base = portfolioCopy[language];
+  const copy: PortfolioCopy = isAgency
+    ? {
+        ...base,
+        ...agencyPortfolioOverrides[language],
+        caseStudy: {
+          ...base.caseStudy,
+          ...(agencyPortfolioOverrides[language].caseStudy ?? {}),
+        },
+      }
+    : base;
   const categoryName = (value: string) =>
     language === "es" ? (CATEGORY_ES[value] ?? value) : value;
-  return { copy: portfolioCopy[language], language, categoryName };
+  return { copy, language, categoryName };
 }
 
-export const useProjects = () =>
-  useSWR("portfolio-projects", () => getProjects());
-export const useFeaturedProjects = () =>
-  useSWR("portfolio-featured-projects", getFeaturedProjects);
-export const useProject = (id: number) =>
-  useSWR(["portfolio-project", id], () =>
-    Number.isSafeInteger(id) && id > 0 ? getProject(id) : Promise.resolve(null),
+export function useAgencyCopy() {
+  const { language } = useLanguage();
+  return { copy: agencyCopy[language], language };
+}
+
+export function useProjects() {
+  const { site } = useSite();
+  return useSWR(["portfolio-projects", site], () =>
+    getProjects(undefined, { site }),
   );
+}
+
+export function useFeaturedProjects() {
+  const { site } = useSite();
+  return useSWR(["portfolio-featured-projects", site], () =>
+    getFeaturedProjects(site),
+  );
+}
+
+export function useProject(id: number) {
+  const { site } = useSite();
+  return useSWR(["portfolio-project", site, id], () =>
+    Number.isSafeInteger(id) && id > 0
+      ? getProject(id, site)
+      : Promise.resolve(null),
+  );
+}
+
 export const useArticles = () => useSWR("portfolio-articles", getBlogPosts);
 export const useArticle = (id: string) =>
   useSWR(["portfolio-article", id], () => getBlogPost(id));

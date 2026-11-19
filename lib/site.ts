@@ -1,5 +1,7 @@
-// Single source for public contact details used across the site.
+// Single source for public contact details used across both sites.
 export const CONTACT_EMAIL = "contact@asjohan.com";
+export const AGENCY_EMAIL =
+  process.env.NEXT_PUBLIC_AGENCY_EMAIL || "contact@energymedia.com.co";
 export const LINKEDIN_URL = "https://linkedin.com/in/johanalvarez";
 
 export const STACK = [
