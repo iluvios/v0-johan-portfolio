@@ -1,98 +1,70 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Reveal } from "@/components/portfolio-motion";
+import { PageIntro } from "@/components/portfolio-ui";
+import PricingCalculator from "@/components/agency/pricing-calculator";
 import {
-  Eyebrow,
-  PageIntro,
-  ContactInvitation,
-} from "@/components/portfolio-ui";
-import { useAgencyCopy } from "@/lib/portfolio";
+  AgencyCta,
+  AgencySection,
+  FaqList,
+  FunnelGrid,
+  NumberedGrid,
+} from "@/components/agency/sections";
+import { useLanguage } from "@/contexts/language-context";
+import { agencyHomeCopy } from "@/lib/agency/copy";
+
+const INTRO = {
+  en: {
+    eyebrow: "Services",
+    title: "Your whole funnel, built and run by one team.",
+    description:
+      "Most businesses split ads, social media, websites, email and tracking across separate vendors, with nobody answering leads at night. We set up the whole system once, AI assistants included, then run and improve it every month.",
+  },
+  es: {
+    eyebrow: "Servicios",
+    title: "Todo tu embudo, construido y operado por un solo equipo.",
+    description:
+      "La mayoría de negocios reparte pauta, redes sociales, sitio web, email y medición entre proveedores distintos, y nadie responde a los leads de noche. Montamos todo el sistema una vez, con asistentes de IA incluidos, y luego lo operamos y mejoramos cada mes.",
+  },
+};
 
 export default function AgencyServices() {
-  const { copy } = useAgencyCopy();
-  const page = copy.servicesPage;
+  const { language } = useLanguage();
+  const copy = agencyHomeCopy[language];
+  const intro = INTRO[language];
 
   return (
     <div className="page-shell">
-      <PageIntro
-        eyebrow={page.eyebrow}
-        title={page.title}
-        description={page.description}
-      />
-
+      <PageIntro eyebrow={intro.eyebrow} title={intro.title} description={intro.description} />
       <Separator />
-
-      <section className="section" aria-labelledby="services-capabilities">
-        <div className="section-heading">
-          <div className="flex flex-col gap-4">
-            <Eyebrow>{copy.capabilitiesEyebrow}</Eyebrow>
-            <h2 id="services-capabilities" className="section-title">
-              {copy.capabilitiesTitle}
-            </h2>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {copy.capabilities.map((item) => (
-            <Reveal key={item.index}>
-              <article className="service-teaser h-full">
-                <span className="service-index">{item.index}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <ul className="mt-auto flex flex-wrap gap-1.5 pt-4">
-                  {item.deliverables.map((deliverable) => (
-                    <li key={deliverable}>
-                      <Badge variant="tag">{deliverable}</Badge>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
+      <AgencySection id="services" eyebrow={copy.funnelEyebrow} title={copy.funnelTitle}>
+        <FunnelGrid stages={copy.funnel} />
+      </AgencySection>
       <Separator />
-
-      <section className="section" aria-labelledby="engagement-models">
-        <div className="section-heading">
-          <div className="flex flex-col gap-4">
-            <Eyebrow>{page.modelsEyebrow}</Eyebrow>
-            <h2 id="engagement-models" className="section-title">
-              {page.modelsTitle}
-            </h2>
-          </div>
-        </div>
-        <div className="process-grid">
-          {page.models.map((model) => (
-            <Reveal key={model.index} className="process-step justify-between">
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="service-index">{model.index}</span>
-                  <Badge variant="tag">{model.tag}</Badge>
-                </div>
-                <h3>{model.name}</h3>
-                <p>{model.description}</p>
-                <p className="text-xs leading-relaxed text-accent/90">
-                  {model.fit}
-                </p>
-              </div>
-              <div className="pt-4">
-                <Link href="/contact" className="text-link">
-                  {page.startCta}
-                  <ArrowUpRight size={16} aria-hidden="true" />
-                </Link>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
+      <AgencySection id="ai" eyebrow={copy.aiEyebrow} title={copy.aiTitle} intro={copy.aiIntro}>
+        <NumberedGrid items={copy.ai} />
+        <p className="agency-note">{copy.aiNote}</p>
+      </AgencySection>
+      <Separator />
+      <AgencySection
+        id="pricing"
+        eyebrow={copy.pricingEyebrow}
+        title={copy.pricingTitle}
+        intro={copy.pricingIntro}
+      >
+        <PricingCalculator />
+      </AgencySection>
+      <Separator />
+      <AgencySection id="faq" eyebrow={copy.faqEyebrow} title={copy.faqTitle}>
+        <FaqList items={copy.faq} />
+      </AgencySection>
       <div className="pb-16 md:pb-24">
-        <ContactInvitation />
+        <AgencyCta
+          eyebrow={copy.ctaEyebrow}
+          title={copy.ctaTitle}
+          body={copy.ctaBody}
+          button={copy.ctaButton}
+        />
       </div>
     </div>
   );

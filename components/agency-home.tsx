@@ -1,33 +1,45 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import { GlowButton } from "@/components/ui/glow-button";
 import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
+import { Reveal, ScrollArtwork } from "@/components/portfolio-motion";
+import { Eyebrow } from "@/components/portfolio-ui";
+import PricingCalculator from "@/components/agency/pricing-calculator";
 import {
-  Reveal,
-  ScrollArtwork,
-  ScrollWorkItem,
-} from "@/components/portfolio-motion";
-import {
-  Eyebrow,
-  ProjectCard,
-  ContentLoading,
-  ContentEmpty,
-  ContactInvitation,
-} from "@/components/portfolio-ui";
-import {
-  useAgencyCopy,
-  usePortfolioCopy,
-  useFeaturedProjects,
-} from "@/lib/portfolio";
-import { STACK } from "@/lib/site";
+  AgencyCta,
+  AgencySection,
+  FaqList,
+  FunnelGrid,
+  NumberedGrid,
+  ProofGrid,
+} from "@/components/agency/sections";
+import { useLanguage } from "@/contexts/language-context";
+import { agencyHomeCopy, getProof } from "@/lib/agency/copy";
+import { INDUSTRIES, INDUSTRY_SLUGS } from "@/lib/agency/industries";
 
-function AgencyHero() {
-  const { copy, language } = useAgencyCopy();
+export function AgencyHero({
+  eyebrow,
+  hero,
+  intro,
+  primaryCta,
+  secondaryCta,
+  facts,
+  scroll,
+  scrollTarget,
+}: {
+  eyebrow: string;
+  hero: string[];
+  intro: string;
+  primaryCta: string;
+  secondaryCta: string;
+  facts: string[];
+  scroll: string;
+  scrollTarget: string;
+}) {
+  const { language } = useLanguage();
   return (
     <section className="hero" aria-labelledby="agency-hero-heading">
       <div className="page-shell hero-inner">
@@ -42,39 +54,39 @@ function AgencyHero() {
           />
         </ScrollArtwork>
         <div className="hero-copy">
-          <Eyebrow>{copy.eyebrow}</Eyebrow>
+          <Eyebrow>{eyebrow}</Eyebrow>
           <h1 id="agency-hero-heading" className="hero-title" lang={language}>
-            {copy.hero.map((line, i) => (
-              <span key={i} className={i === 2 ? "hero-last" : undefined}>
+            {hero.map((line, i) => (
+              <span key={i} className={i === hero.length - 1 ? "hero-last" : undefined}>
                 {line}
               </span>
             ))}
           </h1>
-          <p className="hero-description">{copy.intro}</p>
+          <p className="hero-description agency-hero-description">{intro}</p>
           <div className="hero-actions">
             <GlowButton asChild>
               <Link href="/contact">
-                {copy.primaryCta}
+                {primaryCta}
                 <ArrowUpRight data-icon="inline-end" />
               </Link>
             </GlowButton>
-            <Link href="#selected-work" className="text-link">
-              {copy.secondaryCta}
+            <Link href="#pricing" className="text-link">
+              {secondaryCta}
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </div>
         <div className="hero-bottom">
           <ul className="hero-facts">
-            {copy.facts.map((item, i) => (
+            {facts.map((item, i) => (
               <li key={item}>
                 {i === 0 && <span className="status-dot" aria-hidden="true" />}
                 {item}
               </li>
             ))}
           </ul>
-          <a href="#capabilities" aria-label={copy.scroll}>
-            <span className="scroll-label">{copy.scroll}</span>
+          <a href={`#${scrollTarget}`} aria-label={scroll}>
+            <span className="scroll-label">{scroll}</span>
             <ArrowDown size={20} aria-hidden="true" />
           </a>
         </div>
@@ -83,172 +95,87 @@ function AgencyHero() {
   );
 }
 
-function Capabilities() {
-  const { copy } = useAgencyCopy();
-  return (
-    <section
-      id="capabilities"
-      className="section"
-      aria-labelledby="capabilities-heading"
-    >
-      <div className="section-heading">
-        <div className="flex flex-col gap-4">
-          <Eyebrow>{copy.capabilitiesEyebrow}</Eyebrow>
-          <h2 id="capabilities-heading" className="section-title">
-            {copy.capabilitiesTitle}
-          </h2>
-        </div>
-        <Link className="text-link" href="/services">
-          {copy.capabilitiesLink}
-          <ArrowUpRight size={18} aria-hidden="true" />
-        </Link>
-      </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {copy.capabilities.map((item) => (
-          <Reveal key={item.index}>
-            <Link href="/services" className="service-teaser h-full">
-              <span className="service-index">{item.index}</span>
-              <ArrowUpRight
-                size={18}
-                className="service-teaser-arrow"
-                aria-hidden="true"
-              />
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <ul className="mt-auto flex flex-wrap gap-1.5 pt-3">
-                {item.deliverables.map((deliverable) => (
-                  <li key={deliverable}>
-                    <Badge variant="tag">{deliverable}</Badge>
-                  </li>
-                ))}
-              </ul>
-            </Link>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function SelectedClientWork() {
-  const { copy } = usePortfolioCopy();
-  const { data: projects, isLoading, error, mutate } = useFeaturedProjects();
-  const selected = projects?.slice(0, 3) || [];
-  const [activeId, setActiveId] = useState<number | null>(null);
-  return (
-    <section
-      id="selected-work"
-      className="section"
-      aria-labelledby="agency-work-heading"
-    >
-      <div className="work-layout">
-        <aside className="work-aside">
-          <Eyebrow>{copy.selected}</Eyebrow>
-          <h2 id="agency-work-heading" className="section-title">
-            {copy.workTitle}
-          </h2>
-          <nav className="work-index" aria-label={copy.selected}>
-            {selected.map((project, i) => (
-              <a
-                key={project.id}
-                href={`#work-${project.id}`}
-                aria-current={
-                  (activeId ?? selected[0]?.id) === project.id
-                    ? "location"
-                    : undefined
-                }
-              >
-                <span>{String(i + 1).padStart(2, "0")}</span>
-                <span>{project.title}</span>
-              </a>
-            ))}
-          </nav>
-          <Link className="text-link" href="/projects">
-            {copy.allWork}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </Link>
-        </aside>
-        <div className="work-list">
-          {isLoading ? (
-            <ContentLoading detail />
-          ) : error ? (
-            <ContentEmpty error onReset={() => mutate()} />
-          ) : selected.length ? (
-            selected.map((project, i) => (
-              <ScrollWorkItem
-                key={project.id}
-                onEnter={() => setActiveId(project.id)}
-              >
-                <ProjectCard project={project} index={i} />
-              </ScrollWorkItem>
-            ))
-          ) : (
-            <ContentEmpty />
-          )}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Process() {
-  const { copy } = useAgencyCopy();
-  return (
-    <section className="section" aria-labelledby="process-heading">
-      <div className="section-heading">
-        <div className="flex flex-col gap-4">
-          <Eyebrow>{copy.processEyebrow}</Eyebrow>
-          <h2 id="process-heading" className="section-title">
-            {copy.processTitle}
-          </h2>
-        </div>
-      </div>
-      <div className="process-grid">
-        {copy.process.map((step) => (
-          <Reveal key={step.index} className="process-step">
-            <span className="service-index">{step.index}</span>
-            <h3>{step.title}</h3>
-            <p>{step.description}</p>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function AgencyStack() {
-  const { copy } = usePortfolioCopy();
-  return (
-    <section className="section" aria-label={copy.stackLabel}>
-      <div className="flex flex-col gap-4">
-        <p className="eyebrow">{copy.stackLabel}</p>
-        <ul className="flex flex-wrap gap-2">
-          {STACK.map((tool) => (
-            <li key={tool}>
-              <Badge variant="tag">{tool}</Badge>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 export default function AgencyHome() {
+  const { language } = useLanguage();
+  const copy = agencyHomeCopy[language];
   return (
     <>
-      <AgencyHero />
+      <AgencyHero
+        eyebrow={copy.eyebrow}
+        hero={copy.hero}
+        intro={copy.intro}
+        primaryCta={copy.primaryCta}
+        secondaryCta={copy.secondaryCta}
+        facts={copy.facts}
+        scroll={copy.scroll}
+        scrollTarget="problem"
+      />
       <div className="page-shell">
         <Separator />
-        <Capabilities />
+        <AgencySection id="problem" eyebrow={copy.problemEyebrow} title={copy.problemTitle}>
+          <NumberedGrid items={copy.problems} />
+        </AgencySection>
         <Separator />
-        <SelectedClientWork />
+        <AgencySection id="services" eyebrow={copy.funnelEyebrow} title={copy.funnelTitle}>
+          <FunnelGrid stages={copy.funnel} />
+        </AgencySection>
         <Separator />
-        <Process />
+        <AgencySection id="ai" eyebrow={copy.aiEyebrow} title={copy.aiTitle} intro={copy.aiIntro}>
+          <NumberedGrid items={copy.ai} />
+          <p className="agency-note">{copy.aiNote}</p>
+        </AgencySection>
         <Separator />
-        <AgencyStack />
+        <AgencySection id="proof" eyebrow={copy.proofEyebrow} title={copy.proofTitle}>
+          <ProofGrid
+            items={getProof(language, ["revy", "autobruder", "rainforest", "bi", "nurses", "tecno"])}
+            caseStudy={copy.caseStudy}
+          />
+          <p className="agency-note">{copy.proofNote}</p>
+        </AgencySection>
+        <Separator />
+        <AgencySection id="industries" eyebrow={copy.industriesEyebrow} title={copy.industriesTitle}>
+          <div className="agency-industries">
+            {INDUSTRY_SLUGS.map((slug) => {
+              const industry = INDUSTRIES[slug].copy[language];
+              return (
+                <Reveal key={slug}>
+                  <Link href={`/industries/${slug}`} className="service-teaser h-full">
+                    <ArrowUpRight size={18} className="service-teaser-arrow" aria-hidden="true" />
+                    <h3>{industry.name}</h3>
+                    <p>{industry.teaser}</p>
+                    <span className="mt-auto pt-3 text-sm font-medium text-accent">
+                      {copy.industriesLink}
+                    </span>
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </div>
+        </AgencySection>
+        <Separator />
+        <AgencySection id="process" eyebrow={copy.processEyebrow} title={copy.processTitle}>
+          <NumberedGrid items={copy.process} />
+        </AgencySection>
+        <Separator />
+        <AgencySection
+          id="pricing"
+          eyebrow={copy.pricingEyebrow}
+          title={copy.pricingTitle}
+          intro={copy.pricingIntro}
+        >
+          <PricingCalculator />
+        </AgencySection>
+        <Separator />
+        <AgencySection id="faq" eyebrow={copy.faqEyebrow} title={copy.faqTitle}>
+          <FaqList items={copy.faq} />
+        </AgencySection>
         <div className="pb-16 md:pb-24">
-          <ContactInvitation />
+          <AgencyCta
+            eyebrow={copy.ctaEyebrow}
+            title={copy.ctaTitle}
+            body={copy.ctaBody}
+            button={copy.ctaButton}
+          />
         </div>
       </div>
     </>

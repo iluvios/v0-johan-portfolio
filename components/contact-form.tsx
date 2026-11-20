@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowUpRight, Info } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,6 +33,11 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [opened, setOpened] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
+  // The agency pricing calculator links here with ?message=<plan summary>.
+  useEffect(() => {
+    const preset = new URLSearchParams(window.location.search).get("message");
+    if (preset) setDraft((current) => ({ ...current, message: preset.slice(0, 2000) }));
+  }, []);
   function update(field: keyof Draft, value: string) {
     setDraft((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));

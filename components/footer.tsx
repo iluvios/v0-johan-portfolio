@@ -37,6 +37,10 @@ export default function Footer() {
                 {language === "en" ? "Services" : "Servicios"}{" "}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </Link>
+              <Link href="/#industries">
+                {language === "en" ? "Industries" : "Industrias"}{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
               <Link href="/projects">
                 {language === "en" ? "Work" : "Casos"}{" "}
                 <ArrowUpRight size={16} aria-hidden="true" />

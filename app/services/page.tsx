@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Services",
     description:
-      "Paid media, high-converting Next.js & Webflow websites, CRM lifecycle automation, and server-side attribution built by Energy Media.",
+      "Paid media, social media, email marketing, websites, landing pages, tracking and CRM, built and run by one team, with a pricing calculator.",
   };
 }
 

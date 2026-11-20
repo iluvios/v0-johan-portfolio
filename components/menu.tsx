@@ -30,12 +30,14 @@ export default function MenuComponent() {
       ? [
           { href: "/", label: "Home" },
           { href: "/services", label: "Services" },
+          { href: "/services#pricing", label: "Pricing" },
           { href: "/projects", label: "Work" },
           { href: "/about", label: "About" },
         ]
       : [
           { href: "/", label: "Inicio" },
           { href: "/services", label: "Servicios" },
+          { href: "/services#pricing", label: "Precios" },
           { href: "/projects", label: "Casos" },
           { href: "/about", label: "Nosotros" },
         ]
@@ -58,15 +60,15 @@ export default function MenuComponent() {
         ...items,
         {
           href: "/contact",
-          label: language === "en" ? "Start a project" : "Contacto",
+          label: language === "en" ? "Book a call" : "Agenda una llamada",
         },
       ]
     : items;
 
   const ctaLabel = isAgency
     ? language === "en"
-      ? "Start a project"
-      : "Hablemos"
+      ? "Book a call"
+      : "Agenda una llamada"
     : copy.talk;
 
   const active = (href: string) =>
