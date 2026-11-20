@@ -21,7 +21,7 @@ export const TEAM: TeamMember[] = [
     photo: "/images/johan-portrait.webp",
     link: "https://asjohan.com",
   },
-  { id: "santiago", name: "Santiago" },
+  { id: "santiago", name: "Santiago", photo: "/media/team/santiago.webp" },
 ];
 
 interface MemberCopy {
