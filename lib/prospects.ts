@@ -10,6 +10,14 @@ export type ProspectCohort =
   | "event_venues"
   | "real_estate"
   | "funded_startups"
+  | "healthcare_clinics"
+  | "longevity_specialty_med"
+  | "urgent_home_dispatch"
+  | "moving_cleaning"
+  | "hospitality_rentals"
+  | "pet_resorts_grooming"
+  | "academies_fitness"
+  | "event_vendors"
 
 export type OutreachAngle =
   | "modernize_website"
@@ -339,6 +347,54 @@ export const PROSPECT_COHORTS: {
     label: "YC & Funded Startups (Existing CRM)",
     shortLabel: "Funded Startups",
     colorClass: "bg-violet-950/60 text-violet-300 border-violet-500/30",
+  },
+  {
+    value: "healthcare_clinics",
+    label: "Dental, Vet, Chiro & PT Clinics (Chatbot)",
+    shortLabel: "Dental / Vet / Rehab",
+    colorClass: "bg-sky-950/60 text-sky-300 border-sky-500/30",
+  },
+  {
+    value: "longevity_specialty_med",
+    label: "Fertility, LASIK, Hair & TRT Clinics (Chatbot)",
+    shortLabel: "Fertility / LASIK / TRT",
+    colorClass: "bg-fuchsia-950/60 text-fuchsia-300 border-fuchsia-500/30",
+  },
+  {
+    value: "urgent_home_dispatch",
+    label: "24/7 Urgent Home Dispatch & Pest (Chatbot)",
+    shortLabel: "24/7 Home Dispatch",
+    colorClass: "bg-orange-950/60 text-orange-300 border-orange-500/30",
+  },
+  {
+    value: "moving_cleaning",
+    label: "Moving, Storage & Commercial Cleaning (Chatbot)",
+    shortLabel: "Moving & Cleaning",
+    colorClass: "bg-lime-950/60 text-lime-300 border-lime-500/30",
+  },
+  {
+    value: "hospitality_rentals",
+    label: "Charters, Exotic Cars, Cabins & Tours (Chatbot)",
+    shortLabel: "Charters & Rentals",
+    colorClass: "bg-blue-950/60 text-blue-300 border-blue-500/30",
+  },
+  {
+    value: "pet_resorts_grooming",
+    label: "Luxury Pet Resorts & Mobile Grooming (Chatbot)",
+    shortLabel: "Pet Resorts / Groom",
+    colorClass: "bg-yellow-950/60 text-yellow-300 border-yellow-500/30",
+  },
+  {
+    value: "academies_fitness",
+    label: "Boutique Fitness, Swim & Private Schools (Chatbot)",
+    shortLabel: "Fitness & Academies",
+    colorClass: "bg-purple-950/60 text-purple-300 border-purple-500/30",
+  },
+  {
+    value: "event_vendors",
+    label: "Wedding Catering, Photo/AV & Rentals (Chatbot)",
+    shortLabel: "Event Vendors",
+    colorClass: "bg-pink-950/60 text-pink-200 border-pink-400/30",
   },
 ]
 

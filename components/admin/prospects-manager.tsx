@@ -284,14 +284,14 @@ export function ProspectsManager({ notify, onCountChange }: ProspectsManagerProp
   return (
     <div className="space-y-6">
       {/* Top A/B Cohort KPI Summary Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
         <button
           type="button"
           onClick={() => {
             setCohort("all")
             setOffset(0)
           }}
-          className={`text-left p-3.5 rounded-lg border transition-all ${
+          className={`text-left p-3 rounded-lg border transition-all ${
             cohort === "all"
               ? "bg-blue-950/50 border-blue-500/60 shadow-md"
               : "bg-slate-900/70 border-slate-800 hover:border-slate-700"
@@ -318,7 +318,7 @@ export function ProspectsManager({ notify, onCountChange }: ProspectsManagerProp
                 setCohort(active ? "all" : c.value)
                 setOffset(0)
               }}
-              className={`text-left p-3.5 rounded-lg border transition-all ${
+              className={`text-left p-3 rounded-lg border transition-all ${
                 active
                   ? "bg-blue-950/50 border-blue-500/60 shadow-md"
                   : "bg-slate-900/70 border-slate-800 hover:border-slate-700"
@@ -354,6 +354,26 @@ export function ProspectsManager({ notify, onCountChange }: ProspectsManagerProp
                   className="pl-9 bg-slate-950/70 border-slate-800 text-sm text-white"
                 />
               </div>
+
+              <Select
+                value={cohort}
+                onValueChange={(v) => {
+                  setCohort(v)
+                  setOffset(0)
+                }}
+              >
+                <SelectTrigger className="w-[215px] bg-slate-950/70 border-slate-800 text-sm text-slate-200">
+                  <SelectValue placeholder="Industry Cohort" />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-900 border-slate-800 text-slate-100">
+                  <SelectItem value="all">All Cohorts</SelectItem>
+                  {PROSPECT_COHORTS.map((c) => (
+                    <SelectItem key={c.value} value={c.value}>
+                      {c.shortLabel}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
               <Select
                 value={source}

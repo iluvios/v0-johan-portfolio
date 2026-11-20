@@ -120,11 +120,53 @@ export const TOP_50_METROS: MetroConfig[] = [
 
 export const TOP_25_METROS = TOP_50_METROS
 
+export const COASTAL_LAKE_METROS: string[] = [
+  "Miami, FL",
+  "Fort Lauderdale-Boca Raton, FL",
+  "Tampa-St. Petersburg, FL",
+  "West Palm Beach, FL",
+  "Naples-Sarasota, FL",
+  "Jacksonville, FL",
+  "Charleston, SC",
+  "Virginia Beach-Norfolk, VA",
+  "New Orleans, LA",
+  "Houston, TX",
+  "Austin, TX",
+  "New York-North Jersey, NY",
+  "Stamford-Greenwich, CT",
+  "Boston, MA",
+  "Baltimore-Towson, MD",
+  "Chicago, IL",
+  "Milwaukee, WI",
+  "Los Angeles-Beverly Hills, CA",
+  "San Diego, CA",
+  "Seattle-Bellevue, WA",
+]
+
+export const TOURISM_OUTDOOR_METROS: string[] = [
+  ...COASTAL_LAKE_METROS,
+  "Orlando, FL",
+  "Las Vegas, NV",
+  "Denver, CO",
+  "Salt Lake City, UT",
+  "Phoenix-Scottsdale, AZ",
+  "Nashville, TN",
+  "Atlanta, GA",
+  "Philadelphia, PA",
+]
+
+export interface CohortQueryConfig {
+  subCategory: string
+  term: string
+  maxMetros?: number
+  metroNames?: string[]
+}
+
 export interface CohortDiscoveryConfig {
   cohort: ProspectCohort
   label: string
   targetNewLeads: number
-  queries: { subCategory: string; term: string }[]
+  queries: CohortQueryConfig[]
   w2wCategories: string[]
   w2wKeywords: string[]
   provenConventions: string[]
@@ -263,6 +305,162 @@ export const ACTIVE_LOCAL_COHORTS: CohortDiscoveryConfig[] = [
     highRoiLever:
       "Interactive home-valuation / owner-rental-estimate funnel + CRM speed-to-lead automation & local Meta retargeting",
   },
+  {
+    cohort: "healthcare_clinics",
+    label: "Dental, Vet, Chiro & PT Clinics",
+    targetNewLeads: 900,
+    queries: [
+      { subCategory: "Emergency & Specialty Veterinary", term: "emergency vet animal hospital veterinary clinic", maxMetros: 40 },
+      { subCategory: "Cosmetic, Implant & Ortho Dentistry", term: "cosmetic dentist dental implants orthodontist", maxMetros: 40 },
+      { subCategory: "Chiropractic, PT & Pain Clinics", term: "chiropractor physical therapy pain clinic", maxMetros: 40 },
+    ],
+    w2wCategories: ["dental_services", "health_wellness"],
+    w2wKeywords: ["dental", "vet", "clinic"],
+    provenConventions: [
+      "Clear insurance/financing accepted badges & new-patient intro offer above the fold",
+      "Direct online booking or 60-second symptom/appointment triage without phone hold loops",
+      "Doctor/vet credentials + 100+ local Google patient/pet-parent reviews featured early",
+    ],
+    highRoiLever:
+      "24/7 Web/SMS/IG AI patient triage & appointment-booking assistant + insurance Q&A & automated missed-call rescue",
+  },
+  {
+    cohort: "longevity_specialty_med",
+    label: "Fertility, LASIK, Hair & Longevity Clinics",
+    targetNewLeads: 750,
+    queries: [
+      { subCategory: "Fertility & IVF Clinics", term: "fertility clinic IVF reproductive center", maxMetros: 30 },
+      { subCategory: "Hair Transplant & Restoration", term: "hair transplant hair restoration clinic", maxMetros: 30 },
+      { subCategory: "LASIK & Refractive Eye Centers", term: "LASIK eye surgery vision center", maxMetros: 30 },
+      { subCategory: "TRT, Hormone & Medical Weight Loss", term: "hormone replacement TRT longevity weight loss clinic", maxMetros: 30 },
+    ],
+    w2wCategories: ["beauty_services", "health_wellness", "high_ticket_sales"],
+    w2wKeywords: ["fertility", "lasik", "hormone"],
+    provenConventions: [
+      "Discreet, fast eligibility quiz ('Am I a candidate?') + monthly financing breakdown",
+      "Surgeon/MD authority bio, clinical outcomes proof, and real patient transformations",
+      "Private 24/7 consultation scheduler for late-night researchers",
+    ],
+    highRoiLever:
+      "24/7 discreet AI candidacy & financing qualifier + instant private consultation booking (Web + IG/FB)",
+  },
+  {
+    cohort: "urgent_home_dispatch",
+    label: "24/7 Urgent Home Dispatch & Pest",
+    targetNewLeads: 1000,
+    queries: [
+      { subCategory: "Water, Fire & Mold Restoration", term: "water damage mold restoration 24 hour", maxMetros: 40 },
+      { subCategory: "24/7 Emergency HVAC & Plumbing", term: "24 hour emergency HVAC plumbing repair", maxMetros: 40 },
+      { subCategory: "Garage Door Repair & Installation", term: "garage door repair installation service", maxMetros: 35 },
+      { subCategory: "Pest & Termite Control", term: "pest control termite exterminator company", maxMetros: 35 },
+    ],
+    w2wCategories: ["diy_home_improvement", "instant_quote_services"],
+    w2wKeywords: ["emergency", "repair", "pest"],
+    provenConventions: [
+      "Sticky 24/7 live dispatch promise, response-time SLA, and local service-area ZIP checker",
+      "Instant issue triage & ballpark repair/service estimate instead of generic email forms",
+      "100+ local Google reviews, licensing/insurance proof, and upfront dispatch fee clarity",
+    ],
+    highRoiLever:
+      "24/7 AI emergency dispatch & SMS missed-call textback + 60-second ZIP/issue quote & crew booking bot",
+  },
+  {
+    cohort: "moving_cleaning",
+    label: "Moving, Storage & Commercial Cleaning",
+    targetNewLeads: 750,
+    queries: [
+      { subCategory: "Local & Long-Distance Moving", term: "moving company long distance movers", maxMetros: 40 },
+      { subCategory: "Commercial & Post-Construction Cleaning", term: "commercial janitorial post construction cleaning", maxMetros: 35 },
+      { subCategory: "Junk Removal & Dumpster Rental", term: "junk removal hauling dumpster rental", maxMetros: 35 },
+    ],
+    w2wCategories: ["instant_quote_services", "business_services"],
+    w2wKeywords: ["moving", "cleaning", "quote"],
+    provenConventions: [
+      "Instant room/sqft/truck-load ballpark estimator without waiting 24 hours for a callback",
+      "Transparent insurance, licensing/DOT numbers, and damage-protection guarantee",
+      "Fast date-availability checker + recurring/commercial walkthrough scheduler",
+    ],
+    highRoiLever:
+      "Interactive move-size / sqft instant quote chatbot + 24/7 crew-availability & walkthrough scheduler",
+  },
+  {
+    cohort: "hospitality_rentals",
+    label: "Charters, Exotic Cars, Cabins & Tours",
+    targetNewLeads: 750,
+    queries: [
+      { subCategory: "Yacht & Boat Charters", term: "yacht charter boat rental", metroNames: COASTAL_LAKE_METROS },
+      { subCategory: "Exotic & Luxury Car Rentals", term: "exotic luxury car rental", maxMetros: 25 },
+      { subCategory: "Limousine, Party Bus & Sprinter Charters", term: "limousine party bus charter rental", maxMetros: 30 },
+      { subCategory: "Direct-Booking Vacation Rentals & Cabins", term: "vacation rental property management cabin rentals", metroNames: TOURISM_OUTDOOR_METROS },
+      { subCategory: "Fishing Charters & Guided Adventure Tours", term: "fishing charter guided adventure tours", maxMetros: 25, metroNames: TOURISM_OUTDOOR_METROS },
+    ],
+    w2wCategories: ["high_ticket_sales", "instant_quote_services"],
+    w2wKeywords: ["charter", "rental", "tour"],
+    provenConventions: [
+      "Crisp fleet/property photography with guest capacity, rates, and departure rules clear upfront",
+      "Real-time date availability & instant group-package quote without slow email back-and-forth",
+      "Direct-booking incentive + verified 5-star TripAdvisor/Google guest proof",
+    ],
+    highRoiLever:
+      "24/7 Web + Instagram DM AI concierge for instant date availability, group pricing & deposit booking",
+  },
+  {
+    cohort: "pet_resorts_grooming",
+    label: "Luxury Pet Resorts & Mobile Grooming",
+    targetNewLeads: 550,
+    queries: [
+      { subCategory: "Luxury Dog Boarding & Daycare Resorts", term: "luxury dog boarding pet resort doggy daycare", maxMetros: 40 },
+      { subCategory: "Mobile Pet & Dog Grooming", term: "mobile dog pet grooming service", maxMetros: 40 },
+    ],
+    w2wCategories: ["instant_quote_services", "beauty_services"],
+    w2wKeywords: ["pet", "grooming", "boarding"],
+    provenConventions: [
+      "Clear vaccine requirements, suite/webcam tour photos, and breed/size pricing clarity",
+      "Self-serve temperament evaluation & holiday/weekend boarding availability booking",
+      "Verified pet-parent Google reviews & recurring grooming subscription CTA",
+    ],
+    highRoiLever:
+      "24/7 AI pet-parent intake bot answering vaccine/pricing Q&A + instant suite/van booking & rebooking reminders",
+  },
+  {
+    cohort: "academies_fitness",
+    label: "Boutique Fitness, Swim & Private Schools",
+    targetNewLeads: 800,
+    queries: [
+      { subCategory: "Pilates, Barre & Boutique Fitness", term: "pilates reformer boutique fitness studio", maxMetros: 35 },
+      { subCategory: "Martial Arts, BJJ & MMA Academies", term: "martial arts BJJ MMA karate academy", maxMetros: 35 },
+      { subCategory: "Swim Schools & Private Montessori Preschools", term: "swim school private montessori preschool", maxMetros: 35 },
+      { subCategory: "Flight, Trade & Vocational Academies", term: "flight school trade vocational academy", maxMetros: 25 },
+    ],
+    w2wCategories: ["health_wellness", "business_services"],
+    w2wKeywords: ["fitness", "school", "academy"],
+    provenConventions: [
+      "Clear class schedule, age/skill-level placement guide, and low-friction intro trial pass or campus tour",
+      "Transparent program tuition/membership cues & instructor safety credentials",
+      "Parent/student review proof + SMS/IG instant follow-up on trial inquiries",
+    ],
+    highRoiLever:
+      "24/7 Web & IG DM AI class-matcher & trial/campus-tour booking bot + automated no-show/enrollment follow-up",
+  },
+  {
+    cohort: "event_vendors",
+    label: "Wedding Catering, Photo/AV & Rentals",
+    targetNewLeads: 750,
+    queries: [
+      { subCategory: "Luxury Wedding & Event Catering", term: "luxury wedding event catering", maxMetros: 35 },
+      { subCategory: "Wedding Photography, Video & AV Production", term: "wedding photography videography DJ AV production", maxMetros: 35 },
+      { subCategory: "Event Tent, Lounge & Bridal Boutiques", term: "event tent furniture rental bridal boutique", maxMetros: 40 },
+    ],
+    w2wCategories: ["high_ticket_sales", "instant_quote_services"],
+    w2wKeywords: ["wedding", "catering", "rental"],
+    provenConventions: [
+      "Editorial portfolio / sample tasting menus + transparent starting-package tiers",
+      "Instant wedding/event date-availability & guest-count estimator instead of 48-hour inbox waits",
+      "Prominent Knot/Google couple testimonials & fast tasting/bridal-appointment scheduler",
+    ],
+    highRoiLever:
+      "24/7 IG DM & Web date-availability + guest-count package concierge that books tastings/consults automatically",
+  },
 ]
 
 // Social, link-in-bio, booking marketplaces & directory hosts (NOT standalone company domains)
@@ -318,6 +516,15 @@ export const SOCIAL_OR_DIRECTORY_HOSTS = new Set<string>([
   "carfax.com",
   "cars.com",
   "autotrader.com",
+  "boatsetter.com",
+  "getmyboat.com",
+  "viator.com",
+  "getyourguide.com",
+  "tripadvisor.com",
+  "classpass.com",
+  "care.com",
+  "bark.com",
+  "weddingpro.com",
 ])
 
 // National corporate chains / mega-franchises to exclude (we target independent/regional $1M-$30M businesses)
@@ -423,12 +630,56 @@ export const EXCLUDED_CHAIN_DOMAINS = new Set<string>([
   "828venues.com",
   "lutherauto.com",
   "duraservcorp.com",
+  "vcahospitals.com",
+  "banfield.com",
+  "bluepearlvet.com",
+  "thrivepetcare.com",
+  "lasikplus.com",
+  "bosley.com",
+  "puroclean.com",
+  "belfor.com",
+  "precisiondoor.net",
+  "orkin.com",
+  "twomenandatruck.com",
+  "uhaul.com",
+  "pods.com",
+  "publicstorage.com",
+  "extraspace.com",
+  "cubesmart.com",
+  "1800gotjunk.com",
+  "collegehunkshaulingjunk.com",
+  "jani-king.com",
+  "coverall.com",
+  "enterprise.com",
+  "hertz.com",
+  "avis.com",
+  "turo.com",
+  "airbnb.com",
+  "vrbo.com",
+  "vacasa.com",
+  "evolve.com",
+  "rover.com",
+  "wagwalking.com",
+  "dogtopia.com",
+  "campbowwow.com",
+  "clubpilates.com",
+  "purebarre.com",
+  "solidcore.co",
+  "barrys.com",
+  "kindercare.com",
+  "brighthorizons.com",
+  "goddardschool.com",
+  "primroseschools.com",
+  "davidsbridal.com",
+  "cort.com",
 ])
 
 export const EXCLUDED_NAME_PATTERNS: RegExp[] = [
   /\b(walmart|home depot|lowe'?s|costco|target|ikea|menards)\b/i,
   /\b(caliber collision|gerber collision|safelite|jiffy lube|pep boys|midas|maaco|meineke|discount tire|turbo tint|luther automotive)\b/i,
   /\b(aspen dental|ideal image|laseraway|milan laser|sono bello|massage envy|european wax|aesthetics lounge and spa)\b/i,
+  /\b(vca\b|banfield|bluepearl|lasikplus|bosley|two men and a truck|u-haul|public storage|extra space storage|cubesmart|1-800-got-junk|college hunks|precision garage door|puroclean|belfor|jani-king)\b/i,
+  /\b(club pilates|pure barre|kindercare|bright horizons|goddard school|primrose school|dogtopia|camp bow wow|david'?s bridal|enterprise rent-a-car|hertz|vacasa)\b/i,
   /\b(morgan\s*&\s*morgan)\b/i,
   /\b(marriott|hilton|hyatt|sheraton|westin|holiday inn|courtyard by|embassy suites|ritz-carlton)\b/i,
   /\b(keller williams|re\/max|coldwell banker|century 21|berkshire hathaway|sotheby'?s|cbre|greystar|1st class real estate|engel\s*&\s*v[oö]lkers)\b/i,

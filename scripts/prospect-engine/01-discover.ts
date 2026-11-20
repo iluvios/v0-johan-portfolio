@@ -21,6 +21,7 @@ import {
   TOP_50_METROS,
   WEB_LOOKUP_CACHE_DIR,
   type CohortDiscoveryConfig,
+  type CohortQueryConfig,
   type MetroConfig,
 } from "./config"
 
@@ -59,14 +60,37 @@ function sha1(text: string): string {
 }
 
 // HARD MONTHLY FREE-TIER GUARDRAIL:
-// Key #1 (GOOGLE_MAPS_API_KEY) is frozen at 977 / 1,000 calls (0 live calls allowed on Key #1).
-// Key #2 (GOOGLE_MAPS_API_KEY_2) starts at 1 / 1,000 calls + max 420 new calls = 421 <= 1,000 monthly free limit ($0.00 spend).
-const HARD_LIVE_PLACES_CALL_CAP = 420
-const HARD_TOTAL_CACHE_FILES_CAP = 977 + HARD_LIVE_PLACES_CALL_CAP
+// Strict <= 990 live Google Places calls per calendar month (never exceeds 1,000 calls/mo limit).
+const HARD_LIVE_PLACES_CALL_CAP = 990
+const USAGE_MONTH = new Date().toISOString().slice(0, 7)
+const MONTHLY_USAGE_FILE = path.join(path.dirname(PLACES_CACHE_DIR), `places-usage-${USAGE_MONTH}.json`)
 
 let livePlacesCalls = 0
+let monthlyBaselineCalls = 0
 let initialPlacesCacheCount = 0
 let allowLivePlacesCalls = false
+
+function loadMonthlyUsageCount(): number {
+  try {
+    if (!fs.existsSync(MONTHLY_USAGE_FILE)) return 0
+    const parsed = JSON.parse(fs.readFileSync(MONTHLY_USAGE_FILE, "utf8"))
+    return typeof parsed?.liveCalls === "number" && Number.isFinite(parsed.liveCalls) ? parsed.liveCalls : 0
+  } catch {
+    return 0
+  }
+}
+
+function saveMonthlyUsageCount(totalMonthlyCalls: number): void {
+  try {
+    fs.writeFileSync(
+      MONTHLY_USAGE_FILE,
+      JSON.stringify({ month: USAGE_MONTH, liveCalls: totalMonthlyCalls, updatedAt: new Date().toISOString() }, null, 2),
+      "utf8",
+    )
+  } catch {
+    // non-fatal
+  }
+}
 
 async function searchPlacesNew(
   apiKey: string,
@@ -86,17 +110,18 @@ async function searchPlacesNew(
     }
   }
 
-  const effectiveCap = allowLivePlacesCalls ? Math.min(maxCalls, HARD_LIVE_PLACES_CALL_CAP) : 0
+  const effectiveRunCap = allowLivePlacesCalls ? Math.min(maxCalls, HARD_LIVE_PLACES_CALL_CAP) : 0
   if (
     !allowLivePlacesCalls ||
-    livePlacesCalls >= effectiveCap ||
-    initialPlacesCacheCount + livePlacesCalls >= HARD_TOTAL_CACHE_FILES_CAP
+    livePlacesCalls >= effectiveRunCap ||
+    monthlyBaselineCalls + livePlacesCalls >= HARD_LIVE_PLACES_CALL_CAP
   ) {
     return { places: [], fromCache: false, status: 429 }
   }
 
   // Synchronous increment BEFORE await fetch guarantees parallel workers can never overshoot effectiveCap
   livePlacesCalls++
+  saveMonthlyUsageCount(monthlyBaselineCalls + livePlacesCalls)
   const body: Record<string, unknown> = {
     textQuery,
     pageSize,
@@ -686,7 +711,7 @@ async function discoverPage2FromCachedTokens(
       if (!fs.existsSync(p2CacheFile)) {
         if (
           livePlacesCalls >= effectiveCap ||
-          initialPlacesCacheCount + livePlacesCalls >= HARD_TOTAL_CACHE_FILES_CAP
+          monthlyBaselineCalls + livePlacesCalls >= HARD_LIVE_PLACES_CALL_CAP
         ) {
           continue
         }
@@ -938,7 +963,7 @@ async function discoverPage3FromCachedTokens(
       if (!fs.existsSync(p2CacheFile)) {
         if (
           livePlacesCalls >= effectiveCap ||
-          initialPlacesCacheCount + livePlacesCalls >= HARD_TOTAL_CACHE_FILES_CAP
+          monthlyBaselineCalls + livePlacesCalls >= HARD_LIVE_PLACES_CALL_CAP
         ) {
           continue
         }
@@ -985,7 +1010,7 @@ async function discoverPage3FromCachedTokens(
       if (!fs.existsSync(p3CacheFile)) {
         if (
           livePlacesCalls >= effectiveCap ||
-          initialPlacesCacheCount + livePlacesCalls >= HARD_TOTAL_CACHE_FILES_CAP
+          monthlyBaselineCalls + livePlacesCalls >= HARD_LIVE_PLACES_CALL_CAP
         ) {
           continue
         }
@@ -1030,29 +1055,320 @@ async function discoverPage3FromCachedTokens(
   return { addedP2, addedP3 }
 }
 
+const CHATBOT_COHORT_SET = new Set<string>([
+  "healthcare_clinics",
+  "longevity_specialty_med",
+  "urgent_home_dispatch",
+  "moving_cleaning",
+  "hospitality_rentals",
+  "pet_resorts_grooming",
+  "academies_fitness",
+  "event_vendors",
+])
+
+function resolveMetrosForQuery(q: CohortQueryConfig): MetroConfig[] {
+  let pool: MetroConfig[] = TOP_50_METROS
+  if (Array.isArray(q.metroNames) && q.metroNames.length > 0) {
+    const allowed = new Set(q.metroNames.map((n) => n.toLowerCase()))
+    pool = TOP_50_METROS.filter((m) => allowed.has(m.name.toLowerCase()))
+  }
+  if (typeof q.maxMetros === "number" && q.maxMetros > 0) {
+    pool = pool.slice(0, q.maxMetros)
+  }
+  return pool
+}
+
+function readCachedPlacesFile(textQuery: string, pageToken?: string): { places: any[]; nextPageToken?: string } | null {
+  const cacheKey = sha1(`v1:${textQuery}|20|${pageToken || ""}`)
+  const cacheFile = path.join(PLACES_CACHE_DIR, `${cacheKey}.json`)
+  if (!fs.existsSync(cacheFile)) return null
+  try {
+    const parsed = JSON.parse(fs.readFileSync(cacheFile, "utf8"))
+    return {
+      places: Array.isArray(parsed?.places) ? parsed.places : [],
+      nextPageToken: typeof parsed?.nextPageToken === "string" && parsed.nextPageToken.trim() ? parsed.nextPageToken.trim() : undefined,
+    }
+  } catch {
+    return null
+  }
+}
+
+async function harvestExistingCacheLeads(
+  minRating: number,
+  minReviews: number,
+  byDomain: Map<string, DiscoveredProspect>,
+): Promise<number> {
+  const seenPlaceIds = new Set<string>()
+  Array.from(byDomain.values()).forEach((p) => {
+    if (p.googlePlaceId) seenPlaceIds.add(p.googlePlaceId)
+  })
+
+  let added = 0
+  const addedByCohort: Record<string, number> = {}
+  let cacheFilesRead = 0
+
+  const ingestCachedPage = (
+    places: any[],
+    sourceLabel: string,
+    metro: MetroConfig,
+    cohortCfg: CohortDiscoveryConfig,
+    subCategory: string,
+  ) => {
+    for (const place of places) {
+      const placeId = String(place.id || "")
+      const company = String(place.displayName?.text || "").trim()
+      if (!company || isExcludedCompanyName(company)) continue
+
+      const rating = typeof place.rating === "number" ? place.rating : null
+      const reviewsCount = typeof place.userRatingCount === "number" ? place.userRatingCount : 0
+      if (rating === null || rating < minRating || reviewsCount < minReviews) continue
+
+      const rawWebsite: string | null = place.websiteUri ? String(place.websiteUri).trim() : null
+      const norm = normalizeHostname(rawWebsite)
+      if (!norm.hostname || norm.isSocialOrDirectory || norm.isExcludedChain) continue
+
+      const domain = norm.hostname
+      if ((placeId && seenPlaceIds.has(placeId)) || byDomain.has(domain)) continue
+      if (placeId) seenPlaceIds.add(placeId)
+
+      const { city, state } = parseCityStateFromAddress(place.formattedAddress, metro.city, metro.state)
+      const seedPhones: string[] = []
+      if (place.nationalPhoneNumber) seedPhones.push(String(place.nationalPhoneNumber).trim())
+
+      byDomain.set(domain, {
+        domain,
+        company,
+        websiteUrl: norm.cleanUrl,
+        websiteStatus: "live",
+        cohort: cohortCfg.cohort,
+        subCategory,
+        city,
+        state,
+        metro: metro.name,
+        formattedAddress: place.formattedAddress ?? null,
+        googlePlaceId: placeId || null,
+        googleRating: rating,
+        googleReviewsCount: reviewsCount,
+        googleMapsUrl: place.googleMapsUri ?? null,
+        googleReviewsSample: extractReviews(place.reviews),
+        crmItemId: null,
+        source: sourceLabel,
+        seedEmails: [],
+        seedPhones,
+        seedSocialLinks: {},
+        seedNotes: null,
+      })
+      added++
+      addedByCohort[cohortCfg.cohort] = (addedByCohort[cohortCfg.cohort] || 0) + 1
+    }
+  }
+
+  for (const cohortCfg of ACTIVE_LOCAL_COHORTS) {
+    for (const metro of TOP_50_METROS) {
+      for (const q of cohortCfg.queries) {
+        const textQuery = `${q.term} in ${metro.city}, ${metro.state}`
+        const p1 = readCachedPlacesFile(textQuery)
+        if (!p1) continue
+        cacheFilesRead++
+        ingestCachedPage(p1.places, "google_places_50metros", metro, cohortCfg, q.subCategory)
+
+        if (p1.nextPageToken) {
+          const p2 = readCachedPlacesFile(textQuery, p1.nextPageToken)
+          if (p2) {
+            cacheFilesRead++
+            ingestCachedPage(p2.places, "google_places_50metros_p2", metro, cohortCfg, q.subCategory)
+            if (p2.nextPageToken) {
+              const p3 = readCachedPlacesFile(textQuery, p2.nextPageToken)
+              if (p3) {
+                cacheFilesRead++
+                ingestCachedPage(p3.places, "google_places_50metros_p3", metro, cohortCfg, q.subCategory)
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  console.log(
+    `[Cache Harvest ($0 API)] Scanned ${cacheFilesRead} cached Places pages (>=${minRating}★, >=${minReviews} reviews) -> Added ${added} net-new clean leads.`,
+  )
+  if (added > 0) console.log("[Cache Harvest] Added by cohort:", addedByCohort)
+  return added
+}
+
+async function discoverChatbotSweep(
+  apiKey: string,
+  maxApiCalls: number,
+  targetCohortFilter: string,
+  maxPerMetroCell: number,
+  minRating: number,
+  minReviews: number,
+  byDomain: Map<string, DiscoveredProspect>,
+): Promise<number> {
+  const effectiveCap = Math.min(maxApiCalls, Math.max(0, HARD_LIVE_PLACES_CALL_CAP - monthlyBaselineCalls))
+  const seenPlaceIds = new Set<string>()
+  Array.from(byDomain.values()).forEach((p) => {
+    if (p.googlePlaceId) seenPlaceIds.add(p.googlePlaceId)
+  })
+
+  const cohortsToRun = ACTIVE_LOCAL_COHORTS.filter(
+    (c) =>
+      CHATBOT_COHORT_SET.has(c.cohort) &&
+      (targetCohortFilter === "all" || c.cohort === targetCohortFilter),
+  )
+
+  const tasks: { cohortCfg: CohortDiscoveryConfig; q: CohortQueryConfig; metro: MetroConfig }[] = []
+  for (const cohortCfg of cohortsToRun) {
+    for (const q of cohortCfg.queries) {
+      const metros = resolveMetrosForQuery(q)
+      for (const metro of metros) {
+        tasks.push({ cohortCfg, q, metro })
+      }
+    }
+  }
+
+  console.log(
+    `\n[Chatbot Sweep] Planned ${tasks.length} metro-query cells across ${cohortsToRun.length} chatbot cohorts (live monthly usage ${monthlyBaselineCalls}/${HARD_LIVE_PLACES_CALL_CAP} | max this run <= ${effectiveCap} | >=${minRating}★, >=${minReviews} reviews, <=${maxPerMetroCell}/cell)...`,
+  )
+
+  let cursor = 0
+  let totalAdded = 0
+  let cacheHits = 0
+  let fatalAuthError: string | null = null
+  const addedByCohort: Record<string, number> = {}
+  const concurrency = 6
+
+  async function worker() {
+    while (cursor < tasks.length) {
+      if (fatalAuthError) break
+      const idx = cursor++
+      const { cohortCfg, q, metro } = tasks[idx]
+      const textQuery = `${q.term} in ${metro.city}, ${metro.state}`
+
+      const cacheKey = sha1(`v1:${textQuery}|20|`)
+      const cacheFile = path.join(PLACES_CACHE_DIR, `${cacheKey}.json`)
+      if (!fs.existsSync(cacheFile)) {
+        if (livePlacesCalls >= effectiveCap || monthlyBaselineCalls + livePlacesCalls >= HARD_LIVE_PLACES_CALL_CAP) {
+          continue
+        }
+      }
+
+      const res = await searchPlacesNew(apiKey, textQuery, effectiveCap, 20)
+      if (res.fromCache) {
+        cacheHits++
+      } else if (res.status === 403 || res.status === 401) {
+        fatalAuthError = `Google Places API rejected key with HTTP ${res.status}`
+        break
+      }
+
+      if (res.places.length === 0) continue
+
+      let cellKept = 0
+      for (const place of res.places) {
+        if (cellKept >= maxPerMetroCell) break
+
+        const placeId = String(place.id || "")
+        const company = String(place.displayName?.text || "").trim()
+        if (!company || isExcludedCompanyName(company)) continue
+
+        const rating = typeof place.rating === "number" ? place.rating : null
+        const reviewsCount = typeof place.userRatingCount === "number" ? place.userRatingCount : 0
+        if (rating === null || rating < minRating || reviewsCount < minReviews) continue
+
+        const rawWebsite: string | null = place.websiteUri ? String(place.websiteUri).trim() : null
+        const norm = normalizeHostname(rawWebsite)
+        if (!norm.hostname || norm.isSocialOrDirectory || norm.isExcludedChain) continue
+
+        const domain = norm.hostname
+        if ((placeId && seenPlaceIds.has(placeId)) || byDomain.has(domain)) {
+          cellKept++
+          continue
+        }
+        if (placeId) seenPlaceIds.add(placeId)
+
+        const { city, state } = parseCityStateFromAddress(place.formattedAddress, metro.city, metro.state)
+        const seedPhones: string[] = []
+        if (place.nationalPhoneNumber) seedPhones.push(String(place.nationalPhoneNumber).trim())
+
+        byDomain.set(domain, {
+          domain,
+          company,
+          websiteUrl: norm.cleanUrl,
+          websiteStatus: "live",
+          cohort: cohortCfg.cohort,
+          subCategory: q.subCategory,
+          city,
+          state,
+          metro: metro.name,
+          formattedAddress: place.formattedAddress ?? null,
+          googlePlaceId: placeId || null,
+          googleRating: rating,
+          googleReviewsCount: reviewsCount,
+          googleMapsUrl: place.googleMapsUri ?? null,
+          googleReviewsSample: extractReviews(place.reviews),
+          crmItemId: null,
+          source: "google_places_50metros",
+          seedEmails: [],
+          seedPhones,
+          seedSocialLinks: {},
+          seedNotes: null,
+        })
+
+        cellKept++
+        totalAdded++
+        addedByCohort[cohortCfg.cohort] = (addedByCohort[cohortCfg.cohort] || 0) + 1
+      }
+    }
+  }
+
+  await Promise.all(Array.from({ length: concurrency }, () => worker()))
+  if (fatalAuthError) {
+    console.warn(`[Chatbot Sweep] Stopped early: ${fatalAuthError}`)
+  }
+
+  console.log(
+    `[Chatbot Sweep] Added ${totalAdded} net-new chatbot leads | Cache hits: ${cacheHits} | Live calls this run: ${livePlacesCalls} (monthly total: ${monthlyBaselineCalls + livePlacesCalls}/${HARD_LIVE_PLACES_CALL_CAP})`,
+  )
+  console.log("[Chatbot Sweep] New leads by cohort:", addedByCohort)
+  return totalAdded
+}
+
 async function main() {
   ensureAuditDirs()
   initialPlacesCacheCount = fs.readdirSync(PLACES_CACHE_DIR).filter((f) => f.endsWith(".json")).length
+  monthlyBaselineCalls = loadMonthlyUsageCount()
 
   const isPage3Flag = process.argv.includes("--page3")
-  const sourceMode = isPage3Flag ? "places-p3" : parseArg("source", "all") // all | crm | places | places-p2 | places-p3
+  const harvestCacheFlag = process.argv.includes("--harvest-cache")
+  const sourceMode = harvestCacheFlag ? "harvest-cache" : isPage3Flag ? "places-p3" : parseArg("source", "all") // all | crm | places | places-p2 | places-p3 | harvest-cache | chatbot-sweep
   const cohortFilter = parseArg("cohort", "all")
-  const defaultMaxPerCell = sourceMode === "places-p3" ? "18" : "15"
+  const defaultMaxPerCell = sourceMode === "chatbot-sweep" || sourceMode === "harvest-cache" ? "20" : sourceMode === "places-p3" ? "18" : "15"
   const maxPerMetroCell = Number(parseArg("max-per-cell", defaultMaxPerCell)) || Number(defaultMaxPerCell)
-  const defaultMaxCalls = sourceMode === "places-p3" ? "420" : "310"
+  const defaultMaxCalls = sourceMode === "chatbot-sweep" ? "980" : sourceMode === "places-p3" ? "420" : "310"
   const rawMaxApiCalls = Number(parseArg("max-api-calls", defaultMaxCalls))
   const maxApiCalls = Math.min(
     HARD_LIVE_PLACES_CALL_CAP,
     Number.isFinite(rawMaxApiCalls) && rawMaxApiCalls >= 0 ? rawMaxApiCalls : HARD_LIVE_PLACES_CALL_CAP,
   )
   const minRating = Number(parseArg("min-rating", "3.5")) || 3.5
-  const defaultMinReviews = sourceMode === "places-p3" ? "35" : sourceMode === "places-p2" ? "40" : "51"
+  const defaultMinReviews =
+    sourceMode === "chatbot-sweep"
+      ? "20"
+      : sourceMode === "harvest-cache"
+      ? "25"
+      : sourceMode === "places-p3"
+      ? "35"
+      : sourceMode === "places-p2"
+      ? "40"
+      : "51"
   const minReviews = Number(parseArg("min-reviews", defaultMinReviews)) || Number(defaultMinReviews)
   const reset = process.argv.includes("--reset")
 
   const key1 = (process.env.GOOGLE_MAPS_API_KEY || "").trim()
   const key2 = (process.env.GOOGLE_MAPS_API_KEY_2 || "").trim()
-  const apiKey = key2 || key1
+  const useKey1 = process.argv.includes("--use-key1")
+  const apiKey = useKey1 ? key1 : key2 || key1
 
   if (sourceMode === "places-p3") {
     if (!key2) {
@@ -1061,24 +1377,29 @@ async function main() {
     if (key1 && key2 === key1) {
       throw new Error("GOOGLE_MAPS_API_KEY_2 must be distinct from GOOGLE_MAPS_API_KEY so 0 calls hit Key #1.")
     }
-  } else if (!apiKey && sourceMode !== "crm") {
+  } else if (!apiKey && sourceMode !== "crm" && sourceMode !== "harvest-cache") {
     throw new Error("GOOGLE_MAPS_API_KEY_2 or GOOGLE_MAPS_API_KEY is missing in .env.local")
   }
 
-  // Strictly forbid live API calls unless GOOGLE_MAPS_API_KEY_2 (distinct from Key #1) is active
-  allowLivePlacesCalls = Boolean(key2 && (!key1 || key2 !== key1))
+  // Allow live API calls for Key #2 (or explicit --use-key1) when sourceMode requires live Places queries
+  allowLivePlacesCalls =
+    sourceMode !== "harvest-cache" &&
+    maxApiCalls > 0 &&
+    (useKey1 ? Boolean(key1) : Boolean(key2 && (!key1 || key2 !== key1)))
 
   const byDomain = new Map<string, DiscoveredProspect>()
 
   if (!reset && fs.existsSync(DISCOVERED_FILE)) {
     const lines = fs.readFileSync(DISCOVERED_FILE, "utf8").split(/\r?\n/).filter(Boolean)
     let droppedExcluded = 0
+    const preserveExisting =
+      sourceMode === "places-p3" || sourceMode === "harvest-cache" || sourceMode === "chatbot-sweep"
     for (const line of lines) {
       try {
         const obj = JSON.parse(line) as DiscoveredProspect
         if (!obj || !obj.domain) continue
-        // Preserve 100% of existing discovered records during Page-3 expansion
-        if (sourceMode !== "places-p3" && !obj.crmItemId) {
+        // Preserve 100% of existing discovered records during additive sweeps
+        if (!preserveExisting && !obj.crmItemId) {
           const check = normalizeHostname(obj.websiteUrl || obj.domain)
           if (!check.hostname || check.isExcludedChain || check.isSocialOrDirectory || isExcludedCompanyName(obj.company)) {
             droppedExcluded++
@@ -1094,7 +1415,23 @@ async function main() {
     console.log(
       `[Resume] Loaded ${byDomain.size} existing discovered records from ${DISCOVERED_FILE}${
         droppedExcluded > 0 ? ` (dropped ${droppedExcluded} excluded gov/edu/news/chain rows)` : ""
-      } | Initial Places cache files: ${initialPlacesCacheCount} | Using Key #2 for live calls: ${allowLivePlacesCalls}`,
+      } | Initial Places cache files: ${initialPlacesCacheCount} | Monthly live usage (${USAGE_MONTH}): ${monthlyBaselineCalls}/${HARD_LIVE_PLACES_CALL_CAP}`,
+    )
+  }
+
+  if (sourceMode === "harvest-cache" || process.argv.includes("--with-cache-harvest")) {
+    await harvestExistingCacheLeads(minRating, minReviews, byDomain)
+  }
+
+  if (sourceMode === "chatbot-sweep" && apiKey) {
+    await discoverChatbotSweep(
+      apiKey,
+      maxApiCalls,
+      cohortFilter,
+      maxPerMetroCell,
+      minRating,
+      minReviews,
+      byDomain,
     )
   }
 
@@ -1182,7 +1519,7 @@ async function main() {
   console.log(`\n=== Stage 1 Discovery Complete: ${all.length} Total Unique Companies ===`)
   console.table(summary)
   console.log(
-    `Live Google Places API calls used this run (Key #2): ${livePlacesCalls} (hard cap: <= ${HARD_LIVE_PLACES_CALL_CAP}; Key #1 calls: 0) | Total cache files: ${finalPlacesCacheCount} (hard cap: <= ${HARD_TOTAL_CACHE_FILES_CAP})`,
+    `Live Google Places API calls used this run: ${livePlacesCalls} (monthly total ${monthlyBaselineCalls + livePlacesCalls}/${HARD_LIVE_PLACES_CALL_CAP}) | Total cache files: ${finalPlacesCacheCount}`,
   )
   console.log(`Saved to: ${DISCOVERED_FILE}`)
 }

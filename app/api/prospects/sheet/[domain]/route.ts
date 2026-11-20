@@ -3,21 +3,13 @@ import path from "node:path"
 import { type NextRequest, NextResponse } from "next/server"
 import sharp from "sharp"
 import { requireAdmin } from "@/lib/admin-auth"
+import { PROSPECT_COHORTS } from "@/lib/prospects"
 
 type Params = { params: Promise<{ domain: string }> }
 
 type AssetView = "sheet" | "desktop-full" | "mobile-hero" | "desktop-hero"
 
-const KNOWN_COHORTS = [
-  "med_spa_aesthetics",
-  "home_services_ads",
-  "law_firms",
-  "specialty_auto",
-  "custom_building",
-  "event_venues",
-  "real_estate",
-  "funded_startups",
-] as const
+const KNOWN_COHORTS = PROSPECT_COHORTS.map((c) => c.value)
 
 const VIEW_TO_VAULT_FILE: Record<Exclude<AssetView, "sheet">, string> = {
   "desktop-full": "desktop-full.webp",

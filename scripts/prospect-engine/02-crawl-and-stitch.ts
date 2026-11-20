@@ -359,6 +359,56 @@ function recommendedConcurrencyForMbps(mbps: number, maxCap = 8): number {
   return Math.max(1, Math.min(maxCap, target))
 }
 
+function isKnownWafPage(rec: CrawledProspectRecord | undefined): boolean {
+  const d = rec?.diagnostics
+  if (!d) return false
+  const h1Raw = (d.branding?.heroHeadline || "").trim()
+  const titleRaw = (d.seo?.title || "").trim()
+  const combinedHead = `${titleRaw} ${h1Raw} ${d.branding?.heroSubheadline || ""}`.toLowerCase()
+  return (
+    ((h1Raw.toLowerCase() === rec.domain.toLowerCase() || titleRaw.toLowerCase() === rec.domain.toLowerCase()) &&
+      (d.seo?.imgCount ?? 0) <= 1 &&
+      (d.commercialPagesCount ?? 0) === 0) ||
+    (!titleRaw &&
+      (d.seo?.h1Count ?? 0) === 0 &&
+      (d.seo?.imgCount ?? 0) === 0 &&
+      (d.commercialPagesCount ?? 0) === 0 &&
+      (d.perf?.requestCount ?? 0) <= 5) ||
+    /checking the site connection security|checking your browser|please wait while your request is being verified|just a moment|one moment, please|verify you are human|attention required! \| cloudflare|sucuri website firewall|robot validate|robot or human|ddos-guard|bot verification|^403\b.*\bforbidden|^access denied|^forbidden$/i.test(
+      combinedHead,
+    )
+  )
+}
+
+const HIDE_PRELOADER_CURTAINS_SCRIPT = `(() => {
+  const vw = window.innerWidth || 1440;
+  const vh = window.innerHeight || 900;
+  const sel = '#preloader, .preloader, [class*="preloader" i], [id*="preloader" i], [class*="page-loader" i], [id*="page-loader" i], [class*="loader-wrapper" i], [class*="loading-screen" i]';
+  const nodes = document.querySelectorAll(sel);
+  for (let i = 0; i < nodes.length; i++) {
+    const el = nodes[i];
+    const cs = window.getComputedStyle(el);
+    if (cs.position === 'fixed' || cs.position === 'absolute') {
+      const r = el.getBoundingClientRect();
+      if (r.width >= vw * 0.65 && r.height >= vh * 0.65) {
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('opacity', '0', 'important');
+        el.style.setProperty('pointer-events', 'none', 'important');
+      }
+    }
+  }
+  const heroCandidates = document.querySelectorAll('main > section:first-of-type, main > div:first-of-type, [class*="hero" i], [id*="hero" i]');
+  for (let j = 0; j < Math.min(heroCandidates.length, 24); j++) {
+    const h = heroCandidates[j];
+    const cs = window.getComputedStyle(h);
+    if (cs.display === 'none' || cs.visibility === 'hidden') continue;
+    if (parseFloat(cs.opacity || '1') < 0.9) {
+      h.style.setProperty('opacity', '1', 'important');
+      h.style.setProperty('transform', 'none', 'important');
+    }
+  }
+})()`
+
 const PROMOTE_LAZY_AND_FINISH_REVEALS_SCRIPT = `(() => {
   const imgs = document.querySelectorAll('img');
   for (let i = 0; i < imgs.length; i++) {
@@ -1394,27 +1444,36 @@ async function crawlSingleProspect(
     }
     await page.evaluate(DISMISS_POPUPS_SCRIPT).catch(() => {})
 
-    // 1. Hero Animation Settle (1,800ms in reportQualityMode) -> Clean Desktop Hero Screenshot (1440x900)
-    if (slowSingleTabMode) {
-      await page.evaluate(PROMOTE_LAZY_AND_FINISH_REVEALS_SCRIPT).catch(() => {})
-      await page.evaluate(buildWaitVisibleImagesAndFontsScript(950, 5000)).catch(() => {})
-      await new Promise((r) => setTimeout(r, 1800))
-      await page.evaluate(DISMISS_POPUPS_SCRIPT).catch(() => {})
-      await page.evaluate(PROMOTE_LAZY_AND_FINISH_REVEALS_SCRIPT).catch(() => {})
-    } else {
-      await new Promise((r) => setTimeout(r, 180))
-    }
-
-    const desktopHeroBuf = await takeJpegScreenshotSafe(context, page, { quality: 84 })
-
-    // 2. Human-Paced Wheel Scroll Simulation + Multi-Stage Animation Settle -> Clean Desktop Full (up to 9,000px)
+    // 1. In reportQualityMode: run human scroll & animation/image settle FIRST so hero preloaders & reveals finish cleanly
     let pendingImagesAfterScroll = 0
     let settledPageHeight = 2400
+    let desktopHeroBuf: Buffer
+
     if (slowSingleTabMode) {
+      await page.evaluate(HIDE_PRELOADER_CURTAINS_SCRIPT).catch(() => {})
       const scrollRes = await simulateHumanScrollAndSettle(page, FULL_PAGE_MAX_HEIGHT_PX)
       pendingImagesAfterScroll = scrollRes.pendingImages
       settledPageHeight = scrollRes.pageHeight
+      await page.evaluate(HIDE_PRELOADER_CURTAINS_SCRIPT).catch(() => {})
+      await page.evaluate(PROMOTE_LAZY_AND_FINISH_REVEALS_SCRIPT).catch(() => {})
+      await page.evaluate(buildWaitVisibleImagesAndFontsScript(950, 4000)).catch(() => {})
+      await new Promise((r) => setTimeout(r, 600))
+      desktopHeroBuf = await takeJpegScreenshotSafe(context, page, { quality: 84 })
+
+      const heroCheck = await sharp(desktopHeroBuf).stats().catch(() => null)
+      const heroSd = heroCheck?.channels?.length
+        ? Math.max(...heroCheck.channels.slice(0, 3).map((c) => Number(c.stdev) || 0))
+        : 20
+      if (heroSd < 9) {
+        await new Promise((r) => setTimeout(r, 1500))
+        await page.evaluate(DISMISS_POPUPS_SCRIPT).catch(() => {})
+        await page.evaluate(HIDE_PRELOADER_CURTAINS_SCRIPT).catch(() => {})
+        await page.evaluate(PROMOTE_LAZY_AND_FINISH_REVEALS_SCRIPT).catch(() => {})
+        desktopHeroBuf = await takeJpegScreenshotSafe(context, page, { quality: 84 })
+      }
     } else {
+      await new Promise((r) => setTimeout(r, 180))
+      desktopHeroBuf = await takeJpegScreenshotSafe(context, page, { quality: 84 })
       await page.evaluate(`window.scrollTo(0, Math.min(1800, document.body.scrollHeight))`).catch(() => {})
       await new Promise((r) => setTimeout(r, 150))
       await page.evaluate(`window.scrollTo(0, 0)`).catch(() => {})
@@ -1448,15 +1507,29 @@ async function crawlSingleProspect(
     await new Promise((r) => setTimeout(r, slowSingleTabMode ? 1800 : 150))
     if (slowSingleTabMode) {
       await page.evaluate(DISMISS_POPUPS_SCRIPT).catch(() => {})
+      await page.evaluate(HIDE_PRELOADER_CURTAINS_SCRIPT).catch(() => {})
       await page.evaluate(PROMOTE_LAZY_AND_FINISH_REVEALS_SCRIPT).catch(() => {})
-      await page.evaluate(buildWaitVisibleImagesAndFontsScript(950, 3500)).catch(() => {})
-      await new Promise((r) => setTimeout(r, 250))
+      await page.evaluate(buildWaitVisibleImagesAndFontsScript(950, 4000)).catch(() => {})
+      await new Promise((r) => setTimeout(r, 300))
     }
     const mobileData = (await page.evaluate(MOBILE_EXTRACTOR_SCRIPT).catch(() => ({
       mobileHorizontalOverflow: false,
       tinyMobileTextCount: 0,
     }))) as { mobileHorizontalOverflow: boolean; tinyMobileTextCount: number }
-    const mobileHeroBuf = await takeJpegScreenshotSafe(context, page, { quality: 86 })
+    let mobileHeroBuf = await takeJpegScreenshotSafe(context, page, { quality: 86 })
+    if (slowSingleTabMode) {
+      const mobCheck = await sharp(mobileHeroBuf).stats().catch(() => null)
+      const mobSd = mobCheck?.channels?.length
+        ? Math.max(...mobCheck.channels.slice(0, 3).map((c) => Number(c.stdev) || 0))
+        : 20
+      if (mobSd < 9) {
+        await new Promise((r) => setTimeout(r, 1500))
+        await page.evaluate(DISMISS_POPUPS_SCRIPT).catch(() => {})
+        await page.evaluate(HIDE_PRELOADER_CURTAINS_SCRIPT).catch(() => {})
+        await page.evaluate(PROMOTE_LAZY_AND_FINISH_REVEALS_SCRIPT).catch(() => {})
+        mobileHeroBuf = await takeJpegScreenshotSafe(context, page, { quality: 86 })
+      }
+    }
 
     // Give any trailing requestfinished sizes() events 80ms to settle before stamping byte weight on the sheet
     await new Promise((r) => setTimeout(r, 80))
@@ -1496,11 +1569,12 @@ async function crawlSingleProspect(
     // 4. Save Clean Free-Report Assets (desktop-full.webp, mobile-hero.webp, desktop-hero.webp) + 3-Panel Stitch
     const stackInfo = detectCmsAndStack(rawHtml, networkUrls)
     const gzHtml = new Uint8Array(zlib.gzipSync(rawHtml))
-    const [dnsInfo, [robotsTxt, llmsTxt, sitemapXml], subpageInfo, heroPixelStats] = await Promise.all([
+    const [dnsInfo, [robotsTxt, llmsTxt, sitemapXml], subpageInfo, heroPixelStats, mobPixelStats] = await Promise.all([
       dnsPromise,
       auxTextPromise,
       subpagePromise,
       sharp(desktopHeroBuf).stats().catch(() => null),
+      sharp(mobileHeroBuf).stats().catch(() => null),
       sharp(desktopHeroBuf).webp({ quality: 82 }).toFile(path.join(vaultFolder, "desktop-hero.webp")),
       sharp(desktopFullBuf).webp({ quality: 80 }).toFile(path.join(vaultFolder, "desktop-full.webp")),
       sharp(mobileHeroBuf).webp({ quality: 86 }).toFile(path.join(vaultFolder, "mobile-hero.webp")),
@@ -1751,6 +1825,15 @@ async function crawlSingleProspect(
       socialFlaws.push(`Customer review complaint pattern: ${cTheme}`)
     }
 
+    const heroMaxStdev =
+      heroPixelStats && Array.isArray(heroPixelStats.channels) && heroPixelStats.channels.length >= 3
+        ? Math.max(...heroPixelStats.channels.slice(0, 3).map((c) => Number(c.stdev) || 0))
+        : 20
+    const mobMaxStdev =
+      mobPixelStats && Array.isArray(mobPixelStats.channels) && mobPixelStats.channels.length >= 3
+        ? Math.max(...mobPixelStats.channels.slice(0, 3).map((c) => Number(c.stdev) || 0))
+        : 20
+
     const perf: ProspectPerfMetrics = {
       ttfbMs: domData?.perfNav?.ttfbMs ?? null,
       fcpMs: domData?.perfNav?.fcpMs ?? null,
@@ -1764,7 +1847,8 @@ async function crawlSingleProspect(
       jsBytes: jsBytes > 0 ? jsBytes : null,
       requestCount,
       verifiedSingleTab: slowSingleTabMode,
-      fullPageVisualsVerified: slowSingleTabMode && pendingImagesAfterScroll === 0,
+      fullPageVisualsVerified:
+        slowSingleTabMode && pendingImagesAfterScroll === 0 && heroMaxStdev >= 9 && mobMaxStdev >= 9,
       capturedFullHeightPx: clipHeight,
     }
 
@@ -1936,6 +2020,11 @@ async function verifyExistingCleanHomepage(
     return false
   }
 
+  // Reject blank-hero warnings before fast-pathing verified runs
+  if ((rec.diagnostics.uiFlaws?.flaws || []).some((f) => /nearly blank/i.test(f))) {
+    return false
+  }
+
   // Fast-path: already captured & verified by the upgraded full-page human-scroll crawler
   if (rec.diagnostics.perf.fullPageVisualsVerified) {
     return true
@@ -2017,6 +2106,8 @@ async function main() {
   const reset = process.argv.includes("--reset")
   const retryFailed = process.argv.includes("--retry-failed")
   const recrawlIncomplete = process.argv.includes("--recrawl-incomplete")
+  const retryWaf = process.argv.includes("--retry-waf")
+  const skipUncrawled = process.argv.includes("--skip-uncrawled")
   const homeOnly = process.argv.includes("--home-only") || recrawlIncomplete || Boolean(targetDomainsSet)
   const adaptiveMode =
     !process.argv.includes("--fixed-concurrency") &&
@@ -2142,6 +2233,8 @@ async function main() {
     console.log(`[Pre-Flight] Auditing ${existingByDomain.size} local vault folders with 5-Gate Visual & Animation Inspector...`)
     const cleanSet = new Set<string>()
     let permanentSkipCount = 0
+    let wafSkipCount = 0
+    let uncrawledSkipCount = 0
     let newlyStampedClean = 0
 
     const inspectPool = 16
@@ -2150,13 +2243,24 @@ async function main() {
       while (inspectIdx < discovered.length) {
         const d = discovered[inspectIdx++]
         const prev = existingByDomain.get(d.domain)
-        if (!prev) continue
+        if (!prev) {
+          if (skipUncrawled) {
+            uncrawledSkipCount++
+            cleanSet.add(d.domain)
+          }
+          continue
+        }
         const permanentNoSite =
           prev.crawlError === "missing_website_url" ||
           prev.crawlError === "social_only_no_website" ||
           prev.crawlError === "DNS domain did not resolve"
         if (permanentNoSite) {
           permanentSkipCount++
+          cleanSet.add(d.domain)
+          continue
+        }
+        if (!retryWaf && isKnownWafPage(prev)) {
+          wafSkipCount++
           cleanSet.add(d.domain)
           continue
         }
@@ -2211,9 +2315,9 @@ async function main() {
     }
     queue.sort((a, b) => classifyWaveAndScore(b).pts - classifyWaveAndScore(a).pts)
 
-    const cleanVisualCount = cleanSet.size - permanentSkipCount
+    const cleanVisualCount = cleanSet.size - permanentSkipCount - wafSkipCount - uncrawledSkipCount
     console.log(
-      `[Pre-Flight] Clean & complete (skipped): ${cleanVisualCount} (${newlyStampedClean} newly verified) | Permanent no-site (skipped): ${permanentSkipCount}`,
+      `[Pre-Flight] Clean & complete (skipped): ${cleanVisualCount} (${newlyStampedClean} newly verified) | Permanent no-site (skipped): ${permanentSkipCount} | Confirmed WAF walls (skipped): ${wafSkipCount}${uncrawledSkipCount > 0 ? ` | Uncrawled deferred: ${uncrawledSkipCount}` : ""}`,
     )
     console.log(
       `[Pre-Flight] Queued ${queue.length} homepages -> Wave 1 (Tier-S Challenger+Email): ${w1} | Wave 2 (Live+Email): ${w2} | Wave 3 (Live No-Email): ${w3} | Wave 4 (Timeout Recovery): ${w4}`,

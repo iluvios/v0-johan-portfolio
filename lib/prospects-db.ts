@@ -429,7 +429,7 @@ export async function upsertProspectAudits(sql: Sql, drafts: ProspectAuditDraft[
   return upserted
 }
 
-export const PROSPECT_CSV_EXPORT_MAX_ROWS = 20000
+export const PROSPECT_CSV_EXPORT_MAX_ROWS = 50000
 
 export async function queryProspects(
   sql: Sql,

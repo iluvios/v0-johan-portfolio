@@ -510,7 +510,7 @@ function scoreProspect(
         d.seo.imgCount === 0 &&
         d.commercialPagesCount === 0 &&
         (d.perf.requestCount ?? 0) <= 5) ||
-      /checking the site connection security|checking your browser|please wait while your request is being verified|just a moment|one moment, please|verify you are human|attention required! \| cloudflare|sucuri website firewall|robot validate|robot or human|ddos-guard|bot verification|^403 forbidden|^access denied|^forbidden$/i.test(
+      /checking the site connection security|checking your browser|please wait while your request is being verified|just a moment|one moment, please|verify you are human|attention required! \| cloudflare|sucuri website firewall|robot validate|robot or human|ddos-guard|bot verification|^403\b.*\bforbidden|^access denied|^forbidden$/i.test(
         combinedHead,
       ))
 

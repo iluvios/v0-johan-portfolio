@@ -90,6 +90,78 @@ async function main() {
       recommendedFunnelPattern: "Address / Portfolio Goal Step -> Instant Valuation / Management Fee Breakdown -> Strategy Call",
       referenceAdSummary: "W2W Real Estate benchmark: Interactive valuation & rental-income calculators consistently beat generic agent bio pages.",
     },
+    healthcare_clinics: {
+      provenAdHooks: [
+        "Same-Week New-Patient / Urgent Pet Visit Slot + 'Verify Your Insurance in 30 Seconds'",
+        "24/7 Web & SMS Symptom / Appointment Triage (Zero Phone Hold Loops)",
+        "Doctor / Vet Authority Intro + 150+ Local Patient/Pet-Parent 5★ Reviews",
+      ],
+      recommendedFunnelPattern: "Symptom/Visit Type + Insurance Check -> Live Time-Slot Selection -> Instant SMS Confirmation",
+      referenceAdSummary: "W2W Dental/Healthcare benchmark: 24/7 booking + instant insurance check lifts booked new patients 2.2x vs phone-only scheduling.",
+    },
+    longevity_specialty_med: {
+      provenAdHooks: [
+        "60-Second Confidential Candidacy Quiz ('Am I a Candidate?' + Monthly Payment Range)",
+        "Surgeon / MD Clinical Outcomes Showcase + 0% APR Financing Options",
+        "Private 24/7 Consultation Concierge for Late-Night Researchers",
+      ],
+      recommendedFunnelPattern: "Private 4-Step Eligibility Quiz -> Ballpark Package & Financing -> Discreet 1-on-1 Consult Booking",
+      referenceAdSummary: "W2W High-Ticket Aesthetics/Medical benchmark: Discreet candidacy quiz + financing unlocks 3x higher consult show rates.",
+    },
+    urgent_home_dispatch: {
+      provenAdHooks: [
+        "24/7 Live Emergency Dispatch + 'Enter ZIP & Issue for 60-Second Arrival Window'",
+        "Upfront Diagnostic Clarity + Same-Day Truck Roll Guarantee",
+        "Automated Missed-Call SMS Textback + Direct Crew Scheduling",
+      ],
+      recommendedFunnelPattern: "Emergency vs Standard Selector -> ZIP & Issue Triage -> Immediate Dispatch Call/SMS",
+      referenceAdSummary: "W2W Home Dispatch benchmark: Instant emergency triage + missed-call textback stops callers from dialing the next Google result.",
+    },
+    moving_cleaning: {
+      provenAdHooks: [
+        "30-Second Move Size / SqFt Ballpark Estimator (Zero 24-Hour Callback Wait)",
+        "Licensed, Insured & Flat-Rate Transparent Guarantee",
+        "Instant Crew Date Check + Commercial Walkthrough Booking",
+      ],
+      recommendedFunnelPattern: "Origin/Size or SqFt Picker -> Instant Ballpark Range -> Crew Slot Hold / Walkthrough",
+      referenceAdSummary: "W2W Instant-Quote Services benchmark: Interactive size/sqft calculators cut cost-per-booked-job by 38% vs generic contact forms.",
+    },
+    hospitality_rentals: {
+      provenAdHooks: [
+        "Check Real-Time Date Availability & Group Pricing in 30 Seconds",
+        "24/7 Web & Instagram DM Concierge for Yachts, Exotic Fleets & Direct Cabins",
+        "Book Direct & Save vs Marketplace Fees + Verified 5★ Guest Gallery",
+      ],
+      recommendedFunnelPattern: "Date + Group Size + Vessel/Vehicle/Cabin Picker -> Instant Charter/Stay Quote -> Deposit Hold",
+      referenceAdSummary: "W2W High-Ticket Experiences benchmark: Instant date & capacity bot converts Instagram & Google high-intent browsers immediately.",
+    },
+    pet_resorts_grooming: {
+      provenAdHooks: [
+        "Check Holiday/Weekend Boarding Availability + Clear Breed & Vaccine Rules",
+        "Mobile Spa / Grooming Van Route Checker + Recurring VIP Plan",
+        "24/7 Pet-Parent Q&A Bot + Instant Temperament Evaluation Booking",
+      ],
+      recommendedFunnelPattern: "Pet Size/Breed + Service + Dates -> Vaccine & Pricing Check -> Suite or Van Booking",
+      referenceAdSummary: "W2W Pet Care benchmark: Automated vaccine Q&A + self-serve suite/van booking eliminates front-desk phone bottlenecks.",
+    },
+    academies_fitness: {
+      provenAdHooks: [
+        "Find Your Level & Book a Free Intro Trial / Campus Tour in 45 Seconds",
+        "Clear Class Schedule, Age Groups & Safety Credentials Upfront",
+        "24/7 Web & IG DM Program Matcher + Automated Trial Reminder",
+      ],
+      recommendedFunnelPattern: "Age/Goal + Schedule Preference -> Recommended Program -> Trial Pass / Campus Tour Booking",
+      referenceAdSummary: "W2W Fitness/Education benchmark: 2-step program matcher + instant trial slot doubles show-up rate on paid social ads.",
+    },
+    event_vendors: {
+      provenAdHooks: [
+        "Check Your 2026–2027 Event Date & Guest-Count Package Range Instantly",
+        "Portfolio Gallery + Transparent Starting Tiers (No Waiting Days for PDFs)",
+        "24/7 IG DM & Web Tasting/Consult Concierge",
+      ],
+      recommendedFunnelPattern: "Event Date + Guest Count + Style -> Instant Package Range -> Tasting / Consult Scheduler",
+      referenceAdSummary: "W2W Event Services benchmark: Instant date-availability check + ballpark package unlock captures couples before competitors reply.",
+    },
   }
 
   for (const c of ACTIVE_LOCAL_COHORTS) {

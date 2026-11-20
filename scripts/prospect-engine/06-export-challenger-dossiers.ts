@@ -59,6 +59,46 @@ const COHORT_DISPLAY_META: Record<
     dossierTitle: "Real Estate (Brokerages, Property Mgmt, Luxury)",
     funnelNoun: "Instant Rental-ROI / Home-Valuation Calculator + 24/7 AI owner/buyer concierge",
   },
+  healthcare_clinics: {
+    tableTitle: "**Healthcare, Dental, Vet & Rehab Clinics** (`healthcare_clinics`)",
+    dossierTitle: "Healthcare, Dental, Vet & Rehab Clinics",
+    funnelNoun: "24/7 Web/SMS AI Patient Triage & Insurance-Check Booking Assistant",
+  },
+  longevity_specialty_med: {
+    tableTitle: "**Fertility, LASIK, Hair & Longevity Clinics** (`longevity_specialty_med`)",
+    dossierTitle: "Fertility, LASIK, Hair & Longevity Clinics",
+    funnelNoun: "Discreet 60-Second Candidacy & Financing Quiz + 24/7 AI Consult Concierge",
+  },
+  urgent_home_dispatch: {
+    tableTitle: "**24/7 Urgent Home Dispatch & Pest** (`urgent_home_dispatch`)",
+    dossierTitle: "24/7 Urgent Home Dispatch & Pest",
+    funnelNoun: "24/7 AI Emergency Dispatch & Missed-Call SMS Triage + 60-Second ZIP Estimator",
+  },
+  moving_cleaning: {
+    tableTitle: "**Moving, Storage & Commercial Cleaning** (`moving_cleaning`)",
+    dossierTitle: "Moving, Storage & Commercial Cleaning",
+    funnelNoun: "Interactive Move-Size / SqFt Instant Estimator + 24/7 Crew/Walkthrough Bot",
+  },
+  hospitality_rentals: {
+    tableTitle: "**Charters, Exotic Cars, Cabins & Tours** (`hospitality_rentals`)",
+    dossierTitle: "Charters, Exotic Cars, Cabins & Tours",
+    funnelNoun: "24/7 Web + IG DM Date-Availability, Group-Pricing & Deposit Concierge",
+  },
+  pet_resorts_grooming: {
+    tableTitle: "**Luxury Pet Resorts & Grooming** (`pet_resorts_grooming`)",
+    dossierTitle: "Luxury Pet Resorts & Grooming",
+    funnelNoun: "24/7 AI Vaccine/Pricing Q&A Bot + Self-Serve Suite & Grooming Van Scheduler",
+  },
+  academies_fitness: {
+    tableTitle: "**Boutique Fitness, Swim & Private Schools** (`academies_fitness`)",
+    dossierTitle: "Boutique Fitness, Swim & Private Schools",
+    funnelNoun: "24/7 Web & IG DM Program Matcher + Automated Intro Trial / Campus Tour Booker",
+  },
+  event_vendors: {
+    tableTitle: "**Wedding Catering, Photo/AV & Rentals** (`event_vendors`)",
+    dossierTitle: "Wedding Catering, Photo/AV & Rentals",
+    funnelNoun: "24/7 IG DM & Web Date-Availability + Guest-Count Package Concierge",
+  },
 }
 
 type LocalCohort = Exclude<ProspectCohort, "funded_startups">
@@ -71,6 +111,14 @@ const LOCAL_COHORT_ORDER: LocalCohort[] = [
   "custom_building",
   "event_venues",
   "real_estate",
+  "healthcare_clinics",
+  "longevity_specialty_med",
+  "urgent_home_dispatch",
+  "moving_cleaning",
+  "hospitality_rentals",
+  "pet_resorts_grooming",
+  "academies_fitness",
+  "event_vendors",
 ]
 
 interface ScoredCandidate {
@@ -463,16 +511,13 @@ function solveBalanced50MetroAssignment(
     }
   }
 
-  // Cohort balance constraints (scaled strictly below the 9,000,000 Pass-1 vs Pass-2 gap):
-  // - First 6 slots per cohort get -400,000 so every industry gets >= 6 metros
-  // - 7th slot gets -120,000 so 6 cohorts hit 7 and 1 hits 8 (7/7/7/7/7/7/8 = 50)
-  // - 8th slot allowed at cost 0 (preferred upper cap = 8 per cohort)
-  // - 9th emergency slot at +2,000,000 (< 9,000,000) ONLY used if required to avoid dropping a metro from Pass-1 to Pass-2
+  // Cohort balance constraints scaled dynamically across all LOCAL_COHORT_ORDER cohorts
+  const basePerCohort = Math.max(2, Math.floor(TOP_50_METROS.length / LOCAL_COHORT_ORDER.length))
   for (let c = 0; c < LOCAL_COHORT_ORDER.length; c++) {
-    addEdge(COHORT_BASE + c, T, 6, -400_000)
+    addEdge(COHORT_BASE + c, T, basePerCohort, -400_000)
     addEdge(COHORT_BASE + c, T, 1, -120_000)
-    addEdge(COHORT_BASE + c, T, 1, 0)
-    addEdge(COHORT_BASE + c, T, 1, 2_000_000)
+    addEdge(COHORT_BASE + c, T, 2, 0)
+    addEdge(COHORT_BASE + c, T, 6, 2_000_000)
   }
 
   let totalFlow = 0
@@ -760,15 +805,7 @@ async function main() {
 
   // Verify domain uniqueness & compute stats
   const seenDomains = new Set<string>()
-  const cohortWinnerCounts: Record<LocalCohort, number> = {
-    med_spa_aesthetics: 0,
-    home_services_ads: 0,
-    law_firms: 0,
-    specialty_auto: 0,
-    custom_building: 0,
-    event_venues: 0,
-    real_estate: 0,
-  }
+  const cohortWinnerCounts = Object.fromEntries(LOCAL_COHORT_ORDER.map((c) => [c, 0])) as Record<LocalCohort, number>
   let pass1Winners = 0
   let pass2Winners = 0
   let pass3Winners = 0
@@ -798,12 +835,13 @@ async function main() {
   const avgReviews = Math.round(reviewsSum / winners.length)
   const rootDirPosix = toForwardSlashPath(process.cwd())
 
+  const activeCohortCount = LOCAL_COHORT_ORDER.filter((c) => cohortWinnerCounts[c] > 0).length
   const md: string[] = []
-  md.push("# Top 50 US Metros — #1 Mid-Market Challenger Prospect Per Metro (Across 7 Industries)")
+  md.push(`# Top 50 US Metros — #1 Mid-Market Challenger Prospect Per Metro (Across ${activeCohortCount} Industries)`)
   md.push("")
   md.push("> [!IMPORTANT]")
   md.push(
-    `> **Challenger Selection Criteria:** Every company below is the **#1 highest-closeability Mid-Market Challenger prospect** in its US Metro across your **7 target local cohorts** (\`Med Spas & Dental\`, \`Home Services\`, \`Law Firms\`, \`Specialty Auto\`, \`Custom Building\`, \`Event Venues\`, and \`Real Estate\`), selected from our expanded **Page-1 + Page-2 (\`#21–#40\`) + Page-3 (\`#41–#60\`)** national audit corpus. Unlike 1,500+-review corporate/PE giants that already retain in-house teams or national agencies, these **owner-operated challengers** average **\`${avgRating}★\`** and **\`${avgReviews}\` Google reviews** (\`${pass1Winners}/50\` strictly inside \`3.5★–4.6★\` & \`35–250\` reviews${pass2Winners > 0 ? `, \`${pass2Winners}\` inside \`<=4.7★ / <=300\` fallback` : ""}; \`${page2SourceWinners + page3SourceWinners}/50\` from Page-2 & Page-3 Challenger waves — \`${page3SourceWinners}\` Page-3 + \`${page2SourceWinners}\` Page-2), each with a live stitched \`1680×960\` 3-panel screenshot board on disk, verified contact reachability (\`${verifiedEmailWinners}/50\` verified emails + direct phone), and concrete conversion/technical leaks primed for your **$1,500 Diagnostic → $10,000 Foundation Build → $3,000/mo Growth & AI Intake Retainer**.`,
+    `> **Challenger Selection Criteria:** Every company below is the **#1 highest-closeability Mid-Market Challenger prospect** in its US Metro across **${activeCohortCount} target local cohorts** (${LOCAL_COHORT_ORDER.filter((c) => cohortWinnerCounts[c] > 0).map((c) => `\`${COHORT_DISPLAY_META[c].dossierTitle}\``).join(", ")}), selected from our national audit corpus. Unlike 1,500+-review corporate/PE giants that already retain in-house teams or national agencies, these **owner-operated challengers** average **\`${avgRating}★\`** and **\`${avgReviews}\` Google reviews** (\`${pass1Winners}/50\` strictly inside \`3.5★–4.6★\` & \`35–250\` reviews${pass2Winners > 0 ? `, \`${pass2Winners}\` inside \`<=4.7★ / <=300\` fallback` : ""}; \`${page2SourceWinners + page3SourceWinners}/50\` from Page-2 & Page-3 Challenger waves — \`${page3SourceWinners}\` Page-3 + \`${page2SourceWinners}\` Page-2), each with a live stitched \`1680×960\` 3-panel screenshot board on disk, verified contact reachability (\`${verifiedEmailWinners}/50\` verified emails + direct phone), and concrete conversion/technical leaks primed for your **$1,500 Diagnostic → $10,000 Foundation Build → $3,000/mo Growth & AI Intake Retainer**.`,
   )
   md.push("")
   md.push("## Industry Balance Across the 50 Metro Challenger Winners")
@@ -811,6 +849,7 @@ async function main() {
   md.push("| Industry Cohort | Selected Metro Challengers |")
   md.push("| :--- | :--- |")
   for (const cohortKey of LOCAL_COHORT_ORDER) {
+    if (cohortWinnerCounts[cohortKey] === 0) continue
     md.push(`| ${COHORT_DISPLAY_META[cohortKey].tableTitle} | **\`${cohortWinnerCounts[cohortKey]}\` Metros** |`)
   }
   md.push("")
