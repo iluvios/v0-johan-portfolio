@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
         template: "%s | Energy Media",
       },
       description:
-        "Good, fast and affordable marketing for small businesses: ads, website, social media, email, chat and CRM built as one connected system and run by one team, with upfront prices.",
+        "A senior marketing team for businesses with fewer than 20 people: ads, website, social media, email and follow up run as one connected system, with plans from $1,000 a month.",
       openGraph: {
         title: "Energy Media | Marketing for Small Businesses",
         description:

@@ -9,6 +9,7 @@ import {
   FaqSection,
   FunnelGrid,
   Pillars,
+  TeamRow,
 } from "@/components/agency/sections";
 import { useLanguage } from "@/contexts/language-context";
 import { agencyHomeCopy } from "@/lib/agency/copy";
@@ -56,7 +57,15 @@ export default function AgencyServices({ preset }: { preset?: Omit<PlanInput, "p
         points={copy.connectedPoints}
         mock={copy.mock}
       />
-      <AgencySection id="why" eyebrow={copy.pillarsEyebrow} title={copy.pillarsTitle} align="center">
+      <AgencySection
+        id="why"
+        eyebrow={copy.pillarsEyebrow}
+        title={copy.pillarsTitle}
+        intro={copy.pillarsIntro}
+        align="center"
+      >
+        <TeamRow language={language} />
+        <p className="agency-pillars-tagline">{copy.pillarsTagline}</p>
         <Pillars items={copy.pillars} language={language} />
       </AgencySection>
       <FaqSection eyebrow={copy.faqEyebrow} title={copy.faqTitle} items={copy.faq} />

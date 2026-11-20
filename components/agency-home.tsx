@@ -9,6 +9,7 @@ import {
   AgencySection,
   ConnectedSystem,
   FaqSection,
+  FitSection,
   FunnelGrid,
   IconCards,
   Pillars,
@@ -16,13 +17,16 @@ import {
   ProofShowcase,
   StatBand,
   Steps,
+  TeamRow,
 } from "@/components/agency/sections";
 import { useLanguage } from "@/contexts/language-context";
 import { agencyHomeCopy, getProof } from "@/lib/agency/copy";
 import { INDUSTRIES, INDUSTRY_SLUGS } from "@/lib/agency/industries";
 
-// Page order follows the buyer: the problem, the fix, what's included, why it's
-// good, fast and affordable, proof, fit, how it works, price, doubts, next step.
+// Each section answers the buyer's next question, in order:
+// what is it, is it for me, why am I losing customers, what do I get, how does it
+// work together, why you, can you prove it, does it fit my industry, how do I start,
+// how much, what about my doubts, what's next.
 export default function AgencyHome() {
   const { language } = useLanguage();
   const copy = agencyHomeCopy[language];
@@ -35,12 +39,30 @@ export default function AgencyHome() {
         primaryCta={copy.primaryCta}
         secondaryCta={copy.secondaryCta}
         facts={copy.facts}
-        toolsLabel={copy.toolsLabel}
+        proofLabel={copy.proofLabel}
+        proof={copy.proofStrip}
       />
       <div className="page-shell">
+        <FitSection
+          eyebrow={copy.fitEyebrow}
+          title={copy.fitTitle}
+          intro={copy.fitIntro}
+          listTitle={copy.fitListTitle}
+          list={copy.fitList}
+        />
+
         <AgencySection id="problem" eyebrow={copy.statsEyebrow} title={copy.statsTitle} align="center">
           <StatBand intro={copy.statsIntro} stats={copy.stats} source={copy.statsSource} />
           <IconCards items={copy.problems} />
+        </AgencySection>
+
+        <AgencySection
+          id="services"
+          eyebrow={copy.funnelEyebrow}
+          title={copy.funnelTitle}
+          intro={copy.funnelIntro}
+        >
+          <FunnelGrid stages={copy.funnel} />
         </AgencySection>
 
         <ConnectedSystem
@@ -52,11 +74,15 @@ export default function AgencyHome() {
           mock={copy.mock}
         />
 
-        <AgencySection id="services" eyebrow={copy.funnelEyebrow} title={copy.funnelTitle}>
-          <FunnelGrid stages={copy.funnel} />
-        </AgencySection>
-
-        <AgencySection id="why" eyebrow={copy.pillarsEyebrow} title={copy.pillarsTitle} align="center">
+        <AgencySection
+          id="why"
+          eyebrow={copy.pillarsEyebrow}
+          title={copy.pillarsTitle}
+          intro={copy.pillarsIntro}
+          align="center"
+        >
+          <TeamRow language={language} />
+          <p className="agency-pillars-tagline">{copy.pillarsTagline}</p>
           <Pillars items={copy.pillars} language={language} />
         </AgencySection>
 

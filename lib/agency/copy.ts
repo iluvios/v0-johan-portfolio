@@ -26,7 +26,15 @@ export interface FunnelStage {
   stage: string;
   title: string;
   body: string;
-  tags: string[];
+  /** Concrete deliverables, shown as a checklist. */
+  items?: string[];
+  tags?: string[];
+}
+
+export interface ProofStripItem {
+  value: string;
+  label: string;
+  href: string;
 }
 
 export interface Faq {
@@ -156,42 +164,107 @@ export interface MockCopy {
 
 export const agencyHomeCopy = {
   en: {
-    eyebrow: "Full funnel marketing for small businesses",
-    hero: ["Good, fast, affordable.", "Pick all three."],
+    eyebrow: "Marketing team for small businesses",
+    hero: ["More customers.", "No marketing department needed."],
     intro:
-      "Ads, website, social media, email and follow up, built as one connected system and run by one team. We use AI to work faster, and we pass the savings on to you.",
+      "Energy Media is a senior team of three that runs your ads, website, social media and follow up as one connected system. Built for businesses with fewer than 20 people, with plans from $1,000 a month.",
     primaryCta: "Get a free audit",
     secondaryCta: "See prices",
-    facts: ["Taking new clients", "Upfront prices", "Everything stays in your name"],
-    toolsLabel: "Built on tools you already know",
+    facts: ["Senior team of three", "Upfront prices", "Everything stays in your name"],
+    proofLabel: "Recent results",
+    proofStrip: [
+      { value: "61%", label: "lower cost per registered user", href: "/projects/50" },
+      { value: "+132%", label: "more orders in 3 months", href: "/projects/25" },
+      { value: "3.7x", label: "more Google search clicks", href: "/projects/29" },
+    ] as ProofStripItem[],
+    fitEyebrow: "Who it’s for",
+    fitTitle: "Built for small businesses that want to grow.",
+    fitIntro:
+      "You’re great at what you do, but marketing keeps falling to the bottom of the list. A full marketing team doesn’t make sense yet, and doing it yourself takes time you don’t have. We become your marketing team: we plan it, build it and run it every month, and you see exactly what it brings in.",
+    fitListTitle: "This is for you if",
+    fitList: [
+      "You have fewer than 20 people on your team",
+      "Nobody in house is in charge of marketing",
+      "You’ve tried doing it yourself or with freelancers, and it stalled",
+      "You want more calls, bookings and sales, not more reports",
+    ],
     statsEyebrow: "The problem",
-    statsTitle: "Customers want to buy. Most websites make it hard.",
+    statsTitle: "Most small business websites lose customers every day.",
     statsIntro: "We checked 11,813 US small business websites.",
     stats: [
       { value: 83, suffix: "%", label: "give visitors no way to book or chat. They have to call or fill a form and wait." },
       { value: 43, suffix: "%", label: "pay for Google or Meta ads to bring those visitors in." },
-      { value: 33, suffix: "%", label: "show their reviews on the homepage. The rest hide their best sales tool." },
+      { value: 33, suffix: "%", label: "show their reviews on the homepage, their best sales tool." },
     ] as StatItem[],
     statsSource:
       "From our own scan of venues, law firms, home services, clinics, auto shops, real estate and other local businesses.",
     problems: [
       {
         title: "Slow replies lose the sale",
-        body: "People contact two or three businesses at once. The first one to answer usually wins.",
+        body: "People contact two or three businesses at once. The first one to answer usually wins, and a small team can’t answer every message in minutes.",
       },
       {
         title: "Tools that don’t talk",
-        body: "Website forms, Instagram DMs, WhatsApp and email land in different places, so leads slip through.",
+        body: "Website forms, Instagram DMs, WhatsApp and email land in different places. Leads slip through and nobody follows up.",
       },
       {
         title: "Ads you can’t measure",
-        body: "Without tracking you can’t tell which ad brought a paying customer, so money goes to guesses.",
+        body: "Without tracking you can’t see which ad brought a paying customer, so the budget goes to guesses instead of what works.",
       },
     ] as TitledText[],
-    connectedEyebrow: "The fix",
-    connectedTitle: "One connected system, from first click to paying customer.",
+    funnelEyebrow: "What we do",
+    funnelTitle: "Everything that brings customers in, handled for you.",
+    funnelIntro: "Four parts that work as one. Start with what you need now and add the rest as you grow.",
+    funnel: [
+      {
+        stage: "Get found",
+        title: "Ads and social media",
+        body: "Show up where your customers are looking, with ads and content that make them want to reach out.",
+        items: [
+          "Google and Meta ad campaigns, managed every week",
+          "Short videos and posts for your social media",
+          "SEO so you show up on Google and in AI answers",
+        ],
+        tags: ["Google Ads", "Meta Ads", "Social media", "SEO"],
+      },
+      {
+        stage: "Win the visit",
+        title: "Website and landing pages",
+        body: "Turn visits into calls, bookings and sales with a fast site that explains your offer clearly.",
+        items: [
+          "A new website or online store, or fixes to the one you have",
+          "A landing page for each offer or campaign",
+          "Online booking, quote forms and click to call",
+        ],
+        tags: ["Website", "Landing pages", "Online store", "Online booking"],
+      },
+      {
+        stage: "Follow up",
+        title: "Chat, email and CRM",
+        body: "Answer every lead in seconds and keep following up until they buy.",
+        items: [
+          "Instant replies on website chat, WhatsApp, Instagram and email",
+          "One CRM with every lead and where it came from",
+          "Reminders and email campaigns that bring people back",
+        ],
+        tags: ["Chat assistant", "WhatsApp", "Email", "CRM"],
+      },
+      {
+        stage: "Measure",
+        title: "Clear numbers",
+        body: "Know what you spent, what it brought in and what to do next.",
+        items: [
+          "Tracking of calls, forms and sales",
+          "A monthly report in plain words",
+          "Budget moved to what brings customers",
+        ],
+        tags: ["Tracking", "Monthly report", "Cost per customer"],
+      },
+    ] as FunnelStage[],
+    connectedEyebrow: "How it works together",
+    connectedTitle: "Every message, every channel, one place.",
     connectedIntro:
-      "Most businesses add a chatbot here and a form there, and none of it talks to each other. We set everything up as one system, so every message and every lead ends up in the same place.",
+      "Most businesses add a chatbot here and a form there, and none of it talks to each other. We set everything up as one system, so no lead gets lost and you always know where each customer came from.",
     connectedPoints: [
       {
         title: "Every channel, one inbox",
@@ -224,40 +297,15 @@ export const agencyHomeCopy = {
         ["Follow up", "Automatic"],
       ],
     } as MockCopy,
-    funnelEyebrow: "What we do",
-    funnelTitle: "Everything that brings customers in.",
-    funnel: [
-      {
-        stage: "Get found",
-        title: "Ads and social media",
-        body: "Google and Meta ads, short videos and posts, plus SEO so people find you on Google and in AI answers.",
-        tags: ["Google Ads", "Meta Ads", "Social media", "SEO"],
-      },
-      {
-        stage: "Win the visit",
-        title: "Website and landing pages",
-        body: "A fast, good looking website and a page for each offer, built so visitors call, book or buy.",
-        tags: ["Website", "Landing pages", "Online store", "Online booking"],
-      },
-      {
-        stage: "Follow up",
-        title: "Chat, email and CRM",
-        body: "Every lead answered in seconds on any channel, then reminders and emails until they buy.",
-        tags: ["Chat assistant", "WhatsApp", "Email", "CRM"],
-      },
-      {
-        stage: "Measure",
-        title: "Clear numbers",
-        body: "A short monthly report: what you spent, what it brought in, and what we change next.",
-        tags: ["Tracking", "Monthly report", "Cost per customer"],
-      },
-    ] as FunnelStage[],
     pillarsEyebrow: "Why Energy Media",
-    pillarsTitle: "Good, fast and affordable. Here’s how.",
+    pillarsTitle: "Senior specialists, small business prices.",
+    pillarsIntro:
+      "You work directly with three specialists, not a junior account manager. Each one owns a part of your funnel and answers for it.",
+    pillarsTagline: "Good, fast, affordable.",
     pillars: [
       {
         title: "Good.",
-        body: "A senior team plans and approves every ad, page and message. Everything is built to work together, looks professional and is measured.",
+        body: "Specialists in paid media, systems and design plan and approve every ad, page and message. Everything is built to work together, and every result is measured.",
       },
       {
         title: "Fast.",
@@ -269,7 +317,7 @@ export const agencyHomeCopy = {
       },
     ] as TitledText[],
     proofEyebrow: "Results",
-    proofTitle: "Real businesses, real numbers.",
+    proofTitle: "We’ve done this before. Here are the numbers.",
     proofNote:
       "Our cofounder Johan Alvarez led most of this work for clients and employers before it came under the agency. Tecnoprotejidos was Energy Media work in 2021.",
     caseStudy: "Case study",
@@ -277,19 +325,19 @@ export const agencyHomeCopy = {
     industriesTitle: "Made for your kind of business.",
     industriesLink: "See how it works for you",
     processEyebrow: "How it works",
-    processTitle: "Three steps to more customers.",
+    processTitle: "Getting started is simple.",
     process: [
       {
         title: "Free audit",
-        body: "We look at your website, ads and follow up, and show you where customers slip away. No cost, no commitment.",
+        body: "We review your website, ads and follow up, and show you where customers slip away. You leave with a plan and a price.",
       },
       {
         title: "We set it up",
-        body: "Website, chat, CRM, email and tracking connected as one system, all in your name.",
+        body: "We build or fix your website, chat, CRM, email and tracking as one connected system, all in your name.",
       },
       {
         title: "We run it every month",
-        body: "Ads, content and follow up, improved every month based on real numbers.",
+        body: "We run the ads, make the content, follow up the leads and send you a plain report, improving what works each month.",
       },
     ] as TitledText[],
     pricingEyebrow: "Pricing",
@@ -324,6 +372,8 @@ export const agencyHomeCopy = {
     planRecommended: "Recommended",
     planCta: "Customize this plan",
     planCustom: "Build your own plan",
+    planIncludes:
+      "Every plan includes direct access to the team, a monthly report in plain words, and everything in your name.",
     commissionNote:
       "Prefer to pay on results? Choose commission: half the monthly fee plus 10% of the new revenue we bring.",
     pricingTitleFull: "Price your plan.",
@@ -333,12 +383,20 @@ export const agencyHomeCopy = {
     faqTitle: "Good to know.",
     faq: [
       {
+        q: "Is this for a business my size?",
+        a: "Yes. We work with businesses with fewer than 20 people that don’t have a marketing team in house. You get senior specialists without hiring them full time.",
+      },
+      {
         q: "Do I need a big budget?",
         a: "No. The Starter plan is $1,000 a month plus your ad spend, and you add more only when it pays off.",
       },
       {
         q: "Is ad spend included?",
         a: "No. You pay Google, Meta and other platforms directly, on your own card. Our fee covers the work.",
+      },
+      {
+        q: "What if I already have a website?",
+        a: "We start from what you have. If it works, we improve it. If it’s holding you back, we rebuild it. The free audit tells you which.",
       },
       {
         q: "Who owns the accounts?",
@@ -364,42 +422,107 @@ export const agencyHomeCopy = {
     ctaButton: "Get a free audit",
   },
   es: {
-    eyebrow: "Marketing completo para pequeñas empresas",
-    hero: ["Bueno, bonito", "y barato."],
+    eyebrow: "Equipo de marketing para pequeñas empresas",
+    hero: ["Más clientes.", "Sin montar un equipo de marketing."],
     intro:
-      "Pauta, sitio web, redes, email y seguimiento, construidos como un solo sistema conectado y operados por un solo equipo. Usamos IA para trabajar más rápido y te pasamos el ahorro.",
+      "Energy Media es un equipo senior de tres personas que opera tu pauta, tu sitio web, tus redes y tu seguimiento como un solo sistema conectado. Hecho para negocios de menos de 20 personas, con planes desde $1,000 al mes.",
     primaryCta: "Pide tu auditoría gratis",
     secondaryCta: "Ver precios",
-    facts: ["Recibiendo nuevos clientes", "Precios a la vista", "Todo queda a tu nombre"],
-    toolsLabel: "Con herramientas que ya conoces",
+    facts: ["Equipo senior de tres", "Precios a la vista", "Todo queda a tu nombre"],
+    proofLabel: "Resultados recientes",
+    proofStrip: [
+      { value: "61%", label: "menos costo por usuario registrado", href: "/projects/50" },
+      { value: "+132%", label: "más pedidos en 3 meses", href: "/projects/25" },
+      { value: "3.7x", label: "más clics desde Google", href: "/projects/29" },
+    ] as ProofStripItem[],
+    fitEyebrow: "Para quién es",
+    fitTitle: "Hecho para pequeñas empresas que quieren crecer.",
+    fitIntro:
+      "Eres muy bueno en lo que haces, pero el marketing siempre queda de último en la lista. Un equipo de marketing completo todavía no tiene sentido, y hacerlo tú mismo te quita tiempo que no tienes. Nos volvemos tu equipo de marketing: lo planeamos, lo construimos y lo operamos cada mes, y ves exactamente qué te trae.",
+    fitListTitle: "Esto es para ti si",
+    fitList: [
+      "Tu equipo tiene menos de 20 personas",
+      "Nadie en tu empresa está a cargo del marketing",
+      "Ya lo intentaste solo o con freelancers, y se estancó",
+      "Quieres más llamadas, citas y ventas, no más reportes",
+    ],
     statsEyebrow: "El problema",
-    statsTitle: "Los clientes quieren comprar. La mayoría de sitios se lo pone difícil.",
+    statsTitle: "La mayoría de sitios de pequeñas empresas pierde clientes todos los días.",
     statsIntro: "Revisamos 11,813 sitios web de pequeñas empresas en EE. UU.",
     stats: [
       { value: 83, suffix: "%", label: "no dejan agendar ni chatear. Hay que llamar o llenar un formulario y esperar." },
       { value: 43, suffix: "%", label: "pagan pauta en Google o Meta para traer esas visitas." },
-      { value: 33, suffix: "%", label: "muestran sus reseñas en la página principal. El resto esconde su mejor argumento de venta." },
+      { value: 33, suffix: "%", label: "muestran sus reseñas en la página principal, su mejor argumento de venta." },
     ] as StatItem[],
     statsSource:
       "De nuestro propio análisis de venues, firmas de abogados, servicios para el hogar, clínicas, talleres, inmobiliarias y otros negocios locales.",
     problems: [
       {
         title: "Responder tarde pierde la venta",
-        body: "La gente escribe a dos o tres negocios a la vez. El primero que responde casi siempre gana.",
+        body: "La gente escribe a dos o tres negocios a la vez. El primero que responde casi siempre gana, y un equipo pequeño no alcanza a responder cada mensaje en minutos.",
       },
       {
         title: "Herramientas que no se hablan",
-        body: "Formularios, mensajes de Instagram, WhatsApp y email llegan a lugares distintos, y los leads se pierden.",
+        body: "Formularios, mensajes de Instagram, WhatsApp y email llegan a lugares distintos. Los leads se pierden y nadie hace seguimiento.",
       },
       {
         title: "Pauta que no se puede medir",
-        body: "Sin medición no sabes qué anuncio trajo un cliente que pagó, y el dinero se va en suposiciones.",
+        body: "Sin medición no ves qué anuncio trajo un cliente que pagó, y el presupuesto se va en suposiciones en vez de lo que funciona.",
       },
     ] as TitledText[],
-    connectedEyebrow: "La solución",
-    connectedTitle: "Un solo sistema conectado, del primer clic al cliente que paga.",
+    funnelEyebrow: "Lo que hacemos",
+    funnelTitle: "Todo lo que te trae clientes, hecho por nosotros.",
+    funnelIntro: "Cuatro partes que funcionan como una. Empieza con lo que necesitas hoy y suma el resto a medida que creces.",
+    funnel: [
+      {
+        stage: "Que te encuentren",
+        title: "Pauta y redes sociales",
+        body: "Aparece donde tus clientes están buscando, con anuncios y contenido que dan ganas de escribirte.",
+        items: [
+          "Campañas en Google y Meta, gestionadas cada semana",
+          "Videos cortos y publicaciones para tus redes",
+          "SEO para aparecer en Google y en respuestas de IA",
+        ],
+        tags: ["Google Ads", "Meta Ads", "Redes sociales", "SEO"],
+      },
+      {
+        stage: "Ganar la visita",
+        title: "Sitio web y landing pages",
+        body: "Convierte visitas en llamadas, citas y ventas con un sitio rápido que explica tu oferta con claridad.",
+        items: [
+          "Un sitio web o tienda online nueva, o arreglos al que ya tienes",
+          "Una landing page por oferta o campaña",
+          "Agenda en línea, formularios de cotización y botón para llamar",
+        ],
+        tags: ["Sitio web", "Landing pages", "Tienda online", "Agenda en línea"],
+      },
+      {
+        stage: "Hacer seguimiento",
+        title: "Chat, email y CRM",
+        body: "Responde cada lead en segundos y sigue en contacto hasta que compra.",
+        items: [
+          "Respuestas al instante en el chat del sitio, WhatsApp, Instagram y email",
+          "Un CRM con cada lead y de dónde vino",
+          "Recordatorios y campañas de email que hacen volver a la gente",
+        ],
+        tags: ["Asistente de chat", "WhatsApp", "Email", "CRM"],
+      },
+      {
+        stage: "Medir",
+        title: "Números claros",
+        body: "Sabe cuánto invertiste, qué te trajo y qué hacer después.",
+        items: [
+          "Medición de llamadas, formularios y ventas",
+          "Un reporte mensual en palabras simples",
+          "Presupuesto movido a lo que trae clientes",
+        ],
+        tags: ["Medición", "Reporte mensual", "Costo por cliente"],
+      },
+    ] as FunnelStage[],
+    connectedEyebrow: "Cómo funciona junto",
+    connectedTitle: "Cada mensaje, cada canal, en un solo lugar.",
     connectedIntro:
-      "La mayoría de negocios pone un chatbot aquí y un formulario allá, y nada se conecta. Nosotros lo montamos todo como un solo sistema, para que cada mensaje y cada lead terminen en el mismo lugar.",
+      "La mayoría de negocios pone un chatbot aquí y un formulario allá, y nada se conecta. Nosotros lo montamos todo como un solo sistema, para que ningún lead se pierda y siempre sepas de dónde vino cada cliente.",
     connectedPoints: [
       {
         title: "Todos los canales, una bandeja",
@@ -432,40 +555,15 @@ export const agencyHomeCopy = {
         ["Seguimiento", "Automático"],
       ],
     } as MockCopy,
-    funnelEyebrow: "Lo que hacemos",
-    funnelTitle: "Todo lo que te trae clientes.",
-    funnel: [
-      {
-        stage: "Que te encuentren",
-        title: "Pauta y redes sociales",
-        body: "Anuncios en Google y Meta, videos cortos y publicaciones, más SEO para aparecer en Google y en respuestas de IA.",
-        tags: ["Google Ads", "Meta Ads", "Redes sociales", "SEO"],
-      },
-      {
-        stage: "Ganar la visita",
-        title: "Sitio web y landing pages",
-        body: "Un sitio rápido y bonito, con una página por oferta, hecho para que te llamen, agenden o compren.",
-        tags: ["Sitio web", "Landing pages", "Tienda online", "Agenda en línea"],
-      },
-      {
-        stage: "Hacer seguimiento",
-        title: "Chat, email y CRM",
-        body: "Cada lead respondido en segundos en cualquier canal, y luego recordatorios y emails hasta que compra.",
-        tags: ["Asistente de chat", "WhatsApp", "Email", "CRM"],
-      },
-      {
-        stage: "Medir",
-        title: "Números claros",
-        body: "Un reporte mensual corto: cuánto invertiste, qué trajo y qué cambiamos después.",
-        tags: ["Medición", "Reporte mensual", "Costo por cliente"],
-      },
-    ] as FunnelStage[],
     pillarsEyebrow: "Por qué Energy Media",
-    pillarsTitle: "Bueno, bonito y barato. Así lo hacemos.",
+    pillarsTitle: "Especialistas senior, precios de pequeña empresa.",
+    pillarsIntro:
+      "Trabajas directamente con tres especialistas, no con un ejecutivo de cuenta junior. Cada uno se encarga de una parte de tu embudo y responde por ella.",
+    pillarsTagline: "Bueno, bonito y barato.",
     pillars: [
       {
         title: "Bueno.",
-        body: "Un equipo senior planea y aprueba cada anuncio, página y mensaje. Todo está hecho para funcionar junto, y cada resultado se mide.",
+        body: "Especialistas en pauta, sistemas y diseño planean y aprueban cada anuncio, página y mensaje. Todo está hecho para funcionar junto, y cada resultado se mide.",
       },
       {
         title: "Bonito.",
@@ -477,7 +575,7 @@ export const agencyHomeCopy = {
       },
     ] as TitledText[],
     proofEyebrow: "Resultados",
-    proofTitle: "Negocios reales, números reales.",
+    proofTitle: "Ya lo hemos hecho antes. Estos son los números.",
     proofNote:
       "Nuestro cofundador Johan Alvarez lideró la mayor parte de este trabajo para clientes y empleadores antes de que llegara a la agencia. Tecnoprotejidos fue trabajo de Energy Media en 2021.",
     caseStudy: "Caso de estudio",
@@ -485,19 +583,19 @@ export const agencyHomeCopy = {
     industriesTitle: "Pensado para negocios como el tuyo.",
     industriesLink: "Mira cómo funciona para ti",
     processEyebrow: "Cómo funciona",
-    processTitle: "Tres pasos para tener más clientes.",
+    processTitle: "Empezar es simple.",
     process: [
       {
         title: "Auditoría gratis",
-        body: "Revisamos tu sitio, tu pauta y tu seguimiento, y te mostramos dónde se te van los clientes. Sin costo y sin compromiso.",
+        body: "Revisamos tu sitio, tu pauta y tu seguimiento, y te mostramos dónde se te van los clientes. Sales con un plan y un precio.",
       },
       {
         title: "Lo montamos",
-        body: "Sitio web, chat, CRM, email y medición conectados como un solo sistema, todo a tu nombre.",
+        body: "Construimos o arreglamos tu sitio, chat, CRM, email y medición como un solo sistema conectado, todo a tu nombre.",
       },
       {
         title: "Lo operamos cada mes",
-        body: "Pauta, contenido y seguimiento, mejorados cada mes con números reales.",
+        body: "Corremos la pauta, hacemos el contenido, damos seguimiento a los leads y te enviamos un reporte simple, mejorando lo que funciona cada mes.",
       },
     ] as TitledText[],
     pricingEyebrow: "Precios",
@@ -532,6 +630,8 @@ export const agencyHomeCopy = {
     planRecommended: "Recomendado",
     planCta: "Ajustar este plan",
     planCustom: "Arma tu propio plan",
+    planIncludes:
+      "Todos los planes incluyen acceso directo al equipo, un reporte mensual en palabras simples y todo a tu nombre.",
     commissionNote:
       "¿Prefieres pagar por resultados? Elige comisión: la mitad de la tarifa mensual más el 10% de los ingresos nuevos que traemos.",
     pricingTitleFull: "Calcula tu plan.",
@@ -541,12 +641,20 @@ export const agencyHomeCopy = {
     faqTitle: "Bueno saberlo.",
     faq: [
       {
+        q: "¿Esto es para un negocio de mi tamaño?",
+        a: "Sí. Trabajamos con negocios de menos de 20 personas que no tienen un equipo de marketing interno. Tienes especialistas senior sin contratarlos de tiempo completo.",
+      },
+      {
         q: "¿Necesito un presupuesto grande?",
         a: "No. El plan Inicial cuesta $1,000 al mes más tu inversión en pauta, y agregas más solo cuando da resultado.",
       },
       {
         q: "¿La inversión en pauta está incluida?",
         a: "No. Le pagas a Google, Meta y las demás plataformas directamente, con tu propia tarjeta. Nuestra tarifa cubre el trabajo.",
+      },
+      {
+        q: "¿Y si ya tengo un sitio web?",
+        a: "Partimos de lo que tienes. Si funciona, lo mejoramos. Si te está frenando, lo rehacemos. La auditoría gratis te dice cuál de las dos.",
       },
       {
         q: "¿De quién son las cuentas?",

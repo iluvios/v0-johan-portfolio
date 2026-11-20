@@ -59,7 +59,8 @@ export default function AgencyIndustry({ slug }: { slug: IndustrySlug }) {
         primaryCta={home.primaryCta}
         secondaryCta={home.secondaryCta}
         facts={home.facts}
-        toolsLabel={home.toolsLabel}
+        proofLabel={home.proofLabel}
+        proof={home.proofStrip}
       />
       <div className="page-shell">
         <AgencySection id="numbers" eyebrow={labels.stats} title={copy.statsTitle} align="center">

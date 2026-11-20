@@ -6,6 +6,7 @@ import { ArrowUpRight, Globe, Inbox, Instagram, MessageCircle } from "lucide-rea
 import { GlowButton } from "@/components/ui/glow-button";
 import { ctaLinkProps } from "@/components/agency/sections";
 import { useLanguage } from "@/contexts/language-context";
+import type { ProofStripItem } from "@/lib/agency/copy";
 import { AGENCY_WHATSAPP } from "@/lib/site";
 
 // Fixed grid behind every agency page. Rendered once by SiteShell on the agency site.
@@ -34,8 +35,6 @@ export function AgencyWhatsApp() {
   );
 }
 
-const TOOLS = ["Google", "Meta", "Instagram", "WhatsApp", "Shopify", "HubSpot", "Webflow"];
-
 const rise = (i: number) => ({ "--i": i }) as CSSProperties;
 
 export function AgencyHero({
@@ -45,7 +44,8 @@ export function AgencyHero({
   primaryCta,
   secondaryCta,
   facts,
-  toolsLabel,
+  proofLabel,
+  proof,
 }: {
   eyebrow: string;
   hero: string[];
@@ -53,7 +53,8 @@ export function AgencyHero({
   primaryCta: string;
   secondaryCta: string;
   facts: string[];
-  toolsLabel: string;
+  proofLabel: string;
+  proof: ProofStripItem[];
 }) {
   const { language } = useLanguage();
   return (
@@ -112,11 +113,17 @@ export function AgencyHero({
             </li>
           ))}
         </ul>
-        <div className="agency-tools agency-rise" style={rise(hero.length + 4)}>
-          <p>{toolsLabel}</p>
+        {/* Proof right under the promise: three real results, each linking to its case study. */}
+        <div className="agency-proofstrip agency-rise" style={rise(hero.length + 4)}>
+          <p className="agency-proofstrip-title">{proofLabel}</p>
           <ul>
-            {TOOLS.map((tool) => (
-              <li key={tool}>{tool}</li>
+            {proof.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="agency-proofstrip-item">
+                  <span className="agency-proofstrip-value">{item.value}</span>
+                  <span className="agency-proofstrip-label">{item.label}</span>
+                </Link>
+              </li>
             ))}
           </ul>
         </div>

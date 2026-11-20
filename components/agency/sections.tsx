@@ -43,6 +43,7 @@ import type {
 import { EXAMPLE_PLAN_IDS, EXAMPLE_PLANS, formatUsd, quote } from "@/lib/agency/pricing";
 import type { AgencyHomeCopy } from "@/lib/agency/copy";
 import { AGENCY_CTA_HREF } from "@/lib/site";
+import { aboutCopy, TEAM } from "@/lib/agency/about";
 
 type Icon = ComponentType<LucideProps>;
 
@@ -189,7 +190,16 @@ export function FunnelGrid({
               </span>
               <h3>{stage.title}</h3>
               <p>{stage.body}</p>
-              {stage.tags && (
+              {stage.items ? (
+                <ul className="agency-deliverables">
+                  {stage.items.map((item) => (
+                    <li key={item}>
+                      <Check size={16} aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              ) : stage.tags && (
                 <ul className="mt-auto flex flex-wrap gap-1.5 pt-3">
                   {stage.tags.map((tag) => (
                     <li key={tag}>
@@ -537,6 +547,10 @@ export function PlanCards({ copy }: { copy: AgencyHomeCopy }) {
           );
         })}
       </ul>
+      <p className="agency-plans-includes">
+        <BadgeCheck size={18} aria-hidden="true" />
+        {copy.planIncludes}
+      </p>
       <p className="agency-plans-note">{copy.commissionNote}</p>
       <Link href="/services#pricing" className="text-link">
         {copy.planCustom}
@@ -611,5 +625,76 @@ export function AgencyCta({
         </GlowButton>
       </section>
     </Reveal>
+  );
+}
+
+export function FitSection({
+  eyebrow,
+  title,
+  intro,
+  listTitle,
+  list,
+}: {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  listTitle: string;
+  list: string[];
+}) {
+  return (
+    <section id="fit" className="section agency-section" aria-labelledby="fit-heading">
+      <div className="agency-fit">
+        <div className="agency-fit-copy">
+          <Eyebrow>{eyebrow}</Eyebrow>
+          <h2 id="fit-heading" className="agency-title">
+            {title}
+          </h2>
+          <p>{intro}</p>
+        </div>
+        <Reveal className="agency-fit-card">
+          <p className="agency-fit-card-title">{listTitle}</p>
+          <ul className="agency-checklist">
+            {list.map((item) => (
+              <li key={item}>
+                <span className="agency-check" aria-hidden="true">
+                  <Check size={14} />
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/** The three specialists, shown small above the pillars on the home and services pages. */
+export function TeamRow({ language }: { language: "en" | "es" }) {
+  const roles = aboutCopy[language].team;
+  return (
+    <ul className="agency-teamrow">
+      {TEAM.map((member) => (
+        <li key={member.id} className="agency-teammate">
+          {member.photo ? (
+            <img
+              src={member.photo}
+              alt=""
+              width={64}
+              height={64}
+              loading="lazy"
+              decoding="async"
+              className="agency-teammate-photo"
+            />
+          ) : (
+            <span className="agency-teammate-photo" aria-hidden="true" />
+          )}
+          <span>
+            <span className="agency-teammate-name">{member.name}</span>
+            <span className="agency-teammate-role">{roles[member.id].role}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
   );
 }
