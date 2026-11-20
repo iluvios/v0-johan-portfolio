@@ -1931,7 +1931,7 @@ html[data-site="energymedia"] body {
     flex-direction: column;
     align-items: center;
     gap: 1.75rem;
-    padding-block: clamp(4rem, 9vw, 7.5rem) clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(3.5rem, 7vw, 6rem) clamp(2.5rem, 5vw, 4rem);
     text-align: center;
   }
   .agency-hero-eyebrow {
@@ -1949,10 +1949,10 @@ html[data-site="energymedia"] body {
     text-transform: uppercase;
   }
   .agency-hero-title {
-    font-size: clamp(2.6rem, 6.4vw, 5.8rem);
+    font-size: clamp(2.25rem, 4.8vw, 4rem);
     font-weight: 500;
-    line-height: 1.02;
-    letter-spacing: -0.06em;
+    line-height: 1.06;
+    letter-spacing: -0.045em;
   }
   .agency-hero-title > span {
     display: block;
@@ -1970,7 +1970,7 @@ html[data-site="energymedia"] body {
   .agency-hero-intro {
     max-width: 620px;
     color: hsl(var(--agency-body));
-    font-size: clamp(16px, 1.5vw, 18.5px);
+    font-size: clamp(16px, 1.4vw, 17.5px);
     line-height: 1.6;
   }
   .agency-hero-actions {
@@ -2052,14 +2052,14 @@ html[data-site="energymedia"] body {
 
   /* Section scaffolding */
   .agency-section {
-    padding-block: clamp(3.5rem, 7vw, 6.5rem);
+    padding-block: clamp(3rem, 6vw, 5.5rem);
   }
   .agency-heading {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 2rem;
-    margin-bottom: clamp(2rem, 4vw, 3rem);
+    margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
   }
   .agency-heading > div {
     min-width: 0;
@@ -2074,9 +2074,11 @@ html[data-site="energymedia"] body {
     align-items: center;
   }
   .agency-title {
-    font-size: clamp(2.1rem, 4.2vw, 3.7rem);
+    max-width: 26ch;
+    font-size: clamp(1.75rem, 2.8vw, 2.5rem);
     font-weight: 500;
-    line-height: 1.06;
+    line-height: 1.15;
+    letter-spacing: -0.035em;
   }
   .agency-intro {
     max-width: 62ch;
@@ -2134,7 +2136,8 @@ html[data-site="energymedia"] body {
   .agency-card h3,
   .agency-problem h3,
   .agency-plan h3 {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
   }
   .agency-card p,
   .agency-problem p,
@@ -2194,7 +2197,8 @@ html[data-site="energymedia"] body {
     border-top: 1px solid hsl(var(--border));
   }
   .agency-numbered-item h3 {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
   }
 
   /* Problem: scan numbers */
@@ -2225,11 +2229,13 @@ html[data-site="energymedia"] body {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    /* Numbers line up at the top even when labels wrap to different lengths. */
+    justify-content: flex-end;
     gap: 0.6rem;
   }
   .agency-statband-item dd {
     font-family: var(--font-space), sans-serif;
-    font-size: clamp(3rem, 6vw, 4.6rem);
+    font-size: clamp(2.5rem, 4.2vw, 3.5rem);
     font-weight: 500;
     line-height: 1;
     letter-spacing: -0.05em;
@@ -2261,9 +2267,6 @@ html[data-site="energymedia"] body {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-  }
-  .agency-connected-copy .agency-title {
-    font-size: clamp(2rem, 3.4vw, 3rem);
   }
   .agency-points {
     display: flex;
@@ -2456,7 +2459,7 @@ html[data-site="energymedia"] body {
     padding: 2rem 1.75rem;
   }
   .agency-pillar-word {
-    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    font-size: clamp(1.9rem, 2.6vw, 2.4rem);
     font-weight: 500;
     line-height: 1;
     letter-spacing: -0.05em;
@@ -2507,7 +2510,7 @@ html[data-site="energymedia"] body {
   }
   .agency-proof-value {
     font-family: var(--font-space), sans-serif;
-    font-size: clamp(2.2rem, 3.6vw, 3rem);
+    font-size: clamp(1.9rem, 2.6vw, 2.4rem);
     font-weight: 500;
     line-height: 1;
     letter-spacing: -0.05em;
@@ -2528,7 +2531,7 @@ html[data-site="energymedia"] body {
     gap: 0.5rem;
   }
   .agency-proof-mini-item .agency-proof-value {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
   }
 
   /* Process */
@@ -2563,7 +2566,8 @@ html[data-site="energymedia"] body {
     font-weight: 600;
   }
   .agency-step h3 {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
   }
   .agency-step p {
     max-width: 32ch;
@@ -2605,7 +2609,7 @@ html[data-site="energymedia"] body {
   }
   .agency-plan-price {
     font-family: var(--font-space), sans-serif;
-    font-size: 2.6rem;
+    font-size: 2.25rem;
     font-weight: 500;
     line-height: 1;
     letter-spacing: -0.04em;
@@ -2672,9 +2676,9 @@ html[data-site="energymedia"] body {
     justify-content: space-between;
     gap: 1.5rem;
     min-height: 44px;
-    padding-block: 1.25rem;
+    padding-block: 1.1rem;
     font-family: var(--font-space), sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 500;
     letter-spacing: -0.02em;
     list-style: none;
@@ -2708,17 +2712,17 @@ html[data-site="energymedia"] body {
     align-items: center;
     gap: 1.5rem;
     overflow: hidden;
-    padding: clamp(2.5rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 4rem);
+    padding: clamp(2.25rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.5rem);
     border: 1px solid hsl(var(--border));
     border-radius: 24px;
     background: radial-gradient(90% 120% at 50% 0%, hsl(var(--primary) / 0.28), hsl(var(--background) / 0.9) 70%);
     text-align: center;
   }
   .agency-cta h2 {
-    max-width: 18ch;
-    font-size: clamp(2.3rem, 5.5vw, 4.6rem);
+    max-width: 22ch;
+    font-size: clamp(1.9rem, 3.4vw, 2.9rem);
     font-weight: 500;
-    line-height: 1.04;
+    line-height: 1.12;
   }
   .agency-cta p {
     max-width: 52ch;
@@ -2752,7 +2756,7 @@ html[data-site="energymedia"] body {
     gap: 0.6rem;
     margin-bottom: 0.35rem;
     font-family: var(--font-space), sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 500;
     letter-spacing: -0.02em;
   }
@@ -2914,7 +2918,7 @@ html[data-site="energymedia"] body {
     white-space: nowrap;
   }
   .calc-line--total dd {
-    font-size: 2.2rem;
+    font-size: 2rem;
     letter-spacing: -0.04em;
   }
   .calc-summary-highlight {
@@ -3108,5 +3112,131 @@ html[data-site="energymedia"] body {
   .agency-plan,
   .agency-proof-media img {
     transition: none;
+  }
+}
+
+/* Agency: shared page titles at a readable scale (asjohan.com keeps its own sizes). */
+html[data-site="energymedia"] .page-title {
+  max-width: 22ch;
+  font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  line-height: 1.08;
+}
+html[data-site="energymedia"] .page-description {
+  max-width: 60ch;
+}
+html[data-site="energymedia"] .section-title {
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+}
+html[data-site="energymedia"] .detail-title {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+}
+html[data-site="energymedia"] .contact-invitation h2 {
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+}
+@layer components {
+  /* About: team, story, principles */
+  .agency-team {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+  .agency-team > li > div {
+    height: 100%;
+  }
+  .agency-member {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid hsl(var(--border));
+    border-radius: 18px;
+    background: linear-gradient(160deg, hsl(var(--primary) / 0.08), hsl(var(--background) / 0.92) 60%);
+  }
+  .agency-member-photo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: radial-gradient(120% 90% at 30% 20%, hsl(var(--accent) / 0.35), hsl(var(--primary) / 0.25) 45%, hsl(var(--card)) 100%);
+  }
+  .agency-member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+  .agency-member-initial {
+    font-family: var(--font-space), sans-serif;
+    font-size: 6rem;
+    font-weight: 500;
+    color: hsl(var(--foreground) / 0.85);
+    letter-spacing: -0.05em;
+  }
+  .agency-member-text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.4rem 1.5rem 1.5rem;
+  }
+  .agency-member-text h3 {
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+  }
+  .agency-member-role {
+    margin-top: 0.15rem;
+    color: hsl(var(--accent));
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+  .agency-member-text > p {
+    color: hsl(var(--agency-body));
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .agency-member-link {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 32px;
+    color: hsl(var(--muted-foreground));
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .agency-member-link:hover {
+    color: hsl(var(--accent));
+  }
+  .agency-story {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    max-width: 760px;
+  }
+  .agency-story > p {
+    color: hsl(var(--agency-body));
+    font-size: 16.5px;
+    line-height: 1.7;
+  }
+  .agency-principles {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .agency-team {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .agency-principles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 767px) {
+  /* Square team photos on phones so three people don't take three screens. */
+  .agency-member-photo {
+    aspect-ratio: 1 / 1;
   }
 }

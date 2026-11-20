@@ -9,11 +9,11 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: "About",
       description:
-        "Energy Media is a Medellín-based growth and digital systems agency uniting paid acquisition, web engineering, CRM automation, and attribution.",
+        "Meet Energy Media: a team of three in Medellín, Colombia running ads, design, websites, CRM and tracking for small businesses in the US and Latin America.",
       openGraph: {
-        title: "About Energy Media | Growth & Digital Systems Agency",
+        title: "About Energy Media | Marketing for Small Businesses",
         description:
-          "Senior growth operators uniting performance marketing, high-converting websites, CRM automation, and attribution.",
+          "Sebastian on paid media, Johan on CRM, automation and tracking, Santiago on UX and design: one small team for your whole funnel.",
         type: "website",
       },
     };

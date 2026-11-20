@@ -7,7 +7,6 @@ import { getProjects, getFeaturedProjects, getProject } from "@/lib/projects";
 import { getBlogPosts, getBlogPost } from "@/lib/blog";
 import {
   portfolioCopy,
-  agencyCopy,
   agencyPortfolioOverrides,
   type Language,
   type PortfolioCopy,
@@ -38,11 +37,6 @@ export function usePortfolioCopy() {
   const categoryName = (value: string) =>
     language === "es" ? (CATEGORY_ES[value] ?? value) : value;
   return { copy, language, categoryName };
-}
-
-export function useAgencyCopy() {
-  const { language } = useLanguage();
-  return { copy: agencyCopy[language], language };
 }
 
 export function useProjects() {

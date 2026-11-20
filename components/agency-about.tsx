@@ -1,101 +1,111 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import { Reveal } from "@/components/portfolio-motion";
-import {
-  Eyebrow,
-  PageIntro,
-  ContactInvitation,
-} from "@/components/portfolio-ui";
-import { useAgencyCopy, usePortfolioCopy } from "@/lib/portfolio";
-import { SITE_CONFIGS } from "@/lib/tenant";
+import { Eyebrow, PageIntro } from "@/components/portfolio-ui";
+import { AgencyCta, AgencySection } from "@/components/agency/sections";
+import { useLanguage } from "@/contexts/language-context";
+import { aboutCopy, TEAM } from "@/lib/agency/about";
+import { agencyHomeCopy } from "@/lib/agency/copy";
 import { STACK } from "@/lib/site";
 
 export default function AgencyAbout() {
-  const { copy } = useAgencyCopy();
-  const { copy: shared } = usePortfolioCopy();
-  const page = copy.aboutPage;
+  const { language } = useLanguage();
+  const copy = aboutCopy[language];
+  const home = agencyHomeCopy[language];
 
   return (
     <div className="page-shell">
-      <PageIntro
-        eyebrow={page.eyebrow}
-        title={page.title}
-        description={page.description}
-      />
+      <PageIntro eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
 
-      <Separator />
+      <AgencySection id="team" eyebrow={copy.teamEyebrow} title={copy.teamTitle}>
+        <ul className="agency-team">
+          {TEAM.map((member, i) => {
+            const person = copy.team[member.id];
+            return (
+              <li key={member.id}>
+                <Reveal className="agency-member" delay={i * 0.08}>
+                  <div className="agency-member-photo">
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={`${member.name}, ${person.role}`}
+                        width={640}
+                        height={800}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <span className="agency-member-initial" aria-hidden="true">
+                        {member.name.slice(0, 1)}
+                      </span>
+                    )}
+                  </div>
+                  <div className="agency-member-text">
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3>{member.name}</h3>
+                        <p className="agency-member-role">{person.role}</p>
+                      </div>
+                      {member.link && (
+                        <a
+                          href={member.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="agency-member-link"
+                        >
+                          {copy.portfolio}
+                          <ArrowUpRight size={14} aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
+                    <p>{person.body}</p>
+                    <ul className="mt-auto flex flex-wrap gap-1.5 pt-2">
+                      {person.tags.map((tag) => (
+                        <li key={tag}>
+                          <Badge variant="tag">{tag}</Badge>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+              </li>
+            );
+          })}
+        </ul>
+      </AgencySection>
 
-      <section className="section">
-        <Reveal className="perspective-layout">
-          <Image
-            className="perspective-portrait"
-            src="/images/johan-portrait.webp"
-            alt="Johan Alvarez, cofounder of Energy Media"
-            width={420}
-            height={525}
-            sizes="(max-width: 767px) 112px, 300px"
-          />
-          <div className="perspective-copy">
-            <Eyebrow>{page.thesisEyebrow}</Eyebrow>
-            <h2 className="perspective-statement">
-              {page.thesisStart}
-              <br />
-              <em>{page.thesisEnd}</em>
-            </h2>
-            <p className="max-w-lg text-base leading-relaxed text-muted-foreground">
-              {page.thesisBody}
-            </p>
-            <div className="flex flex-wrap items-center gap-6">
-              <Link className="text-link" href="/projects">
-                {shared.allWork}
-                <ArrowUpRight size={18} aria-hidden="true" />
-              </Link>
-              <a
-                className="text-link"
-                href={SITE_CONFIGS.asjohan.origin}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {page.founderLink}
-                <ArrowUpRight size={18} aria-hidden="true" />
-              </a>
-            </div>
-          </div>
+      <section className="section agency-section" aria-labelledby="story-heading">
+        <Reveal className="agency-story">
+          <Eyebrow>{copy.storyEyebrow}</Eyebrow>
+          <h2 id="story-heading" className="agency-title">
+            {copy.storyTitle}
+          </h2>
+          <p>{copy.storyBody}</p>
+          <Link className="text-link" href="/projects">
+            {copy.storyWork}
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </Link>
         </Reveal>
       </section>
 
-      <Separator />
-
-      <section className="section" aria-labelledby="principles-heading">
-        <div className="section-heading">
-          <div className="flex flex-col gap-4">
-            <Eyebrow>{page.principlesEyebrow}</Eyebrow>
-            <h2 id="principles-heading" className="section-title">
-              {page.principlesTitle}
-            </h2>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {page.principles.map((item) => (
-            <Reveal key={item.index} className="process-step">
-              <span className="service-index">{item.index}</span>
+      <AgencySection id="principles" eyebrow={copy.principlesEyebrow} title={copy.principlesTitle}>
+        <div className="agency-principles">
+          {copy.principles.map((item, i) => (
+            <Reveal key={item.title} className="agency-card h-full" delay={i * 0.06}>
+              <span className="service-index">{String(i + 1).padStart(2, "0")}</span>
               <h3>{item.title}</h3>
-              <p>{item.description}</p>
+              <p>{item.body}</p>
             </Reveal>
           ))}
         </div>
-      </section>
+      </AgencySection>
 
-      <Separator />
-
-      <section className="section" aria-label={shared.stackLabel}>
+      <section className="agency-section pt-0" aria-label={copy.toolsLabel}>
         <div className="flex flex-col gap-4">
-          <p className="eyebrow">{shared.stackLabel}</p>
+          <p className="eyebrow">{copy.toolsLabel}</p>
           <ul className="flex flex-wrap gap-2">
             {STACK.map((tool) => (
               <li key={tool}>
@@ -107,7 +117,12 @@ export default function AgencyAbout() {
       </section>
 
       <div className="pb-16 md:pb-24">
-        <ContactInvitation />
+        <AgencyCta
+          eyebrow={home.ctaEyebrow}
+          title={home.ctaTitle}
+          body={home.ctaBody}
+          button={home.ctaButton}
+        />
       </div>
     </div>
   );
