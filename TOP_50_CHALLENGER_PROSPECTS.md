@@ -1,19 +1,19 @@
 # Top 50 US Metros — #1 Mid-Market Challenger Prospect Per Metro (Across 7 Industries)
 
 > [!IMPORTANT]
-> **Challenger Selection Criteria:** Every company below is the **#1 highest-closeability Mid-Market Challenger prospect** in its US Metro across your **7 target local cohorts** (`Med Spas & Dental`, `Home Services`, `Law Firms`, `Specialty Auto`, `Custom Building`, `Event Venues`, and `Real Estate`), selected from our expanded **Page-1 + Page-2 (`#21–#40`) + Page-3 (`#41–#60`)** national audit corpus. Unlike 1,500+-review corporate/PE giants that already retain in-house teams or national agencies, these **owner-operated challengers** average **`4.32★`** and **`106` Google reviews** (`50/50` strictly inside `3.5★–4.6★` & `35–250` reviews; `45/50` from Page-2 & Page-3 Challenger waves — `22` Page-3 + `23` Page-2), each with a live stitched `1680×960` 3-panel screenshot board on disk, verified contact reachability (`50/50` verified emails + direct phone), and concrete conversion/technical leaks primed for your **\$1,500 Diagnostic → \$10,000 Foundation Build → \$3,000/mo Growth & AI Intake Retainer**.
+> **Challenger Selection Criteria:** Every company below is the **#1 highest-closeability Mid-Market Challenger prospect** in its US Metro across **7 target local cohorts** (`Med Spas, Dental & Aesthetics`, `Home Services (HVAC, Roof, Solar, Remodel)`, `Law Firms (PI, Family, Estate, Immigration)`, `Specialty Auto (Exotic, PPF/Tint, Performance)`, `Custom Building (Doors, Windows, Iron/Glass)`, `Event & Wedding Venues`, `Real Estate (Brokerages, Property Mgmt, Luxury)`), selected from our national audit corpus. Unlike 1,500+-review corporate/PE giants that already retain in-house teams or national agencies, these **owner-operated challengers** average **`4.31★`** and **`108` Google reviews** (`50/50` strictly inside `3.5★–4.6★` & `35–250` reviews; `45/50` from Page-2 & Page-3 Challenger waves — `25` Page-3 + `20` Page-2), each with a live stitched `1680×960` 3-panel screenshot board on disk, verified contact reachability (`50/50` verified emails + direct phone), and concrete conversion/technical leaks primed for your **\$1,500 Diagnostic → \$10,000 Foundation Build → \$3,000/mo Growth & AI Intake Retainer**.
 
 ## Industry Balance Across the 50 Metro Challenger Winners
 
 | Industry Cohort | Selected Metro Challengers |
 | :--- | :--- |
-| **Med Spas, Dental & Aesthetics** (`med_spa_aesthetics`) | **`7` Metros** |
-| **Home Services (HVAC, Roof, Solar, Remodel)** (`home_services_ads`) | **`7` Metros** |
-| **Law Firms (PI, Family, Estate, Immigration)** (`law_firms`) | **`7` Metros** |
-| **Specialty Auto (Exotic, PPF/Tint, Performance)** (`specialty_auto`) | **`7` Metros** |
-| **Custom Building (Doors, Windows, Iron/Glass)** (`custom_building`) | **`7` Metros** |
-| **Event & Wedding Venues** (`event_venues`) | **`8` Metros** |
-| **Real Estate (Brokerages, Property Mgmt, Luxury)** (`real_estate`) | **`7` Metros** |
+| **Med Spas, Dental & Aesthetics** (`med_spa_aesthetics`) | **`6` Metros** |
+| **Home Services (HVAC, Roof, Solar, Remodel)** (`home_services_ads`) | **`6` Metros** |
+| **Law Firms (PI, Family, Estate, Immigration)** (`law_firms`) | **`6` Metros** |
+| **Specialty Auto (Exotic, PPF/Tint, Performance)** (`specialty_auto`) | **`6` Metros** |
+| **Custom Building (Doors, Windows, Iron/Glass)** (`custom_building`) | **`8` Metros** |
+| **Event & Wedding Venues** (`event_venues`) | **`12` Metros** |
+| **Real Estate (Brokerages, Property Mgmt, Luxury)** (`real_estate`) | **`6` Metros** |
 
 ---
 
@@ -21,7 +21,7 @@
 
 | # | US Metro | Company & Website | Industry | Challenger Reputation | Tier, Gap & Angle | Scores (`Money` / `Brand-UI` / `Sell` / `Tech` / `Auto`) | Primary Contact |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1** | **Dallas-Fort Worth, TX** (`CST`) | **[Ramirez Iron Doors](https://ramirezironworkstx.com/)** (`ramirezironworkstx.com`) | Custom Iron & Entry Doors | **4.5★** (`53` reviews) | **Tier S** (`Gap 8/10`) • `reputation_and_intake_rescue` | `9` / `7` / `7` / `5` / `4` | ramirezironworks68@gmail.com (owner) • (972) 670-4558 |
+| **1** | **Dallas-Fort Worth, TX** (`CST`) | **[Level Two Events](http://www.leveltwoevents.com/)** (`leveltwoevents.com`) | Wedding & Reception Venues | **4.4★** (`102` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `modernize_website` | `9` / `9` / `3` / `7` / `4` | jim@leveltwoevents.com (owner) • (214) 674-0976 |
 | **2** | **Houston, TX** (`CST`) | **[The Parador](http://www.paradorhouston.com/)** (`paradorhouston.com`) | Wedding & Reception Venues | **4.5★** (`107` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `scale_50pct_more` | `9` / `7` / `6` / `5` / `6` | paradorhouston@aol.com (owner) • (713) 529-3050 |
 | **3** | **Austin, TX** (`CST`) | **[ILLEET Auto Wrap](http://illeetautowrap.com/)** (`illeetautowrap.com`) | PPF, Vinyl Wraps & Ceramic Coating | **4.2★** (`60` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `modernize_website` | `8` / `4` / `6` / `5` / `4` | illeetautowrap@gmail.com (owner) • (737) 212-0400 |
 | **4** | **San Antonio, TX** (`CST`) | **[Anew You Medical Aesthetics and Total Wellness Center](http://anewyousa.com/)** (`anewyousa.com`) | Med Spa & Aesthetics | **4.1★** (`231` reviews) • `Page-3` | **Tier S** (`Gap 7/10`) • `reputation_and_intake_rescue` | `10` / `8` / `8` / `6` / `4` | vip@anewyousa.com (owner) • (210) 688-4850 |
@@ -35,13 +35,13 @@
 | **12** | **Nashville, TN** (`CST`) | **[Luxury Palace Event Center](http://www.luxurypalaceeventcenter.com/)** (`luxurypalaceeventcenter.com`) | Wedding & Reception Venues | **4.4★** (`100` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `modernize_website` | `7` / `4` / `4` / `6` / `4` | luxurypec@gmail.com (owner) • (615) 881-9773 |
 | **13** | **Chicago, IL** (`CST`) | **[Second City Roofing & Exteriors](http://www.secondcityconstruction.com/)** (`secondcityconstruction.com`) | Roofing & Storm Restoration | **4.4★** (`99` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `modernize_website` | `9` / `5` / `7` / `7` / `4` | secondcityconstruction@yahoo.com (owner) • (773) 384-6300 |
 | **14** | **Minneapolis-St. Paul, MN** (`CST`) | **[Metro Law Offices, Ltd.](https://metrolawoffices.com/)** (`metrolawoffices.com`) | Personal Injury Law | **4★** (`70` reviews) • `Page-3` | **Tier S** (`Gap 7/10`) • `reputation_and_intake_rescue` | `8` / `8` / `7` / `6` / `4` | dan@metrolawoffices.com (owner) • (763) 314-3800 |
-| **15** | **Columbus, OH** (`EST`) | **[Muse Med Spa](http://www.musemed.com/)** (`musemed.com`) | Med Spa & Aesthetics | **4.5★** (`38` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `modernize_website` | `9` / `8` / `4` / `6` / `4` | info@musemed.com (role) • (614) 412-6873 |
-| **16** | **Indianapolis, IN** (`EST`) | **[Xtreme Vehicle Designs](https://www.xtremevehicledesignsin.com/)** (`xtremevehicledesignsin.com`) | PPF, Vinyl Wraps & Ceramic Coating | **4.5★** (`196` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `scale_50pct_more` | `10` / `7` / `6` / `7` / `4` | sales@xtremevehicledesigns.com (role) • (317) 210-2209 |
+| **15** | **Columbus, OH** (`EST`) | **[Wet Audio & Accessories Inc](https://www.wetcaraudio.com/)** (`wetcaraudio.com`) | PPF, Vinyl Wraps & Ceramic Coating | **4.3★** (`197` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `modernize_website` | `9` / `7` / `5` / `5` / `4` | wetaudio@yahoo.com (owner) • (614) 274-9955 |
+| **16** | **Indianapolis, IN** (`EST`) | **[Morgan Acres](http://www.morganacresindy.com/)** (`morganacresindy.com`) | Wedding & Reception Venues | **4.5★** (`48` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `modernize_website` | `8` / `5` / `5` / `5` / `4` | shani@morganacresindy.com (owner) • (317) 714-9835 |
 | **17** | **Kansas City, MO** (`CST`) | **[Rajeunir Medical Spa](http://www.rmedspa.com/)** (`rmedspa.com`) | Med Spa & Aesthetics | **4.3★** (`95` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `reputation_and_intake_rescue` | `9` / `6` / `5` / `6` / `4` | leessummit@rmedspa.com (owner) • (816) 505-5551 |
 | **18** | **Washington DC-NoVA** (`EST`) | **[Lyon Park Community Center](http://www.lyonpark.info/)** (`lyonpark.info`) | Wedding & Reception Venues | **4.5★** (`131` reviews) | **Tier S** (`Gap 9/10`) • `upgrade_social_and_ads` | `9` / `6` / `2` / `5` / `4` | rent@lyonpark.info (owner) • (703) 857-0165 |
 | **19** | **Boston, MA** (`EST`) | **[Boston Roofing And Gutters](http://www.bostonroofingandgutters.com/)** (`bostonroofingandgutters.com`) | Roofing & Storm Restoration | **4.4★** (`50` reviews) • `Page-2` | **Tier S** (`Gap 7/10`) • `modernize_website` | `9` / `6` / `8` / `6` / `4` | info@bostonroofingandgutters.com (role) • (781) 267-3778 |
 | **20** | **Philadelphia, PA** (`EST`) | **[All Budget Roofing](http://allbudgetroofing21.wixsite.com/website)** (`allbudgetroofing21.wixsite.com`) | Roofing & Storm Restoration | **4.3★** (`51` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `modernize_website` | `7` / `4` / `5` / `5` / `4` | allbudgetroofing215@gmail.com (owner) • (215) 459-7125 |
-| **21** | **Detroit-Troy, MI** (`EST`) | **[Daoud Law Offices, PLLC](http://ajdaoudlaw.com/)** (`ajdaoudlaw.com`) | Personal Injury Law | **4.5★** (`66` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `upgrade_social_and_ads` | `8` / `7` / `3` / `4` / `4` | info@ajdaoudlaw.com (role) • (586) 604-5377 |
+| **21** | **Detroit-Troy, MI** (`EST`) | **[American Door Systems Inc](http://www.americandoorsystem.com/)** (`americandoorsystem.com`) | Custom Iron & Entry Doors | **4.3★** (`57` reviews) | **Tier S** (`Gap 8/10`) • `modernize_website` | `9` / `8` / `5` / `6` / `4` | john@americandoorsystems.com (owner) • (248) 712-3991 |
 | **22** | **Denver, CO** (`MST`) | **[The Door Store & More](https://denverdoorstore.com/)** (`denverdoorstore.com`) | Door supplier | **3.8★** (`204` reviews) | **Tier S** (`Gap 8/10`) • `reputation_and_intake_rescue` | `9` / `6` / `5` / `5` / `4` | denverdoorstore@gmail.com (owner) • (303) 722-8404 |
 | **23** | **Phoenix-Scottsdale, AZ** (`MST`) | **[ArtFactory.com](https://artfactory.com/)** (`artfactory.com`) | Custom Iron & Entry Doors | **4.5★** (`84` reviews) • `Page-2` | **Tier S** (`Gap 7/10`) • `modernize_website` | `9` / `6` / `9` / `6` / `4` | info4@artfactory.com (role) • (480) 483-0170 |
 | **24** | **Las Vegas, NV** (`PST`) | **[RBO Motorsports](https://rbomotorsportslv.com/)** (`rbomotorsportslv.com`) | PPF, Vinyl Wraps & Ceramic Coating | **4.4★** (`152` reviews) • `Page-2` | **Tier S** (`Gap 7/10`) • `reputation_and_intake_rescue` | `9` / `5` / `9` / `6` / `4` | rbomotorsports702@gmail.com (owner) • (702) 381-1355 |
@@ -52,22 +52,22 @@
 | **29** | **Richmond, VA** (`EST`) | **[MASTER and SONS PLUMBING](http://www.masterandsonsplumbing.com/)** (`masterandsonsplumbing.com`) | HVAC & Plumbing | **4.5★** (`137` reviews) • `Page-3` | **Tier S** (`Gap 9/10`) • `modernize_website` | `10` / `5` / `5` / `7` / `7` | masterandsonsplumbing@yahoo.com (owner) • (804) 323-0202 |
 | **30** | **Virginia Beach-Norfolk, VA** (`EST`) | **[Lynnhaven Management](https://www.lynnhavenmanagement.com/)** (`lynnhavenmanagement.com`) | Residential & Commercial Property Management | **3.8★** (`68` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `reputation_and_intake_rescue` | `7` / `5` / `5` / `6` / `5` | lynnhavenmanagement@gmail.com (owner) • (757) 955-2010 |
 | **31** | **Jacksonville, FL** (`EST`) | **[Coastal Occasions](http://coastaloccasion.com/)** (`coastaloccasion.com`) | Wedding & Reception Venues | **4.3★** (`49` reviews) • `Page-3` | **Tier S** (`Gap 9/10`) • `modernize_website` | `8` / `5` / `3` / `5` / `4` | coastaloccasions@hotmail.com (owner) • (904) 887-8240 |
-| **32** | **Naples-Sarasota, FL** (`EST`) | **[The Law Office of Wyndel G. Darville, PLLC](https://thelawofficeofwgd.com/)** (`thelawofficeofwgd.com`) | Immigration & Family Law | **4.3★** (`41` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `modernize_website` | `9` / `8` / `4` / `8` / `4` | wyndel@thelawofficeofwgd.com (owner) • (941) 264-1030 |
-| **33** | **West Palm Beach, FL** (`EST`) | **[Craft Master Custom Pools](https://craftmastercustompools.com/)** (`craftmastercustompools.com`) | Custom Pools & Outdoor Living | **4.2★** (`66` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `modernize_website` | `8` / `8` / `5` / `5` / `4` | info@craftmastercustompools.com (role) • (561) 798-7929 |
+| **32** | **Naples-Sarasota, FL** (`EST`) | **[Palm Aire Country Club](http://www.palmaire.net/)** (`palmaire.net`) | Corporate & Luxury Banquet Venues | **4.4★** (`209` reviews) • `Page-3` | **Tier S** (`Gap 9/10`) • `reputation_and_intake_rescue` | `9` / `6` / `4` / `5` / `4` | info@palmaire.net (role) • (941) 355-9733 |
+| **33** | **West Palm Beach, FL** (`EST`) | **[Hang 10 Pools](https://www.hang10pools.com/)** (`hang10pools.com`) | Custom Pools & Outdoor Living | **4.4★** (`45` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `reputation_and_intake_rescue` | `9` / `9` / `5` / `5` / `4` | office@hang10pools.com (role) • (800) 549-4701 |
 | **34** | **Charleston, SC** (`EST`) | **[Charleston Laser and Aesthetics](http://www.charlestonlac.com/)** (`charlestonlac.com`) | Med Spa & Aesthetics | **3.9★** (`53` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `reputation_and_intake_rescue` | `8` / `6` / `5` / `6` / `4` | charlestonlaser@gmail.com (owner) • (843) 242-7096 |
 | **35** | **Greenville, SC** (`EST`) | **[Kimberly F. Dunham Attorney at Law](http://www.kimberlydunham.com/)** (`kimberlydunham.com`) | Immigration & Family Law | **4.2★** (`59` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `modernize_website` | `9` / `7` / `3` / `7` / `4` | aford@kimberlydunham.com (owner) • (864) 282-8686 |
 | **36** | **Cincinnati, OH** (`EST`) | **[Sanctuary DermaSpa+Salon](http://www.sanctuarydermaspa.com/)** (`sanctuarydermaspa.com`) | Plastic Surgery & Body Contouring | **4.1★** (`57` reviews) • `Page-3` | **Tier S** (`Gap 7/10`) • `scale_50pct_more` | `8` / `8` / `6` / `5` / `4` | contact@sanctuarydermaspa.com (role) • (513) 842-5863 |
 | **37** | **Cleveland, OH** (`EST`) | **[Lokal Real Estate](http://www.lokalrealestate.com/)** (`lokalrealestate.com`) | Boutique Real Estate Brokerage & Luxury Teams | **4.4★** (`156` reviews) • `Page-2` | **Tier S** (`Gap 7/10`) • `scale_50pct_more` | `9` / `8` / `9` / `5` / `4` | marketing@lokalrealestate.com (role) • (216) 252-6580 |
 | **38** | **Pittsburgh, PA** (`EST`) | **[Craft Heating and Cooling](http://www.craftheating.com/)** (`craftheating.com`) | HVAC & Plumbing | **4.3★** (`105` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `reputation_and_intake_rescue` | `9` / `6` / `6` / `7` / `4` | craft@craftheating.com (owner) • (412) 921-6995 |
-| **39** | **Louisville, KY** (`EST`) | **[Samuels Collision Repair](http://samuelscollision.com/)** (`samuelscollision.com`) | Custom Collision & Restyling | **4.4★** (`143` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `upgrade_social_and_ads` | `8` / `6` / `5` / `6` / `4` | samscol@bellsouth.net (owner) • (502) 368-7212 |
+| **39** | **Louisville, KY** (`EST`) | **[Land O' Goshen Farm Event Center](http://landogoshenfarmeventcenter.com/)** (`landogoshenfarmeventcenter.com`) | Wedding & Reception Venues | **4.4★** (`202` reviews) • `Page-3` | **Tier S** (`Gap 9/10`) • `modernize_website` | `10` / `6` / `5` / `7` / `4` | landogoshenfarmeventcenter@gmail.com (owner) • (502) 387-1759 |
 | **40** | **St. Louis, MO** (`CST`) | **[Mogul Realty](https://stlmogul.com/)** (`stlmogul.com`) | Residential & Commercial Property Management | **4.3★** (`94` reviews) • `Page-2` | **Tier S** (`Gap 7/10`) • `reputation_and_intake_rescue` | `8` / `7` / `6` / `7` / `4` | peter@stlmogul.com (owner) • (314) 865-1170 |
 | **41** | **Milwaukee, WI** (`CST`) | **[Carson Law Office - Criminal Defense, Bankruptcy & Family Lawyer](http://www.carsonlawoffice.com/)** (`carsonlawoffice.com`) | Immigration & Family Law | **4★** (`78` reviews) • `Page-3` | **Tier S** (`Gap 7/10`) • `scale_50pct_more` | `8` / `7` / `7` / `6` / `4` | christopher@carsonlawoffice.com (owner) • (262) 860-8932 |
 | **42** | **Oklahoma City, OK** (`CST`) | **[Lowe Plastic Surgery](https://www.loweplasticsurgery.com/)** (`loweplasticsurgery.com`) | Plastic Surgery & Body Contouring | **4.5★** (`181` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `modernize_website` | `10` / `7` / `5` / `8` / `5` | info@loweplasticsurgery.com (role) • (405) 942-4300 |
 | **43** | **Tulsa, OK** (`CST`) | **[Auto Impressions Tulsa](http://www.autoimpressionstulsa.com/)** (`autoimpressionstulsa.com`) | PPF, Vinyl Wraps & Ceramic Coating | **4.4★** (`70` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `modernize_website` | `8` / `5` / `6` / `4` / `4` | autoimpressiontulsa@yahoo.com (owner) • (918) 806-8884 |
 | **44** | **New Orleans, LA** (`CST`) | **[MKC Properties](http://www.mkcnola.com/)** (`mkcnola.com`) | Residential & Commercial Property Management | **4.1★** (`101` reviews) | **Tier S** (`Gap 9/10`) • `modernize_website` | `9` / `4` / `3` / `7` / `4` | mkc1914@gmail.com (owner) • (504) 512-7438 |
 | **45** | **Birmingham, AL** (`CST`) | **[ARC Realty - Vestavia](http://arcrealtyco.com/)** (`arcrealtyco.com`) | Boutique Real Estate Brokerage & Luxury Teams | **4.5★** (`98` reviews) • `Page-2` | **Tier S** (`Gap 7/10`) • `upgrade_social_and_ads` | `8` / `8` / `4` / `7` / `5` | arcrealty@arcrealtyco.com (owner) • (205) 969-8910 |
-| **46** | **Memphis, TN** (`CST`) | **[Enterprise Property Management, Inc. \| Rental Home](https://propertymanagementmemphis.com/)** (`propertymanagementmemphis.com`) | Residential & Commercial Property Management | **4.2★** (`180` reviews) | **Tier S** (`Gap 9/10`) • `reputation_and_intake_rescue` | `9` / `8` / `2` / `5` / `4` | aivey@epmleasing.com (owner) • (901) 260-0206 |
-| **47** | **Omaha, NE** (`CST`) | **[Grunwald Mechanical Contractors & Engineers](http://grunwaldmech.com/)** (`grunwaldmech.com`) | HVAC & Plumbing | **4.4★** (`81` reviews) • `Page-2` | **Tier S** (`Gap 7/10`) • `reputation_and_intake_rescue` | `9` / `8` / `5` / `8` / `4` | service@grunwald1.com (role) • (402) 621-4911 |
+| **46** | **Memphis, TN** (`CST`) | **[Gates Lumber Company](http://www.gateslumber.com/)** (`gateslumber.com`) | Custom Iron & Entry Doors | **4.3★** (`56` reviews) • `Page-2` | **Tier S** (`Gap 9/10`) • `reputation_and_intake_rescue` | `8` / `6` / `4` / `3` / `4` | gbuzard@gateslumber.com (owner) • (901) 942-3201 |
+| **47** | **Omaha, NE** (`CST`) | **[McGill Law, PC LLO](http://www.mcgilllawyers.com/)** (`mcgilllawyers.com`) | Immigration & Family Law | **4.1★** (`65` reviews) | **Tier S** (`Gap 7/10`) • `modernize_website` | `9` / `8` / `5` / `9` / `4` | mcgilllaw@mcgilllawyers.com (owner) • (402) 548-5418 |
 | **48** | **Los Angeles-Beverly Hills, CA** (`PST`) | **[CK Plastic Surgery](http://www.ckplasticsurgeryinc.com/)** (`ckplasticsurgeryinc.com`) | Plastic Surgery & Body Contouring | **4.5★** (`49` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `modernize_website` | `8` / `6` / `5` / `6` / `4` | ckplasticsurgeryinc@gmail.com (owner) • (213) 382-4900 |
 | **49** | **San Diego, CA** (`PST`) | **[Rossi Events and Weddings at Rose Creek Cottage 1900](https://www.rossieventsandweddings.com/)** (`rossieventsandweddings.com`) | Wedding & Reception Venues | **4.5★** (`120` reviews) • `Page-2` | **Tier S** (`Gap 8/10`) • `modernize_website` | `9` / `6` / `5` / `7` / `4` | rossieventsandweddings@gmail.com (owner) • (951) 704-8220 |
 | **50** | **Seattle-Bellevue, WA** (`PST`) | **[Snohomish European Auto Service](http://snohomisheuropean.com/)** (`snohomisheuropean.com`) | Exotic & European Auto Repair | **4.5★** (`92` reviews) • `Page-3` | **Tier S** (`Gap 8/10`) • `upgrade_social_and_ads` | `8` / `7` / `3` / `5` / `4` | dan@snohomisheuropean.com (owner) • (360) 243-3296 |
@@ -76,45 +76,45 @@
 
 ## Detailed 50-Metro Mid-Market Challenger Dossiers
 
-### 1. Dallas-Fort Worth, TX — [Ramirez Iron Doors](https://ramirezironworkstx.com/)
+### 1. Dallas-Fort Worth, TX — [Level Two Events](http://www.leveltwoevents.com/)
 
-* **Industry Cohort:** Custom Building (Doors, Windows, Iron/Glass) — *Custom Iron & Entry Doors*
-* **Website & Visual Audit Links:** [https://ramirezironworkstx.com/](https://ramirezironworkstx.com/) • [View 3-Panel Visual Sheet (`ramirezironworkstx.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/ramirezironworkstx.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/custom_building/ramirezironworkstx.com) • [Google Maps Profile](https://maps.google.com/?cid=18227478367515445718&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.5 ★** across **`53` Google reviews** (8160 Moberly Ln #103, Dallas, TX 75227, USA) • Discovery Wave: Google Places Mid-Market Challenger
-* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Reputation & Intake Rescue** (`reputation_and_intake_rescue`) • Review Method: `diagnostic_rubric`
+* **Industry Cohort:** Event & Wedding Venues — *Wedding & Reception Venues*
+* **Website & Visual Audit Links:** [http://www.leveltwoevents.com/](http://www.leveltwoevents.com/) • [View 3-Panel Visual Sheet (`leveltwoevents.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/leveltwoevents.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/event_venues/leveltwoevents.com) • [Google Maps Profile](https://maps.google.com/?cid=12850322939511536131&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.4 ★** across **`102` Google reviews** (1250 Slocum St, Dallas, TX 75207, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
+* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Modernize Website & UX** (`modernize_website`) • Review Method: `diagnostic_rubric`
 * **Contacts & Socials:**
-  * **Emails:** `ramirezironworks68@gmail.com` (*owner*), `ramirezironworks061@gmail.com` (*owner*)
-  * **Phones:** `(972) 670-4558`, `(682) 284-7929`
+  * **Emails:** `jim@leveltwoevents.com` (*owner*)
+  * **Phones:** `(214) 674-0976`
   * **Decision-Makers:** *Owner-operated / not listed on public team page*
-  * **Social Profiles:** [Facebook](https://www.facebook.com/ramirezironworks670) • [TikTok](https://www.tiktok.com/@ramirez.iron.work)
+  * **Social Profiles:** [Instagram](http://instagram.com/leveltwo.events)
 
 | Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
 | :--- | :--- | :--- |
-| **Business Strength (Money)** | **`9/10`** | `53` reviews (4.5★), Paid Ads: `Active`, `12` commercial pages crawled |
-| **1. Branding & UX/UI** | **`7/10`** | *Aesthetics:* `7/10` • *Branding:* `7/10` • *UX/CRO:* `6/10` • CMS: `WordPress` |
-| **2. Marketing ("Can It Sell?")** | **`7/10`** | **Verdict:** *Decent Best Practices — Needs Creative Twist (+50% Upside)* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`6/10`** | Generic Cliché: `Yes` • Primary CTA: `CONTACT` |
-| **3. Technical Stack** | **`5/10`** | LCP: `5.8s` • TTFB: `133ms` • Size: `10.31 MB` • SEO/AEO: `2/10` • Tracking/CRM: `7/10` |
+| **Business Strength (Money)** | **`9/10`** | `102` reviews (4.4★), Paid Ads: `None detected`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`9/10`** | *Aesthetics:* `8/10` • *Branding:* `9/10` • *UX/CRO:* `2/10` • CMS: `Squarespace` |
+| **2. Marketing ("Can It Sell?")** | **`3/10`** | **Verdict:** *No — Static Brochure / Needs Foundation + Creative* • Showcases Reviews on Home: `No (Hidden!)` |
+| **The Creative Part** | **`7/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact Us` |
+| **3. Technical Stack** | **`7/10`** | LCP: `1.4s` • TTFB: `678ms` • Size: `3.95 MB` • SEO/AEO: `9/10` • Tracking/CRM: `5/10` |
 | **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
 
 * **Detected Technical & Marketing Stack:**
-  * **Pixels & Attribution:** `GTM`, `Server-Side GTM`, `GA4`, `Google Ads (AW-)`, `Call Tracking (CallRail)`
+  * **Pixels & Attribution:** `Server-Side GTM`, `GA4`
   * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebPage`, `ImageObject`, `BreadcrumbList`, `WebSite`
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Yes` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebSite`, `LocalBusiness`, `EventVenue`, `WeddingVenue`
 * **What Works (The Goods):**
   * ✅ Crisp vector/high-DPI brand logo in header
   * ✅ Responsive 390px mobile layout with zero horizontal overflow
-  * ✅ All 107 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((972) 670-4558) across header & contact
+  * ✅ All 22 homepage visual assets loaded intact
+  * ✅ Consistent primary phone ((214) 674-0976) across header & contact
 * **Concrete Gaps to Pitch (The Bads):**
-  * ❌ High-friction 8-field contact form suppresses mobile leads
+  * ❌ Earned 102 Google reviews (4.4★) but doesn't showcase them above the fold
+  * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
+  * ❌ No interactive lead capture form or online scheduler on homepage
+  * ❌ Earned 102 Google reviews (4.4★) off-site, but hides that social proof on the homepage
   * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-  * ❌ GBP review friction: Slow callback / unanswered inquiries
-  * ❌ Displays personal @gmail/@yahoo inbox instead of branded company email
-  * ❌ Bloated 10.3 MB homepage payload (6.2 MB unoptimized images) across 232 requests — stalls mobile 4G/cellular visitors for 29+ seconds
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 7/10 | Step 2 Sales 7/10 (Decent Best Practices — Needs Creative Twist (+50% Upside)) | Step 3 Tech 5/10 | Positioning 6/10] High-friction 8-field contact form suppresses mobile leads; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote; GBP review friction: Slow callback / unanswered inquiries
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 9/10 | Step 2 Sales 3/10 (No — Static Brochure / Needs Foundation + Creative) | Step 3 Tech 7/10 | Positioning 7/10] Earned 102 Google reviews (4.4★) but doesn't showcase them above the fold; Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; No interactive lead capture form or online scheduler on homepage
 * **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi Ramirez Iron Doors team — with 53 Google reviews (4.5★) in Dallas, Ramirez Iron Doors already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on ramirezironworkstx.com. Right now your mobile/desktop hero takes 5.8s (LCP) to load and your 53 Google reviews (4.5★) aren't showcased above the fold, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Interactive Style & Rebate Quote Configurator + 24/7 AI showroom scheduler + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for ramirezironworkstx.com?"
+  > "Hi Level Two Events team — with 102 Google reviews (4.4★) in Dallas, Level Two Events already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on leveltwoevents.com. Right now your 102 Google reviews (4.4★) aren't showcased above the fold and visitors hit a static 'contact us and wait' form instead of an instant quote or booking flow, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Instant Date-Availability & Guest-Count Pricing Calculator + 24/7 AI tour booker + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for leveltwoevents.com?"
 
 ---
 
@@ -664,87 +664,87 @@
 
 ---
 
-### 15. Columbus, OH — [Muse Med Spa](http://www.musemed.com/)
+### 15. Columbus, OH — [Wet Audio & Accessories Inc](https://www.wetcaraudio.com/)
 
-* **Industry Cohort:** Med Spas, Dental & Aesthetics — *Med Spa & Aesthetics*
-* **Website & Visual Audit Links:** [http://www.musemed.com/](http://www.musemed.com/) • [View 3-Panel Visual Sheet (`musemed.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/musemed.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/med_spa_aesthetics/musemed.com) • [Google Maps Profile](https://maps.google.com/?cid=1462755265079599716&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.5 ★** across **`38` Google reviews** (265 S 3rd St, Columbus, OH 43215, USA) • Discovery Wave: Google Places Page-2 Challenger (`#21–#40`)
+* **Industry Cohort:** Specialty Auto (Exotic, PPF/Tint, Performance) — *PPF, Vinyl Wraps & Ceramic Coating*
+* **Website & Visual Audit Links:** [https://www.wetcaraudio.com/](https://www.wetcaraudio.com/) • [View 3-Panel Visual Sheet (`wetcaraudio.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/wetcaraudio.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/specialty_auto/wetcaraudio.com) • [Google Maps Profile](https://maps.google.com/?cid=14585526734950285547&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.3 ★** across **`197` Google reviews** (739 Georgesville Rd, Columbus, OH 43228, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
 * **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Modernize Website & UX** (`modernize_website`) • Review Method: `diagnostic_rubric`
 * **Contacts & Socials:**
-  * **Emails:** `info@musemed.com` (*role*)
-  * **Phones:** `(614) 412-6873`
+  * **Emails:** `wetaudio@yahoo.com` (*owner*)
+  * **Phones:** `(614) 274-9955`
   * **Decision-Makers:** *Owner-operated / not listed on public team page*
-  * **Social Profiles:** [Instagram](https://instagram.com/musemedspa.co) • [Facebook](https://facebook.com/musecolumbus)
+  * **Social Profiles:** [Instagram](https://www.instagram.com/wetaudio/) • [Facebook](https://www.facebook.com/Wet-Audio-Accessories-158839360805933)
 
 | Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
 | :--- | :--- | :--- |
-| **Business Strength (Money)** | **`9/10`** | `38` reviews (4.5★), Paid Ads: `Active`, `12` commercial pages crawled |
-| **1. Branding & UX/UI** | **`8/10`** | *Aesthetics:* `7/10` • *Branding:* `9/10` • *UX/CRO:* `3/10` • CMS: `WordPress` |
-| **2. Marketing ("Can It Sell?")** | **`4/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`7/10`** | Generic Cliché: `Yes` • Primary CTA: `BOOK A VISIT` |
-| **3. Technical Stack** | **`6/10`** | LCP: `22.2s` • TTFB: `8336ms` • Size: `5.92 MB` • SEO/AEO: `7/10` • Tracking/CRM: `5/10` |
+| **Business Strength (Money)** | **`9/10`** | `197` reviews (4.3★), Paid Ads: `None detected`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`7/10`** | *Aesthetics:* `7/10` • *Branding:* `7/10` • *UX/CRO:* `4/10` • CMS: `Custom / Static HTML` |
+| **2. Marketing ("Can It Sell?")** | **`5/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
+| **The Creative Part** | **`8/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact Us` |
+| **3. Technical Stack** | **`5/10`** | LCP: `6.8s` • TTFB: `1078ms` • Size: `2.36 MB` • SEO/AEO: `6/10` • Tracking/CRM: `4/10` |
 | **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
 
 * **Detected Technical & Marketing Stack:**
-  * **Pixels & Attribution:** `GA4`, `Meta Pixel`
-  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Google Workspace` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebSite`, `Organization`, `HealthAndBeautyBusiness`
+  * **Pixels & Attribution:** `GTM`, `GA4`
+  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: *None*
 * **What Works (The Goods):**
   * ✅ Crisp vector/high-DPI brand logo in header
   * ✅ Responsive 390px mobile layout with zero horizontal overflow
-  * ✅ All 7 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((614) 412-6873) across header & contact
+  * ✅ All 5 homepage visual assets loaded intact
+  * ✅ Consistent primary phone ((614) 274-9955) across header & contact
 * **Concrete Gaps to Pitch (The Bads):**
-  * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
+  * ❌ Earned 197 Google reviews (4.3★) but doesn't showcase them above the fold
   * ❌ No interactive lead capture form or online scheduler on homepage
   * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-  * ❌ Bloated 5.9 MB homepage payload (5.0 MB unoptimized images) across 116 requests — stalls mobile 4G/cellular visitors for 17+ seconds
-  * ❌ Client-side ad pixels without Server-Side GTM / 1st-party CAPI (20-35% iOS attribution loss)
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 8/10 | Step 2 Sales 4/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 6/10 | Positioning 7/10] Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
+  * ❌ Displays personal @gmail/@yahoo inbox instead of branded company email
+  * ❌ Earned 197 Google reviews (4.3★) off-site, but hides that social proof on the homepage
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 7/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 5/10 | Positioning 8/10] Earned 197 Google reviews (4.3★) but doesn't showcase them above the fold; No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
 * **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi Muse Med Spa team — with 38 Google reviews (4.5★) in Columbus, Muse Med Spa already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on musemed.com. Right now your mobile/desktop hero takes 22.2s (LCP) to load and your 38 Google reviews (4.5★) aren't showcased above the fold, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with a 60-second Treatment & Pricing Quiz + 24/7 IG/SMS AI consult concierge + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for musemed.com?"
+  > "Hi Wet Audio & Accessories Inc team — with 197 Google reviews (4.3★) in Columbus, Wet Audio & Accessories Inc already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on wetcaraudio.com. Right now your mobile/desktop hero takes 6.8s (LCP) to load and your 197 Google reviews (4.3★) aren't showcased above the fold, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with a Vehicle-Specific PPF / Wrap / Service Package Configurator + 24/7 AI bay scheduler + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for wetcaraudio.com?"
 
 ---
 
-### 16. Indianapolis, IN — [Xtreme Vehicle Designs](https://www.xtremevehicledesignsin.com/)
+### 16. Indianapolis, IN — [Morgan Acres](http://www.morganacresindy.com/)
 
-* **Industry Cohort:** Specialty Auto (Exotic, PPF/Tint, Performance) — *PPF, Vinyl Wraps & Ceramic Coating*
-* **Website & Visual Audit Links:** [https://www.xtremevehicledesignsin.com/](https://www.xtremevehicledesignsin.com/) • [View 3-Panel Visual Sheet (`xtremevehicledesignsin.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/xtremevehicledesignsin.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/specialty_auto/xtremevehicledesignsin.com) • [Google Maps Profile](https://maps.google.com/?cid=2936308823824048374&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.5 ★** across **`196` Google reviews** (15240 Herriman Blvd, Noblesville, IN 46060, USA) • Discovery Wave: Google Places Page-2 Challenger (`#21–#40`)
-* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Scale 50% More in 3 Mo** (`scale_50pct_more`) • Review Method: `diagnostic_rubric`
+* **Industry Cohort:** Event & Wedding Venues — *Wedding & Reception Venues*
+* **Website & Visual Audit Links:** [http://www.morganacresindy.com/](http://www.morganacresindy.com/) • [View 3-Panel Visual Sheet (`morganacresindy.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/morganacresindy.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/event_venues/morganacresindy.com) • [Google Maps Profile](https://maps.google.com/?cid=7638202281298789499&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.5 ★** across **`48` Google reviews** (11951 E 30th St, Indianapolis, IN 46229, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
+* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Modernize Website & UX** (`modernize_website`) • Review Method: `diagnostic_rubric`
 * **Contacts & Socials:**
-  * **Emails:** `sales@xtremevehicledesigns.com` (*role*)
-  * **Phones:** `(317) 210-2209`, `(317) 773-1460`
+  * **Emails:** `shani@morganacresindy.com` (*owner*), `info@morganacresindy.com` (*role*)
+  * **Phones:** `(317) 714-9835`
   * **Decision-Makers:** *Owner-operated / not listed on public team page*
-  * **Social Profiles:** [Instagram](https://instagram.com/xtremevehicledesigns) • [Facebook](https://facebook.com/xtremevehicledesgins/)
+  * **Social Profiles:** [Facebook](https://www.facebook.com/morganacresindy)
 
 | Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
 | :--- | :--- | :--- |
-| **Business Strength (Money)** | **`10/10`** | `196` reviews (4.5★), Paid Ads: `Active`, `12` commercial pages crawled |
-| **1. Branding & UX/UI** | **`7/10`** | *Aesthetics:* `5/10` • *Branding:* `9/10` • *UX/CRO:* `5/10` • CMS: `Duda` |
-| **2. Marketing ("Can It Sell?")** | **`6/10`** | **Verdict:** *Decent Best Practices — Needs Creative Twist (+50% Upside)* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`8/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact` |
-| **3. Technical Stack** | **`7/10`** | LCP: `1.0s` • TTFB: `565ms` • Size: `7.79 MB` • SEO/AEO: `9/10` • Tracking/CRM: `5/10` |
+| **Business Strength (Money)** | **`8/10`** | `48` reviews (4.5★), Paid Ads: `None detected`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`5/10`** | *Aesthetics:* `3/10` • *Branding:* `6/10` • *UX/CRO:* `4/10` • CMS: `Custom / Static HTML` |
+| **2. Marketing ("Can It Sell?")** | **`5/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `Yes` |
+| **The Creative Part** | **`5/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact Us` |
+| **3. Technical Stack** | **`5/10`** | LCP: `4.6s` • TTFB: `715ms` • Size: `3.22 MB` • SEO/AEO: `4/10` • Tracking/CRM: `5/10` |
 | **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
 
 * **Detected Technical & Marketing Stack:**
-  * **Pixels & Attribution:** `GTM`, `GA4`, `Google Ads (AW-)`
-  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Yes` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebSite`, `LocalBusiness`
+  * **Pixels & Attribution:** *None detected (0 ad/analytics pixels)*
+  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `mx1.emailsrvr.com` • **DMARC:** Present (`quarantine`)
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: *None*
 * **What Works (The Goods):**
-  * ✅ Crisp vector/high-DPI brand logo in header
-  * ✅ All 22 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((317) 210-2209) across header & contact
-  * ✅ Clean typography discipline (Source Sans Pro, Verdana)
+  * ✅ All 13 homepage visual assets loaded intact
+  * ✅ Consistent primary phone ((317) 714-9835) across header & contact
+  * ✅ Clean typography discipline (Trebuchet MS)
+  * ✅ Actively showcases customer review proof on homepage
 * **Concrete Gaps to Pitch (The Bads):**
-  * ❌ Earned 196 Google reviews (4.5★) but doesn't showcase them above the fold
   * ❌ Horizontal overflow bug on 390px mobile viewport
-  * ❌ High-friction 8-field contact form suppresses mobile leads
-  * ❌ Earned 196 Google reviews (4.5★) off-site, but hides that social proof on the homepage
+  * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
+  * ❌ No interactive lead capture form or online scheduler on homepage
+  * ❌ Raster/low-DPI header logo instead of crisp SVG vector
   * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 7/10 | Step 2 Sales 6/10 (Decent Best Practices — Needs Creative Twist (+50% Upside)) | Step 3 Tech 7/10 | Positioning 8/10] Earned 196 Google reviews (4.5★) but doesn't showcase them above the fold; Horizontal overflow bug on 390px mobile viewport; High-friction 8-field contact form suppresses mobile leads
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 5/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 5/10 | Positioning 5/10] Horizontal overflow bug on 390px mobile viewport; Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; No interactive lead capture form or online scheduler on homepage
 * **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi Xtreme Vehicle Designs team — with 196 Google reviews (4.5★) in Noblesville, Xtreme Vehicle Designs already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on xtremevehicledesignsin.com. Right now your 196 Google reviews (4.5★) aren't showcased above the fold and the 390px mobile viewport overflows horizontally on phones, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with a Vehicle-Specific PPF / Wrap / Service Package Configurator + 24/7 AI bay scheduler + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for xtremevehicledesignsin.com?"
+  > "Hi Morgan Acres team — with 48 Google reviews (4.5★) in Indianapolis, Morgan Acres already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on morganacresindy.com. Right now your mobile/desktop hero takes 4.6s (LCP) to load and the 390px mobile viewport overflows horizontally on phones, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Instant Date-Availability & Guest-Count Pricing Calculator + 24/7 AI tour booker + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for morganacresindy.com?"
 
 ---
 
@@ -916,45 +916,45 @@
 
 ---
 
-### 21. Detroit-Troy, MI — [Daoud Law Offices, PLLC](http://ajdaoudlaw.com/)
+### 21. Detroit-Troy, MI — [American Door Systems Inc](http://www.americandoorsystem.com/)
 
-* **Industry Cohort:** Law Firms (PI, Family, Estate, Immigration) — *Personal Injury Law*
-* **Website & Visual Audit Links:** [http://ajdaoudlaw.com/](http://ajdaoudlaw.com/) • [View 3-Panel Visual Sheet (`ajdaoudlaw.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/ajdaoudlaw.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/law_firms/ajdaoudlaw.com) • [Google Maps Profile](https://maps.google.com/?cid=16511924485008777211&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.5 ★** across **`66` Google reviews** (3150 Livernois Rd #150, Troy, MI 48083, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
-* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Upgrade Social & Paid Ads** (`upgrade_social_and_ads`) • Review Method: `diagnostic_rubric`
+* **Industry Cohort:** Custom Building (Doors, Windows, Iron/Glass) — *Custom Iron & Entry Doors*
+* **Website & Visual Audit Links:** [http://www.americandoorsystem.com/](http://www.americandoorsystem.com/) • [View 3-Panel Visual Sheet (`americandoorsystem.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/americandoorsystem.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/custom_building/americandoorsystem.com) • [Google Maps Profile](https://maps.google.com/?cid=8499995753199751588&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.3 ★** across **`57` Google reviews** (1990 Star-Batt Dr, Rochester Hills, MI 48309, USA) • Discovery Wave: Google Places Mid-Market Challenger
+* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Modernize Website & UX** (`modernize_website`) • Review Method: `diagnostic_rubric`
 * **Contacts & Socials:**
-  * **Emails:** `info@ajdaoudlaw.com` (*role*)
-  * **Phones:** `(586) 604-5377`, `(586) 698-2848`, `(586) 698-2807`
-  * **Decision-Makers:** *Owner-operated / not listed on public team page*
+  * **Emails:** `john@americandoorsystems.com` (*owner*)
+  * **Phones:** `(248) 712-3991`, `(248) 453-2240`
+  * **Decision-Makers:** **admin** (Person)
   * **Social Profiles:** *None linked on homepage*
 
 | Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
 | :--- | :--- | :--- |
-| **Business Strength (Money)** | **`8/10`** | `66` reviews (4.5★), Paid Ads: `None detected`, `12` commercial pages crawled |
-| **1. Branding & UX/UI** | **`7/10`** | *Aesthetics:* `5/10` • *Branding:* `8/10` • *UX/CRO:* `3/10` • CMS: `WordPress` |
-| **2. Marketing ("Can It Sell?")** | **`3/10`** | **Verdict:** *No — Static Brochure / Needs Foundation + Creative* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`5/10`** | Generic Cliché: `Yes` • Primary CTA: `CONTACT US` |
-| **3. Technical Stack** | **`4/10`** | LCP: `3.0s` • TTFB: `1820ms` • Size: `1.72 MB` • SEO/AEO: `3/10` • Tracking/CRM: `4/10` |
+| **Business Strength (Money)** | **`9/10`** | `57` reviews (4.3★), Paid Ads: `Active`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`8/10`** | *Aesthetics:* `7/10` • *Branding:* `9/10` • *UX/CRO:* `5/10` • CMS: `WordPress` |
+| **2. Marketing ("Can It Sell?")** | **`5/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
+| **The Creative Part** | **`7/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact` |
+| **3. Technical Stack** | **`6/10`** | LCP: `9.2s` • TTFB: `4370ms` • Size: `2.72 MB` • SEO/AEO: `4/10` • Tracking/CRM: `7/10` |
 | **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
 
 * **Detected Technical & Marketing Stack:**
-  * **Pixels & Attribution:** `GA4`
-  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `mail.ajdaoudlaw.com` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: *None*
+  * **Pixels & Attribution:** `Server-Side GTM`, `GA4`, `Google Ads (AW-)`, `Call Tracking (CallRail)`
+  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Microsoft 365` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: `Place`, `Organization`, `WebSite`, `ImageObject`, `WebPage`, `Person`, `Article`, `HomeAndConstructionBusiness`
 * **What Works (The Goods):**
+  * ✅ Crisp vector/high-DPI brand logo in header
   * ✅ Responsive 390px mobile layout with zero horizontal overflow
-  * ✅ All 6 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((586) 604-5377) across header & contact
-  * ✅ Clean typography discipline (Roboto, Playfair Display)
+  * ✅ All 9 homepage visual assets loaded intact
+  * ✅ Consistent primary phone ((248) 712-3991) across header & contact
 * **Concrete Gaps to Pitch (The Bads):**
-  * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
   * ❌ No interactive lead capture form or online scheduler on homepage
   * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-  * ❌ Raster/low-DPI header logo instead of crisp SVG vector
-  * ❌ Zero paid media conversion pixels (neither Google Ads nor Meta Pixel firing)
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 7/10 | Step 2 Sales 3/10 (No — Static Brochure / Needs Foundation + Creative) | Step 3 Tech 4/10 | Positioning 5/10] Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
+  * ❌ Slow 4.4s server response time (TTFB) delays mobile page render
+  * ❌ Missing H1 headline on homepage
+  * ❌ Homepage title/H1 misses local 'Rochester Hills' geo-intent keyword
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 8/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 6/10 | Positioning 7/10] No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote; Slow 4.4s server response time (TTFB) delays mobile page render
 * **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi Daoud Law Offices, PLLC team — with 66 Google reviews (4.5★) in Troy, Daoud Law Offices, PLLC already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on ajdaoudlaw.com. Right now your 66 Google reviews (4.5★) aren't showcased above the fold and visitors hit a static 'contact us and wait' form instead of an instant quote or booking flow, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with a 60-second Case-Value / Eligibility Qualifier + 24/7 AI legal intake + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for ajdaoudlaw.com?"
+  > "Hi American Door Systems Inc team — with 57 Google reviews (4.3★) in Rochester Hills, American Door Systems Inc already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on americandoorsystem.com. Right now your mobile/desktop hero takes 9.2s (LCP) to load and your 57 Google reviews (4.3★) aren't showcased above the fold, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Interactive Style & Rebate Quote Configurator + 24/7 AI showroom scheduler + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for americandoorsystem.com?"
 
 ---
 
@@ -1378,87 +1378,87 @@
 
 ---
 
-### 32. Naples-Sarasota, FL — [The Law Office of Wyndel G. Darville, PLLC](https://thelawofficeofwgd.com/)
+### 32. Naples-Sarasota, FL — [Palm Aire Country Club](http://www.palmaire.net/)
 
-* **Industry Cohort:** Law Firms (PI, Family, Estate, Immigration) — *Immigration & Family Law*
-* **Website & Visual Audit Links:** [https://thelawofficeofwgd.com/](https://thelawofficeofwgd.com/) • [View 3-Panel Visual Sheet (`thelawofficeofwgd.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/thelawofficeofwgd.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/law_firms/thelawofficeofwgd.com) • [Google Maps Profile](https://maps.google.com/?cid=9450828641573432623&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.3 ★** across **`41` Google reviews** (2014 4th St, Sarasota, FL 34237, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
-* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Modernize Website & UX** (`modernize_website`) • Review Method: `diagnostic_rubric`
+* **Industry Cohort:** Event & Wedding Venues — *Corporate & Luxury Banquet Venues*
+* **Website & Visual Audit Links:** [http://www.palmaire.net/](http://www.palmaire.net/) • [View 3-Panel Visual Sheet (`palmaire.net.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/palmaire.net.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/event_venues/palmaire.net) • [Google Maps Profile](https://maps.google.com/?cid=17745608820265208079&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.4 ★** across **`209` Google reviews** (5601 Country Club Way, Sarasota, FL 34243, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
+* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 9/10`) • **Reputation & Intake Rescue** (`reputation_and_intake_rescue`) • Review Method: `diagnostic_rubric`
 * **Contacts & Socials:**
-  * **Emails:** `wyndel@thelawofficeofwgd.com` (*owner*)
-  * **Phones:** `(941) 264-1030`, `(053) 100-2764`
-  * **Decision-Makers:** **The Law Office of Wyndel G. Darville, PLLC** (Person), **Jonathan Barnes** (Person)
-  * **Social Profiles:** [Facebook](https://www.facebook.com/p/Wyndel-G-Darville-Attorney-at-Law-100028941626562/)
+  * **Emails:** `info@palmaire.net` (*role*)
+  * **Phones:** `(941) 355-9733`, `(941) 355-9738`, `(941) 351-4117`
+  * **Decision-Makers:** *Owner-operated / not listed on public team page*
+  * **Social Profiles:** *None linked on homepage*
 
 | Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
 | :--- | :--- | :--- |
-| **Business Strength (Money)** | **`9/10`** | `41` reviews (4.3★), Paid Ads: `Active`, `12` commercial pages crawled |
-| **1. Branding & UX/UI** | **`8/10`** | *Aesthetics:* `7/10` • *Branding:* `9/10` • *UX/CRO:* `3/10` • CMS: `WordPress` |
+| **Business Strength (Money)** | **`9/10`** | `209` reviews (4.4★), Paid Ads: `None detected`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`6/10`** | *Aesthetics:* `5/10` • *Branding:* `6/10` • *UX/CRO:* `4/10` • CMS: `Custom / Static HTML` |
 | **2. Marketing ("Can It Sell?")** | **`4/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`7/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact` |
-| **3. Technical Stack** | **`8/10`** | LCP: `1.6s` • TTFB: `646ms` • Size: `3.01 MB` • SEO/AEO: `10/10` • Tracking/CRM: `5/10` |
-| **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
-
-* **Detected Technical & Marketing Stack:**
-  * **Pixels & Attribution:** `GA4`, `Google Ads (AW-)`
-  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Yes` • `/llms.txt`: `Yes` • JSON-LD Schemas: `Person`, `Organization`, `WebSite`, `ImageObject`, `WebPage`, `Article`, `LegalService`, `Product`
-* **What Works (The Goods):**
-  * ✅ Crisp vector/high-DPI brand logo in header
-  * ✅ Responsive 390px mobile layout with zero horizontal overflow
-  * ✅ All 102 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((941) 264-1030) across header & contact
-* **Concrete Gaps to Pitch (The Bads):**
-  * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
-  * ❌ No interactive lead capture form or online scheduler on homepage
-  * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-  * ❌ Client-side ad pixels without Server-Side GTM / 1st-party CAPI (20-35% iOS attribution loss)
-  * ❌ No dynamic call tracking (CallRail/WhatConverts) attributing phone leads to ad spend
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 8/10 | Step 2 Sales 4/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 8/10 | Positioning 7/10] Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-* **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi The Law Office of Wyndel G. Darville, PLLC team — with 41 Google reviews (4.3★) in Sarasota, The Law Office of Wyndel G. Darville, PLLC already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on thelawofficeofwgd.com. Right now your 41 Google reviews (4.3★) aren't showcased above the fold and visitors hit a static 'contact us and wait' form instead of an instant quote or booking flow, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with a 60-second Case-Value / Eligibility Qualifier + 24/7 AI legal intake + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for thelawofficeofwgd.com?"
-
----
-
-### 33. West Palm Beach, FL — [Craft Master Custom Pools](https://craftmastercustompools.com/)
-
-* **Industry Cohort:** Custom Building (Doors, Windows, Iron/Glass) — *Custom Pools & Outdoor Living*
-* **Website & Visual Audit Links:** [https://craftmastercustompools.com/](https://craftmastercustompools.com/) • [View 3-Panel Visual Sheet (`craftmastercustompools.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/craftmastercustompools.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/custom_building/craftmastercustompools.com) • [Google Maps Profile](https://maps.google.com/?cid=2087023544800818387&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.2 ★** across **`66` Google reviews** (8233 Gator Ln #20, West Palm Beach, FL 33411, USA) • Discovery Wave: Google Places Page-2 Challenger (`#21–#40`)
-* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Modernize Website & UX** (`modernize_website`) • Review Method: `diagnostic_rubric`
-* **Contacts & Socials:**
-  * **Emails:** `info@craftmastercustompools.com` (*role*)
-  * **Phones:** `(561) 798-7929`
-  * **Decision-Makers:** **a82south** (Person)
-  * **Social Profiles:** [Instagram](https://www.instagram.com/craftmastercustompools/) • [Facebook](https://www.facebook.com/p/Craft-Master-Custom-Pools-61576595339629/) • [LinkedIn](https://www.linkedin.com/company/craft-master-custom-pools-co/posts/?feedView=all)
-
-| Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
-| :--- | :--- | :--- |
-| **Business Strength (Money)** | **`8/10`** | `66` reviews (4.2★), Paid Ads: `None detected`, `12` commercial pages crawled |
-| **1. Branding & UX/UI** | **`8/10`** | *Aesthetics:* `7/10` • *Branding:* `9/10` • *UX/CRO:* `4/10` • CMS: `WordPress` |
-| **2. Marketing ("Can It Sell?")** | **`5/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`7/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact` |
-| **3. Technical Stack** | **`5/10`** | LCP: `2.4s` • TTFB: `387ms` • Size: `7.89 MB` • SEO/AEO: `6/10` • Tracking/CRM: `4/10` |
+| **The Creative Part** | **`4/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact Us` |
+| **3. Technical Stack** | **`5/10`** | LCP: `4.9s` • TTFB: `1684ms` • Size: `3.85 MB` • SEO/AEO: `4/10` • Tracking/CRM: `5/10` |
 | **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
 
 * **Detected Technical & Marketing Stack:**
   * **Pixels & Attribution:** `GA4`
-  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Yes` • JSON-LD Schemas: `Place`, `GeneralContractor`, `Organization`, `WebSite`, `ImageObject`, `WebPage`, `Person`, `Article`
+  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** Present (`quarantine`)
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: *None*
+* **What Works (The Goods):**
+  * ✅ Responsive 390px mobile layout with zero horizontal overflow
+  * ✅ All 17 homepage visual assets loaded intact
+  * ✅ Consistent primary phone ((941) 355-9733) across header & contact
+  * ✅ Clean typography discipline (brandon-grotesque, Merriweather)
+* **Concrete Gaps to Pitch (The Bads):**
+  * ❌ Earned 209 Google reviews (4.4★) but doesn't showcase them above the fold
+  * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
+  * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
+  * ❌ Raster/low-DPI header logo instead of crisp SVG vector
+  * ❌ Earned 209 Google reviews (4.4★) off-site, but hides that social proof on the homepage
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 6/10 | Step 2 Sales 4/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 5/10 | Positioning 4/10] Earned 209 Google reviews (4.4★) but doesn't showcase them above the fold; Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
+* **Ready-to-Send Challenger Outreach Hook:**
+  > "Hi Palm Aire Country Club team — with 209 Google reviews (4.4★) in Sarasota, Palm Aire Country Club already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on palmaire.net. Right now your mobile/desktop hero takes 4.9s (LCP) to load and your 209 Google reviews (4.4★) aren't showcased above the fold, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Instant Date-Availability & Guest-Count Pricing Calculator + 24/7 AI tour booker + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for palmaire.net?"
+
+---
+
+### 33. West Palm Beach, FL — [Hang 10 Pools](https://www.hang10pools.com/)
+
+* **Industry Cohort:** Custom Building (Doors, Windows, Iron/Glass) — *Custom Pools & Outdoor Living*
+* **Website & Visual Audit Links:** [https://www.hang10pools.com/](https://www.hang10pools.com/) • [View 3-Panel Visual Sheet (`hang10pools.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/hang10pools.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/custom_building/hang10pools.com) • [Google Maps Profile](https://maps.google.com/?cid=10350817535514545372&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.4 ★** across **`45` Google reviews** (2101 Vista Pkwy S Ste 125, West Palm Beach, FL 33411, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
+* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Reputation & Intake Rescue** (`reputation_and_intake_rescue`) • Review Method: `diagnostic_rubric`
+* **Contacts & Socials:**
+  * **Emails:** `office@hang10pools.com` (*role*)
+  * **Phones:** `(800) 549-4701`, `(561) 414-8588`
+  * **Decision-Makers:** *Owner-operated / not listed on public team page*
+  * **Social Profiles:** *None linked on homepage*
+
+| Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
+| :--- | :--- | :--- |
+| **Business Strength (Money)** | **`9/10`** | `45` reviews (4.4★), Paid Ads: `Active`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`9/10`** | *Aesthetics:* `8/10` • *Branding:* `9/10` • *UX/CRO:* `5/10` • CMS: `Squarespace` |
+| **2. Marketing ("Can It Sell?")** | **`5/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
+| **The Creative Part** | **`6/10`** | Generic Cliché: `Yes` • Primary CTA: `Contact Us` |
+| **3. Technical Stack** | **`5/10`** | LCP: `4.0s` • TTFB: `953ms` • Size: `15.46 MB` • SEO/AEO: `5/10` • Tracking/CRM: `5/10` |
+| **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
+
+* **Detected Technical & Marketing Stack:**
+  * **Pixels & Attribution:** `GA4`, `Google Ads (AW-)`
+  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Microsoft 365` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Yes` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebSite`
 * **What Works (The Goods):**
   * ✅ Crisp vector/high-DPI brand logo in header
   * ✅ Responsive 390px mobile layout with zero horizontal overflow
-  * ✅ All 67 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((561) 798-7929) across header & contact
+  * ✅ All 18 homepage visual assets loaded intact
+  * ✅ Consistent primary phone ((800) 549-4701) across header & contact
 * **Concrete Gaps to Pitch (The Bads):**
   * ❌ No interactive lead capture form or online scheduler on homepage
   * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-  * ❌ Zero paid media conversion pixels (neither Google Ads nor Meta Pixel firing)
-  * ❌ Bloated 7.9 MB homepage payload (6.6 MB unoptimized images) across 73 requests — stalls mobile 4G/cellular visitors for 22+ seconds
-  * ❌ No dynamic call tracking (CallRail/WhatConverts) attributing phone leads to ad spend
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 8/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 5/10 | Positioning 7/10] No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote; Zero paid media conversion pixels (neither Google Ads nor Meta Pixel firing)
+  * ❌ GBP review friction: Pricing / estimate clarity friction
+  * ❌ Bloated 15.5 MB homepage payload (13.7 MB unoptimized images) across 102 requests — stalls mobile 4G/cellular visitors for 44+ seconds
+  * ❌ Client-side ad pixels without Server-Side GTM / 1st-party CAPI (20-35% iOS attribution loss)
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 9/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 5/10 | Positioning 6/10] No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote; GBP review friction: Pricing / estimate clarity friction
 * **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi asouth — with 66 Google reviews (4.2★) in West Palm Beach, Craft Master Custom Pools already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on craftmastercustompools.com. Right now your 66 Google reviews (4.2★) aren't showcased above the fold and visitors hit a static 'contact us and wait' form instead of an instant quote or booking flow, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Interactive Style & Rebate Quote Configurator + 24/7 AI showroom scheduler + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for craftmastercustompools.com?"
+  > "Hi Hang 10 Pools team — with 45 Google reviews (4.4★) in West Palm Beach, Hang 10 Pools already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on hang10pools.com. Right now your mobile/desktop hero takes 4.0s (LCP) to load and your 45 Google reviews (4.4★) aren't showcased above the fold, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Interactive Style & Rebate Quote Configurator + 24/7 AI showroom scheduler + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for hang10pools.com?"
 
 ---
 
@@ -1672,45 +1672,45 @@
 
 ---
 
-### 39. Louisville, KY — [Samuels Collision Repair](http://samuelscollision.com/)
+### 39. Louisville, KY — [Land O' Goshen Farm Event Center](http://landogoshenfarmeventcenter.com/)
 
-* **Industry Cohort:** Specialty Auto (Exotic, PPF/Tint, Performance) — *Custom Collision & Restyling*
-* **Website & Visual Audit Links:** [http://samuelscollision.com/](http://samuelscollision.com/) • [View 3-Panel Visual Sheet (`samuelscollision.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/samuelscollision.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/specialty_auto/samuelscollision.com) • [Google Maps Profile](https://maps.google.com/?cid=13025684258711619957&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.4 ★** across **`143` Google reviews** (4200 Taylor Blvd, Louisville, KY 40215, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
-* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 8/10`) • **Upgrade Social & Paid Ads** (`upgrade_social_and_ads`) • Review Method: `diagnostic_rubric`
+* **Industry Cohort:** Event & Wedding Venues — *Wedding & Reception Venues*
+* **Website & Visual Audit Links:** [http://landogoshenfarmeventcenter.com/](http://landogoshenfarmeventcenter.com/) • [View 3-Panel Visual Sheet (`landogoshenfarmeventcenter.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/landogoshenfarmeventcenter.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/event_venues/landogoshenfarmeventcenter.com) • [Google Maps Profile](https://maps.google.com/?cid=16037780453848698606&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.4 ★** across **`202` Google reviews** (Land O' Goshen Farm, 2800 Belknap Farm Rd, Goshen, KY 40026, USA) • Discovery Wave: Google Places Page-3 Deep Challenger (`#41–#60`)
+* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 9/10`) • **Modernize Website & UX** (`modernize_website`) • Review Method: `diagnostic_rubric`
 * **Contacts & Socials:**
-  * **Emails:** `samscol@bellsouth.net` (*owner*)
-  * **Phones:** `(502) 368-7212`
+  * **Emails:** `landogoshenfarmeventcenter@gmail.com` (*owner*)
+  * **Phones:** `(502) 387-1759`
   * **Decision-Makers:** *Owner-operated / not listed on public team page*
-  * **Social Profiles:** [Facebook](https://www.facebook.com/Samuelscollisionrepair/)
+  * **Social Profiles:** [Instagram](https://www.instagram.com/goshenfarmevents/) • [Facebook](https://www.facebook.com/landogoshenfarmeventcenter) • [X](https://www.x.com/LandGoshen)
 
 | Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
 | :--- | :--- | :--- |
-| **Business Strength (Money)** | **`8/10`** | `143` reviews (4.4★), Paid Ads: `None detected`, `1` commercial pages crawled |
-| **1. Branding & UX/UI** | **`6/10`** | *Aesthetics:* `3/10` • *Branding:* `8/10` • *UX/CRO:* `4/10` • CMS: `Wix` |
+| **Business Strength (Money)** | **`10/10`** | `202` reviews (4.4★), Paid Ads: `Active`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`6/10`** | *Aesthetics:* `5/10` • *Branding:* `7/10` • *UX/CRO:* `4/10` • CMS: `GoDaddy Builder` |
 | **2. Marketing ("Can It Sell?")** | **`5/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`7/10`** | Generic Cliché: `Yes` • Primary CTA: `Click Here for an Estimate` |
-| **3. Technical Stack** | **`6/10`** | LCP: `1.8s` • TTFB: `1214ms` • Size: `2.38 MB` • SEO/AEO: `7/10` • Tracking/CRM: `4/10` |
+| **The Creative Part** | **`7/10`** | Generic Cliché: `Yes` • Primary CTA: `Schedule A Tour` |
+| **3. Technical Stack** | **`7/10`** | LCP: `1.5s` • TTFB: `621ms` • Size: `6.27 MB` • SEO/AEO: `9/10` • Tracking/CRM: `5/10` |
 | **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
 
 * **Detected Technical & Marketing Stack:**
-  * **Pixels & Attribution:** `GA4`
+  * **Pixels & Attribution:** `GA4`, `Meta Pixel`
   * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: `LocalBusiness`, `WebSite`
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Yes` • `/llms.txt`: `Missing` • JSON-LD Schemas: `LocalBusiness`
 * **What Works (The Goods):**
-  * ✅ All 8 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((502) 368-7212) across header & contact
-  * ✅ Strong Google Maps authority: 4.4★ across 143 customer reviews
-  * ✅ Fast Largest Contentful Paint (1.8s LCP)
+  * ✅ Crisp vector/high-DPI brand logo in header
+  * ✅ Responsive 390px mobile layout with zero horizontal overflow
+  * ✅ All 13 homepage visual assets loaded intact
+  * ✅ Consistent primary phone ((502) 387-1759) across header & contact
 * **Concrete Gaps to Pitch (The Bads):**
-  * ❌ Earned 143 Google reviews (4.4★) but doesn't showcase them above the fold
-  * ❌ Horizontal overflow bug on 390px mobile viewport
+  * ❌ Earned 202 Google reviews (4.4★) but doesn't showcase them above the fold
   * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
-  * ❌ Raster/low-DPI header logo instead of crisp SVG vector
-  * ❌ Earned 143 Google reviews (4.4★) off-site, but hides that social proof on the homepage
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 6/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 6/10 | Positioning 7/10] Earned 143 Google reviews (4.4★) but doesn't showcase them above the fold; Horizontal overflow bug on 390px mobile viewport; Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
+  * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
+  * ❌ Displays personal @gmail/@yahoo inbox instead of branded company email
+  * ❌ Earned 202 Google reviews (4.4★) off-site, but hides that social proof on the homepage
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 6/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 7/10 | Positioning 7/10] Earned 202 Google reviews (4.4★) but doesn't showcase them above the fold; Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
 * **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi Samuels Collision Repair team — with 143 Google reviews (4.4★) in Louisville, Samuels Collision Repair already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on samuelscollision.com. Right now your 143 Google reviews (4.4★) aren't showcased above the fold and the 390px mobile viewport overflows horizontally on phones, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with a Vehicle-Specific PPF / Wrap / Service Package Configurator + 24/7 AI bay scheduler + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for samuelscollision.com?"
+  > "Hi Land O' Goshen Farm Event Center team — with 202 Google reviews (4.4★) in Goshen, Land O' Goshen Farm Event Center already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on landogoshenfarmeventcenter.com. Right now your 202 Google reviews (4.4★) aren't showcased above the fold and visitors hit a static 'contact us and wait' form instead of an instant quote or booking flow, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Instant Date-Availability & Guest-Count Pricing Calculator + 24/7 AI tour booker + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for landogoshenfarmeventcenter.com?"
 
 ---
 
@@ -1966,87 +1966,87 @@
 
 ---
 
-### 46. Memphis, TN — [Enterprise Property Management, Inc. | Rental Home](https://propertymanagementmemphis.com/)
+### 46. Memphis, TN — [Gates Lumber Company](http://www.gateslumber.com/)
 
-* **Industry Cohort:** Real Estate (Brokerages, Property Mgmt, Luxury) — *Residential & Commercial Property Management*
-* **Website & Visual Audit Links:** [https://propertymanagementmemphis.com/](https://propertymanagementmemphis.com/) • [View 3-Panel Visual Sheet (`propertymanagementmemphis.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/propertymanagementmemphis.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/real_estate/propertymanagementmemphis.com) • [Google Maps Profile](https://maps.google.com/?cid=2251927948925779644&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.2 ★** across **`180` Google reviews** (825 Timber Creek Dr, Cordova, TN 38018, USA) • Discovery Wave: Google Places Mid-Market Challenger
+* **Industry Cohort:** Custom Building (Doors, Windows, Iron/Glass) — *Custom Iron & Entry Doors*
+* **Website & Visual Audit Links:** [http://www.gateslumber.com/](http://www.gateslumber.com/) • [View 3-Panel Visual Sheet (`gateslumber.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/gateslumber.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/custom_building/gateslumber.com) • [Google Maps Profile](https://maps.google.com/?cid=4391313507385253252&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.3 ★** across **`56` Google reviews** (1253 S Bellevue Blvd, Memphis, TN 38106, USA) • Discovery Wave: Google Places Page-2 Challenger (`#21–#40`)
 * **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 9/10`) • **Reputation & Intake Rescue** (`reputation_and_intake_rescue`) • Review Method: `diagnostic_rubric`
 * **Contacts & Socials:**
-  * **Emails:** `aivey@epmleasing.com` (*owner*)
-  * **Phones:** `(901) 260-0206`, `(901) 260-0210`
+  * **Emails:** `gbuzard@gateslumber.com` (*owner*), `bbuzard@gateslumber.com` (*owner*), `amanda.baker@gateslumber.com` (*owner*), `acombes@gateslumber.com` (*owner*)
+  * **Phones:** `(901) 942-3201`, `(901) 942-3208`, `(901) 301-5994`, `(901) 301-6690`
   * **Decision-Makers:** *Owner-operated / not listed on public team page*
-  * **Social Profiles:** *None linked on homepage*
+  * **Social Profiles:** [Facebook](https://www.facebook.com/gateslumbercompany/)
 
 | Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
 | :--- | :--- | :--- |
-| **Business Strength (Money)** | **`9/10`** | `180` reviews (4.2★), Paid Ads: `None detected`, `12` commercial pages crawled |
-| **1. Branding & UX/UI** | **`8/10`** | *Aesthetics:* `7/10` • *Branding:* `9/10` • *UX/CRO:* `2/10` • CMS: `WordPress` |
-| **2. Marketing ("Can It Sell?")** | **`2/10`** | **Verdict:** *No — Static Brochure / Needs Foundation + Creative* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`6/10`** | Generic Cliché: `Yes` • Primary CTA: `Call` |
-| **3. Technical Stack** | **`5/10`** | LCP: `1.8s` • TTFB: `406ms` • Size: `3.71 MB` • SEO/AEO: `5/10` • Tracking/CRM: `5/10` |
+| **Business Strength (Money)** | **`8/10`** | `56` reviews (4.3★), Paid Ads: `None detected`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`6/10`** | *Aesthetics:* `5/10` • *Branding:* `7/10` • *UX/CRO:* `3/10` • CMS: `WordPress` |
+| **2. Marketing ("Can It Sell?")** | **`4/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
+| **The Creative Part** | **`6/10`** | Generic Cliché: `Yes` • Primary CTA: `CONTACT US` |
+| **3. Technical Stack** | **`3/10`** | LCP: `8.2s` • TTFB: `837ms` • Size: `4.37 MB` • SEO/AEO: `2/10` • Tracking/CRM: `4/10` |
 | **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
 
 * **Detected Technical & Marketing Stack:**
   * **Pixels & Attribution:** `GA4`
-  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `propertymanagementmemphis.com` • **DMARC:** Present (`none`)
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebSite`
+  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebPage`, `ImageObject`, `BreadcrumbList`, `WebSite`
 * **What Works (The Goods):**
-  * ✅ Crisp vector/high-DPI brand logo in header
   * ✅ Responsive 390px mobile layout with zero horizontal overflow
-  * ✅ All 21 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((901) 260-0206) across header & contact
+  * ✅ All 5 homepage visual assets loaded intact
+  * ✅ Clean typography discipline (Inter var, Montserrat)
+  * ✅ Strong Google Maps authority: 4.3★ across 56 customer reviews
 * **Concrete Gaps to Pitch (The Bads):**
-  * ❌ Earned 180 Google reviews (4.2★) but doesn't showcase them above the fold
   * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
   * ❌ No interactive lead capture form or online scheduler on homepage
-  * ❌ Earned 180 Google reviews (4.2★) off-site, but hides that social proof on the homepage
   * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 8/10 | Step 2 Sales 2/10 (No — Static Brochure / Needs Foundation + Creative) | Step 3 Tech 5/10 | Positioning 6/10] Earned 180 Google reviews (4.2★) but doesn't showcase them above the fold; Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; No interactive lead capture form or online scheduler on homepage
+  * ❌ Raster/low-DPI header logo instead of crisp SVG vector
+  * ❌ GBP review friction: Slow callback / unanswered inquiries
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 6/10 | Step 2 Sales 4/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 3/10 | Positioning 6/10] Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
 * **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi Enterprise Property Management, Inc. | Rental Home team — with 180 Google reviews (4.2★) in Cordova, Enterprise Property Management, Inc. | Rental Home already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on propertymanagementmemphis.com. Right now your 180 Google reviews (4.2★) aren't showcased above the fold and visitors hit a static 'contact us and wait' form instead of an instant quote or booking flow, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Instant Rental-ROI / Home-Valuation Calculator + 24/7 AI owner/buyer concierge + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for propertymanagementmemphis.com?"
+  > "Hi Gates Lumber Company team — with 56 Google reviews (4.3★) in Memphis, Gates Lumber Company already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on gateslumber.com. Right now your mobile/desktop hero takes 8.2s (LCP) to load and your 56 Google reviews (4.3★) aren't showcased above the fold, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with an Interactive Style & Rebate Quote Configurator + 24/7 AI showroom scheduler + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for gateslumber.com?"
 
 ---
 
-### 47. Omaha, NE — [Grunwald Mechanical Contractors & Engineers](http://grunwaldmech.com/)
+### 47. Omaha, NE — [McGill Law, PC LLO](http://www.mcgilllawyers.com/)
 
-* **Industry Cohort:** Home Services (HVAC, Roof, Solar, Remodel) — *HVAC & Plumbing*
-* **Website & Visual Audit Links:** [http://grunwaldmech.com/](http://grunwaldmech.com/) • [View 3-Panel Visual Sheet (`grunwaldmech.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/grunwaldmech.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/home_services_ads/grunwaldmech.com) • [Google Maps Profile](https://maps.google.com/?cid=4015113550340416360&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
-* **Google Maps Challenger Profile:** **4.4 ★** across **`81` Google reviews** (11111 E Cir Ste A, Omaha, NE 68137, USA) • Discovery Wave: Google Places Page-2 Challenger (`#21–#40`)
-* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 7/10`) • **Reputation & Intake Rescue** (`reputation_and_intake_rescue`) • Review Method: `diagnostic_rubric`
+* **Industry Cohort:** Law Firms (PI, Family, Estate, Immigration) — *Immigration & Family Law*
+* **Website & Visual Audit Links:** [http://www.mcgilllawyers.com/](http://www.mcgilllawyers.com/) • [View 3-Panel Visual Sheet (`mcgilllawyers.com.jpg`)](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/sheets/mcgilllawyers.com.jpg) • [Raw Vault Folder](file:///C:/Users/JohanDanielA/Documents/GitHub/v0-johan-portfolio/.local-audits/vault/law_firms/mcgilllawyers.com) • [Google Maps Profile](https://maps.google.com/?cid=13724510834010308213&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA)
+* **Google Maps Challenger Profile:** **4.1 ★** across **`65` Google reviews** (1411 N 72nd St, Omaha, NE 68114, USA) • Discovery Wave: Google Places Mid-Market Challenger
+* **Priority Tier, Gap & Angle:** **Tier `S`** (`Modernization Gap: 7/10`) • **Modernize Website & UX** (`modernize_website`) • Review Method: `diagnostic_rubric`
 * **Contacts & Socials:**
-  * **Emails:** `service@grunwald1.com` (*role*)
-  * **Phones:** `(402) 621-4911`
+  * **Emails:** `mcgilllaw@mcgilllawyers.com` (*owner*), `mcgilllawlincoln@mcgilllawyers.com` (*owner*), `info@mcgilllawyers.com` (*role*)
+  * **Phones:** `(402) 548-5418`
   * **Decision-Makers:** *Owner-operated / not listed on public team page*
-  * **Social Profiles:** [Instagram](https://www.instagram.com/grunwaldcontractorhvac/) • [Facebook](https://www.facebook.com/grunwald.mechanical/)
+  * **Social Profiles:** [Instagram](https://www.instagram.com/mcgilllawyers/) • [Facebook](https://www.facebook.com/McGillLawyers) • [LinkedIn](https://www.linkedin.com/company/11831349/) • [YouTube](https://www.youtube.com/channel/UCpQM2Ncwj7ENZI9n4-ehFXw) • [X](https://x.com/McGillFamilyLaw)
 
 | Pillar / Metric | Score (`1–10`) | Key Data Points & Verdict |
 | :--- | :--- | :--- |
-| **Business Strength (Money)** | **`9/10`** | `81` reviews (4.4★), Paid Ads: `Active`, `12` commercial pages crawled |
-| **1. Branding & UX/UI** | **`8/10`** | *Aesthetics:* `7/10` • *Branding:* `9/10` • *UX/CRO:* `4/10` • CMS: `WordPress` |
-| **2. Marketing ("Can It Sell?")** | **`5/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `No (Hidden!)` |
-| **The Creative Part** | **`8/10`** | Generic Cliché: `Yes` • Primary CTA: `Scale and Chemical-Free Systems` |
-| **3. Technical Stack** | **`8/10`** | LCP: `4.6s` • TTFB: `1200ms` • Size: `5.07 MB` • SEO/AEO: `7/10` • Tracking/CRM: `8/10` |
+| **Business Strength (Money)** | **`9/10`** | `65` reviews (4.1★), Paid Ads: `Active`, `12` commercial pages crawled |
+| **1. Branding & UX/UI** | **`8/10`** | *Aesthetics:* `7/10` • *Branding:* `9/10` • *UX/CRO:* `4/10` • CMS: `Squarespace` |
+| **2. Marketing ("Can It Sell?")** | **`5/10`** | **Verdict:** *Partially — Leaks High-Intent Leads* • Showcases Reviews on Home: `Yes` |
+| **The Creative Part** | **`7/10`** | Generic Cliché: `Yes` • Primary CTA: `Schedule a Consultation` |
+| **3. Technical Stack** | **`9/10`** | LCP: `4.6s` • TTFB: `890ms` • Size: `16.52 MB` • SEO/AEO: `8/10` • Tracking/CRM: `9/10` |
 | **4. Automation (Secondary)** | **`4/10`** | Live Chat / AI Intake: **No 24/7 AI / Chat Bot** • Instant Quote/Calc: `No` |
 
 * **Detected Technical & Marketing Stack:**
-  * **Pixels & Attribution:** `GTM`, `Server-Side GTM`, `GA4`, `Google Ads (AW-)`, `Meta Pixel`, `Call Tracking (CallTrackingMetrics)`
-  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `Custom / Unlisted MX` • **DMARC:** **MISSING `_dmarc` (High Spam-Folder Risk)**
-  * **SEO & AEO/GEO:** `sitemap.xml`: `Missing` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebPage`, `BreadcrumbList`, `WebSite`, `Organization`
+  * **Pixels & Attribution:** `Server-Side GTM`, `GA4`, `Google Ads (AW-)`, `Meta Pixel`
+  * **CRM, Booking & Email ESP:** *None / Basic HTML Form* • **MX:** `mcgilllawyers-com.inbound.emailservice.io` • **DMARC:** Present (`quarantine`)
+  * **SEO & AEO/GEO:** `sitemap.xml`: `Yes` • `/llms.txt`: `Missing` • JSON-LD Schemas: `WebSite`, `Organization`, `LocalBusiness`, `LegalService`
 * **What Works (The Goods):**
   * ✅ Crisp vector/high-DPI brand logo in header
   * ✅ Responsive 390px mobile layout with zero horizontal overflow
-  * ✅ All 81 homepage visual assets loaded intact
-  * ✅ Consistent primary phone ((402) 621-4911) across header & contact
+  * ✅ All 46 homepage visual assets loaded intact
+  * ✅ Consistent primary phone ((402) 548-5418) across header & contact
 * **Concrete Gaps to Pitch (The Bads):**
-  * ❌ Earned 81 Google reviews (4.4★) but doesn't showcase them above the fold
+  * ❌ Typography bloat (6 font families loaded)
+  * ❌ Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee
   * ❌ No interactive lead capture form or online scheduler on homepage
   * ❌ Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
-  * ❌ Earned 81 Google reviews (4.4★) off-site, but hides that social proof on the homepage
-  * ❌ GBP review friction: Scheduling & wait-time friction
-* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 8/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 8/10 | Positioning 8/10] Earned 81 Google reviews (4.4★) but doesn't showcase them above the fold; No interactive lead capture form or online scheduler on homepage; Relies on static 'contact us and wait' form instead of instant booking or 60-second ballpark quote
+  * ❌ Bloated 16.5 MB homepage payload across 190 requests — stalls mobile 4G/cellular visitors for 47+ seconds
+* **Visual & Diagnostic Critique:** [Step 1 Brand/UX 8/10 | Step 2 Sales 5/10 (Partially — Leaks High-Intent Leads) | Step 3 Tech 9/10 | Positioning 7/10] Typography bloat (6 font families loaded); Missing concrete front-end offer, monthly financing anchor, or risk-reversal guarantee; No interactive lead capture form or online scheduler on homepage
 * **Ready-to-Send Challenger Outreach Hook:**
-  > "Hi Grunwald Mechanical Contractors & Engineers team — with 81 Google reviews (4.4★) in Omaha, Grunwald Mechanical Contractors & Engineers already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on grunwaldmech.com. Right now your mobile/desktop hero takes 4.6s (LCP) to load and your 81 Google reviews (4.4★) aren't showcased above the fold, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with a 60-second Instant Estimate & Financing Calculator + 24/7 AI dispatch intake + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for grunwaldmech.com?"
+  > "Hi McGill Law, PC LLO team — with 65 Google reviews (4.1★) in Omaha, McGill Law, PC LLO already has the real customer proof to out-convert the 1,000+-review corporate chains, so I ran a 3-panel conversion audit on mcgilllawyers.com. Right now your mobile/desktop hero takes 4.6s (LCP) to load and visitors hit a static 'contact us and wait' form instead of an instant quote or booking flow, quietly handing high-intent buyers back to Page-1 competitors. For less than half the cost of one junior US hire, we deploy a sub-1.5s conversion funnel with a 60-second Case-Value / Eligibility Qualifier + 24/7 AI legal intake + automated 5★ review capture to lift booked revenue 30–50% in 90 days. Worth sending over the visual audit sheet we put together for mcgilllawyers.com?"
 
 ---
 

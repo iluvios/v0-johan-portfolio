@@ -2327,7 +2327,54 @@ async function main() {
       const compactedLines = Array.from(existingByDomain.values()).map((o) => toSafeJsonLine(o))
       fs.writeFileSync(CRAWLED_FILE, compactedLines.join("\n") + "\n", "utf8")
     }
-    queue = discovered.filter((d) => !existingByDomain.has(d.domain))
+    const rawQueue = discovered.filter((d) => !existingByDomain.has(d.domain))
+    // Interleave uncrawled sites round-robin across cohorts (new chatbot cohorts prioritized, highest review challengers first)
+    const CHATBOT_PRIORITY_COHORTS = [
+      "healthcare_clinics",
+      "urgent_home_dispatch",
+      "longevity_specialty_med",
+      "moving_cleaning",
+      "hospitality_rentals",
+      "pet_resorts_grooming",
+      "academies_fitness",
+      "event_vendors",
+    ]
+    const priorityRank = (cohort: string) => {
+      const idx = CHATBOT_PRIORITY_COHORTS.indexOf(cohort)
+      return idx >= 0 ? idx : 100
+    }
+    const buckets = new Map<string, DiscoveredProspect[]>()
+    for (const item of rawQueue) {
+      const arr = buckets.get(item.cohort) || []
+      arr.push(item)
+      buckets.set(item.cohort, arr)
+    }
+    const sortedCohortKeys = Array.from(buckets.keys()).sort((a, b) => priorityRank(a) - priorityRank(b))
+    for (const key of sortedCohortKeys) {
+      buckets.get(key)!.sort((a, b) => {
+        const aRev = a.googleReviewsCount ?? 0
+        const bRev = b.googleReviewsCount ?? 0
+        const aSweet = aRev >= 35 && aRev <= 250 && (a.googleRating ?? 0) <= 4.6 ? 1 : 0
+        const bSweet = bRev >= 35 && bRev <= 250 && (b.googleRating ?? 0) <= 4.6 ? 1 : 0
+        if (aSweet !== bSweet) return bSweet - aSweet
+        return bRev - aRev
+      })
+    }
+    const interleaved: DiscoveredProspect[] = []
+    let round = 0
+    while (interleaved.length < rawQueue.length) {
+      let addedInRound = false
+      for (const key of sortedCohortKeys) {
+        const arr = buckets.get(key)!
+        if (round < arr.length) {
+          interleaved.push(arr[round])
+          addedInRound = true
+        }
+      }
+      if (!addedInRound) break
+      round++
+    }
+    queue = interleaved
   }
   if (limit > 0) queue = queue.slice(0, limit)
 
