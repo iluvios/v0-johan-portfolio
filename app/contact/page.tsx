@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: "Contact",
       description:
-        "Start a growth marketing, website, CRM automation, or attribution project with Energy Media. Serving Colombia, LATAM, and US teams.",
+        "Book a call with Energy Media about ads, social media, email, websites, tracking or CRM. We work with businesses in the US, Colombia and Latin America.",
     };
   }
   return {

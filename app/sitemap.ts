@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { neon } from "@neondatabase/serverless";
 import { getServerSiteConfig } from "@/lib/tenant-server";
 import type { SiteId } from "@/lib/tenant";
+import { INDUSTRY_SLUGS } from "@/lib/agency/industries";
 
 // Domain-aware sitemap: each hostname serves its own canonical URLs and active projects.
 export const dynamic = "force-dynamic";
@@ -32,7 +33,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const config = await getServerSiteConfig();
   const basePaths =
     config.id === "energymedia"
-      ? ["", "/services", "/projects", "/about", "/contact"]
+      ? [
+          "",
+          ...INDUSTRY_SLUGS.map((slug) => `/industries/${slug}`),
+          "/services",
+          "/projects",
+          "/about",
+          "/contact",
+        ]
       : ["", "/projects", "/about", "/contact"];
 
   const pages = basePaths.map((path) => ({ url: `${config.origin}${path}` }));

@@ -1,98 +1,72 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { Reveal } from "@/components/portfolio-motion";
+import { PageIntro } from "@/components/portfolio-ui";
+import PricingCalculator from "@/components/agency/pricing-calculator";
 import {
-  Eyebrow,
-  PageIntro,
-  ContactInvitation,
-} from "@/components/portfolio-ui";
-import { useAgencyCopy } from "@/lib/portfolio";
+  AgencyCta,
+  AgencySection,
+  ConnectedSystem,
+  FaqSection,
+  FunnelGrid,
+  Pillars,
+} from "@/components/agency/sections";
+import { useLanguage } from "@/contexts/language-context";
+import { agencyHomeCopy } from "@/lib/agency/copy";
+import type { PlanInput } from "@/lib/agency/pricing";
 
-export default function AgencyServices() {
-  const { copy } = useAgencyCopy();
-  const page = copy.servicesPage;
+const INTRO = {
+  en: {
+    eyebrow: "Services and pricing",
+    title: "Your whole funnel, built and run by one team.",
+    description:
+      "Ads, website, social media, email, chat and CRM, set up once as one connected system, then run and improved every month. Pick what you need below and see the price right away.",
+  },
+  es: {
+    eyebrow: "Servicios y precios",
+    title: "Todo tu embudo, construido y operado por un solo equipo.",
+    description:
+      "Pauta, sitio web, redes, email, chat y CRM, montados una vez como un solo sistema conectado y luego operados y mejorados cada mes. Elige lo que necesitas abajo y mira el precio al instante.",
+  },
+};
+
+export default function AgencyServices({ preset }: { preset?: Omit<PlanInput, "payment"> }) {
+  const { language } = useLanguage();
+  const copy = agencyHomeCopy[language];
+  const intro = INTRO[language];
 
   return (
     <div className="page-shell">
-      <PageIntro
-        eyebrow={page.eyebrow}
-        title={page.title}
-        description={page.description}
+      <PageIntro eyebrow={intro.eyebrow} title={intro.title} description={intro.description} />
+      <AgencySection
+        id="pricing"
+        eyebrow={copy.pricingEyebrow}
+        title={copy.pricingTitleFull}
+        intro={copy.pricingIntroFull}
+      >
+        <PricingCalculator preset={preset} />
+      </AgencySection>
+      <AgencySection id="services" eyebrow={copy.funnelEyebrow} title={copy.funnelTitle}>
+        <FunnelGrid stages={copy.funnel} />
+      </AgencySection>
+      <ConnectedSystem
+        id="system"
+        eyebrow={copy.connectedEyebrow}
+        title={copy.connectedTitle}
+        intro={copy.connectedIntro}
+        points={copy.connectedPoints}
+        mock={copy.mock}
       />
-
-      <Separator />
-
-      <section className="section" aria-labelledby="services-capabilities">
-        <div className="section-heading">
-          <div className="flex flex-col gap-4">
-            <Eyebrow>{copy.capabilitiesEyebrow}</Eyebrow>
-            <h2 id="services-capabilities" className="section-title">
-              {copy.capabilitiesTitle}
-            </h2>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {copy.capabilities.map((item) => (
-            <Reveal key={item.index}>
-              <article className="service-teaser h-full">
-                <span className="service-index">{item.index}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <ul className="mt-auto flex flex-wrap gap-1.5 pt-4">
-                  {item.deliverables.map((deliverable) => (
-                    <li key={deliverable}>
-                      <Badge variant="tag">{deliverable}</Badge>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <Separator />
-
-      <section className="section" aria-labelledby="engagement-models">
-        <div className="section-heading">
-          <div className="flex flex-col gap-4">
-            <Eyebrow>{page.modelsEyebrow}</Eyebrow>
-            <h2 id="engagement-models" className="section-title">
-              {page.modelsTitle}
-            </h2>
-          </div>
-        </div>
-        <div className="process-grid">
-          {page.models.map((model) => (
-            <Reveal key={model.index} className="process-step justify-between">
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="service-index">{model.index}</span>
-                  <Badge variant="tag">{model.tag}</Badge>
-                </div>
-                <h3>{model.name}</h3>
-                <p>{model.description}</p>
-                <p className="text-xs leading-relaxed text-accent/90">
-                  {model.fit}
-                </p>
-              </div>
-              <div className="pt-4">
-                <Link href="/contact" className="text-link">
-                  {page.startCta}
-                  <ArrowUpRight size={16} aria-hidden="true" />
-                </Link>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
+      <AgencySection id="why" eyebrow={copy.pillarsEyebrow} title={copy.pillarsTitle} align="center">
+        <Pillars items={copy.pillars} language={language} />
+      </AgencySection>
+      <FaqSection eyebrow={copy.faqEyebrow} title={copy.faqTitle} items={copy.faq} />
       <div className="pb-16 md:pb-24">
-        <ContactInvitation />
+        <AgencyCta
+          eyebrow={copy.ctaEyebrow}
+          title={copy.ctaTitle}
+          body={copy.ctaBody}
+          button={copy.ctaButton}
+        />
       </div>
     </div>
   );

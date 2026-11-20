@@ -36,3 +36,10 @@ export const STACK = [
   "Supabase",
   "Claude Code",
 ];
+
+// Agency calls to action. Set NEXT_PUBLIC_AGENCY_BOOKING_URL (Calendly, Cal.com) to send
+// "Get a free audit" straight to a calendar, and NEXT_PUBLIC_AGENCY_WHATSAPP (digits with
+// country code) to show the floating WhatsApp button. Without them, CTAs go to /contact.
+export const AGENCY_BOOKING_URL = process.env.NEXT_PUBLIC_AGENCY_BOOKING_URL || "";
+export const AGENCY_WHATSAPP = (process.env.NEXT_PUBLIC_AGENCY_WHATSAPP || "").replace(/\D/g, "");
+export const AGENCY_CTA_HREF = AGENCY_BOOKING_URL || "/contact";

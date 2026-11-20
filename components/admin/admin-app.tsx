@@ -31,7 +31,7 @@ import { ProspectsManager } from "@/components/admin/prospects-manager"
 import { ProjectsManager } from "@/components/admin/projects-manager"
 import { ArticlesManager } from "@/components/admin/articles-manager"
 import { WorkspaceManager } from "@/components/admin/workspace-manager"
-import { type CVProfile, DEFAULT_CV_DATA, getCVData, updateCVData } from "@/lib/profile-data"
+import { type CVProfile, CVConflictError, DEFAULT_CV_DATA, getVersionedCVData, updateCVData } from "@/lib/profile-data"
 import type { AdminNotify } from "@/components/admin/admin-utils"
 import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
@@ -70,6 +70,9 @@ export function AdminApp() {
   // CV / Profile state
   const [cvData, setCvData] = useState<CVProfile>(DEFAULT_CV_DATA)
   const [isSavingCV, setIsSavingCV] = useState(false)
+  // updated_at of the CV row this page loaded; sent with every save so a stale tab can't revert newer content
+  const [cvVersion, setCvVersion] = useState<string | null>(null)
+  const [cvConflict, setCvConflict] = useState(false)
 
   useEffect(() => {
     fetch("/api/admin/session", { cache: "no-store" })
@@ -121,10 +124,10 @@ export function AdminApp() {
   // --- CV MANAGEMENT ---
   const loadCV = async () => {
     try {
-      const data = await getCVData()
-      if (data) {
-        setCvData(data)
-      }
+      const { data, updatedAt } = await getVersionedCVData()
+      setCvData(data)
+      setCvVersion(updatedAt)
+      setCvConflict(false)
     } catch (error) {
       console.error("Error loading CV data:", error)
       notify("error", "Failed to load CV profile.")
@@ -134,9 +137,15 @@ export function AdminApp() {
   const handleSaveCV = async () => {
     setIsSavingCV(true)
     try {
-      await updateCVData(cvData)
+      const saved = await updateCVData(cvData, cvVersion)
+      setCvVersion(saved.updatedAt)
       notify("success", "CV profile updated and synced successfully!")
     } catch (error: any) {
+      if (error instanceof CVConflictError) {
+        // Keep the unsaved edits in the form; only an explicit reload replaces them.
+        setCvConflict(true)
+        return
+      }
       console.error("Error saving CV profile:", error)
       notify("error", error?.message || "Failed to save CV profile.")
     } finally {
@@ -442,6 +451,38 @@ export function AdminApp() {
         )}
 
         {/* TAB 3: CV / RESUME */}
+        {activeTab === "cv" && cvConflict && (
+          <div className="mb-6 p-4 rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-3 border bg-amber-950/60 border-amber-500/40 text-amber-200">
+            <div className="flex items-start gap-2">
+              <AlertCircle size={18} className="text-amber-400 shrink-0 mt-0.5" />
+              <div className="text-sm">
+                <p className="font-medium">The CV changed since you opened it. Reload to get the latest version.</p>
+                <p className="text-amber-300/80 mt-0.5">
+                  Your save was blocked. Your unsaved edits stay in the form until you reload, so copy anything you want
+                  to keep first.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() =>
+                  navigator.clipboard
+                    .writeText(JSON.stringify(cvData, null, 2))
+                    .then(() => notify("success", "Your unsaved CV edits were copied as JSON."))
+                    .catch(() => notify("error", "Could not copy to the clipboard."))
+                }
+                className="border-amber-500/40 bg-transparent text-amber-200 hover:bg-amber-500/10"
+              >
+                Copy my edits
+              </Button>
+              <Button size="sm" onClick={loadCV} className="bg-amber-500 text-slate-950 hover:bg-amber-400">
+                Reload latest
+              </Button>
+            </div>
+          </div>
+        )}
         {activeTab === "cv" && (
           <CVManager
             cvData={cvData}

@@ -5,6 +5,7 @@ import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 import { useSite } from "@/contexts/site-context";
+import AgencyBrandMark from "@/components/agency-brand-mark";
 
 export default function Footer() {
   const { language } = useLanguage();
@@ -19,9 +20,11 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="page-shell footer-inner">
         <div className="flex flex-col gap-1">
-          <span className="font-display text-lg font-medium">
-            {isAgency ? "Energy Media." : "Johan Alvarez."}
-          </span>
+          {isAgency ? (
+            <AgencyBrandMark className="agency-logo agency-logo--footer" />
+          ) : (
+            <span className="font-display text-lg font-medium">Johan Alvarez.</span>
+          )}
           <span className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} · Medellín, Colombia
             {isAgency ? ` · ${config.domain}` : ""}
@@ -35,6 +38,10 @@ export default function Footer() {
             <>
               <Link href="/services">
                 {language === "en" ? "Services" : "Servicios"}{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+              <Link href="/#industries">
+                {language === "en" ? "Industries" : "Industrias"}{" "}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </Link>
               <Link href="/projects">

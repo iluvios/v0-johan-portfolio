@@ -27,20 +27,21 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       metadataBase: new URL("https://energymedia.com.co"),
       title: {
-        default: "Energy Media | Growth & Digital Systems Agency",
+        default: "Energy Media | Marketing for Small Businesses",
         template: "%s | Energy Media",
       },
       description:
-        "Energy Media builds full-stack growth engines: paid media, high-converting Next.js & Webflow websites, CRM automation, and server-side attribution for companies in Colombia, LATAM, and the US.",
+        "Good, fast and affordable marketing for small businesses: ads, website, social media, email, chat and CRM built as one connected system and run by one team, with upfront prices.",
       openGraph: {
-        title: "Energy Media | Growth & Digital Systems Agency",
+        title: "Energy Media | Marketing for Small Businesses",
         description:
-          "Paid acquisition, high-converting web engineering, CRM lifecycle automation, and server-side attribution — built by senior operators.",
+          "Ads, social media, email, websites, landing pages, tracking and CRM, built and run by one team that answers for new customers.",
         url: "https://energymedia.com.co",
         siteName: "Energy Media",
         type: "website",
       },
       twitter: { card: "summary_large_image" },
+      icons: { icon: "/media/brand/energy-media-icon.png", apple: "/media/brand/energy-media-icon.png" },
     };
   }
 
@@ -96,7 +97,7 @@ const agencyJsonLd = {
   "@type": "ProfessionalService",
   name: "Energy Media",
   description:
-    "Growth marketing, high-converting websites, CRM automation, and server-side attribution agency serving Colombia, LATAM, and the US.",
+    "Full funnel marketing for small businesses: ads, website, social media, email, chat and CRM built as one connected system and run by one team, for businesses in the US, Colombia and Latin America.",
   url: "https://energymedia.com.co",
   email: `mailto:${AGENCY_EMAIL}`,
   founder: {

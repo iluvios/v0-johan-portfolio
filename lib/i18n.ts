@@ -265,13 +265,13 @@ export const agencyPortfolioOverrides: Record<Language, Partial<PortfolioCopy>> 
     cta: "Ready to grow?",
     ctaTitle: "Let’s build your growth engine.",
     ctaBody:
-      "Paid acquisition, high-converting web systems, CRM automation, and attribution — built by senior operators for US & LATAM teams.",
+      "Ads, social media, email, websites, tracking and CRM, built and run by one team for businesses in the US, Colombia and Latin America.",
     projectsTitle: "Client work & results",
     projectsIntro:
       "Campaigns, websites, ecommerce stores, and growth systems built by Energy Media for companies across Latin America and the US.",
-    contactTitle: "Tell us what you’re building.",
+    contactTitle: "Tell us about your business.",
     contactIntro:
-      "Need paid media that scales, a website engineered to convert, or CRM and attribution wired end-to-end? Share your goals and timeline — we’ll reply within one business day.",
+      "Tell us about your business, what you sell and what is not working. We reply within one business day to set up a call.",
     location: "Medellín, Colombia · Serving Colombia, LATAM & US time zones.",
     formNote:
       "Opens your email app addressed to Energy Media so your brief lands directly with our team.",
@@ -297,11 +297,11 @@ export const agencyPortfolioOverrides: Record<Language, Partial<PortfolioCopy>> 
     cta: "¿Listo para escalar?",
     ctaTitle: "Construyamos tu motor de crecimiento.",
     ctaBody:
-      "Adquisición paga, sitios web y funnels de alta conversión, automatización CRM y atribución — ejecutado por especialistas senior en Colombia y EE. UU.",
+      "Pauta, redes sociales, email, sitios web, medición y CRM, construidos y operados por un solo equipo para negocios en EE. UU., Colombia y Latinoamérica.",
     projectsTitle: "Casos y resultados",
     projectsIntro:
       "Campañas, sitios web, tiendas online y sistemas de growth construidos por Energy Media para empresas en Colombia, Latinoamérica y EE. UU.",
-    contactTitle: "Cuéntanos qué quieres construir.",
+    contactTitle: "Cuéntanos sobre tu negocio.",
     contactIntro:
       "¿Necesitas pauta que convierta, un sitio web diseñado para vender o conectar tu CRM y atribución de punta a punta? Compártenos tu meta y respondemos en menos de 24 horas hábiles.",
     location: "Medellín, Colombia · Atendiendo Colombia, LATAM y EE. UU.",
@@ -324,289 +324,85 @@ export const agencyPortfolioOverrides: Record<Language, Partial<PortfolioCopy>> 
 
 export const agencyCopy = {
   en: {
-    eyebrow: "Growth & Digital Systems Agency",
-    hero: ["We build", "growth engines", "that convert."],
-    intro:
-      "Energy Media combines performance marketing, high-converting web engineering, CRM automation, and server-side attribution under one roof — so your acquisition, site, and revenue data work as one system.",
-    primaryCta: "Start a project",
-    secondaryCta: "See case studies",
-    scroll: "Scroll to explore",
-    facts: [
-      "Accepting select partner engagements",
-      "Medellín · Colombia & US time zones",
-      "Bilingual EN / ES senior team",
-    ],
-    capabilitiesEyebrow: "Capabilities",
-    capabilitiesTitle: "One senior team from click to closed revenue.",
-    capabilitiesLink: "Explore services & models",
-    capabilities: [
-      {
-        index: "01",
-        title: "Paid Media & Acquisition",
-        description:
-          "Full-funnel Meta, Google, and LinkedIn campaigns paired with rapid creative testing and disciplined CAC tracking.",
-        deliverables: ["Meta & Google Ads", "Creative sprints", "Offer positioning", "Lead quality feedback"],
-      },
-      {
-        index: "02",
-        title: "Websites, Funnels & CRO",
-        description:
-          "Fast, editorial websites, landing pages, and online stores built in Next.js or Webflow to turn ad spend into pipeline.",
-        deliverables: ["Next.js & Webflow", "Landing page systems", "Conversion audits", "Technical SEO"],
-      },
-      {
-        index: "03",
-        title: "CRM, Lifecycle & Automation",
-        description:
-          "Automated lead routing, outbound enrichment, and lifecycle email flows that stop leads from slipping through the cracks.",
-        deliverables: ["HubSpot & Salesforce", "n8n & Clay workflows", "Email lifecycle", "AI-assisted ops"],
-      },
-      {
-        index: "04",
-        title: "Tracking & Attribution",
-        description:
-          "Server-side GTM, Conversion APIs, and clean revenue dashboards so every campaign decision is backed by real margin.",
-        deliverables: ["Server GTM & CAPI", "GA4 & Triple Whale", "CRM revenue sync", "Executive reporting"],
-      },
-    ],
-    processEyebrow: "How we work",
-    processTitle: "Built to ship in weeks, not quarters.",
-    process: [
-      {
-        index: "01",
-        title: "Audit & System Blueprint",
-        description:
-          "In week one we audit your ad accounts, landing pages, tracking, and CRM to map the fastest levers for pipeline and margin.",
-      },
-      {
-        index: "02",
-        title: "Ship End-to-End",
-        description:
-          "We design, build, wire tracking, and launch campaigns together — no handoff friction between separate media, dev, and ops vendors.",
-      },
-      {
-        index: "03",
-        title: "Compound & Own",
-        description:
-          "Weekly creative and funnel iterations driven by real revenue data. Everything we build lives in your accounts so you keep full ownership.",
-      },
-    ],
-    servicesPage: {
-      eyebrow: "Services",
-      title: "Full-stack growth, engineered for measurable ROI.",
-      description:
-        "Most companies split paid media, web development, CRM, and analytics across four disconnected vendors. Energy Media builds and operates the complete loop.",
-      modelsEyebrow: "Engagement models",
-      modelsTitle: "Structured around the stage you’re in.",
-      models: [
-        {
-          index: "01",
-          name: "Growth Partner Retainer",
-          tag: "Ongoing",
-          description:
-            "Your embedded senior growth squad across paid acquisition, landing page experimentation, lifecycle email, and attribution.",
-          fit: "Best for funded startups and established businesses scaling monthly acquisition.",
-        },
-        {
-          index: "02",
-          name: "Website & Funnel Sprint",
-          tag: "3–6 weeks",
-          description:
-            "Strategy, editorial design, Next.js or Webflow build, technical SEO, and full conversion tracking — shipped ready to run paid traffic.",
-          fit: "Best for companies rebuilding an underperforming site or launching a new offer.",
-        },
-        {
-          index: "03",
-          name: "RevOps & Attribution Build",
-          tag: "2–4 weeks",
-          description:
-            "Server-side GTM, Meta/Google CAPI, HubSpot/Salesforce pipelines, Clay/n8n automations, and clean revenue reporting.",
-          fit: "Best for teams spending on ads without clear visibility into what actually closes.",
-        },
-      ],
-      startCta: "Discuss this model",
-    },
     aboutPage: {
       eyebrow: "About Energy Media",
-      title: "Senior operators, zero agency layers.",
+      title: "One team for the whole funnel.",
       description:
-        "Energy Media is a Medellín-based growth and digital systems agency partnering with ambitious brands across Colombia, Latin America, and the United States.",
+        "Energy Media is a marketing agency based in Medellín, Colombia. We build and run the whole sales funnel for businesses in the US, Colombia and Latin America.",
       thesisEyebrow: "Why we exist",
       thesisStart: "Growth breaks in the gaps",
-      thesisEnd: "between marketing and engineering.",
+      thesisEnd: "between ads, websites and follow up.",
       thesisBody:
-        "Traditional agencies sell slides and pass execution to junior account teams. Dev shops ship pages without conversion tracking or ad-angle strategy. Energy Media was founded by Johan Alvarez after 12+ years spanning software engineering, ecommerce, agency leadership, and startup growth — uniting strategy, creative, paid media, web engineering, and marketing automation in one accountable team.",
-      founderLink: "Founder’s personal portfolio",
-      principlesEyebrow: "Operating principles",
+        "Ads agencies buy traffic, web designers build pages, and nobody owns what happens next. Energy Media was cofounded in 2019 by Johan Alvarez and three partners as a web design, marketing and software agency. Today it brings strategy, ads, content, websites, email, CRM and tracking together in one team, with AI doing the volume work and people making the calls.",
+      founderLink: "Our cofounder’s portfolio",
+      principlesEyebrow: "How we work",
       principlesTitle: "How every engagement is run.",
       principles: [
         {
           index: "01",
-          title: "Revenue over vanity metrics",
+          title: "New customers over vanity metrics",
           description:
-            "Impressions and clicks don’t pay payroll. We measure qualified pipeline, CAC, conversion rate, and closed revenue.",
+            "Impressions and clicks do not pay payroll. We report on leads, booked calls, sales and cost per customer.",
         },
         {
           index: "02",
-          title: "One roof, zero telephone",
+          title: "One team, no telephone game",
           description:
-            "The people planning the campaign also build the landing page, configure the CRM, and verify the tracking events.",
+            "The people who plan the campaign also build the landing page, set up the CRM and check the tracking.",
         },
         {
           index: "03",
-          title: "Bilingual US & LATAM execution",
+          title: "English and Spanish",
           description:
-            "Native Spanish and C2 English execution tailored to both Colombian/LATAM markets and high-velocity US growth standards.",
+            "We work in both languages, for businesses in the US, Colombia and Latin America.",
         },
         {
           index: "04",
-          title: "Systems you own forever",
+          title: "Everything stays yours",
           description:
-            "Ad accounts, domains, repositories, CRM automations, and dashboards always stay in your company’s name.",
+            "Ad accounts, domains, websites, CRM automations and dashboards stay in your company’s name.",
         },
       ],
     },
   },
   es: {
-    eyebrow: "Agencia de Growth y Sistemas Digitales",
-    hero: ["Construimos", "motores de growth", "que convierten."],
-    intro:
-      "Energy Media une marketing de resultados, ingeniería web de alta conversión, automatización CRM y atribución server-side en un solo equipo — para que tu pauta, tu sitio y tus ventas operen como un mismo sistema.",
-    primaryCta: "Iniciar un proyecto",
-    secondaryCta: "Ver casos de éxito",
-    scroll: "Sigue explorando",
-    facts: [
-      "Recibiendo nuevos proyectos",
-      "Medellín · horario Colombia y EE. UU.",
-      "Equipo senior bilingüe ES / EN",
-    ],
-    capabilitiesEyebrow: "Capacidades",
-    capabilitiesTitle: "Un solo equipo senior desde el clic hasta la venta.",
-    capabilitiesLink: "Explorar servicios y modelos",
-    capabilities: [
-      {
-        index: "01",
-        title: "Pauta Digital y Adquisición",
-        description:
-          "Campañas full-funnel en Meta, Google y LinkedIn con testeo continuo de creatividades y control disciplinado de CAC.",
-        deliverables: ["Meta y Google Ads", "Sprints creativos", "Posicionamiento de oferta", "Calidad de leads"],
-      },
-      {
-        index: "02",
-        title: "Sitios Web, Funnels y CRO",
-        description:
-          "Sitios rápidos con diseño editorial, landing pages y tiendas online en Next.js o Webflow construidas para convertir tráfico en ventas.",
-        deliverables: ["Next.js y Webflow", "Sistemas de landing pages", "Auditorías CRO", "SEO técnico"],
-      },
-      {
-        index: "03",
-        title: "CRM, Lifecycle y Automatización",
-        description:
-          "Enrutamiento automático de leads, enriquecimiento outbound y flujos de email para que ninguna oportunidad se pierda.",
-        deliverables: ["HubSpot y Salesforce", "Flujos en n8n y Clay", "Email lifecycle", "Operaciones con IA"],
-      },
-      {
-        index: "04",
-        title: "Tracking y Atribución",
-        description:
-          "Server GTM, APIs de conversión y tableros de ingresos reales para que cada decisión de pauta esté respaldada por datos.",
-        deliverables: ["Server GTM y CAPI", "GA4 y Triple Whale", "Sincronización CRM", "Reportes ejecutivos"],
-      },
-    ],
-    processEyebrow: "Cómo trabajamos",
-    processTitle: "Hecho para lanzar en semanas, no en trimestres.",
-    process: [
-      {
-        index: "01",
-        title: "Auditoría y Arquitectura",
-        description:
-          "En la primera semana auditamos tus cuentas publicitarias, páginas, tracking y CRM para priorizar las palancas con mayor impacto.",
-      },
-      {
-        index: "02",
-        title: "Ejecución de Punta a Punta",
-        description:
-          "Diseñamos, desarrollamos, conectamos la medición y lanzamos campañas juntos — sin fricción entre agencia de pauta, devs y CRM.",
-      },
-      {
-        index: "03",
-        title: "Iteración y Propiedad Total",
-        description:
-          "Mejoras semanales basadas en ingresos reales. Todo lo que construimos vive en tus propias cuentas y repositorios.",
-      },
-    ],
-    servicesPage: {
-      eyebrow: "Servicios",
-      title: "Growth full-stack, diseñado para retorno medible.",
-      description:
-        "La mayoría de empresas dividen pauta, desarrollo web, CRM y analítica entre cuatro proveedores desconectados. En Energy Media construimos y operamos el ciclo completo.",
-      modelsEyebrow: "Modelos de trabajo",
-      modelsTitle: "Estructurados según la etapa de tu empresa.",
-      models: [
-        {
-          index: "01",
-          name: "Growth Partner Mensual",
-          tag: "Continuo",
-          description:
-            "Tu equipo senior de growth integrado: adquisición paga, experimentación de landing pages, email marketing y atribución.",
-          fit: "Ideal para startups y empresas establecidas escalando adquisición mes a mes.",
-        },
-        {
-          index: "02",
-          name: "Sprint Web y Funnel",
-          tag: "3–6 semanas",
-          description:
-            "Estrategia, diseño editorial, desarrollo en Next.js o Webflow, SEO técnico y tracking de conversiones listo para recibir pauta.",
-          fit: "Ideal para empresas que renuevan un sitio que no convierte o lanzan una nueva oferta.",
-        },
-        {
-          index: "03",
-          name: "Arquitectura RevOps y Atribución",
-          tag: "2–4 semanas",
-          description:
-            "Server GTM, Meta/Google CAPI, pipelines en HubSpot/Salesforce, automatizaciones en n8n/Clay y reportes claros de retorno.",
-          fit: "Ideal para equipos que invierten en pauta sin visibilidad clara de qué campañas cierran ventas.",
-        },
-      ],
-      startCta: "Hablar sobre este modelo",
-    },
     aboutPage: {
       eyebrow: "Sobre Energy Media",
-      title: "Especialistas senior, sin capas de agencia.",
+      title: "Un solo equipo para todo el embudo.",
       description:
-        "Energy Media es una agencia de growth y sistemas digitales con base en Medellín, aliada de marcas ambiciosas en Colombia, Latinoamérica y Estados Unidos.",
+        "Energy Media es una agencia de marketing en Medellín, Colombia. Construimos y operamos todo el embudo de ventas para negocios en EE. UU., Colombia y Latinoamérica.",
       thesisEyebrow: "Por qué existimos",
-      thesisStart: "El crecimiento se rompe en la brecha",
-      thesisEnd: "entre el marketing y la ingeniería.",
+      thesisStart: "El crecimiento se rompe en los espacios",
+      thesisEnd: "entre la pauta, el sitio web y el seguimiento.",
       thesisBody:
-        "Las agencias tradicionales venden presentaciones y delegan la ejecución a equipos junior. Las casas de software entregan páginas sin estrategia de conversión ni medición. Energy Media fue fundada por Johan Alvarez tras más de 12 años entre desarrollo de software, ecommerce, dirección de agencia y growth en startups — uniendo estrategia, creatividad, pauta, ingeniería web y automatización en un solo equipo responsable del resultado.",
-      founderLink: "Portafolio personal del fundador",
-      principlesEyebrow: "Principios operativos",
-      principlesTitle: "Así ejecutamos cada proyecto.",
+        "Las agencias de pauta compran tráfico, los diseñadores web hacen páginas, y nadie responde por lo que pasa después. Energy Media fue cofundada en 2019 por Johan Alvarez y tres socios como agencia de diseño web, marketing y software. Hoy une estrategia, pauta, contenido, sitios web, email, CRM y medición en un solo equipo, con la IA haciendo el trabajo de volumen y las personas tomando las decisiones.",
+      founderLink: "Portafolio de nuestro cofundador",
+      principlesEyebrow: "Cómo trabajamos",
+      principlesTitle: "Así llevamos cada proyecto.",
       principles: [
         {
           index: "01",
-          title: "Ingresos sobre métricas de vanidad",
+          title: "Clientes nuevos antes que métricas de vanidad",
           description:
-            "Los likes y clics no pagan nómina. Medimos pipeline calificado, CAC, tasa de conversión e ingresos cerrados.",
+            "Las impresiones y los clics no pagan la nómina. Reportamos leads, llamadas agendadas, ventas y costo por cliente.",
         },
         {
           index: "02",
-          title: "Todo bajo un mismo techo",
+          title: "Un solo equipo, sin teléfono roto",
           description:
-            "Quienes planean la campaña también construyen la landing page, configuran el CRM y validan cada evento de conversión.",
+            "Quienes planean la campaña también hacen la landing page, configuran el CRM y revisan la medición.",
         },
         {
           index: "03",
-          title: "Ejecución bilingüe Colombia y EE. UU.",
+          title: "Español e inglés",
           description:
-            "Operamos de forma nativa en español e inglés C2, combinando cercanía en LATAM con estándares de growth del mercado estadounidense.",
+            "Trabajamos en ambos idiomas, para negocios en EE. UU., Colombia y Latinoamérica.",
         },
         {
           index: "04",
-          title: "Sistemas 100% tuyos",
+          title: "Todo queda a tu nombre",
           description:
-            "Tus cuentas publicitarias, dominios, código, automatizaciones CRM y tableros siempre permanecen a nombre de tu empresa.",
+            "Cuentas publicitarias, dominios, sitios web, automatizaciones del CRM y tableros quedan a nombre de tu empresa.",
         },
       ],
     },

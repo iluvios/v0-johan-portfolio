@@ -27,7 +27,7 @@ export default function ContactPortfolio() {
           {isAgency ? (
             <>
               <Link href="/services" className="text-link">
-                {language === "en" ? "Services & models" : "Servicios y modelos"}
+                {language === "en" ? "Services and pricing" : "Servicios y precios"}
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
               <Link href="/projects" className="text-link">

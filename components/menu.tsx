@@ -15,6 +15,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useLanguage } from "@/contexts/language-context";
 import { useSite } from "@/contexts/site-context";
+import { AGENCY_CTA_HREF } from "@/lib/site";
 import { usePortfolioCopy } from "@/lib/portfolio";
 import LanguageToggle from "./language-toggle";
 
@@ -30,12 +31,14 @@ export default function MenuComponent() {
       ? [
           { href: "/", label: "Home" },
           { href: "/services", label: "Services" },
+          { href: "/services#pricing", label: "Pricing" },
           { href: "/projects", label: "Work" },
           { href: "/about", label: "About" },
         ]
       : [
           { href: "/", label: "Inicio" },
           { href: "/services", label: "Servicios" },
+          { href: "/services#pricing", label: "Precios" },
           { href: "/projects", label: "Casos" },
           { href: "/about", label: "Nosotros" },
         ]
@@ -58,15 +61,15 @@ export default function MenuComponent() {
         ...items,
         {
           href: "/contact",
-          label: language === "en" ? "Start a project" : "Contacto",
+          label: language === "en" ? "Free audit" : "Auditoría gratis",
         },
       ]
     : items;
 
   const ctaLabel = isAgency
     ? language === "en"
-      ? "Start a project"
-      : "Hablemos"
+      ? "Free audit"
+      : "Auditoría gratis"
     : copy.talk;
 
   const active = (href: string) =>
@@ -98,7 +101,10 @@ export default function MenuComponent() {
         ))}
         <LanguageToggle />
         <Link
-          href="/contact"
+          href={isAgency ? AGENCY_CTA_HREF : "/contact"}
+          {...(isAgency && AGENCY_CTA_HREF.startsWith("http")
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
           className="nav-contact"
           aria-current={active("/contact") ? "page" : undefined}
         >

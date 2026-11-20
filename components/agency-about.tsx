@@ -35,7 +35,7 @@ export default function AgencyAbout() {
           <Image
             className="perspective-portrait"
             src="/images/johan-portrait.webp"
-            alt="Johan Alvarez — Founder of Energy Media"
+            alt="Johan Alvarez, cofounder of Energy Media"
             width={420}
             height={525}
             sizes="(max-width: 767px) 112px, 300px"

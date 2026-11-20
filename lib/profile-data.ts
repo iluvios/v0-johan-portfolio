@@ -372,7 +372,7 @@ export async function getCVData(): Promise<CVProfile> {
       const res = await fetch("/api/cv")
       if (res.ok) {
         const data = await res.json()
-        if (data && data.name) return normalizeCV(data)
+        if (data && data.name) return splitVersion(data).data
       }
     }
   } catch (error) {
@@ -381,20 +381,43 @@ export async function getCVData(): Promise<CVProfile> {
   return DEFAULT_CV_DATA
 }
 
-export async function updateCVData(profile: CVProfile): Promise<CVProfile> {
+// The admin keeps the row's updated_at it loaded and sends it with every save, so a stale
+// tab gets a 409 instead of reverting a newer CV.
+export interface VersionedCV {
+  data: CVProfile
+  updatedAt: string | null
+}
+
+export class CVConflictError extends Error {}
+
+function splitVersion(raw: Partial<CVProfile> & { updated_at?: string | null }): VersionedCV {
+  const { updated_at, ...data } = raw
+  return { data: normalizeCV(data), updatedAt: updated_at ?? null }
+}
+
+export async function getVersionedCVData(): Promise<VersionedCV> {
+  const res = await fetch("/api/cv", { cache: "no-store" })
+  if (!res.ok) throw new Error("Failed to load CV data")
+  const data = await res.json()
+  if (!data || !data.name) throw new Error("Failed to load CV data")
+  return splitVersion(data)
+}
+
+export async function updateCVData(profile: CVProfile, updatedAt: string | null): Promise<VersionedCV> {
   try {
     const res = await fetch("/api/cv", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(profile),
+      body: JSON.stringify({ ...profile, updated_at: updatedAt }),
     })
     if (!res.ok) {
       const err = await res.json().catch(() => ({}))
+      if (res.status === 409) throw new CVConflictError(err.error || "The CV changed since you opened it.")
       throw new Error(err.error || "Failed to update CV data")
     }
-    return await res.json()
+    return splitVersion(await res.json())
   } catch (error) {
-    console.error("Error updating CV data:", error)
+    if (!(error instanceof CVConflictError)) console.error("Error updating CV data:", error)
     throw error
   }
 }
