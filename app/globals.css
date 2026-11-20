@@ -2151,3 +2151,269 @@
     font-size: 1.9rem;
   }
 }
+
+/* Energy Media: logo, fixed grid backdrop and centered hero */
+@layer components {
+  .agency-logo {
+    width: auto;
+    height: 34px;
+  }
+  .agency-logo--footer {
+    align-self: flex-start;
+    height: 30px;
+  }
+  .agency-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: center top;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 35%, black 25%, transparent 90%);
+  }
+  .agency-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  .agency-hero-glows {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+  .agency-hero-glows::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -18%;
+    width: min(1000px, 140vw);
+    height: 620px;
+    transform: translateX(-50%);
+    background: radial-gradient(closest-side, hsl(var(--primary) / 0.3), transparent);
+  }
+  .agency-orb {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 32% 28%,
+      hsl(188 95% 80%) 0%,
+      hsl(var(--primary)) 45%,
+      hsl(226 80% 20%) 100%
+    );
+    box-shadow:
+      inset -8px -10px 24px hsl(226 80% 12% / 0.7),
+      0 0 60px hsl(var(--primary) / 0.35);
+    opacity: 0.85;
+    animation: agency-float 9s ease-in-out infinite;
+  }
+  .agency-orb--one {
+    width: 92px;
+    top: 16%;
+    left: 6%;
+  }
+  .agency-orb--two {
+    width: 54px;
+    bottom: 18%;
+    right: 7%;
+    animation-delay: -3s;
+  }
+  .agency-orb--three {
+    width: 30px;
+    top: 12%;
+    right: 24%;
+    opacity: 0.8;
+    animation-delay: -6s;
+  }
+  .agency-chip {
+    position: absolute;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.95rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 999px;
+    background: hsl(var(--card) / 0.75);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 30px rgb(0 0 0 / 0.3);
+    color: hsl(var(--foreground) / 0.85);
+    font-size: 13px;
+    animation: agency-float 11s ease-in-out infinite;
+  }
+  .agency-chip--one {
+    top: 34%;
+    left: 4%;
+    animation-delay: -2s;
+  }
+  .agency-chip--two {
+    bottom: 24%;
+    left: 9%;
+    animation-delay: -5s;
+  }
+  .agency-chip--three {
+    top: 30%;
+    right: 4%;
+    animation-delay: -7s;
+  }
+  .agency-chip--four {
+    bottom: 32%;
+    right: 12%;
+    animation-delay: -4s;
+  }
+  .agency-hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    padding-block: clamp(4rem, 9vw, 7.5rem) clamp(3rem, 6vw, 5rem);
+    text-align: center;
+  }
+  .agency-hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1rem;
+    border: 1px solid hsl(var(--border));
+    border-radius: 999px;
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(10px);
+    color: hsl(var(--muted-foreground));
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .agency-hero-title {
+    font-size: clamp(2.5rem, 6vw, 5.4rem);
+    font-weight: 500;
+    line-height: 1.03;
+    letter-spacing: -0.06em;
+  }
+  .agency-hero-title > span {
+    display: block;
+  }
+  .agency-hero-title .hero-last {
+    background: linear-gradient(100deg, hsl(var(--primary)) 5%, hsl(var(--accent)) 85%);
+    color: transparent;
+    background-clip: text;
+    padding-bottom: 0.1em;
+  }
+  .agency-hero-intro {
+    max-width: 640px;
+    color: hsl(var(--muted-foreground));
+    font-size: clamp(16px, 1.5vw, 18.5px);
+    line-height: 1.6;
+  }
+  .agency-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+  }
+  .agency-hero-facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.4rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 14px;
+  }
+  .agency-hero-facts li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .agency-hero-facts li:first-child {
+    color: hsl(var(--foreground));
+  }
+  .agency-hero-facts li + li::before {
+    content: "/";
+    margin-right: 0.8rem;
+    opacity: 0.35;
+  }
+  .agency-tools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+  }
+  .agency-tools p {
+    color: hsl(var(--muted-foreground));
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .agency-tools ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.75rem;
+  }
+  .agency-tools li {
+    color: hsl(var(--foreground) / 0.55);
+    font-family: var(--font-space), sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  @keyframes agency-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .agency-chip {
+    display: inline-flex;
+  }
+}
+@media (max-width: 767px) {
+  .agency-logo {
+    height: 28px;
+  }
+  .agency-orb--one {
+    width: 52px;
+    top: 1.5%;
+    left: -22px;
+  }
+  .agency-hero-eyebrow {
+    padding: 0.4rem 0.85rem;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+  .agency-orb--two {
+    width: 44px;
+    bottom: 6%;
+    right: -10px;
+  }
+  .agency-orb--three {
+    top: 6%;
+    right: 12%;
+    width: 22px;
+  }
+  .agency-hero-facts li + li::before {
+    content: none;
+  }
+  .agency-tools li {
+    font-size: 15px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agency-orb,
+  .agency-chip {
+    animation: none;
+  }
+}
+/* Let the fixed agency grid show through: html keeps the page color. */
+html[data-site="energymedia"] body {
+  background-color: transparent;
+}

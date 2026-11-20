@@ -124,14 +124,14 @@ export function getProof(language: Language, ids: ProofId[]): ProofItem[] {
 
 export const agencyHomeCopy = {
   en: {
-    eyebrow: "360 AI powered marketing",
-    hero: ["Your whole online", "sales effort,", "updated to 2026."],
+    eyebrow: "360 AI powered marketing agency",
+    hero: ["Marketing that sells,", "with AI in every step."],
     intro:
-      "Ads, social media, email, websites, CRM and tracking, plus AI assistants that answer your customers on your site, WhatsApp, email and social DMs, day and night. One team builds it, runs it and answers for one number: new customers.",
+      "We build and run your ads, social media, website, email and CRM, with AI assistants answering your customers on your site, WhatsApp, email and DMs, day and night. One team, one goal: more sales.",
     primaryCta: "Book a call",
     secondaryCta: "Price your plan",
     facts: ["Taking new clients", "Medellín · working on US hours", "English and Spanish"],
-    scroll: "Scroll to explore",
+    toolsLabel: "We run your funnel on",
     problemEyebrow: "The problem",
     problemTitle: "Four vendors, and nobody owns the result.",
     problems: [
@@ -279,14 +279,14 @@ export const agencyHomeCopy = {
     ctaButton: "Book a call",
   },
   es: {
-    eyebrow: "Marketing 360 con IA",
-    hero: ["Todas tus ventas", "en línea,", "al nivel de 2026."],
+    eyebrow: "Agencia de marketing 360 con IA",
+    hero: ["Marketing que vende,", "con IA en cada paso."],
     intro:
-      "Pauta, redes sociales, email, sitios web, CRM y medición, más asistentes de IA que atienden a tus clientes en tu sitio, WhatsApp, email y mensajes de redes, de día y de noche. Un solo equipo lo construye, lo opera y responde por un número: clientes nuevos.",
+      "Construimos y operamos tu pauta, redes sociales, sitio web, email y CRM, con asistentes de IA que atienden a tus clientes en tu sitio, WhatsApp, email y mensajes de redes, de día y de noche. Un solo equipo, una meta: vender más.",
     primaryCta: "Agenda una llamada",
     secondaryCta: "Calcula tu plan",
     facts: ["Recibiendo nuevos clientes", "Medellín · horario de EE. UU.", "Español e inglés"],
-    scroll: "Sigue explorando",
+    toolsLabel: "Operamos tu embudo en",
     problemEyebrow: "El problema",
     problemTitle: "Cuatro proveedores, y nadie responde por el resultado.",
     problems: [

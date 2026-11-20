@@ -41,6 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
         type: "website",
       },
       twitter: { card: "summary_large_image" },
+      icons: { icon: "/media/brand/energy-media-icon.png", apple: "/media/brand/energy-media-icon.png" },
     };
   }
 

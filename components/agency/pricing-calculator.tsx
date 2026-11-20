@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Minus, Plus } from "lucide-react";
 import { GlowButton } from "@/components/ui/glow-button";
@@ -50,7 +50,8 @@ function Stepper({
   limits: { min: number; max: number };
   copy: CalculatorCopy;
 }) {
-  const id = useId();
+  // Deterministic id from the label, so server and client markup always match.
+  const id = `calc-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   return (
     <div className="calc-stepper">
       <div className="min-w-0">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { AgencyHero } from "@/components/agency-home";
+import { AgencyHero } from "@/components/agency/hero";
 import PricingCalculator from "@/components/agency/pricing-calculator";
 import {
   AgencyCta,
@@ -59,8 +59,7 @@ export default function AgencyIndustry({ slug }: { slug: IndustrySlug }) {
         primaryCta={home.primaryCta}
         secondaryCta={home.secondaryCta}
         facts={home.facts}
-        scroll={home.scroll}
-        scrollTarget="numbers"
+        toolsLabel={home.toolsLabel}
       />
       <div className="page-shell">
         <Separator />
