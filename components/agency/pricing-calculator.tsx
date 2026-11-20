@@ -244,7 +244,24 @@ export default function PricingCalculator({
         </fieldset>
       </div>
 
-      <aside className="calc-summary" aria-live="polite">
+      {/* Phones: the estimate sticks to the bottom while the options scroll by. */}
+      {!nothing && (
+        <a href="#calc-summary" className="calc-mobile-bar">
+          <span>
+            <span className="calc-mobile-label">{copy.monthlyLine}</span>
+            <strong>
+              {formatUsd(result.monthlyDue)}
+              <span className="calc-price-unit">{copy.perMonth}</span>
+            </strong>
+          </span>
+          <span className="text-right">
+            <span className="calc-mobile-label">{copy.setupLine}</span>
+            <strong>{formatUsd(result.setupDue)}</strong>
+          </span>
+        </a>
+      )}
+
+      <aside id="calc-summary" className="calc-summary" aria-live="polite">
         <p className="eyebrow">{copy.summaryTitle}</p>
         {nothing ? (
           <p className="calc-summary-note">{copy.nothing}</p>

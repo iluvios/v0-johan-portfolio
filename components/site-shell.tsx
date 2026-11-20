@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { AgencyBackdrop } from "@/components/agency/hero";
+import { AgencyBackdrop, AgencyWhatsApp } from "@/components/agency/hero";
 import { useSite } from "@/contexts/site-context";
 
 export default function SiteShell({ children }: { children: ReactNode }) {
@@ -24,6 +24,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
         {children}
       </main>
       <Footer />
+      {isAgency && <AgencyWhatsApp />}
     </>
   );
 }

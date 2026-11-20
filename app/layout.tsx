@@ -27,13 +27,13 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       metadataBase: new URL("https://energymedia.com.co"),
       title: {
-        default: "Energy Media | 360 AI Powered Marketing Agency",
+        default: "Energy Media | Marketing for Small Businesses",
         template: "%s | Energy Media",
       },
       description:
-        "Energy Media updates your whole online sales effort to 2026: paid media, social media, email, websites, CRM and tracking, plus AI assistants on your site, WhatsApp, email and social DMs, run by one team.",
+        "Good, fast and affordable marketing for small businesses: ads, website, social media, email, chat and CRM built as one connected system and run by one team, with upfront prices.",
       openGraph: {
-        title: "Energy Media | 360 AI Powered Marketing Agency",
+        title: "Energy Media | Marketing for Small Businesses",
         description:
           "Ads, social media, email, websites, landing pages, tracking and CRM, built and run by one team that answers for new customers.",
         url: "https://energymedia.com.co",
@@ -97,7 +97,7 @@ const agencyJsonLd = {
   "@type": "ProfessionalService",
   name: "Energy Media",
   description:
-    "360 AI powered marketing agency: paid media, social media, email marketing, websites, landing pages, tracking and CRM, built and run by one team for businesses in the US, Colombia and Latin America.",
+    "Full funnel marketing for small businesses: ads, website, social media, email, chat and CRM built as one connected system and run by one team, for businesses in the US, Colombia and Latin America.",
   url: "https://energymedia.com.co",
   email: `mailto:${AGENCY_EMAIL}`,
   founder: {

@@ -95,3 +95,35 @@ export function quote(input: PlanInput): Quote {
 export function formatUsd(value: number): string {
   return `$${value.toLocaleString("en-US")}`;
 }
+
+// Starting points shown on the home page. Each one opens the calculator preset
+// on /services?plan=<id>#pricing, and its prices always come from quote().
+export type ExamplePlanId = "starter" | "growth" | "full";
+export const EXAMPLE_PLAN_IDS: ExamplePlanId[] = ["starter", "growth", "full"];
+export const EXAMPLE_PLANS: Record<ExamplePlanId, Omit<PlanInput, "payment">> = {
+  starter: {
+    setup: ["tracking"],
+    channels: ["google"],
+    campaigns: 3,
+    videosPerWeek: 0,
+    graphicsPerMonth: 0,
+  },
+  growth: {
+    setup: ["website", "crm", "tracking"],
+    channels: ["google", "meta"],
+    campaigns: 3,
+    videosPerWeek: 0,
+    graphicsPerMonth: 4,
+  },
+  full: {
+    setup: ["website", "email", "crm", "tracking", "seo"],
+    channels: ["google", "meta", "email", "social"],
+    campaigns: 3,
+    videosPerWeek: 1,
+    graphicsPerMonth: 8,
+  },
+};
+
+export function isExamplePlanId(value: string | undefined): value is ExamplePlanId {
+  return value === "starter" || value === "growth" || value === "full";
+}

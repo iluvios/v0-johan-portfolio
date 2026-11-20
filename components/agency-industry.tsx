@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
 import { AgencyHero } from "@/components/agency/hero";
 import PricingCalculator from "@/components/agency/pricing-calculator";
 import {
   AgencyCta,
   AgencySection,
-  FaqList,
+  ConnectedSystem,
+  FaqSection,
   FunnelGrid,
   NumberedGrid,
-  ProofGrid,
+  ProofShowcase,
   StatGrid,
 } from "@/components/agency/sections";
 import { useLanguage } from "@/contexts/language-context";
@@ -62,22 +62,27 @@ export default function AgencyIndustry({ slug }: { slug: IndustrySlug }) {
         toolsLabel={home.toolsLabel}
       />
       <div className="page-shell">
-        <Separator />
-        <AgencySection id="numbers" eyebrow={labels.stats} title={copy.statsTitle}>
+        <AgencySection id="numbers" eyebrow={labels.stats} title={copy.statsTitle} align="center">
           <StatGrid stats={copy.stats} />
-          <p className="agency-note">{copy.statsSource}</p>
+          <p className="agency-note agency-note--center">{copy.statsSource}</p>
         </AgencySection>
-        <Separator />
         <AgencySection id="problem" eyebrow={labels.pains} title={copy.painsTitle}>
           <NumberedGrid items={copy.pains} />
         </AgencySection>
-        <Separator />
+        <ConnectedSystem
+          id="system"
+          eyebrow={home.connectedEyebrow}
+          title={home.connectedTitle}
+          intro={home.connectedIntro}
+          points={home.connectedPoints}
+          mock={home.mock}
+        />
         <AgencySection
           id="services"
           eyebrow={labels.funnel}
           title={copy.funnelTitle}
           aside={
-            <Link className="text-link" href="/#services">
+            <Link className="text-link" href="/services">
               {labels.allServices}
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
@@ -85,21 +90,14 @@ export default function AgencyIndustry({ slug }: { slug: IndustrySlug }) {
         >
           <FunnelGrid stages={copy.funnel} />
         </AgencySection>
-        <Separator />
-        <AgencySection id="ai" eyebrow={home.aiEyebrow} title={home.aiTitle} intro={home.aiIntro}>
-          <NumberedGrid items={home.ai} />
-          <p className="agency-note">{home.aiNote}</p>
-        </AgencySection>
-        <Separator />
         <AgencySection id="proof" eyebrow={labels.proof} title={copy.proofTitle}>
-          <ProofGrid
+          <ProofShowcase
             items={getProof(language, industry.proof)}
             caseStudy={home.caseStudy}
             tag={labels.otherIndustry}
           />
           <p className="agency-note">{copy.proofNote}</p>
         </AgencySection>
-        <Separator />
         <AgencySection
           id="pricing"
           eyebrow={home.pricingEyebrow}
@@ -108,10 +106,7 @@ export default function AgencyIndustry({ slug }: { slug: IndustrySlug }) {
         >
           <PricingCalculator preset={industry.preset} />
         </AgencySection>
-        <Separator />
-        <AgencySection id="faq" eyebrow={home.faqEyebrow} title={home.faqTitle}>
-          <FaqList items={[...copy.faq, ...home.faq]} />
-        </AgencySection>
+        <FaqSection eyebrow={home.faqEyebrow} title={home.faqTitle} items={[...copy.faq, ...home.faq]} />
         <div className="pb-16 md:pb-24">
           <AgencyCta
             eyebrow={home.ctaEyebrow}

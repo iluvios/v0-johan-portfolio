@@ -269,7 +269,7 @@ export const agencyPortfolioOverrides: Record<Language, Partial<PortfolioCopy>> 
     projectsTitle: "Client work & results",
     projectsIntro:
       "Campaigns, websites, ecommerce stores, and growth systems built by Energy Media for companies across Latin America and the US.",
-    contactTitle: "Tell us what you’re building.",
+    contactTitle: "Tell us about your business.",
     contactIntro:
       "Tell us about your business, what you sell and what is not working. We reply within one business day to set up a call.",
     location: "Medellín, Colombia · Serving Colombia, LATAM & US time zones.",
@@ -301,7 +301,7 @@ export const agencyPortfolioOverrides: Record<Language, Partial<PortfolioCopy>> 
     projectsTitle: "Casos y resultados",
     projectsIntro:
       "Campañas, sitios web, tiendas online y sistemas de growth construidos por Energy Media para empresas en Colombia, Latinoamérica y EE. UU.",
-    contactTitle: "Cuéntanos qué quieres construir.",
+    contactTitle: "Cuéntanos sobre tu negocio.",
     contactIntro:
       "¿Necesitas pauta que convierta, un sitio web diseñado para vender o conectar tu CRM y atribución de punta a punta? Compártenos tu meta y respondemos en menos de 24 horas hábiles.",
     location: "Medellín, Colombia · Atendiendo Colombia, LATAM y EE. UU.",
