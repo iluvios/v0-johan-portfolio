@@ -48,6 +48,7 @@ export default function AgencyAbout() {
                       <div>
                         <h3>{member.name}</h3>
                         <p className="agency-member-role">{person.role}</p>
+                        <p className="agency-member-years">{copy.years(member.years)}</p>
                       </div>
                       {member.link && (
                         <a

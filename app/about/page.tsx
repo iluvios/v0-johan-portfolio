@@ -9,11 +9,11 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: "About",
       description:
-        "Meet Energy Media: a team of three in Medellín, Colombia running ads, design, websites, CRM and tracking for small businesses in the US and Latin America.",
+        "Meet Energy Media: experienced marketing professionals in Medellín, Colombia running ads, design, websites, CRM and tracking for small businesses in the US and Latin America.",
       openGraph: {
         title: "About Energy Media | Marketing for Small Businesses",
         description:
-          "Sebastian on paid media, Johan on CRM, automation and tracking, Santiago on UX and design: one small team for your whole funnel.",
+          "Johan on CRM, automation and tracking, Sebastian and Nidward on paid media, Santiago on digital design: one small team for your whole funnel.",
         type: "website",
       },
     };

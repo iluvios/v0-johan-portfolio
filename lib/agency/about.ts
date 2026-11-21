@@ -7,21 +7,25 @@ import type { TitledText } from "@/lib/agency/copy";
 // House rule: no dashes in any visible text.
 
 export interface TeamMember {
-  id: "sebastian" | "johan" | "santiago";
+  id: "johan" | "sebastian" | "santiago" | "nidward";
   name: string;
+  /** Years of experience, shown on each team card (confirmed by Johan). */
+  years: number;
   photo?: string;
   link?: string;
 }
 
 export const TEAM: TeamMember[] = [
-  { id: "sebastian", name: "Sebastian", photo: "/media/team/sebastian.webp" },
   {
     id: "johan",
     name: "Johan Alvarez",
+    years: 12,
     photo: "/images/johan-portrait.webp",
     link: "https://asjohan.com",
   },
-  { id: "santiago", name: "Santiago", photo: "/media/team/santiago.webp" },
+  { id: "sebastian", name: "Sebastian", years: 10, photo: "/media/team/sebastian.webp" },
+  { id: "santiago", name: "Santiago", years: 5, photo: "/media/team/santiago.webp" },
+  { id: "nidward", name: "Nidward Pernía", years: 2, photo: "/media/team/nidward.webp" },
 ];
 
 interface MemberCopy {
@@ -35,7 +39,7 @@ export const aboutCopy = {
     eyebrow: "About us",
     title: "A small team that does the work itself.",
     description:
-      "Energy Media is a team of three in Medellín, Colombia. We build and run marketing for small businesses in the US and Latin America, and you talk directly to the people doing the work.",
+      "Energy Media is a team of experienced marketing professionals in Medellín, Colombia. We build and run marketing for small businesses in the US and Latin America, and you talk directly to the people doing the work.",
     teamEyebrow: "The team",
     teamTitle: "The people behind your funnel.",
     team: {
@@ -50,11 +54,17 @@ export const aboutCopy = {
         tags: ["CRM and automation", "Tracking", "Websites"],
       },
       santiago: {
-        role: "UX Lead",
-        body: "Designs your website, landing pages and brand pieces so they look professional, load fast and make it easy to call, book or buy.",
-        tags: ["UX and UI", "Web design", "Brand"],
+        role: "Digital Design Lead",
+        body: "Designs everything digital: the UX of your website and landing pages, your brand, your videos and your social media content, so your business looks as good as it works.",
+        tags: ["UX and UI", "Brand", "Video and social media"],
+      },
+      nidward: {
+        role: "Paid Media Specialist (Junior)",
+        body: "Works with Sebastian on your campaigns every day: setting up ads, launching creative tests, watching budgets and preparing the weekly numbers.",
+        tags: ["Google Ads", "Meta Ads", "Reporting"],
       },
     } satisfies Record<TeamMember["id"], MemberCopy>,
+    years: (n: number) => `${n} years of experience`,
     portfolio: "Portfolio",
     storyEyebrow: "Our story",
     storyTitle: "Growth breaks in the gaps between ads, website and follow up.",
@@ -87,7 +97,7 @@ export const aboutCopy = {
     eyebrow: "Nosotros",
     title: "Un equipo pequeño que hace el trabajo.",
     description:
-      "Energy Media es un equipo de tres personas en Medellín, Colombia. Construimos y operamos el marketing de pequeñas empresas en EE. UU. y Latinoamérica, y hablas directamente con quienes hacen el trabajo.",
+      "Energy Media es un equipo de profesionales de marketing con amplia experiencia, en Medellín, Colombia. Construimos y operamos el marketing de pequeñas empresas en EE. UU. y Latinoamérica, y hablas directamente con quienes hacen el trabajo.",
     teamEyebrow: "El equipo",
     teamTitle: "Las personas detrás de tu embudo.",
     team: {
@@ -102,11 +112,17 @@ export const aboutCopy = {
         tags: ["CRM y automatización", "Medición", "Sitios web"],
       },
       santiago: {
-        role: "Líder de UX",
-        body: "Diseña tu sitio web, tus landing pages y tus piezas de marca para que se vean profesionales, carguen rápido y hagan fácil llamar, agendar o comprar.",
-        tags: ["UX y UI", "Diseño web", "Marca"],
+        role: "Líder de diseño digital",
+        body: "Diseña todo lo digital: la experiencia de tu sitio web y tus landing pages, tu marca, tus videos y el contenido de tus redes, para que tu negocio se vea tan bien como trabaja.",
+        tags: ["UX y UI", "Marca", "Video y redes sociales"],
+      },
+      nidward: {
+        role: "Especialista en pauta digital (junior)",
+        body: "Trabaja con Sebastian en tus campañas todos los días: configura anuncios, lanza pruebas de creatividades, vigila presupuestos y prepara los números de cada semana.",
+        tags: ["Google Ads", "Meta Ads", "Reportes"],
       },
     } satisfies Record<TeamMember["id"], MemberCopy>,
+    years: (n: number) => `${n} años de experiencia`,
     portfolio: "Portafolio",
     storyEyebrow: "Nuestra historia",
     storyTitle: "El crecimiento se rompe entre la pauta, el sitio y el seguimiento.",

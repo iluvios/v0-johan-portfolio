@@ -3166,6 +3166,11 @@ html[data-site="energymedia"] .contact-invitation h2 {
     font-size: 15px;
     line-height: 1.6;
   }
+  .agency-member-years {
+    margin-top: 0.15rem;
+    color: hsl(var(--muted-foreground));
+    font-size: 13px;
+  }
   .agency-member-link {
     display: inline-flex;
     flex-shrink: 0;
@@ -3199,7 +3204,7 @@ html[data-site="energymedia"] .contact-invitation h2 {
 }
 @media (min-width: 768px) {
   .agency-team {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .agency-principles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3418,5 +3423,10 @@ html[data-site="energymedia"] .contact-invitation h2 {
   .agency-fit {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: 4rem;
+  }
+}
+@media (min-width: 1200px) {
+  .agency-team {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

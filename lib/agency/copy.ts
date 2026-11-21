@@ -167,10 +167,10 @@ export const agencyHomeCopy = {
     eyebrow: "Marketing team for small businesses",
     hero: ["More customers.", "No marketing department needed."],
     intro:
-      "Energy Media is a senior team of three that runs your ads, website, social media and follow up as one connected system. Built for businesses with fewer than 20 people, with plans from $1,000 a month.",
+      "Energy Media is a team of experienced marketing professionals that runs your ads, website, social media and follow up as one connected system. Built for businesses with fewer than 20 people, with plans from $1,000 a month.",
     primaryCta: "Get a free audit",
     secondaryCta: "See prices",
-    facts: ["Senior team of three", "Upfront prices", "Everything stays in your name"],
+    facts: ["Experienced professionals", "Upfront prices", "Everything stays in your name"],
     proofLabel: "Recent results",
     proofStrip: [
       { value: "61%", label: "lower cost per registered user", href: "/projects/50" },
@@ -298,9 +298,9 @@ export const agencyHomeCopy = {
       ],
     } as MockCopy,
     pillarsEyebrow: "Why Energy Media",
-    pillarsTitle: "Senior specialists, small business prices.",
+    pillarsTitle: "Experienced specialists, small business prices.",
     pillarsIntro:
-      "You work directly with three specialists, not a junior account manager. Each one owns a part of your funnel and answers for it.",
+      "You work directly with the specialists doing the work, not an account manager. Each one owns a part of your funnel and answers for it.",
     pillarsTagline: "Good, fast, affordable.",
     pillars: [
       {
@@ -384,7 +384,7 @@ export const agencyHomeCopy = {
     faq: [
       {
         q: "Is this for a business my size?",
-        a: "Yes. We work with businesses with fewer than 20 people that don’t have a marketing team in house. You get senior specialists without hiring them full time.",
+        a: "Yes. We work with businesses with fewer than 20 people that don’t have a marketing team in house. You get experienced specialists without hiring them full time.",
       },
       {
         q: "Do I need a big budget?",
@@ -425,10 +425,10 @@ export const agencyHomeCopy = {
     eyebrow: "Equipo de marketing para pequeñas empresas",
     hero: ["Más clientes.", "Sin montar un equipo de marketing."],
     intro:
-      "Energy Media es un equipo senior de tres personas que opera tu pauta, tu sitio web, tus redes y tu seguimiento como un solo sistema conectado. Hecho para negocios de menos de 20 personas, con planes desde $1,000 al mes.",
+      "Energy Media es un equipo de profesionales de marketing con amplia experiencia que opera tu pauta, tu sitio web, tus redes y tu seguimiento como un solo sistema conectado. Hecho para negocios de menos de 20 personas, con planes desde $1,000 al mes.",
     primaryCta: "Pide tu auditoría gratis",
     secondaryCta: "Ver precios",
-    facts: ["Equipo senior de tres", "Precios a la vista", "Todo queda a tu nombre"],
+    facts: ["Profesionales con amplia experiencia", "Precios a la vista", "Todo queda a tu nombre"],
     proofLabel: "Resultados recientes",
     proofStrip: [
       { value: "61%", label: "menos costo por usuario registrado", href: "/projects/50" },
@@ -556,9 +556,9 @@ export const agencyHomeCopy = {
       ],
     } as MockCopy,
     pillarsEyebrow: "Por qué Energy Media",
-    pillarsTitle: "Especialistas senior, precios de pequeña empresa.",
+    pillarsTitle: "Especialistas con experiencia, precios de pequeña empresa.",
     pillarsIntro:
-      "Trabajas directamente con tres especialistas, no con un ejecutivo de cuenta junior. Cada uno se encarga de una parte de tu embudo y responde por ella.",
+      "Trabajas directamente con los especialistas que hacen el trabajo, no con un ejecutivo de cuenta. Cada uno se encarga de una parte de tu embudo y responde por ella.",
     pillarsTagline: "Bueno, bonito y barato.",
     pillars: [
       {
@@ -642,7 +642,7 @@ export const agencyHomeCopy = {
     faq: [
       {
         q: "¿Esto es para un negocio de mi tamaño?",
-        a: "Sí. Trabajamos con negocios de menos de 20 personas que no tienen un equipo de marketing interno. Tienes especialistas senior sin contratarlos de tiempo completo.",
+        a: "Sí. Trabajamos con negocios de menos de 20 personas que no tienen un equipo de marketing interno. Tienes especialistas con experiencia sin contratarlos de tiempo completo.",
       },
       {
         q: "¿Necesito un presupuesto grande?",

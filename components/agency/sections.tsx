@@ -669,7 +669,7 @@ export function FitSection({
   );
 }
 
-/** The three specialists, shown small above the pillars on the home and services pages. */
+/** The team, shown small above the pillars on the home and services pages. */
 export function TeamRow({ language }: { language: "en" | "es" }) {
   const roles = aboutCopy[language].team;
   return (
