@@ -422,7 +422,7 @@ export const agencyHomeCopy = {
     ctaButton: "Get a free audit",
   },
   es: {
-    eyebrow: "Equipo de marketing para pequeñas empresas",
+    eyebrow: "Equipo de marketing para pymes",
     hero: ["Más clientes.", "Sin montar un equipo de marketing."],
     intro:
       "Energy Media es un equipo de profesionales de marketing con amplia experiencia que opera tu pauta, tu sitio web, tus redes y tu seguimiento como un solo sistema conectado. Hecho para negocios de menos de 20 personas, con planes desde $1,000 al mes.",
@@ -436,7 +436,7 @@ export const agencyHomeCopy = {
       { value: "3.7x", label: "más clics desde Google", href: "/projects/29" },
     ] as ProofStripItem[],
     fitEyebrow: "Para quién es",
-    fitTitle: "Hecho para pequeñas empresas que quieren crecer.",
+    fitTitle: "Hecho para pymes que quieren crecer.",
     fitIntro:
       "Eres muy bueno en lo que haces, pero el marketing siempre queda de último en la lista. Un equipo de marketing completo todavía no tiene sentido, y hacerlo tú mismo te quita tiempo que no tienes. Nos volvemos tu equipo de marketing: lo planeamos, lo construimos y lo operamos cada mes, y ves exactamente qué te trae.",
     fitListTitle: "Esto es para ti si",
@@ -447,8 +447,8 @@ export const agencyHomeCopy = {
       "Quieres más llamadas, citas y ventas, no más reportes",
     ],
     statsEyebrow: "El problema",
-    statsTitle: "La mayoría de sitios de pequeñas empresas pierde clientes todos los días.",
-    statsIntro: "Revisamos 11,813 sitios web de pequeñas empresas en EE. UU.",
+    statsTitle: "La mayoría de sitios de pymes pierde clientes todos los días.",
+    statsIntro: "Revisamos 11,813 sitios web de pymes en EE. UU.",
     stats: [
       { value: 83, suffix: "%", label: "no dejan agendar ni chatear. Hay que llamar o llenar un formulario y esperar." },
       { value: 43, suffix: "%", label: "pagan pauta en Google o Meta para traer esas visitas." },
@@ -556,7 +556,7 @@ export const agencyHomeCopy = {
       ],
     } as MockCopy,
     pillarsEyebrow: "Por qué Energy Media",
-    pillarsTitle: "Especialistas con experiencia, precios de pequeña empresa.",
+    pillarsTitle: "Especialistas con experiencia, precios de pyme.",
     pillarsIntro:
       "Trabajas directamente con los especialistas que hacen el trabajo, no con un ejecutivo de cuenta. Cada uno se encarga de una parte de tu embudo y responde por ella.",
     pillarsTagline: "Bueno, bonito y barato.",

@@ -97,7 +97,7 @@ export const aboutCopy = {
     eyebrow: "Nosotros",
     title: "Un equipo pequeño que hace el trabajo.",
     description:
-      "Energy Media es un equipo de profesionales de marketing con amplia experiencia, en Medellín, Colombia. Construimos y operamos el marketing de pequeñas empresas en EE. UU. y Latinoamérica, y hablas directamente con quienes hacen el trabajo.",
+      "Energy Media es un equipo de profesionales de marketing con amplia experiencia, en Medellín, Colombia. Construimos y operamos el marketing de pymes en EE. UU. y Latinoamérica, y hablas directamente con quienes hacen el trabajo.",
     teamEyebrow: "El equipo",
     teamTitle: "Las personas detrás de tu embudo.",
     team: {
